@@ -8,8 +8,8 @@ from command_functions import add, filter, find, settings
 from help_func import (help, process_command, read_json, recalculate_size,
                        search_folder)
 
-# path="C:\\Users\\Filip\\Downloads"
-my_path="C:\\Users\\Filip\\Documents\\bakalarska_prace\\files"
+my_path="C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files"
+# my_path="C:\\Users\\Filip\\Documents\\bakalarska_prace\\files"
 
 def main():
     files = []
@@ -136,20 +136,21 @@ def main():
                 finds.extend(find(commands[commands.index("find") + 1:], file))
                 
             print(Fore.GREEN + f"Found {len(finds)} occurances" + Fore.RESET)
-            for find in finds:
-                print(find)
+            for x in finds:
+                print(x)
         
         elif "add" in commands:
             if commands[1] == "*":
                 add("*", files, added_files)
-                continue
             elif "name" in commands:
                 name_index = commands.index("name") + 1
                 if name_index < len(commands):
                     name = commands[name_index]
                     add(name, files, added_files)
             
-            print("Files added")
+            print("Files added:")
+            for x in added_files:
+                print(x)
                 
         elif "remove" in commands and "name" in commands:
             name_index = commands.index("name") + 1

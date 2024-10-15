@@ -128,8 +128,6 @@ def settings(option, value):
 
 
 def find(commands, input_file : str):       
-    print("commands: " , commands)
-    
     sentence = None
     variable = None
     operator = None
