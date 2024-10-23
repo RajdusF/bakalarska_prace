@@ -4,7 +4,6 @@ import os
 from colorama import Fore
 
 import global_variables
-from command_functions import filter
 
 
 def help():
@@ -29,12 +28,16 @@ def read_json(file):
     with open(file) as json_file:
         data = json.load(json_file)
         
+        
+    # TODO: Maybe write beter
     global_variables.default_unit = data["unit"]
     
     if data["search_folders"] == True:
         global_variables.search_folders = True
     else:
         global_variables.search_folders = False    
+        
+    global_variables.show_duplicity = data["show_duplicity"]
 
 
 def recalculate_size(size: int, unit: str) -> int:

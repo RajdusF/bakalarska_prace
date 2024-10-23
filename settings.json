@@ -1,4 +1,5 @@
 {
     "unit": "B",
-    "search_folders": true
+    "search_folders": true,
+    "show_duplicity": false
 }
