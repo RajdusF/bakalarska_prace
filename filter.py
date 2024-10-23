@@ -125,6 +125,7 @@ def filter(commands):
             print("File: ", file.split("\\")[-1])
             print("Seconds from now: ", seconds_from_now)
             print("Hours from now: ", seconds_from_now / 3600, "\n")
+            print("Days from now: ", seconds_from_now / 3600 / 24, "\n")
         
             if modified_operator == "<":
                 if seconds_from_now / n < modified:
@@ -165,8 +166,12 @@ def filter(commands):
         file_name = file.split("\\")[-1]
         file_size = os.path.getsize(file)
         is_folder = os.path.isdir(file)
-        if is_folder:
+        if is_folder and modified and modified_operator and time_unit:
+            print(f"{file_name:35}  {time.ctime(os.path.getmtime(file))}")
+        elif is_folder:
             print(f"{file_name:35}")
+        elif modified and modified_operator and time_unit:
+            print(f"{file_name:35} {str(recalculate_size(file_size, global_variables.default_unit))} {global_variables.default_unit} {time.ctime(os.path.getmtime(file))}")
         else:
             print(f"{file_name:35} {str(recalculate_size(file_size, global_variables.default_unit))} {global_variables.default_unit}")
             
