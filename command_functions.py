@@ -4,67 +4,6 @@ import os
 import global_variables
 
 
-def filter_by_name(file : str, find : str) -> bool:
-    file = file.lower()
-    find = find.lower()
-
-    if "*" not in find and "_" not in find:
-        return file == find
-    elif find == "*":
-        return True
-
-    file_index, find_index, last_star_index = 0, 0, -1
-
-    while file_index < len(file):
-        if find_index < len(find) and (find[find_index] == "_" or find[find_index] == file[file_index]):
-            file_index += 1
-            find_index += 1
-        elif find_index < len(find) and find[find_index] == "*":
-            last_star_index = find_index
-            find_index += 1
-            last_match_index = file_index
-        elif last_star_index != -1:
-            find_index = last_star_index + 1
-            last_match_index += 1
-            file_index = last_match_index
-        else:
-            return False
-
-    while find_index < len(find) and find[find_index] == "*":
-        find_index += 1
-
-    return find_index == len(find)
-
-
-def filter(file : str, find : str = None , comparing_size = None, operator = None, my_path = None) -> bool:
-    bool_name = None
-    bool_size = None
-
-    if find:
-        bool_name = filter_by_name(file, find)
-
-    if comparing_size and operator:
-        if operator == "<":
-            bool_size = os.path.getsize(my_path + '\\' + file) < comparing_size
-        elif operator == "<=":
-            bool_size = os.path.getsize(my_path + '\\' + file) <= comparing_size
-        elif operator == ">":
-            bool_size = os.path.getsize(my_path + '\\' + file) > comparing_size
-        elif operator == ">=":
-            bool_size = os.path.getsize(my_path + '\\' + file) >= comparing_size
-        elif operator == "=":
-            bool_size = os.path.getsize(my_path + '\\' + file) == comparing_size
-
-    if bool_name is None and bool_size is None:
-        return False
-    if bool_name is None:
-        return bool_size
-    if bool_size is None:
-        return bool_name
-
-    return bool_name and bool_size
-
-
 def add(name : str, files : list, added_files : list):
     if name == "*":
         added_files.clear()
@@ -81,6 +20,7 @@ def add(name : str, files : list, added_files : list):
 def settings(option, value):
     unit = None
     search_folders = None
+    show_duplicity = None
     
     if option == 0:
         if value == "0":
@@ -104,6 +44,13 @@ def settings(option, value):
         elif value == 0:
             print("Search folders set to False")
             search_folders = False
+    elif option == 2:
+        if value == 1:
+            print("Show duplicity set to True")
+            show_duplicity = True
+        elif value == 0:
+            print("Show duplicity set to False")
+            show_duplicity = False
     else:
         print("Wrong input")
     
@@ -122,6 +69,12 @@ def settings(option, value):
         global_variables.search_folders = search_folders
     else:
         settings_data["search_folders"] = global_variables.search_folders
+        
+    if show_duplicity is not None:
+        settings_data["show_duplicity"] = show_duplicity
+        global_variables.show_duplicity = show_duplicity
+    else:
+        settings_data["show_duplicity"] = global_variables.show_duplicity
 
     with open(settings_path, 'w') as json_file:
         json.dump(settings_data, json_file, indent=4)
