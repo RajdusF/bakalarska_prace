@@ -2,19 +2,35 @@ import json
 import os
 
 import global_variables
+from help_func import search_folder, show_files
 
 
 def add(name : str, files : list, added_files : list):
-    if name == "*":
-        added_files.clear()
-        added_files.extend(files)
-    elif name in files:
-        if name not in added_files:
-            added_files.append(name)
-        else:
-            print("File already added")
+    i = len(added_files)
+    for x in files:
+        if name in x:
+            name = x
+            break
+        
+    # if is folder
+    if os.path.isdir(name):
+        added_files.extend(search_folder(name))
     else:
-        print("File not found")
+        if name == "*":
+            for x in files:
+                if x not in added_files:
+                    added_files.append(x)
+        elif name in files:
+            if name not in added_files:
+                added_files.append(name)
+            else:
+                print("File already added")
+        else:
+            print("File not found")
+            return 0
+        
+    print(f"Added {len(added_files) - i} files")
+    return(len(added_files) - i)
 
 
 def settings(option, value):
@@ -38,12 +54,17 @@ def settings(option, value):
         else:
             print("Wrong input")
     elif option == 1:
-        if value == 1:
-            print("Search folders set to True")
-            search_folders = True
-        elif value == 0:
-            print("Search folders set to False")
-            search_folders = False
+        if value == 0:
+            print("Search folders set to \"Do not search folders\"")
+        elif value == 1:
+            print("Search folders set to \"Search folders that matches filter\"")
+        elif value == 2:
+            print("Search folders set to \"Search all folders\"")
+        else:
+            print("Wrong input")
+            return
+        search_folders = value
+            
     elif option == 2:
         if value == 1:
             print("Show duplicity set to True")
@@ -130,3 +151,47 @@ def find(commands, input_file : str):
                             return line
                         
     return lines_to_return
+
+def sort(commands, files):
+    if commands[1] == "desc" and len(commands) == 2:
+        r = sorted(files, reverse=True)
+        show_files(r)
+        return r
+    elif commands[1] == "by" and commands[2] == "size":
+        if len(commands) == 3:
+            r = sorted(files, key=os.path.getsize, reverse=True)
+            show_files(r)
+            return r
+        elif commands[3] == "desc":
+            r = sorted(files, key=os.path.getsize)
+            show_files(r)
+            return r
+    elif commands[1] == "by" and commands[2] == "modified":
+        if len(commands) == 3:
+            r = sorted(files, key=os.path.getmtime, reverse=True)
+            show_files(r)
+            return r
+        elif commands[3] == "desc":
+            r = sorted(files, key=os.path.getmtime)
+            show_files(r)
+            return r
+        
+def select(commands, files):
+    if commands[1] == "top":
+        if len(commands) == 3:
+            r = files[:int(commands[2])]
+            show_files(r)
+            return r
+    elif commands[1] == "bottom":
+            r = files[-int(commands[2]):]
+            show_files(r)
+            return r
+    return 
+
+def output(added_files):
+    with open('output.txt', 'w') as f:
+        for file in added_files:
+            if os.path.isfile(file):
+                f.write(file + '\n')
+            
+    print("Added files saved to output.txt")

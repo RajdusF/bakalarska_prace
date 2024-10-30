@@ -5,7 +5,7 @@ import time
 from colorama import Fore, init
 
 import global_variables
-from command_functions import add, settings
+from command_functions import add, output, select, settings, sort
 from filter import filter
 from help_func import help, read_json
 
@@ -15,6 +15,9 @@ def main():
     added_files = []
     
     read_json("settings.json")
+    
+    if os.path.exists("output.txt"):
+        os.remove("output.txt")
     
     default_unit = global_variables.default_unit
     search_folders = global_variables.search_folders
@@ -63,9 +66,17 @@ def main():
                     print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
                 else:
                     print("Path not found")
+            else:
+                print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
                 
         elif "filter" in commands:
-            files = filter(commands)                
+            files = filter(commands)          
+        
+        elif "sort" in commands:
+            files = sort(commands, files)
+            
+        elif "select" in commands:
+            files = select(commands, files)
         
         elif "find" in commands:
             finds = []
@@ -80,23 +91,26 @@ def main():
             if commands[1] == "*":
                 add("*", files, added_files)
                 continue
-            elif "name" in commands:
-                name_index = commands.index("name") + 1
-                if name_index < len(commands):
-                    name = commands[name_index]
-                    add(name, files, added_files)
-            
-            print("Files added")
+            elif len(commands) == 2:
+                    name = commands[1]
+                    if(add(name, files, added_files) > 0):
+                        print("Added files:")
+                        for x in added_files:
+                            print(x)
+            else:
+                print("Wrong input")
                 
-        elif "remove" in commands and "name" in commands:
-            name_index = commands.index("name") + 1
-            if name_index < len(commands):
-                name = commands[name_index]
-                if name in added_files:
-                    added_files.remove(name)
-                    print("File removed")
-                else:
-                    print("File not found")
+        elif "remove" in commands:
+            if commands[1] == "*":
+                added_files.clear()
+                print("All files removed")
+                continue
+            name = commands[1]
+            if name in added_files:
+                added_files.remove(name)
+                print("File removed")
+            else:
+                print("File not found")
                 
         elif "show" in commands:
             print("Added files:")
@@ -119,6 +133,9 @@ def main():
             default_unit = global_variables.default_unit
             search_folders = global_variables.search_folders
             show_duplicity = global_variables.show_duplicity
+            
+        elif "output" in commands and len(commands) == 1:
+            output(added_files)
             
         else:
             print("Wrong input")

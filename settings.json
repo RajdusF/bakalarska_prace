@@ -1,5 +1,5 @@
 {
-    "unit": "MB",
-    "search_folders": false,
-    "show_duplicity": true
+    "unit": "GB",
+    "search_folders": 2,
+    "show_duplicity": false
 }
