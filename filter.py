@@ -4,27 +4,28 @@ import os
 import time
 
 from colorama import Fore
+from numba import njit
 
 import global_variables
-from help_func import recalculate_size, search_folder, time_from_now
+from help_func import (progress_bar, recalculate_size, search_folder,
+                       time_from_now)
 
 FILE_NAME_WIDTH = 48
 SIZE_WIDTH = 18
 MODIFIED_WIDTH = 16
 CREATED_WIDTH = 16
 
-
 def filter(commands):
-
     # Inicialization
     size = None
     size_operator = None
     name = None
     modified = None
     modified_operator = None
+    modified_time_unit = None
     created = None
     created_operator = None
-    time_unit = None
+    created_time_unit = None
     duplicates = []
     
     
@@ -53,8 +54,8 @@ def filter(commands):
                 print("Wrong input")
                 return
             if commands.index("modified") + 2 < len(commands):
-                time_unit = commands[commands.index("modified") + 3]
-        if modified_operator == None or modified == None or time_unit == None:
+                modified_time_unit = commands[commands.index("modified") + 3]
+        if modified_operator == None or modified == None or modified_time_unit == None:
             print("Wrong input")
             return
         
@@ -64,8 +65,8 @@ def filter(commands):
         if commands.index("created") + 1 < len(commands):
             created = int(commands[commands.index("created") + 2])
             if commands.index("created") + 2 < len(commands):
-                time_unit = commands[commands.index("created") + 3]
-        if created_operator == None or created == None or time_unit == None:
+                created_time_unit = commands[commands.index("created") + 3]
+        if created_operator == None or created == None or created_time_unit == None:
             print("Wrong input")
             return
                 
@@ -89,20 +90,33 @@ def filter(commands):
         files = glob.glob(global_variables.path + "\\*", recursive=True)
         only_directories = [d for d in files if os.path.isdir(d)]
         
-    files_from_folders = []
+    # files_from_folders = []
     
     if global_variables.search_folders == 1:
         for folder in only_directories:
-            files_from_folders.extend(search_folder(folder, commands))
+            files.extend(search_folder(folder, commands))
     elif global_variables.search_folders == 2:
-        all_files = glob.glob(global_variables.path + "\\*", recursive=True)
-        all_directories = [d for d in all_files if os.path.isdir(d)]
-        for folder in all_directories:
-            files_from_folders.extend(search_folder(folder, commands))
+        all_directories = [os.path.abspath(entry.path) for entry in os.scandir(global_variables.path) if entry.is_dir()]
+    
+        
+        # all_directories = []
+        # try:
+        #     with os.scandir(global_variables.path) as entries:
+        #         for entry in entries:
+        #             if entry.is_dir():
+        #                 all_directories.append(os.path.abspath(entry.path))
+        # except PermissionError:
+        #     print(f"Access denied to the directory: {global_variables.path}")
+        # except Exception as e:
+        #     print(f"An error occurred: {e}")
+        
+        for i, folder in enumerate(all_directories):
+            files.extend(search_folder(folder, commands))
+            progress_bar(i, len(all_directories), 30)
             
-    for x in files_from_folders:
-        if os.path.isfile(x):
-            files.append(x)
+        progress_bar(len(all_directories), len(all_directories), 30)
+        print()
+            
         
     # NOT
     if size and size_operator and commands[commands.index("size") - 1] != "not":
@@ -130,11 +144,11 @@ def filter(commands):
     
     #           m_operator modified time_unit
     # filter modified < 10 days
-    if modified and modified_operator and time_unit: 
-        files = filter_time(files, modified_operator, modified, time_unit, "modified")
+    if modified and modified_operator and modified_time_unit: 
+        files = filter_time(files, modified_operator, modified, modified_time_unit, "modified")
         
-    if created and created_operator and time_unit: 
-        files = filter_time(files, created_operator, created, time_unit, "created")
+    if created and created_operator and created_time_unit: 
+        files = filter_time(files, created_operator, created, created_time_unit, "created")
 
     if global_variables.show_duplicity:
         temp = files.copy()
@@ -151,32 +165,37 @@ def filter(commands):
                         print(f"{x.split('\\')[-1]:30} == {i.split('\\')[-1]:40} -> Removed {i.split('\\')[-1]}")
                 files.append(x)
             seen_files.add(x)
-            
     
-    print(Fore.GREEN + f"Found {len(files)} files:" + Fore.RESET)      # Number of occurances
-    if "-d" in commands:
-        print(f"{"file":{FILE_NAME_WIDTH+4}} {"size":{SIZE_WIDTH}} {"modified":{MODIFIED_WIDTH}} {"created":{CREATED_WIDTH}}")
-    for file in files:
-        file_name = file.split("\\")[-1]
-        file_size = os.path.getsize(file)
-        is_folder = os.path.isdir(file)
-        print(Fore.LIGHTBLUE_EX, end="") if is_folder else print(Fore.RESET, end="")
-        
-        if "-d" in commands and not is_folder:
-            print(f"{file_name:{FILE_NAME_WIDTH}} {recalculate_size(file_size):{SIZE_WIDTH}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
-        elif "-d" in commands and is_folder:
-            print(f"{file_name:{FILE_NAME_WIDTH+SIZE_WIDTH+1}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
-        else:
-            print(f"{file_name:{FILE_NAME_WIDTH}}", end="")
-            if size and size_operator and not is_folder:
-                print(f"{recalculate_size(file_size):{SIZE_WIDTH}}", end="")
+    if len(files) > 1000:
+        commands.append("-h")        
+    
+    if not "-h" in commands:        # hide
+        print(Fore.GREEN + f"Found {len(files)} files:" + Fore.RESET)      # Number of occurances
+        if "-d" in commands:        # detailed
+            print(f"{"file":{FILE_NAME_WIDTH+4}} {"size":{SIZE_WIDTH}} {"modified":{MODIFIED_WIDTH}} {"created":{CREATED_WIDTH}}")
+        for file in files:
+            file_name = file.split("\\")[-1]
+            file_size = os.path.getsize(file)
+            is_folder = os.path.isdir(file)
+            print(Fore.LIGHTBLUE_EX, end="") if is_folder else print(Fore.RESET, end="")
+            
+            if "-d" in commands and not is_folder:
+                print(f"{file_name:{FILE_NAME_WIDTH}} {recalculate_size(file_size):{SIZE_WIDTH}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
+            elif "-d" in commands and is_folder:
+                print(f"{file_name:{FILE_NAME_WIDTH+SIZE_WIDTH+1}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
             else:
-                print(" " * 14, end="")
-            if modified and modified_operator and time_unit:
-                print(f"{time_from_now(file, "modified"):{MODIFIED_WIDTH}}", end="")
-            if created and created_operator and time_unit:
-                print(f"{time_from_now(file, "created"):{CREATED_WIDTH}}", end="")
-            print()
+                print(f"{file_name:{FILE_NAME_WIDTH}}", end="")
+                if size and size_operator and not is_folder:
+                    print(f"{recalculate_size(file_size):{SIZE_WIDTH}}", end="")
+                else:
+                    print(" " * 14, end="")
+                if modified and modified_operator and modified_time_unit:
+                    print(f"{time_from_now(file, "modified"):{MODIFIED_WIDTH}}", end="")
+                if created and created_operator and created_time_unit:
+                    print(f"{time_from_now(file, "created"):{CREATED_WIDTH}}", end="")
+                print()
+    else:
+        print(Fore.GREEN + f"Found {len(files)} files and {len(only_directories)} directories" + Fore.RESET)
             
             
     if global_variables.show_duplicity == True:
@@ -185,7 +204,7 @@ def filter(commands):
             file_name = duplicate.split("\\")[-1]
             file_size = os.path.getsize(duplicate)
             print(f"{file_name:35} {recalculate_size(file_size):13}")
-                
+    
     return files
 
 

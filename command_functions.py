@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 
@@ -31,6 +32,18 @@ def add(name : str, files : list, added_files : list):
         
     print(f"Added {len(added_files) - i} files")
     return(len(added_files) - i)
+
+def add_folder(folder : str):
+    files = []
+    
+    if not os.path.isdir(folder):
+        print("Folder not found")
+        return
+    
+    for file in os.listdir(folder):
+        files.append(os.path.join(folder, file))
+        
+    return files
 
 
 def settings(option, value):
@@ -157,6 +170,15 @@ def sort(commands, files):
         r = sorted(files, reverse=True)
         show_files(r)
         return r
+    elif commands[1] == "by" and commands[2] == "name":
+        if len(commands) == 3:
+            r = sorted(files)
+            show_files(r)
+            return r
+        elif commands[3] == "desc":
+            r = sorted(files, reverse=True)
+            show_files(r)
+            return r
     elif commands[1] == "by" and commands[2] == "size":
         if len(commands) == 3:
             r = sorted(files, key=os.path.getsize, reverse=True)
@@ -175,6 +197,15 @@ def sort(commands, files):
             r = sorted(files, key=os.path.getmtime)
             show_files(r)
             return r
+    elif commands[1] == "by" and commands[2] == "created":
+        if len(commands) == 3:
+            r = sorted(files, key=os.path.getctime, reverse=True)
+            show_files(r)
+            return r
+        elif commands[3] == "desc":
+            r = sorted(files, key=os.path.getctime)
+            show_files(r)
+            return r
         
 def select(commands, files):
     if commands[1] == "top":
@@ -182,7 +213,7 @@ def select(commands, files):
             r = files[:int(commands[2])]
             show_files(r)
             return r
-    elif commands[1] == "bottom":
+    elif commands[1] == "bottom" or commands[1] == "last" or commands[1] == "bot":
             r = files[-int(commands[2]):]
             show_files(r)
             return r
@@ -195,3 +226,92 @@ def output(added_files):
                 f.write(file + '\n')
             
     print("Added files saved to output.txt")
+    
+def set_operations(expression: str, dictionary: dict):
+    words = ""
+    result = []    
+    temps = []
+    
+    open_brackets = 0
+    close_brackets = 0
+    
+    for x in expression:
+        if x == "(":
+            open_brackets += 1
+        elif x == ")":
+            close_brackets += 1
+    if open_brackets != close_brackets:
+        return "ERROR"
+    
+    dictionary = copy.deepcopy(dictionary)
+    
+    while "(" in expression and ")" in expression:
+            open_bracket = expression.index("(")
+            close_bracket = expression.index(")")
+            temps.append(set_operations(expression[open_bracket + 1:close_bracket], dictionary)) 
+            
+            expression = expression.replace(expression[open_bracket:close_bracket + 1], str(len(temps) - 1))
+    words = expression.split(" ")
+    
+    dicts = words[::2]
+    operations = words[1::2]
+    
+    while len(operations) > 0:
+        operation = operations.pop(0)
+        d_1 = dicts.pop(0)
+        d_2 = dicts.pop(0)
+        
+        d_1 = temps[int(d_1)] if str(d_1).isnumeric() else dictionary[d_1]
+            
+        d_2 = temps[int(d_2)] if str(d_2).isnumeric() else dictionary[d_2]
+    
+        if operation == "U":
+            for x in d_2:
+                if x not in d_1:
+                    d_1.append(x)
+            result = d_1
+        elif operation == "A":
+            result = [x for x in d_1 if x in d_2]
+        elif operation == "-":
+            result = [x for x in d_1 if x not in d_2]
+        else:
+            print("ERROR")
+            return
+        
+        dictionary["temp"] = result
+        dicts.insert(0, "temp")
+        
+            
+    if result == []:
+        print(f"result: {temps[0]}")
+        return temps[0]
+    else:
+        print(f"result: ")
+        for x in result:
+            print(x)
+        return result
+
+def save(name, added_files, dict):
+    # try:
+    dict[name] = added_files.copy()
+    # except:
+        # print("An error occurred while saving")
+        # return
+    
+    print(f"Successfully saved to \"{name}\"")
+    
+def remove(commands, added_files):
+    original_length = len(added_files)
+    
+    if commands[1] == "*":
+        added_files.clear()
+        print("All files removed")
+    else:
+        name = commands[1]
+        if name in added_files:
+            added_files.remove(name)
+            print("File removed")
+        else:
+            print("File not found")
+        
+    return original_length - len(added_files)
