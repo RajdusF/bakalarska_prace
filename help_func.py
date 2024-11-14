@@ -5,14 +5,9 @@ import sys
 import time
 
 from colorama import Fore
-from numba import njit
 
+from command_functions import (add, add_folder, output, remove, save, select, set_operations, settings, show_files, sort)
 import global_variables
-
-FILE_NAME_WIDTH = 48
-SIZE_WIDTH = 18
-MODIFIED_WIDTH = 16
-CREATED_WIDTH = 16
 
 
 def help():
@@ -192,40 +187,173 @@ def search_folder(folder, commands=None, only_files=None):
                 files.remove(x)
             return files
 
-def process_command(command : str) -> list:
-    parts = []
+# OLD TO PROCESS QUOTES
+# def process_command(command : str) -> list:
+#     parts = []
 
-    split_command = command.split()
+#     split_command = command.split()
 
-    i = 0
-    while i < len(split_command):
-        if split_command[i].startswith('"'):
-            quoted_part = split_command[i]
-            while not split_command[i].endswith('"'):
-                i += 1
-                quoted_part += ' ' + split_command[i]
-            parts.append(quoted_part)
+#     i = 0
+#     while i < len(split_command):
+#         if split_command[i].startswith('"'):
+#             quoted_part = split_command[i]
+#             while not split_command[i].endswith('"'):
+#                 i += 1
+#                 quoted_part += ' ' + split_command[i]
+#             parts.append(quoted_part)
+#         else:
+#             parts.append(split_command[i])
+#         i += 1
+
+#     return parts
+
+def process_command(command : str, files, added_files, dict):
+    commands = command.split(" ")
+        
+    if command == "exit":
+        return
+    
+    if command == "?":
+        help()
+        return
+    
+    if "**" in command:
+        print("Wrong input")
+        return
+    
+    if command == "*":
+        for file in os.listdir(global_variables.path):
+            print(file)
+            
+    elif command == "cd.." or command == "cd ..":
+        global_variables.path = os.path.abspath(os.path.join(global_variables.path, os.pardir))
+        print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
+        
+    elif "cd" in command:
+        path_index = commands.index("cd") + 1
+        if path_index < len(commands):
+            path = commands[path_index]
+            if os.path.isdir(global_variables.path + "\\" + path):
+                global_variables.path = global_variables.path + "\\" + path
+                print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
+            else:
+                print("Path not found")
         else:
-            parts.append(split_command[i])
-        i += 1
-
-    return parts
-
-def show_files(files):
-    print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurances
-    for file in files:
-        file_name = file.split("\\")[-1]
-        file_size = os.path.getsize(file)
-        is_folder = os.path.isdir(file)
-        if is_folder:
-            print(f"{file_name:{FILE_NAME_WIDTH+SIZE_WIDTH+1}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")  
+            print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
+            
+    elif "filter" in commands:
+        files = filter(commands)
+        add_history(command, files)
+    
+    elif "sort" in commands:
+        files = sort(commands, files)
+        add_history(command, files)
+        
+    elif "select" in commands:
+        files = select(commands, files)
+        add_history(command, files)
+    
+    elif "find" in commands:
+        finds = []
+        for file in added_files:
+            finds.extend(find(commands[commands.index("find") + 1:], file))
+            
+        print(Fore.GREEN + f"Found {len(finds)} occurances:" + Fore.RESET)
+        for find in finds:
+            print(find)
+    
+    elif "add" in commands:
+        if commands[1] == "*":
+            add("*", files, added_files)
+            # continue
+        elif "\\" in command and len(commands) == 2:
+            files.extend(add_folder(commands[1]))
+            show_files(files)
+        elif len(commands) == 2:
+                name = commands[1]
+                if(add(name, files, added_files) > 0):
+                    print("Added files:")
+                    for x in added_files:
+                        print(x)
         else:
-            print(f"{file_name:{FILE_NAME_WIDTH}} {recalculate_size(file_size):{SIZE_WIDTH}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
+            print("Wrong input")
+            
+    elif "remove" in commands:
+        r = remove(commands, added_files)
+        print(f"Removed {r} files")
+            
+    elif "show" in commands:
+        print("Added files:")
+        for x in added_files:
+            print(x)
+        
+    elif "set" in commands:
+        if "unit" in commands and len(commands) == 3:
+            settings(0, commands[2])
+        elif "search" in commands and len(commands) == 3:
+            settings(1, int(commands[2]))
+        elif "duplicity" in commands or "duplicate" in commands and len(commands) == 3:
+            settings(2, int(commands[2]))
+        elif len(commands) == 1:
+            print(f"Default unit: {global_variables.default_unit}")
+            print(f"Search folders: {global_variables.search_folders}")
+            print(f"Show duplicity: {global_variables.show_duplicity}")
+            return
+
+        
+    elif commands[0] == "save" and commands[1] == "to" and len(commands) == 3:
+        save(added_files, commands[2])
+        
+    elif commands[0] == "load" and commands[1] == "from" and len(commands) == 3:
+        if commands[2] in dict:
+            added_files = dict[commands[2]].copy()
+            print("Files loaded")
+        else:
+            print("File not found")
+                
+    
+    elif "output" in commands and len(commands) == 1:
+        output(added_files)
+        
+    elif "history" in commands and len(commands) == 1:
+        print_history()
+        
+    elif "history" in commands and len(commands) == 2:
+        try:
+            files = load_history(int(commands[1]))
+            show_files(files)
+        except:
+            print("Wrong input")
+        
+    # Sjednocení, průnik, rozdíl
+    elif "A" in commands or "U" in commands or "-" in commands:
+        dict["a"] = [1]
+        dict["b"] = [2]
+        dict["c"] = [3]
+        files = set_operations(command, dict)
+        
+        
+    elif command == "":
+        return
+    
+    else:
+        print("Wrong input")
             
 def show_added_files(added_files):
     print("Added files:")
     for x in added_files:
         print(x)
+        
+def show_current_folder():
+    print(f"{"file":{global_variables.FILE_NAME_WIDTH+4}} {"size":{global_variables.SIZE_WIDTH}} {"modified":{global_variables.MODIFIED_WIDTH}} {"created":{global_variables.CREATED_WIDTH}}")
+    for file in glob.glob(global_variables.path + "\\*", recursive=True):
+        file_name = file.split("\\")[-1]
+        is_folder = os.path.isdir(file)
+        file_size = os.path.getsize(file)
+        if is_folder:
+            print(f"{file_name:{global_variables.FILE_NAME_WIDTH+global_variables.SIZE_WIDTH+1}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
+        elif not is_folder:
+                print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
             
 def progress_bar(current, total, barLength = 20):
     progress = float(current) * 100 / total

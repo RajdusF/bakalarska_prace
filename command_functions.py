@@ -2,11 +2,26 @@ import copy
 import json
 import os
 
-import global_variables
-from help_func import search_folder, show_files
+from colorama import Fore
 
+import global_variables
+# from help_func import recalculate_size, search_folder, time_from_now
+
+def show_files(files):
+    from help_func import recalculate_size, time_from_now
+    
+    print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurances
+    for file in files:
+        file_name = file.split("\\")[-1]
+        file_size = os.path.getsize(file)
+        is_folder = os.path.isdir(file)
+        if is_folder:
+            print(f"{file_name:{global_variables.FILE_NAME_WIDTH+global_variables.SIZE_WIDTH+1}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")  
+        else:
+            print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
 
 def add(name : str, files : list, added_files : list):
+    from help_func import search_folder
     i = len(added_files)
     for x in files:
         if name in x:
@@ -308,10 +323,27 @@ def remove(commands, added_files):
         print("All files removed")
     else:
         name = commands[1]
-        if name in added_files:
-            added_files.remove(name)
+        occurrences = []
+        for x in added_files:
+            if name in x:
+                occurrences.append(x)
+                
+        
+        if len(occurrences) > 1:
+            for i, x in enumerate(occurrences):
+                print(f"[{i}] {x}")
+            inp = input("Multiple files found. Pick file to remove of \"all\" for all \"exit\" to exit: ")
+            if inp == "all":
+                for x in occurrences:
+                    added_files.remove(x)
+            elif inp == "exit":
+                return
+            else:
+                added_files.remove(occurrences[int(inp)])
+        elif len(occurrences) == 1:
+            added_files.remove(occurrences[0])
             print("File removed")
-        else:
+        elif len(occurrences) == 0:
             print("File not found")
         
     return original_length - len(added_files)

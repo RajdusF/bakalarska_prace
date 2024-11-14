@@ -4,7 +4,7 @@ import os
 import time
 
 from colorama import Fore
-from numba import njit
+# from numba import njit
 
 import global_variables
 from help_func import (progress_bar, recalculate_size, search_folder,
