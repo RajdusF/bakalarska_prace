@@ -1,0 +1,8 @@
+filter name *.py
+save files to a
+show a
+filter name *.txt
+save files to b
+show b
+load from b
+show

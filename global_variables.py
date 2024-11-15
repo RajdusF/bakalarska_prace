@@ -9,7 +9,7 @@ CREATED_WIDTH = 16
 
 
 # Notebook
-path = "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files"
+# path = "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files"
 
 # PC
 # path = "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files"

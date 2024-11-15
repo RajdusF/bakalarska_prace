@@ -6,8 +6,9 @@ import time
 
 from colorama import Fore
 
-from command_functions import (add, add_folder, output, remove, save, select, set_operations, settings, show_files, sort)
 import global_variables
+from command_functions import (add, add_folder, output, remove, save, select,
+                               set_operations, settings, show_files, sort)
 
 
 def help():
@@ -28,11 +29,11 @@ def help():
     print("remove - remove a file from the list of files to be processed\n\t[remove file.txt]\n\t[remove *]\n")
     print("sort - sort files based on specification \n\t[sort by name] or [sort by name desc]\n\t[sort by size] or [sort by size desc]\n\t[sort by modified] or [sort by modified desc]\n\t[sort by created] or [sort by created desc]\n")
     print("select - select top or bottom files \n\t[select top 10] or [select bottom 10]\n")
-    print("find -")
+    print("find -\n")
     print("set search - set if the program should search in folders \n\t0 - no search, 1 - search in folders that matches filter, 2 - search all folders\n\t[set search 0/1/2]\n")
     print("set duplicity - set if the program should show duplicity \n\t[set duplicity 0/1]\n")
     print("show - show added files\n")
-    print("save - save added files to variable\n\t[save to a]\n")
+    print("save - save (files/added files) to variable\n\t[save files/added to a]\n")
     print("load - load added files from variable\n\t[load from a]\n")
     
     print("set unit - set default size unit type\n\t[set unit 0/1/2/3]")
@@ -57,10 +58,17 @@ def read_json(file):
 def read_added_folders():
     added_folders = []
     
-    with open("added_folders.txt", "r") as file:
-        lines = file.readlines()
-        for line in lines:
-            added_folders.append(line.strip())
+    try:
+        with open("added_folders.txt", "r") as file:
+            lines = file.readlines()
+            for line in lines:
+                if os.path.isdir(line.strip()):
+                    added_folders.append(line.strip())
+                else:
+                    print(Fore.RED + f"Folder \"{line.strip()}\" does not exist" + Fore.RESET)
+    except FileNotFoundError:
+        print(Fore.RED + "The file 'added_folders.txt' does not exist" + Fore.RESET)
+        return None
         
     return added_folders
 
@@ -116,10 +124,15 @@ def time_from_now(file : str, option : str) -> str:
         return f"{seconds_from_now / 604800:8.2f} w" 
 
 def search_folder(folder, commands=None, only_files=None):
+    num_of_folders = 0
+    
     if commands == None:
-        # files = glob.glob(folder + "\\*", recursive=True)
-        # only_files = [d for d in files if os.path.isfile(d)]
-        only_files = [f for f in glob(os.path.join(folder, '*')) if os.path.isfile(f)]
+        only_files = []
+        for f in glob.glob(os.path.join(folder, '*')):
+            if os.path.isfile(f):
+                only_files.append(f)
+            else:
+                num_of_folders += 1
             
         return only_files
     else:
@@ -147,45 +160,32 @@ def search_folder(folder, commands=None, only_files=None):
             files = glob.glob(folder + "\\*", recursive=True)
             only_directories = [d for d in files if os.path.isdir(d)]
             
-        files_from_folders = []
-        
         if global_variables.search_folders == 1:
             for folder in only_directories:
                 files.extend(search_folder(folder, commands))
         elif global_variables.search_folders == 2:
-            # all_directories = [os.path.abspath(entry.path) for entry in os.scandir(folder) if entry.is_dir()]
             try:
                 all_directories = [os.path.abspath(entry.path) for entry in os.scandir(folder) if entry.is_dir()]
             except PermissionError:
                 print(f"Access denied to the directory: {folder}")
                 all_directories = []
             
-            # all_directories = []
-            # try:
-            #     with os.scandir(global_variables.path) as entries:
-            #         for entry in entries:
-            #             if entry.is_dir():
-            #                 all_directories.append(os.path.abspath(entry.path))
-            # except PermissionError:
-            #     print(f"Access denied to the directory: {global_variables.path}")
-            # except Exception as e:
-            #     print(f"An error occurred: {e}")
-            
             for folder in all_directories:
-                files.extend(search_folder(folder, commands, only_files=True))
+                temp_files, num_of_folders = search_folder(folder, commands, only_files=True)
+                files.extend(temp_files)
                 
         f = []
         
+        num_of_folders += len(only_directories)
+        
         if only_files == True:
-            # f = [x for x in files if os.path.isfile(x)]
-            # remove every directory from files
             for x in only_directories:
                 files.remove(x)
-            return files
+            return files, num_of_folders
         else:         
             for x in only_directories:
                 files.remove(x)
-            return files
+            return files, num_of_folders
 
 # OLD TO PROCESS QUOTES
 # def process_command(command : str) -> list:
@@ -207,7 +207,9 @@ def search_folder(folder, commands=None, only_files=None):
 
 #     return parts
 
-def process_command(command : str, files, added_files, dict):
+def process_command(command : str, dict, files : list, added_files : list):
+    from filter import filter
+    
     commands = command.split(" ")
         
     if command == "exit":
@@ -242,7 +244,8 @@ def process_command(command : str, files, added_files, dict):
             print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
             
     elif "filter" in commands:
-        files = filter(commands)
+        files.clear()
+        files.extend(filter(commands))
         add_history(command, files)
     
     elif "sort" in commands:
@@ -265,7 +268,6 @@ def process_command(command : str, files, added_files, dict):
     elif "add" in commands:
         if commands[1] == "*":
             add("*", files, added_files)
-            # continue
         elif "\\" in command and len(commands) == 2:
             files.extend(add_folder(commands[1]))
             show_files(files)
@@ -283,9 +285,18 @@ def process_command(command : str, files, added_files, dict):
         print(f"Removed {r} files")
             
     elif "show" in commands:
-        print("Added files:")
-        for x in added_files:
-            print(x)
+        if len(commands) == 2 and commands[1] == "added":
+            show_added_files(added_files)
+        elif len(commands) == 2 and commands[1] == "files":
+            show_files(files)
+        if len(commands) == 2 and dict[commands[1]]:
+            print(f"Files in \"{commands[1]}\":")
+            for x in dict[commands[1]]:
+                print(x)
+        else:
+            print("Added files:")
+            for x in added_files:
+                print(x)
         
     elif "set" in commands:
         if "unit" in commands and len(commands) == 3:
@@ -301,13 +312,16 @@ def process_command(command : str, files, added_files, dict):
             return
 
         
-    elif commands[0] == "save" and commands[1] == "to" and len(commands) == 3:
-        save(added_files, commands[2])
+    elif commands[0] == "save" and commands[2] == "to" and len(commands) == 4:
+        if commands[1] == "files":
+            save(commands[3], files, dict)
+        elif commands[1] == "added":
+            save(commands[3], added_files, dict)
         
     elif commands[0] == "load" and commands[1] == "from" and len(commands) == 3:
         if commands[2] in dict:
             added_files = dict[commands[2]].copy()
-            print("Files loaded")
+            print("Files loaded from \"" + commands[2] + "\"")
         else:
             print("File not found")
                 
@@ -374,3 +388,33 @@ def print_history():
         
 def load_history(x : int):
     return history[x][1]
+
+def read_path_file():
+    try:
+        with open("path.txt", "r") as file:
+            f = file.readline().strip()
+        
+        if f == "":
+            print(Fore.RED + "Path file is empty" + Fore.RESET)
+            return None
+
+        if os.path.isdir(f):
+            return f
+        else:
+            print(Fore.RED + "The path in the file is not a directory" + Fore.RESET)
+            return None
+
+    except FileNotFoundError:
+        print(Fore.RED + "The file 'path.txt' does not exist" + Fore.RESET)
+        return None
+    
+def read_commands_from_file():
+    try:
+        with open("commands.txt", "r") as file:
+            commands = [line.strip() for line in file.readlines()]
+        
+        return commands
+
+    except FileNotFoundError:
+        print(Fore.RED + "The file 'commands.txt' does not exist" + Fore.RESET)
+        return None

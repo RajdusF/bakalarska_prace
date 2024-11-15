@@ -10,13 +10,13 @@ import global_variables
 def show_files(files):
     from help_func import recalculate_size, time_from_now
     
-    print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurances
+    print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurrences
     for file in files:
         file_name = file.split("\\")[-1]
         file_size = os.path.getsize(file)
         is_folder = os.path.isdir(file)
         if is_folder:
-            print(f"{file_name:{global_variables.FILE_NAME_WIDTH+global_variables.SIZE_WIDTH+1}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")  
+            print(Fore.LIGHTBLUE_EX + f"{file_name:{global_variables.FILE_NAME_WIDTH+global_variables.SIZE_WIDTH+1}}" + Fore.RESET + f"{time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")  
         else:
             print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
 
@@ -196,11 +196,11 @@ def sort(commands, files):
             return r
     elif commands[1] == "by" and commands[2] == "size":
         if len(commands) == 3:
-            r = sorted(files, key=os.path.getsize, reverse=True)
+            r = sorted(files, key=os.path.getsize)
             show_files(r)
             return r
         elif commands[3] == "desc":
-            r = sorted(files, key=os.path.getsize)
+            r = sorted(files, key=os.path.getsize, reverse=True)
             show_files(r)
             return r
     elif commands[1] == "by" and commands[2] == "modified":
@@ -306,12 +306,12 @@ def set_operations(expression: str, dictionary: dict):
             print(x)
         return result
 
-def save(name, added_files, dict):
-    # try:
-    dict[name] = added_files.copy()
-    # except:
-        # print("An error occurred while saving")
-        # return
+def save(name, files_to_save, dict):
+    try:
+        dict[name] = files_to_save.copy()
+    except:
+        print("An error occurred while saving")
+        return
     
     print(f"Successfully saved to \"{name}\"")
     

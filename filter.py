@@ -4,16 +4,19 @@ import os
 import time
 
 from colorama import Fore
-# from numba import njit
 
 import global_variables
 from help_func import (progress_bar, recalculate_size, search_folder,
                        time_from_now)
 
+# from numba import njit
+
+
 FILE_NAME_WIDTH = 48
 SIZE_WIDTH = 18
 MODIFIED_WIDTH = 16
 CREATED_WIDTH = 16
+
 
 def filter(commands):
     # Inicialization
@@ -26,8 +29,8 @@ def filter(commands):
     created = None
     created_operator = None
     created_time_unit = None
+    num_of_folders = 0
     duplicates = []
-    
     
     # Searching for name, size, modified
     if "name" in commands:
@@ -90,33 +93,25 @@ def filter(commands):
         files = glob.glob(global_variables.path + "\\*", recursive=True)
         only_directories = [d for d in files if os.path.isdir(d)]
         
-    # files_from_folders = []
     
     if global_variables.search_folders == 1:
         for folder in only_directories:
-            files.extend(search_folder(folder, commands))
+            temp_files, num_of_folders = search_folder(folder, commands)
+            files.extend(temp_files)
     elif global_variables.search_folders == 2:
         all_directories = [os.path.abspath(entry.path) for entry in os.scandir(global_variables.path) if entry.is_dir()]
     
         
-        # all_directories = []
-        # try:
-        #     with os.scandir(global_variables.path) as entries:
-        #         for entry in entries:
-        #             if entry.is_dir():
-        #                 all_directories.append(os.path.abspath(entry.path))
-        # except PermissionError:
-        #     print(f"Access denied to the directory: {global_variables.path}")
-        # except Exception as e:
-        #     print(f"An error occurred: {e}")
-        
         for i, folder in enumerate(all_directories):
-            files.extend(search_folder(folder, commands))
+            temp_files, num_of_folders = search_folder(folder, commands)
+            files.extend(temp_files)
             progress_bar(i, len(all_directories), 30)
             
         progress_bar(len(all_directories), len(all_directories), 30)
         print()
             
+            
+    num_of_folders += len(only_directories)
         
     # NOT
     if size and size_operator and commands[commands.index("size") - 1] != "not":
@@ -169,8 +164,10 @@ def filter(commands):
     if len(files) > 1000:
         commands.append("-h")        
     
-    if not "-h" in commands:        # hide
-        print(Fore.GREEN + f"Found {len(files)} files:" + Fore.RESET)      # Number of occurances
+    if "-h" in commands:        # hide
+        print(Fore.GREEN + f"Found {len(files)} files and {len(only_directories)} folders:" + Fore.RESET)
+    else:
+        print(Fore.GREEN + f"Found {len(files)} files and {len(only_directories)} folders:" + Fore.RESET)      # Number of occurances
         if "-d" in commands:        # detailed
             print(f"{"file":{FILE_NAME_WIDTH+4}} {"size":{SIZE_WIDTH}} {"modified":{MODIFIED_WIDTH}} {"created":{CREATED_WIDTH}}")
         for file in files:
@@ -194,8 +191,6 @@ def filter(commands):
                 if created and created_operator and created_time_unit:
                     print(f"{time_from_now(file, "created"):{CREATED_WIDTH}}", end="")
                 print()
-    else:
-        print(Fore.GREEN + f"Found {len(files)} files and {len(only_directories)} directories" + Fore.RESET)
             
             
     if global_variables.show_duplicity == True:

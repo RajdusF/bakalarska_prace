@@ -6,22 +6,23 @@ import time
 from colorama import Fore, init
 
 import global_variables
-from command_functions import (add_folder)
-from help_func import (process_command,
-                       read_added_folders, read_json, show_current_folder)
+from command_functions import add_folder
+from help_func import (process_command, read_added_folders,
+                       read_commands_from_file, read_json, read_path_file,
+                       show_current_folder)
 
-
-files = []
-added_files = []
-added_folders = []
-dict = {}
 
 def main(args):
-    global files, added_files, added_folders, dict
+    files = []
+    added_files = []
+    added_folders = []
+    dict = {}
+    shutdown = 0
+    # global files, added_files, added_folders, dict
     
-    boolean_add_folders = input("Do you want to add folders from \"added_folders.txt\" y/n: ")
-    if boolean_add_folders == "y":
-        added_folders.extend(read_added_folders())
+    # boolean_add_folders = input("Do you want to add folders from \"added_folders.txt\" y/n: ")
+    # if boolean_add_folders == "y":
+    #     added_folders.extend(read_added_folders())
     
         
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
@@ -35,17 +36,26 @@ def main(args):
         print(Fore.YELLOW + "Files from folders:" + Fore.RESET)
         for x in files:
             print(x)
+            
+    commands = read_commands_from_file()
     
     while True:  
-        if args.c != "":
-            command = args.c
-            args.c = ""
+        if(len(commands) > 0):
+            command = commands.pop(0)
+            print(Fore.GREEN + f"{global_variables.path} >> {command}" + Fore.RESET)
+            shutdown = 1
         else:
-            command = input(Fore.GREEN + f"{global_variables.path} >> " + Fore.RESET)
+            if shutdown == 1:
+                break
+            if args.c != "":
+                command = args.c
+                args.c = ""
+            else:
+                command = input(Fore.GREEN + f"{global_variables.path} >> " + Fore.RESET)
             
         command_start_time = time.time()
         
-        process_command(command, files, added_files, dict)
+        process_command(command, dict, files, added_files)
         
         print(f"Command took {time.time() - command_start_time:.4f} seconds to run")
         if args.c != "":
@@ -212,6 +222,8 @@ if __name__ == "__main__":
             global_variables.path = args.p
         else:
             print("Path not found")
+    else:
+        global_variables.path = read_path_file()
         
     if args.c != "":
         print(f"args.c: {args.c}")
@@ -224,10 +236,12 @@ if __name__ == "__main__":
     print(f"Search folders: {global_variables.search_folders}")
     print(f"Show duplicity: {global_variables.show_duplicity}")
 
-    print(Fore.YELLOW + "Files in default folder:" + Fore.RESET)
-    show_current_folder()
+    # if global_variables.path != "" and global_variables.path != None:
+        # print(Fore.YELLOW + "Files in default folder:" + Fore.RESET)
+        # show_current_folder()
     
-    cProfile.run("main(args)", sort="tottime")
+    # cProfile.run("main(args)", sort="tottime")
+    main(args)
     # scenario_1()
     # scenario_2()
     print(f"Program took {time.time() - start_time:.4f} seconds to run")
