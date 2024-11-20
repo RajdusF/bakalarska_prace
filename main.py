@@ -7,60 +7,52 @@ from colorama import Fore, init
 
 import global_variables
 from command_functions import add_folder
-from help_func import (process_command, read_added_folders,
-                       read_commands_from_file, read_json, read_path_file,
-                       show_current_folder)
+from help_func import (process_command, read_commands_from_file, read_json,
+                       read_path_file, show_current_folder)
 
 
 def main(args):
     files = []
     added_files = []
-    added_folders = []
     dict = {}
-    shutdown = 0
     # global files, added_files, added_folders, dict
-    
-    # boolean_add_folders = input("Do you want to add folders from \"added_folders.txt\" y/n: ")
-    # if boolean_add_folders == "y":
-    #     added_folders.extend(read_added_folders())
     
         
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
     
-    if added_folders != []:
-        for x in added_folders:
-            files.extend(add_folder(x))
-        print(Fore.YELLOW + "Added folders:" + Fore.RESET)
-        for folder in added_folders:
-            print(folder)
-        print(Fore.YELLOW + "Files from folders:" + Fore.RESET)
-        for x in files:
-            print(x)
+    # if added_folders != []:
+    #     for x in added_folders:
+    #         files.extend(add_folder(x))
+    #     print(Fore.YELLOW + "Added folders:" + Fore.RESET)
+    #     for folder in added_folders:
+    #         print(folder)
+    #     print(Fore.YELLOW + "Files from folders:" + Fore.RESET)
+    #     for x in files:
+    #         print(x)
             
     commands = read_commands_from_file()
     
+    while len(commands) > 0:
+        command = commands.pop(0)
+        print(Fore.GREEN + f"{global_variables.path} >> {command}" + Fore.RESET)
+        command_start_time = time.time()
+        process_command(command, dict, files, added_files)
+        print(f"Command took {time.time() - command_start_time:.4f} seconds to run")
+    
     while True:  
-        if(len(commands) > 0):
-            command = commands.pop(0)
-            print(Fore.GREEN + f"{global_variables.path} >> {command}" + Fore.RESET)
-            shutdown = 1
-        else:
-            if shutdown == 1:
-                break
-            if args.c != "":
-                command = args.c
-                args.c = ""
-            else:
-                command = input(Fore.GREEN + f"{global_variables.path} >> " + Fore.RESET)
+        command = input(Fore.GREEN + f"{global_variables.path} >> " + Fore.RESET)
             
         command_start_time = time.time()
         
-        process_command(command, dict, files, added_files)
+        result = process_command(command, dict, files, added_files)
         
         print(f"Command took {time.time() - command_start_time:.4f} seconds to run")
-        if args.c != "":
+        if result == -1:
             break
-                     
+
+
+# SCENARIOS         
+{                     
 # def scenario_1():
 #     global_variables.path = "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files"
     
@@ -202,12 +194,12 @@ def main(args):
 #     print(Fore.GREEN + ">> output" + Fore.RESET, end="")
 #     input()
 #     output(added_files)
+}
 
 if __name__ == "__main__":
     init()
     parser = argparse.ArgumentParser(description="Process some integers.")
     parser.add_argument('-p', type=str, default="", help='Path to the folder')
-    parser.add_argument('-c', type=str, default="", help='Command to run')
     
     args = parser.parse_args()
     
@@ -225,11 +217,9 @@ if __name__ == "__main__":
     else:
         global_variables.path = read_path_file()
         
-    if args.c != "":
-        print(f"args.c: {args.c}")
     
-    if os.path.exists("output.txt"):
-        os.remove("output.txt")
+    # if os.path.exists("output.txt"):
+    #     os.remove("output.txt")
         
     print(Fore.YELLOW + "Settings:" + Fore.RESET)
     print(f"Default unit: {global_variables.default_unit}")

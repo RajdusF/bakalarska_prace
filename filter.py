@@ -18,7 +18,7 @@ MODIFIED_WIDTH = 16
 CREATED_WIDTH = 16
 
 
-def filter(commands):
+def filter(commands, input_files = None, input_added_files = None):
     # Inicialization
     size = None
     size_operator = None
@@ -31,6 +31,8 @@ def filter(commands):
     created_time_unit = None
     num_of_folders = 0
     duplicates = []
+    files = []
+    only_directories = []
     
     # Searching for name, size, modified
     if "name" in commands:
@@ -52,7 +54,7 @@ def filter(commands):
         modified_operator = commands[commands.index("modified") + 1]
         if commands.index("modified") + 1 < len(commands):
             try:
-                modified = int(commands[commands.index("modified") + 2])
+                modified = float(commands[commands.index("modified") + 2])
             except:
                 print("Wrong input")
                 return
@@ -66,52 +68,71 @@ def filter(commands):
     if "created" in commands:
         created_operator = commands[commands.index("created") + 1]
         if commands.index("created") + 1 < len(commands):
-            created = int(commands[commands.index("created") + 2])
+            created = float(commands[commands.index("created") + 2])
             if commands.index("created") + 2 < len(commands):
                 created_time_unit = commands[commands.index("created") + 3]
         if created_operator == None or created == None or created_time_unit == None:
             print("Wrong input")
             return
                 
+    
+    # If user wants filter "files" or "added_files"
+    if commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
+        temp = []
+        if commands[1] == "files":
+            temp = input_files.copy()
+        elif commands[1] == "added_files" or commands[1] == "added":
+            temp = input_added_files.copy()
+            
+        if name:
+            for x in temp:
+                if filter_by_name(x, name):
+                    files.append(x)
+        else:
+            files = temp.copy()
+    
+        input_files.clear()
+    else:
+        input_files.clear()
+        
+        if name == None and size == None and modified == None and created == None:
+            print("Wrong input")
+            return
+        
+        # NAME
+        if name:
+            if "name" in commands and commands[commands.index("name") - 1] == "not":                # NOT NAME
+                all_files = glob.glob(global_variables.path + "\\*", recursive=True)
+                name_files = glob.glob(global_variables.path + "\\" + name, recursive=True)
+                files = [file for file in all_files if file not in name_files]
                 
-    if name == None and size == None and modified == None and created == None:
-        print("Wrong input")
-        return
-    
-    # NAME
-    if name:
-        if "name" in commands and commands[commands.index("name") - 1] == "not":                # NOT NAME
-            all_files = glob.glob(global_variables.path + "\\*", recursive=True)
-            name_files = glob.glob(global_variables.path + "\\" + name, recursive=True)
-            files = [file for file in all_files if file not in name_files]
-            
+                only_directories = [d for d in files if os.path.isdir(d)]
+            else:                                                                                   # NAME
+                files = glob.glob(global_variables.path + "\\" + name, recursive=True)
+                only_directories = [d for d in files if os.path.isdir(d)]
+        else:                                                                                       # NO NAME                      
+            files = glob.glob(global_variables.path + "\\*", recursive=True)
             only_directories = [d for d in files if os.path.isdir(d)]
-        else:                                                                                   # NAME
-            files = glob.glob(global_variables.path + "\\" + name, recursive=True)
-            only_directories = [d for d in files if os.path.isdir(d)]
-    else:                                                                                       # NO NAME                      
-        files = glob.glob(global_variables.path + "\\*", recursive=True)
-        only_directories = [d for d in files if os.path.isdir(d)]
+            
         
-    
-    if global_variables.search_folders == 1:
-        for folder in only_directories:
-            temp_files, num_of_folders = search_folder(folder, commands)
-            files.extend(temp_files)
-    elif global_variables.search_folders == 2:
-        all_directories = [os.path.abspath(entry.path) for entry in os.scandir(global_variables.path) if entry.is_dir()]
-    
+        if global_variables.search_folders == 1:
+            for folder in only_directories:
+                temp_files, num_of_folders = search_folder(folder, commands)
+                files.extend(temp_files)
+        elif global_variables.search_folders == 2:
+            all_directories = [os.path.abspath(entry.path) for entry in os.scandir(global_variables.path) if entry.is_dir()]
         
-        for i, folder in enumerate(all_directories):
-            temp_files, num_of_folders = search_folder(folder, commands)
-            files.extend(temp_files)
-            progress_bar(i, len(all_directories), 30)
             
-        progress_bar(len(all_directories), len(all_directories), 30)
-        print()
-            
-            
-    num_of_folders += len(only_directories)
+            for i, folder in enumerate(all_directories):
+                temp_files, num_of_folders = search_folder(folder, commands)
+                files.extend(temp_files)
+                progress_bar(i, len(all_directories), 30)
+                
+            progress_bar(len(all_directories), len(all_directories), 30)
+            print()
+                
+                
+        num_of_folders += len(only_directories)
         
     # NOT
     if size and size_operator and commands[commands.index("size") - 1] != "not":
@@ -251,3 +272,34 @@ def filter_time(in_files, modified_operator, modified, time_unit, option):
                 out_files.append(file)
                 
     return out_files
+
+def filter_by_name(file : str, find : str) -> bool:
+    file = file.lower()
+    find = find.lower()
+
+    if "*" not in find and "?" not in find:
+        return file == find
+    elif find == "*":
+        return True
+
+    file_index, find_index, last_star_index = 0, 0, -1
+
+    while file_index < len(file):
+        if find_index < len(find) and (find[find_index] == "?" or find[find_index] == file[file_index]):
+            file_index += 1
+            find_index += 1
+        elif find_index < len(find) and find[find_index] == "*":
+            last_star_index = find_index
+            find_index += 1
+            last_match_index = file_index
+        elif last_star_index != -1:
+            find_index = last_star_index + 1
+            last_match_index += 1
+            file_index = last_match_index
+        else:
+            return False
+
+    while find_index < len(find) and find[find_index] == "*":
+        find_index += 1
+
+    return find_index == len(find)

@@ -7,8 +7,9 @@ import time
 from colorama import Fore
 
 import global_variables
-from command_functions import (add, add_folder, output, remove, save, select,
-                               set_operations, settings, show_files, sort)
+from command_functions import (add, add_folder, input_files, output, remove,
+                               save, select, set_operations, settings,
+                               show_files, sort)
 
 
 def help():
@@ -55,22 +56,6 @@ def read_json(file):
         
     global_variables.show_duplicity = data["show_duplicity"]
 
-def read_added_folders():
-    added_folders = []
-    
-    try:
-        with open("added_folders.txt", "r") as file:
-            lines = file.readlines()
-            for line in lines:
-                if os.path.isdir(line.strip()):
-                    added_folders.append(line.strip())
-                else:
-                    print(Fore.RED + f"Folder \"{line.strip()}\" does not exist" + Fore.RESET)
-    except FileNotFoundError:
-        print(Fore.RED + "The file 'added_folders.txt' does not exist" + Fore.RESET)
-        return None
-        
-    return added_folders
 
 def recalculate_size(size: int) -> int:
     unit = global_variables.default_unit
@@ -213,7 +198,7 @@ def process_command(command : str, dict, files : list, added_files : list):
     commands = command.split(" ")
         
     if command == "exit":
-        return
+        return -1
     
     if command == "?":
         help()
@@ -235,7 +220,10 @@ def process_command(command : str, dict, files : list, added_files : list):
         path_index = commands.index("cd") + 1
         if path_index < len(commands):
             path = commands[path_index]
-            if os.path.isdir(global_variables.path + "\\" + path):
+            if os.path.isdir(path):
+                global_variables.path = path
+                print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
+            elif os.path.isdir(global_variables.path + "\\" + path):
                 global_variables.path = global_variables.path + "\\" + path
                 print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
             else:
@@ -244,16 +232,19 @@ def process_command(command : str, dict, files : list, added_files : list):
             print(Fore.GREEN + f"Current path: {global_variables.path}" + Fore.RESET)
             
     elif "filter" in commands:
-        files.clear()
-        files.extend(filter(commands))
+        files.extend(filter(commands, files, added_files))
         add_history(command, files)
     
     elif "sort" in commands:
-        files = sort(commands, files)
+        temp = sort(commands, files)
+        files.clear()
+        files.extend(temp)
         add_history(command, files)
         
     elif "select" in commands:
-        files = select(commands, files)
+        temp = select(commands, files)
+        files.clear()
+        files.extend(temp)
         add_history(command, files)
     
     elif "find" in commands:
@@ -269,16 +260,17 @@ def process_command(command : str, dict, files : list, added_files : list):
         if commands[1] == "*":
             add("*", files, added_files)
         elif "\\" in command and len(commands) == 2:
-            files.extend(add_folder(commands[1]))
-            show_files(files)
+            added_files.extend(add_folder(commands[1]))
         elif len(commands) == 2:
                 name = commands[1]
-                if(add(name, files, added_files) > 0):
-                    print("Added files:")
-                    for x in added_files:
-                        print(x)
+                add(name, files, added_files)
         else:
             print("Wrong input")
+            return
+        
+        print("Added files:")
+        for x in added_files:
+            print(x)
             
     elif "remove" in commands:
         r = remove(commands, added_files)
@@ -289,10 +281,14 @@ def process_command(command : str, dict, files : list, added_files : list):
             show_added_files(added_files)
         elif len(commands) == 2 and commands[1] == "files":
             show_files(files)
-        if len(commands) == 2 and dict[commands[1]]:
-            print(f"Files in \"{commands[1]}\":")
-            for x in dict[commands[1]]:
-                print(x)
+        elif len(commands) == 2:                          # dict[commands[1]]):
+            if dict.get(commands[1]) != None:
+                print(f"Files in \"{commands[1]}\":")
+                for x in dict[commands[1]]:
+                    print(x)
+            else:
+                print(f"Save file {commands[4]} not found")
+                return
         else:
             print("Added files:")
             for x in added_files:
@@ -317,34 +313,55 @@ def process_command(command : str, dict, files : list, added_files : list):
             save(commands[3], files, dict)
         elif commands[1] == "added":
             save(commands[3], added_files, dict)
+        else:
+            print("Wrong input")
         
-    elif commands[0] == "load" and commands[1] == "from" and len(commands) == 3:
+    elif commands[0] == "load" and commands[1] == "from" and command[3] == "to" and len(commands) == 5:
         if commands[2] in dict:
-            added_files = dict[commands[2]].copy()
-            print("Files loaded from \"" + commands[2] + "\"")
+            if commands[4] == "files":
+                files = dict[commands[2]].copy()
+                print("Files loaded from \"" + commands[2] + "\"")
+            else:
+                added_files = dict[commands[2]].copy()
+                print("Files loaded from \"" + commands[2] + "\"")
         else:
             print("File not found")
                 
+    elif "input" in commands:
+        if len(commands) == 1:
+            input_files(added_files)
+        elif len(commands) == 2:
+            input_files(added_files, commands[1])
     
-    elif "output" in commands and len(commands) == 1:
-        output(added_files)
+    elif "output" in commands:
+        extend_choice = True if "extend" in commands else False
+             
+        if len(commands) == 1:
+            output(added_files, extend=extend_choice)
+        elif len(commands) == 2:
+            output(added_files, output_file=commands[1], extend=extend_choice)
         
     elif "history" in commands and len(commands) == 1:
         print_history()
         
     elif "history" in commands and len(commands) == 2:
         try:
-            files = load_history(int(commands[1]))
+            temp = load_history(int(commands[1]))
+            files.clear()
+            files.extend(temp)
             show_files(files)
         except:
             print("Wrong input")
+            
+    elif "ls" in commands and len(commands) == 1:
+        show_current_folder()
         
     # Sjednocení, průnik, rozdíl
     elif "A" in commands or "U" in commands or "-" in commands:
-        dict["a"] = [1]
-        dict["b"] = [2]
-        dict["c"] = [3]
-        files = set_operations(command, dict)
+        temp = set_operations(command, dict)
+        files.clear()
+        files.extend(temp)
+        add_history(command, files)
         
         
     elif command == "":
@@ -378,7 +395,8 @@ def progress_bar(current, total, barLength = 20):
     
 history = []
 
-def add_history(command, files):
+def add_history(command, input_files):
+    files = input_files.copy()
     history.append([command, files])
     
 def print_history():

@@ -1,3 +1,23 @@
+SCENARIO 1
+
+cd C:\Users\Filip\Documents\bakalarska_prace\files
+filter name *.xlsx
+sort by size desc
+select top 1
+save files to a
+cd folder_2
+filter name *.py
+save files to b
+show b
+show a
+a U b
+save files to c
+add *
+history
+output
+filter added * -d
+
+SCENARIO 2
 add C:\Users\Filip\Documents\bakalarska_prace\files\folder_2
 add C:\Users\Filip\Documents\bakalarska_prace\files\folder\second_folder
 cd C:\Users\Filip\Downloads
@@ -8,5 +28,3 @@ add *
 show added
 filter added -d
 output folder_2+second_folder+pdf
-history
-history 2

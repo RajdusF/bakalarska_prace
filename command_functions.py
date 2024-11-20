@@ -5,6 +5,7 @@ import os
 from colorama import Fore
 
 import global_variables
+
 # from help_func import recalculate_size, search_folder, time_from_now
 
 def show_files(files):
@@ -234,13 +235,25 @@ def select(commands, files):
             return r
     return 
 
-def output(added_files):
-    with open('output.txt', 'w') as f:
+def input_files(added_files, input_file="output.txt"):
+    with open(input_file, 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            if line[-1] == '\n':
+                line = line[:-1]
+            added_files.append(line)
+            
+    print(f"Added files from {input_file}")
+
+def output(added_files, extend, output_file="output.txt"):
+    if extend == False and os.path.isfile(output_file):
+        os.remove(output_file)
+    with open(output_file, 'w') as f:
         for file in added_files:
             if os.path.isfile(file):
                 f.write(file + '\n')
             
-    print("Added files saved to output.txt")
+    print(f"Added files saved to {output_file}")
     
 def set_operations(expression: str, dictionary: dict):
     words = ""
@@ -297,13 +310,15 @@ def set_operations(expression: str, dictionary: dict):
         dicts.insert(0, "temp")
         
             
-    if result == []:
+    if result == [] and temps != []:
         print(f"result: {temps[0]}")
         return temps[0]
-    else:
+    elif result != []:
         print(f"result: ")
         for x in result:
             print(x)
+        return result.copy()
+    else:
         return result
 
 def save(name, files_to_save, dict):
