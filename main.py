@@ -6,29 +6,15 @@ import time
 from colorama import Fore, init
 
 import global_variables
-from command_functions import add_folder
-from help_func import (process_command, read_commands_from_file, read_json,
-                       read_path_file, show_current_folder)
+from help_func import (process_command, read_commands_from_file, read_json, show_current_folder)
 
 
 def main(args):
     files = []
     added_files = []
-    dict = {}
-    # global files, added_files, added_folders, dict
-    
+    dict = {}    
         
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
-    
-    # if added_folders != []:
-    #     for x in added_folders:
-    #         files.extend(add_folder(x))
-    #     print(Fore.YELLOW + "Added folders:" + Fore.RESET)
-    #     for folder in added_folders:
-    #         print(folder)
-    #     print(Fore.YELLOW + "Files from folders:" + Fore.RESET)
-    #     for x in files:
-    #         print(x)
             
     commands = read_commands_from_file()
     
@@ -214,21 +200,13 @@ if __name__ == "__main__":
             global_variables.path = args.p
         else:
             print("Path not found")
-    else:
-        global_variables.path = read_path_file()
         
-    
-    # if os.path.exists("output.txt"):
-    #     os.remove("output.txt")
         
     print(Fore.YELLOW + "Settings:" + Fore.RESET)
     print(f"Default unit: {global_variables.default_unit}")
     print(f"Search folders: {global_variables.search_folders}")
     print(f"Show duplicity: {global_variables.show_duplicity}")
 
-    # if global_variables.path != "" and global_variables.path != None:
-        # print(Fore.YELLOW + "Files in default folder:" + Fore.RESET)
-        # show_current_folder()
     
     # cProfile.run("main(args)", sort="tottime")
     main(args)

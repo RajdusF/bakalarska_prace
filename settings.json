@@ -1,5 +1,6 @@
 {
     "unit": "GB",
-    "search_folders": 0,
-    "show_duplicity": false
+    "search_folders": 2,
+    "show_duplicity": false,
+    "path": "C:\\Users\\User\\Desktop\\"
 }

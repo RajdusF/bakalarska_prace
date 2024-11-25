@@ -1,12 +1,3 @@
-add C:\Users\Filip\Documents\bakalarska_prace\files\folder_2
-add C:\Users\Filip\Documents\bakalarska_prace\files\folder\second_folder
-cd C:\Users\Filip\Downloads
-filter name *.pdf -d
-sort by size desc
-select top 10
-add *
-show added
-filter added -d
-output folder_2+second_folder+pdf
-history
-history 2
+set search 2
+cd C:\Users\Filip\Documents\bakalarska_prace\files
+filter *

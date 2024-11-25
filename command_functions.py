@@ -6,7 +6,6 @@ from colorama import Fore
 
 import global_variables
 
-# from help_func import recalculate_size, search_folder, time_from_now
 
 def show_files(files):
     from help_func import recalculate_size, time_from_now
@@ -49,23 +48,31 @@ def add(name : str, files : list, added_files : list):
     print(f"Added {len(added_files) - i} files")
     return(len(added_files) - i)
 
-def add_folder(folder : str):
-    files = []
+def add_folder(folder : str, recursive: bool = False):
+    output_files = []
     
     if not os.path.isdir(folder):
         print("Folder not found")
         return
     
-    for file in os.listdir(folder):
-        files.append(os.path.join(folder, file))
+    if recursive:
+        for root, _, files in os.walk(folder):
+            for file in files:
+                output_files.append(os.path.join(root, file))
+                
+    else:
+        for file in os.listdir(folder):
+            if not os.path.isdir(os.path.join(folder, file)):
+                output_files.append(os.path.join(folder, file))
         
-    return files
+    return output_files
 
 
 def settings(option, value):
     unit = None
     search_folders = None
     show_duplicity = None
+    path = None
     
     if option == 0:
         if value == "0":
@@ -82,6 +89,7 @@ def settings(option, value):
             unit = "GB"
         else:
             print("Wrong input")
+            
     elif option == 1:
         if value == 0:
             print("Search folders set to \"Do not search folders\"")
@@ -101,6 +109,14 @@ def settings(option, value):
         elif value == 0:
             print("Show duplicity set to False")
             show_duplicity = False
+            
+    elif option == 3:
+        print(f"Path set to {value}")
+        if os.isdir(value):
+            path = value
+        else:
+            print("Path not found")
+            return
     else:
         print("Wrong input")
     
@@ -125,6 +141,12 @@ def settings(option, value):
         global_variables.show_duplicity = show_duplicity
     else:
         settings_data["show_duplicity"] = global_variables.show_duplicity
+        
+    if path is not None:
+        settings_data["path"] = path
+        global_variables.path = path
+    else:
+        settings_data["path"] = global_variables.path
 
     with open(settings_path, 'w') as json_file:
         json.dump(settings_data, json_file, indent=4)

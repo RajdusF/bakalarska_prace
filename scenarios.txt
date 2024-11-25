@@ -1,5 +1,4 @@
 SCENARIO 1
-
 cd C:\Users\Filip\Documents\bakalarska_prace\files
 filter name *.xlsx
 sort by size desc
@@ -28,3 +27,6 @@ add *
 show added
 filter added -d
 output folder_2+second_folder+pdf
+
+SCENARIO 2
+cd C:\

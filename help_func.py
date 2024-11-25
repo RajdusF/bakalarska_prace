@@ -55,6 +55,8 @@ def read_json(file):
     global_variables.search_folders = data["search_folders"]
         
     global_variables.show_duplicity = data["show_duplicity"]
+    
+    global_variables.path = data["path"]
 
 
 def recalculate_size(size: int) -> int:
@@ -108,7 +110,7 @@ def time_from_now(file : str, option : str) -> str:
     else:
         return f"{seconds_from_now / 604800:8.2f} w" 
 
-def search_folder(folder, commands=None, only_files=None):
+def search_folder(folder, commands=None, only_files=None, progress=None, progress_total=None):
     num_of_folders = 0
     
     if commands == None:
@@ -152,11 +154,13 @@ def search_folder(folder, commands=None, only_files=None):
             try:
                 all_directories = [os.path.abspath(entry.path) for entry in os.scandir(folder) if entry.is_dir()]
             except PermissionError:
-                print(f"Access denied to the directory: {folder}")
+                print(f"\rAccess denied to the directory: {folder}")
+                progress_bar(progress, progress_total, 30)
+                # sys.stdout.flush()
                 all_directories = []
             
             for folder in all_directories:
-                temp_files, num_of_folders = search_folder(folder, commands, only_files=True)
+                temp_files, num_of_folders = search_folder(folder, commands, only_files=True, progress=progress, progress_total=progress_total)
                 files.extend(temp_files)
                 
         f = []
@@ -257,10 +261,13 @@ def process_command(command : str, dict, files : list, added_files : list):
             print(find)
     
     elif "add" in commands:
-        if commands[1] == "*":
+        if commands[1] == "*" and len(commands) == 2:
             add("*", files, added_files)
         elif "\\" in command and len(commands) == 2:
             added_files.extend(add_folder(commands[1]))
+        elif "\\" in command and len(commands) == 3 and commands[1] == "all":
+            added_files.extend(add_folder(commands[2], recursive=True))
+            
         elif len(commands) == 2:
                 name = commands[1]
                 add(name, files, added_files)
@@ -268,7 +275,7 @@ def process_command(command : str, dict, files : list, added_files : list):
             print("Wrong input")
             return
         
-        print("Added files:")
+        print(f"Added files ({len(added_files)}):")
         for x in added_files:
             print(x)
             
@@ -301,6 +308,8 @@ def process_command(command : str, dict, files : list, added_files : list):
             settings(1, int(commands[2]))
         elif "duplicity" in commands or "duplicate" in commands and len(commands) == 3:
             settings(2, int(commands[2]))
+        elif "path" in commands and len(commands) == 3:
+            settings(3, commands[2])
         elif len(commands) == 1:
             print(f"Default unit: {global_variables.default_unit}")
             print(f"Search folders: {global_variables.search_folders}")
@@ -406,25 +415,6 @@ def print_history():
         
 def load_history(x : int):
     return history[x][1]
-
-def read_path_file():
-    try:
-        with open("path.txt", "r") as file:
-            f = file.readline().strip()
-        
-        if f == "":
-            print(Fore.RED + "Path file is empty" + Fore.RESET)
-            return None
-
-        if os.path.isdir(f):
-            return f
-        else:
-            print(Fore.RED + "The path in the file is not a directory" + Fore.RESET)
-            return None
-
-    except FileNotFoundError:
-        print(Fore.RED + "The file 'path.txt' does not exist" + Fore.RESET)
-        return None
     
 def read_commands_from_file():
     try:

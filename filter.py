@@ -124,7 +124,8 @@ def filter(commands, input_files = None, input_added_files = None):
         
             
             for i, folder in enumerate(all_directories):
-                temp_files, num_of_folders = search_folder(folder, commands)
+                temp_files, num_of_folders_returned = search_folder(folder=folder, commands=commands, progress=i, progress_total=len(all_directories))
+                num_of_folders += num_of_folders_returned
                 files.extend(temp_files)
                 progress_bar(i, len(all_directories), 30)
                 
@@ -186,9 +187,9 @@ def filter(commands, input_files = None, input_added_files = None):
         commands.append("-h")        
     
     if "-h" in commands:        # hide
-        print(Fore.GREEN + f"Found {len(files)} files and {len(only_directories)} folders:" + Fore.RESET)
+        print(Fore.GREEN + f"Found {len(files) - len(only_directories)} files and {num_of_folders} folders:" + Fore.RESET)
     else:
-        print(Fore.GREEN + f"Found {len(files)} files and {len(only_directories)} folders:" + Fore.RESET)      # Number of occurances
+        print(Fore.GREEN + f"Found {len(files) - len(only_directories)} files and {num_of_folders} folders:" + Fore.RESET)      # Number of occurances
         if "-d" in commands:        # detailed
             print(f"{"file":{FILE_NAME_WIDTH+4}} {"size":{SIZE_WIDTH}} {"modified":{MODIFIED_WIDTH}} {"created":{CREATED_WIDTH}}")
         for file in files:

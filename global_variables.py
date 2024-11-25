@@ -7,6 +7,8 @@ SIZE_WIDTH = 18
 MODIFIED_WIDTH = 16
 CREATED_WIDTH = 16
 
+path = None
+
 
 # Notebook
 # path = "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files"
