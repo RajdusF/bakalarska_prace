@@ -1,3 +1,4 @@
-set search 2
 cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter *
+filter * -d
+sort by size desc
+filter files size > 10 MB

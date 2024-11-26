@@ -9,9 +9,6 @@ import global_variables
 from help_func import (progress_bar, recalculate_size, search_folder,
                        time_from_now)
 
-# from numba import njit
-
-
 FILE_NAME_WIDTH = 48
 SIZE_WIDTH = 18
 MODIFIED_WIDTH = 16
@@ -22,6 +19,7 @@ def filter(commands, input_files = None, input_added_files = None):
     # Inicialization
     size = None
     size_operator = None
+    size_unit = None
     name = None
     modified = None
     modified_operator = None
@@ -49,6 +47,8 @@ def filter(commands, input_files = None, input_added_files = None):
             size_index = operator_index + 1
             if size_index < len(commands):
                 size = int(commands[size_index])
+                if size_index + 1 < len(commands):
+                    size_unit = commands[size_index + 1]
                 
     if "modified" in commands:
         modified_operator = commands[commands.index("modified") + 1]
@@ -84,7 +84,11 @@ def filter(commands, input_files = None, input_added_files = None):
         elif commands[1] == "added_files" or commands[1] == "added":
             temp = input_added_files.copy()
             
-        if name:
+        if name and "not" in commands:
+            for x in temp:
+                if not filter_by_name(x, name):
+                    files.append(x)
+        elif name:
             for x in temp:
                 if filter_by_name(x, name):
                     files.append(x)
@@ -94,6 +98,11 @@ def filter(commands, input_files = None, input_added_files = None):
         input_files.clear()
     else:
         input_files.clear()
+        
+        # TODO: if path is not set, warning and return
+        if global_variables.path == None or global_variables.path == "":
+            print(Fore.RED + "Path is not set for filtering" + Fore.RESET)
+            return []
         
         if name == None and size == None and modified == None and created == None:
             print("Wrong input")
@@ -119,9 +128,9 @@ def filter(commands, input_files = None, input_added_files = None):
             for folder in only_directories:
                 temp_files, num_of_folders = search_folder(folder, commands)
                 files.extend(temp_files)
-        elif global_variables.search_folders == 2:
-            all_directories = [os.path.abspath(entry.path) for entry in os.scandir(global_variables.path) if entry.is_dir()]
-        
+        elif global_variables.search_folders == 2:            
+            progress_bar(0, 100, 30)
+            all_directories = [os.path.abspath(entry.path) for entry in os.scandir(global_variables.path) if entry.is_dir()]        
             
             for i, folder in enumerate(all_directories):
                 temp_files, num_of_folders_returned = search_folder(folder=folder, commands=commands, progress=i, progress_total=len(all_directories))
@@ -129,13 +138,16 @@ def filter(commands, input_files = None, input_added_files = None):
                 files.extend(temp_files)
                 progress_bar(i, len(all_directories), 30)
                 
-            progress_bar(len(all_directories), len(all_directories), 30)
+            progress_bar(1, 1, 30)
             print()
                 
                 
         num_of_folders += len(only_directories)
         
-    # NOT
+    if size and size_operator:
+        files = filter_size(files, size_operator, size, size_unit)
+        
+    """
     if size and size_operator and commands[commands.index("size") - 1] != "not":
         if size_operator == "<":
             files = [file for file in files if os.path.getsize(file) < size]
@@ -158,6 +170,7 @@ def filter(commands, input_files = None, input_added_files = None):
             files = [file for file in files if os.path.getsize(file) < size]
         elif size_operator == "=":
             files = [file for file in files if os.path.getsize(file) != size]
+    """
     
     #           m_operator modified time_unit
     # filter modified < 10 days
@@ -274,9 +287,48 @@ def filter_time(in_files, modified_operator, modified, time_unit, option):
                 
     return out_files
 
+
+def filter_size(in_files, size_operator, size, size_unit=None):
+    out_files = []
+    
+    if size_unit == "B" or size_unit == "byte" or size_unit == "bytes":
+        size = size
+    elif size_unit == "KB" or size_unit == "kilobyte" or size_unit == "kilobytes":
+        size = size * 1024
+    elif size_unit == "MB" or size_unit == "megabyte" or size_unit == "megabytes":
+        size = size * 1024 * 1024
+    elif size_unit == "GB" or size_unit == "gigabyte" or size_unit == "gigabytes":
+        size = size * 1024 * 1024 * 1024
+        
+    
+    for file in in_files:
+        file_size = os.path.getsize(file)
+        
+        if size_operator == "<":
+            if file_size < size:
+                out_files.append(file)
+        elif size_operator == "<=":
+            if file_size <= size:
+                out_files.append(file)
+        elif size_operator == ">":
+            if file_size > size:
+                out_files.append(file)
+        elif size_operator == ">=":
+            if file_size >= size:
+                out_files.append(file)
+        elif size_operator == "=":
+            if file_size == size:
+                out_files.append(file)
+                
+    return out_files
+
+
 def filter_by_name(file : str, find : str) -> bool:
     file = file.lower()
     find = find.lower()
+    
+    if "\\" in file:
+        file = file.split("\\")[-1]
 
     if "*" not in find and "?" not in find:
         return file == find

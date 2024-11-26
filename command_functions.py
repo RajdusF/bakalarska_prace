@@ -20,6 +20,7 @@ def show_files(files):
         else:
             print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
 
+
 def add(name : str, files : list, added_files : list):
     from help_func import search_folder
     i = len(added_files)
@@ -47,6 +48,7 @@ def add(name : str, files : list, added_files : list):
         
     print(f"Added {len(added_files) - i} files")
     return(len(added_files) - i)
+
 
 def add_folder(folder : str, recursive: bool = False):
     output_files = []
@@ -115,7 +117,7 @@ def settings(option, value):
         if os.isdir(value):
             path = value
         else:
-            print("Path not found")
+            print(Fore.RED + "Path not found" + Fore.RESET)
             return
     else:
         print("Wrong input")
@@ -203,6 +205,7 @@ def find(commands, input_file : str):
                         
     return lines_to_return
 
+
 def sort(commands, files):
     if commands[1] == "desc" and len(commands) == 2:
         r = sorted(files, reverse=True)
@@ -245,6 +248,7 @@ def sort(commands, files):
             show_files(r)
             return r
         
+        
 def select(commands, files):
     if commands[1] == "top":
         if len(commands) == 3:
@@ -257,6 +261,7 @@ def select(commands, files):
             return r
     return 
 
+
 def input_files(added_files, input_file="output.txt"):
     with open(input_file, 'r') as f:
         lines = f.readlines()
@@ -267,6 +272,7 @@ def input_files(added_files, input_file="output.txt"):
             
     print(f"Added files from {input_file}")
 
+
 def output(added_files, extend, output_file="output.txt"):
     if extend == False and os.path.isfile(output_file):
         os.remove(output_file)
@@ -276,6 +282,7 @@ def output(added_files, extend, output_file="output.txt"):
                 f.write(file + '\n')
             
     print(f"Added files saved to {output_file}")
+    
     
 def set_operations(expression: str, dictionary: dict):
     words = ""
@@ -343,6 +350,7 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
+
 def save(name, files_to_save, dict):
     try:
         dict[name] = files_to_save.copy()
@@ -351,6 +359,7 @@ def save(name, files_to_save, dict):
         return
     
     print(f"Successfully saved to \"{name}\"")
+    
     
 def remove(commands, added_files):
     original_length = len(added_files)

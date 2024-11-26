@@ -6,7 +6,8 @@ import time
 from colorama import Fore, init
 
 import global_variables
-from help_func import (process_command, read_commands_from_file, read_json, show_current_folder)
+from decider import process_command
+from help_func import read_commands_from_file, read_json
 
 
 def main(args):
@@ -20,9 +21,10 @@ def main(args):
     
     while len(commands) > 0:
         command = commands.pop(0)
-        print(Fore.GREEN + f"{global_variables.path} >> {command}" + Fore.RESET)
+        print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> {command}" + Fore.RESET)
         command_start_time = time.time()
-        process_command(command, dict, files, added_files)
+        if(process_command(command, dict, files, added_files)) == -1:
+            return -1
         print(f"Command took {time.time() - command_start_time:.4f} seconds to run")
     
     while True:  
@@ -36,6 +38,42 @@ def main(args):
         if result == -1:
             break
 
+
+if __name__ == "__main__":
+    init()
+    parser = argparse.ArgumentParser(description="Process some integers.")
+    parser.add_argument('-p', type=str, default="", help='Path to the folder')
+    
+    args = parser.parse_args()
+    
+    start_time = time.time()
+    
+    # progress_bar(10, 10, 30)
+    # input()
+    
+    
+    read_json("settings.json")
+    
+    if args.p != "":
+        print(f"args.p: {args.p}")
+        if os.path.exists(args.p):
+            global_variables.path = args.p
+        else:
+            print(Fore.RED + "Path not found" + Fore.RESET)
+        
+        
+    print(Fore.YELLOW + "Settings:" + Fore.RESET)
+    print(f"Default unit: {global_variables.default_unit}")
+    print(f"Search folders: {global_variables.search_folders}")
+    print(f"Show duplicity: {global_variables.show_duplicity}")
+
+    
+    # cProfile.run("main(args)", sort="tottime")
+    main(args)
+    # scenario_1()
+    # scenario_2()
+    print(f"Program took {time.time() - start_time:.4f} seconds to run")
+    
 
 # SCENARIOS         
 {                     
@@ -181,37 +219,3 @@ def main(args):
 #     input()
 #     output(added_files)
 }
-
-if __name__ == "__main__":
-    init()
-    parser = argparse.ArgumentParser(description="Process some integers.")
-    parser.add_argument('-p', type=str, default="", help='Path to the folder')
-    
-    args = parser.parse_args()
-    
-    start_time = time.time()
-    
-    
-    read_json("settings.json")
-    
-    if args.p != "":
-        print(f"args.p: {args.p}")
-        if os.path.exists(args.p):
-            global_variables.path = args.p
-        else:
-            print("Path not found")
-        
-        
-    print(Fore.YELLOW + "Settings:" + Fore.RESET)
-    print(f"Default unit: {global_variables.default_unit}")
-    print(f"Search folders: {global_variables.search_folders}")
-    print(f"Show duplicity: {global_variables.show_duplicity}")
-
-    
-    # cProfile.run("main(args)", sort="tottime")
-    main(args)
-    # scenario_1()
-    # scenario_2()
-    print(f"Program took {time.time() - start_time:.4f} seconds to run")
-    
-    # main()
