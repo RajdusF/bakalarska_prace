@@ -6,8 +6,10 @@ import global_variables
 from command_functions import (add, add_folder, input_files, output, remove,
                                save, select, set_operations, settings,
                                show_files, sort)
-from help_func import (add_history, load_history, print_history,
-                       show_added_files, show_current_folder)
+from help_func import (add_history, help_add, help_cd, help_filter,
+                       help_output, help_select, help_sort, load_history,
+                       my_help, print_history, show_added_files,
+                       show_current_folder)
 
 
 def process_command(command : str, dict, files : list, added_files : list):
@@ -19,7 +21,7 @@ def process_command(command : str, dict, files : list, added_files : list):
         return -1
     
     if command == "?":
-        help()
+        my_help()
         return
     
     if "**" in command:
@@ -27,8 +29,9 @@ def process_command(command : str, dict, files : list, added_files : list):
         return
     
     if command == "*":
-        for file in os.listdir(global_variables.path):
-            print(file)
+        show_current_folder()
+        # for file in os.listdir(global_variables.path):
+        #     print(file)
             
     elif command == "cd.." or command == "cd ..":
         global_variables.path = os.path.abspath(os.path.join(global_variables.path, os.pardir))
@@ -53,8 +56,13 @@ def process_command(command : str, dict, files : list, added_files : list):
         else:
             print(f"Current path: {global_variables.path}")
             
+        if commands[0] == "cd" and len(commands) == 1:
+            help_cd()
+            
     elif "filter" in commands:
-        # files.extend(filter(commands, files, added_files))
+        if commands[0] == "filter" and len(commands) == 1:
+            help_filter()
+            return
         
         temp = filter(commands, files, added_files)
         files.clear()
@@ -64,12 +72,20 @@ def process_command(command : str, dict, files : list, added_files : list):
         add_history(command, files)
     
     elif "sort" in commands:
+        if commands[0] == "sort" and len(commands) == 1:
+            help_sort()
+            return
+        
         temp = sort(commands, files)
         files.clear()
         files.extend(temp)
         add_history(command, files)
         
     elif "select" in commands:
+        if commands[0] == "select" and len(commands) == 1:
+            help_select()
+            return
+        
         temp = select(commands, files)
         files.clear()
         files.extend(temp)
@@ -85,11 +101,15 @@ def process_command(command : str, dict, files : list, added_files : list):
             print(find)
     
     elif "add" in commands and len(commands) > 1:
+        if commands[0] == "add" and len(commands) == 1:
+            help_add()
+            return
+        
         if commands[1] == "*" and len(commands) == 2:
             add("*", files, added_files)
         elif "\\" in command and len(commands) == 2:
             added_files.extend(add_folder(commands[1]))
-        elif "\\" in command and len(commands) == 3 and commands[1] == "all":
+        elif "\\" in command and len(commands) == 3 and "all" in commands:
             added_files.extend(add_folder(commands[2], recursive=True))
             
         elif len(commands) == 2:
@@ -167,12 +187,14 @@ def process_command(command : str, dict, files : list, added_files : list):
             input_files(added_files, commands[1])
     
     elif "output" in commands:
+        if commands[0] == "output" and len(commands) == 1:
+            help_output()
+            return
+        
         extend_choice = True if "extend" in commands else False
              
-        if len(commands) == 1:
-            output(added_files, extend=extend_choice)
-        elif len(commands) == 2:
-            output(added_files, output_file=commands[1], extend=extend_choice)
+        if 2 <= len(commands) <= 3 :
+            output(added_files=added_files, output_file=commands[1], extend=extend_choice)
         
     elif "history" in commands and len(commands) == 1:
         print_history()

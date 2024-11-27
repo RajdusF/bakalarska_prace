@@ -1,4 +1,7 @@
 cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter * -d
-sort by size desc
-filter files size > 10 MB
+filter name *.xlsx
+add *
+output output.txt extend
+output output.txt extend
+output output.txt extend
+output output.txt

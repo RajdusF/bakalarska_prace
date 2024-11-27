@@ -1,5 +1,2 @@
 C:\Users\Filip\Documents\bakalarska_prace\files\data.xlsx
-C:\Users\Filip\Documents\bakalarska_prace\files\folder_2\app.py
-C:\Users\Filip\Documents\bakalarska_prace\files\folder_2\folder_in.py
-C:\Users\Filip\Documents\bakalarska_prace\files\folder_2\in_folder.py
-C:\Users\Filip\Documents\bakalarska_prace\files\folder_2\test.py
+C:\Users\Filip\Documents\bakalarska_prace\files\important.xlsx

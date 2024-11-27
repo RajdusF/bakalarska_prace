@@ -13,7 +13,7 @@ a U b
 save files to c
 add *
 history
-output
+output output.txt
 filter added * -d
 
 SCENARIO 2
@@ -30,3 +30,9 @@ output folder_2+second_folder+pdf
 
 SCENARIO 2
 cd C:\
+
+
+cd C:\Users\Filip\Documents\bakalarska_prace\files
+filter * -d
+sort by size desc
+filter files size > 10 MB

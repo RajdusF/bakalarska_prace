@@ -28,7 +28,8 @@ def main(args):
         print(f"Command took {time.time() - command_start_time:.4f} seconds to run")
     
     while True:  
-        command = input(Fore.GREEN + f"{global_variables.path} >> " + Fore.RESET)
+        command = input(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + " >> ")
+        print(Fore.RESET)
             
         command_start_time = time.time()
         

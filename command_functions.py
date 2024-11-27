@@ -276,7 +276,8 @@ def input_files(added_files, input_file="output.txt"):
 def output(added_files, extend, output_file="output.txt"):
     if extend == False and os.path.isfile(output_file):
         os.remove(output_file)
-    with open(output_file, 'w') as f:
+        
+    with open(output_file, 'a') as f:
         for file in added_files:
             if os.path.isfile(file):
                 f.write(file + '\n')
