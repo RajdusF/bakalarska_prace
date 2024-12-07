@@ -1,7 +1,10 @@
 cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter name *.xlsx
+filter name *.bnx
 add *
-output output.txt extend
-output output.txt extend
-output output.txt extend
+filter name *cropped.xmap
+add *
+filter name *cropped.cmap
+add *
+
+show added
 output output.txt
