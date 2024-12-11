@@ -1,0 +1,10 @@
+cd C:\Users\Filip\Documents\bakalarska_prace\files
+filter name *.bnx
+add *
+filter name *cropped.xmap
+add *
+filter name *cropped.cmap
+add *
+
+show added
+output output.txt
