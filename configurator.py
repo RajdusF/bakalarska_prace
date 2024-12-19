@@ -5,9 +5,9 @@ import time
 
 from colorama import Fore, init
 
-import global_variables
-from decider import process_command
-from help_func import read_commands_from_file, read_json
+import python.global_variables as global_variables
+from python.decider import process_command
+from python.help_func import read_commands_from_file, read_json
 
 
 def main(args):
@@ -21,6 +21,8 @@ def main(args):
     
     while len(commands) > 0:
         command = commands.pop(0)
+        if command.startswith("#"):
+            continue
         print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> {command}" + Fore.RESET)
         command_start_time = time.time()
         if(process_command(command, dict, files, added_files)) == -1:

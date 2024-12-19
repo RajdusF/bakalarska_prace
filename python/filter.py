@@ -5,9 +5,9 @@ import time
 
 from colorama import Fore
 
-import global_variables
-from help_func import (progress_bar, recalculate_size, search_folder,
-                       time_from_now)
+import python.global_variables as global_variables
+from python.help_func import (progress_bar, recalculate_size, search_folder,
+                              time_from_now)
 
 FILE_NAME_WIDTH = 48
 SIZE_WIDTH = 18

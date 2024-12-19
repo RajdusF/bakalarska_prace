@@ -1,10 +1,13 @@
-cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter name *.bnx
-add *
-filter name *cropped.xmap
-add *
-filter name *cropped.cmap
-add *
-
-show added
-output output.txt
+cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
+filter *
+names compute
+names
+cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\database\align\
+filter *
+names database
+names
+compute - database
+save names to names1
+cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
+filter *
+add files contains names1

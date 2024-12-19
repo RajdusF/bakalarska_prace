@@ -1,5 +1,7 @@
 import os
+import shutil
 import subprocess
+from time import sleep
 
 from colorama import Fore
 from tqdm import tqdm
@@ -15,8 +17,9 @@ def read_scripts_to_run():
     readed_scripts = []
     f = open("C:\\Users\\Filip\\Documents\\bakalarska_prace\\scripts_to_run.txt", "r")
     for line in f:
-        s = line.strip()
-        readed_scripts.append(s)
+        if not line.startswith('#'):
+            s = line.strip()
+            readed_scripts.append(s)
         
     f.close()      
     
@@ -43,10 +46,12 @@ files = []
 readed_scripts = read_scripts_to_run()
 scripts = load_scripts_from_script_folder(readed_scripts)
 
+# Load files to copy
 f = open("C:\\Users\\Filip\\Documents\\bakalarska_prace\\output.txt", "r")
 for line in f:
-    s = line.strip()
-    files.append(s)
+    if os.path.exists(line.strip()):
+        s = line.strip()
+        files.append(s)
     
 f.close()
 
@@ -60,29 +65,63 @@ for script in scripts:
 print("Press any key to continue...")
 input()
 
-files = [convert_to_wsl_path(file) for file in files]
+if not os.path.exists("./output"):
+    os.makedirs("./output")
 
-total_iterations = len(scripts) * len(files)
 
-with tqdm(total=total_iterations, desc="Total Progress") as pbar:
+total_iterations = len(files) + len(scripts) * len(files)
+
+
+with tqdm(total=total_iterations, desc="Total Progress", position=0, leave=True) as pbar:
+    for file in files:
+        try:
+            destination = "./output/" + file.split("\\")[-1]
+            shutil.copy(file, destination)
+            if len(file) > 40:
+                file = "..." + file[-40:]
+            if len(destination) > 40:
+                destination = "..." + destination[-40:]
+            tqdm.write(Fore.LIGHTGREEN_EX + f"File copied from {file} to {destination}" + Fore.RESET)
+        except FileNotFoundError:
+            tqdm.write(Fore.LIGHTRED_EX + f"Source file {file} not found." + Fore.RESET)
+        except PermissionError:
+            tqdm.write(Fore.LIGHTRED_EX + "Permission denied." + Fore.RESET)
+        except Exception as e:
+            tqdm.write(Fore.LIGHTRED_EX + f"An error occurred: {e}" + Fore.RESET)
+        
+        pbar.update(1)
+        sleep(0.15)
+        
+    tqdm.write("\n")
+
+
+    files.clear()
+    files = [os.path.abspath(os.path.join("./output", file)) for file in os.listdir("./output")]
+
+    files = [convert_to_wsl_path(file) for file in files]
+
     for file in files:
         for script in scripts:
             try:
                 words = script.split(" ")
-                command = ["bash", "./scripts/" + words[0], file]
+                script_name = words[0]
+                command = ["bash", "./scripts/" + script_name, file]
+
                 while len(words) > 1:
                     command.append(words.pop(1))
+                
                 result = subprocess.run(
                     command,
                     capture_output=True,
                     text=True,
                     check=True
                 )
-                tqdm.write(Fore.LIGHTGREEN_EX + f"Skript '{script}' úspěšně spuštěn!" + Fore.RESET)
-                tqdm.write("Výstup skriptu:")
+                tqdm.write(Fore.LIGHTGREEN_EX + f"Script '{script}' on file '{file.split("/")[-1]}' successfully started!" + Fore.RESET)
+                tqdm.write("Script output:")
                 tqdm.write(result.stdout)
             except subprocess.CalledProcessError as e:
-                tqdm.write(Fore.LIGHTRED_EX + f"Chyba při spouštění skriptu '{script}':" + Fore.RESET)
+                tqdm.write(Fore.LIGHTRED_EX + f"Error while running script '{script}':" + Fore.RESET)
                 tqdm.write(e.stderr)
             finally:
                 pbar.update(1)
+            sleep(0.15)

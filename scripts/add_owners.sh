@@ -1,28 +1,29 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo "Použití: $0 <absolutní_cesta_k_souboru>"
+  echo "Usage: $0 <absolute_path_to_file>"
   exit 1
 fi
 
 FILE="$1"
 
 if [ ! -f "$FILE" ]; then
-  echo "Chyba: Soubor $FILE neexistuje!"
+  echo "Error: File $FILE does not exist!"
   exit 1
 fi
 
-OUTPUT_DIR="./output"
+# Create a temporary file
+TEMP_FILE=$(mktemp)
 
-mkdir -p "$OUTPUT_DIR"
-
-OUTPUT_FILE="$OUTPUT_DIR/$(basename "$FILE")"
-
+# Add text to the beginning and append the original file content
 {
-  echo "Jan Novák"
-  echo "Marie Svobodová"
-  echo "Petr Dvořák"
+  echo "John Smith"
+  echo "Mary Johnson"
+  echo "Peter Brown"
   cat "$FILE"
-} > "$OUTPUT_FILE"
+} > "$TEMP_FILE"
 
-echo "Hotovo! Upravený soubor je uložen v: $OUTPUT_FILE"
+# Move the temporary file back to the original file location
+mv "$TEMP_FILE" "$FILE"
+
+echo "Done! The updated file is: $FILE"

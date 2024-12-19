@@ -1,4 +1,8 @@
-Datum vytvoření: 10-12-2024
+Creation Date: 17-12-2024
+Creation Date: 10.12.2024
+John Smith
+Mary Johnson
+Peter Brown
 # hostname=argexpr3.vsb.cz
 # FLAGS: USE_SSE=1 USE_AVX=1 USE_MIC=0 USE_PFLOAT=1 USE_RFLOAT=1 USE_MFLOAT=1 USE_EPOW=1 DEBUG=1 VERB=1
 # CMAP File Version:	0.1

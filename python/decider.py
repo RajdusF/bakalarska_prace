@@ -2,18 +2,18 @@ import os
 
 from colorama import Fore
 
-import global_variables
-from command_functions import (add, add_folder, input_files, output, remove,
-                               save, select, set_operations, settings,
-                               show_files, sort)
-from help_func import (add_history, help_add, help_cd, help_filter,
-                       help_output, help_select, help_sort, load_history,
-                       my_help, print_history, show_added_files,
-                       show_current_folder)
+import python.global_variables as global_variables
+from python.command_functions import (add, add_folder, add_in_dict, input_files, output,
+                                      remove, save, select, set_operations,
+                                      settings, show_files, sort)
+from python.help_func import (add_history, help_add, help_cd, help_filter,
+                              help_output, help_select, help_sort,
+                              load_history, my_help, print_history,
+                              show_added_files, show_current_folder)
 
 
 def process_command(command : str, dict, files : list, added_files : list):
-    from filter import filter
+    from python.filter import filter
     
     commands = command.split(" ")
         
@@ -91,21 +91,36 @@ def process_command(command : str, dict, files : list, added_files : list):
         files.extend(temp)
         add_history(command, files)
     
-    elif "find" in commands:
-        finds = []
-        for file in added_files:
-            finds.extend(find(commands[commands.index("find") + 1:], file))
+    elif commands[0] == "find":
+        occurances = []
+        
+        first_mark = command.index("\"")
+        second_mark = command.index("\"", first_mark + 1)
+        
+        to_find = command[first_mark + 1:second_mark]
+        
+        command.replace(to_find, "")
+        
+        if commands[1] == "in" and commands[2] == "files":
+            occurances = find(to_find, files)
+        elif commands[2] == "added":
+            occurances = find(to_find, added_files)
             
-        print(Fore.GREEN + f"Found {len(finds)} occurances:" + Fore.RESET)
-        for find in finds:
-            print(find)
+        print(Fore.GREEN + f"Found {len(occurances)} occurances:" + Fore.RESET)
+            
+        for x in occurances:
+            print(x)
+            
     
     elif "add" in commands and len(commands) > 1:
         if commands[0] == "add" and len(commands) == 1:
             help_add()
             return
         
-        if commands[1] == "*" and len(commands) == 2:
+        if commands[1] == "files" and commands[2] == "contains":
+            add_in_dict(files, added_files, dict, commands[3])
+        
+        elif commands[1] == "*" and len(commands) == 2:
             add("*", files, added_files)
         elif "\\" in command and len(commands) == 2:
             added_files.extend(add_folder(commands[1]))
@@ -132,13 +147,15 @@ def process_command(command : str, dict, files : list, added_files : list):
             show_added_files(added_files)
         elif len(commands) == 2 and commands[1] == "files":
             show_files(files)
+        elif len(commands) == 2 and commands[1] == "dist":
+            print(dict)
         elif len(commands) == 2:                          # dict[commands[1]]):
             if dict.get(commands[1]) != None:
                 print(f"Files in \"{commands[1]}\":")
                 for x in dict[commands[1]]:
                     print(x)
             else:
-                print(f"Save file {commands[4]} not found")
+                print(f"Save file {commands[1]} not found")
                 return
         else:
             print("Added files:")
@@ -162,7 +179,7 @@ def process_command(command : str, dict, files : list, added_files : list):
 
         
     elif commands[0] == "save" and commands[2] == "to" and len(commands) == 4:
-        if commands[1] == "files":
+        if commands[1] == "files" or commands[1] == "names":
             save(commands[3], files, dict)
         elif commands[1] == "added":
             save(commands[3], added_files, dict)
@@ -196,6 +213,15 @@ def process_command(command : str, dict, files : list, added_files : list):
         if 2 <= len(commands) <= 3 :
             output(added_files=added_files, output_file=commands[1], extend=extend_choice)
         
+    elif "names" in commands:
+        if len(commands) == 1:
+            print(dict)
+        elif len(commands) == 2:
+            names = []
+            for x in files:
+                names.append(x.split("\\")[-1])
+            dict[commands[1]] = names
+    
     elif "history" in commands and len(commands) == 1:
         print_history()
         

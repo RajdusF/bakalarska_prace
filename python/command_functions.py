@@ -4,11 +4,11 @@ import os
 
 from colorama import Fore
 
-import global_variables
+import python.global_variables as global_variables
 
 
 def show_files(files):
-    from help_func import recalculate_size, time_from_now
+    from python.help_func import recalculate_size, time_from_now
     
     print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurrences
     for file in files:
@@ -22,7 +22,7 @@ def show_files(files):
 
 
 def add(name : str, files : list, added_files : list):
-    from help_func import search_folder
+    from python.help_func import search_folder
     i = len(added_files)
     for x in files:
         if name in x:
@@ -48,6 +48,14 @@ def add(name : str, files : list, added_files : list):
         
     print(f"Added {len(added_files) - i} files")
     return(len(added_files) - i)
+
+def add_in_dict(files : list, added_files : list, dict : dict, dict_name : str):
+    for x in files:
+        if x.split("\\")[-1] in dict[dict_name]:
+            if x not in added_files:
+                added_files.append(x)
+    
+    return added_files
 
 
 def add_folder(folder : str, recursive: bool = False):
@@ -124,7 +132,7 @@ def settings(option, value):
     
     settings_data = {}
 
-    settings_path = os.path.join(os.path.dirname(__file__), 'settings.json')
+    settings_path = os.path.join(os.path.dirname(__file__), '../settings.json')
     
     if unit is not None:
         settings_data["unit"] = unit
@@ -154,56 +162,22 @@ def settings(option, value):
         json.dump(settings_data, json_file, indent=4)
 
 
-def find(commands, input_file : str):       
-    sentence = None
-    variable = None
-    operator = None
-    comparing_size = None
-    collumn_index = -1
-    collumns = []
-    lines_to_return = []
+def find(to_find : str, files : list):          
+    occurances = []
     
-    for command in commands:
-        if command.startswith('"') and command.endswith('"'):
-            sentence = command[1:-1]
-    
-    if len(commands) == 3 and "<" in commands or ">" in commands or "=" in commands:
-        variable = commands[0]
-        operator = commands[1]
-        comparing_size = int(commands[2])
-    
-    with open(input_file) as file:
-        lines = file.readlines()
-        for i, line in enumerate(lines):
-            if len(commands) == 1 or type(commands) == str:
-                if (commands[0] in line and type(commands) == list) or (type(commands) == str and commands in line):
-                    return line
-                
-            elif commands[0] == "all" and sentence in line:
-                lines_to_return.append(line)
+    for file in files:
+        if os.path.isfile(file):
+            with open(file) as f:
+                lines = f.readlines()
+                for i, line in enumerate(lines):
+                    if to_find in line:
+                        print(f"File: {file}")
+                        print(f"Line: {line}")
+                        print(f"Line number: {i}")
+                        print()
+                        occurances.append(line)
             
-            
-            elif sentence and sentence in line:
-                return line
-            
-            
-            elif len(commands) == 2 and commands[0] == "all" and commands[1] in line:
-                lines_to_return.append(line)
-                
-            elif variable and operator and comparing_size:
-                words = line.split()
-                if len(collumns) == 0:
-                    if words[0] == "#h":
-                        collumns = words[1:]
-                        collumn_index = collumns.index(variable)
-                
-                else:
-                    if collumn_index != -1 and words[0] != "#f":
-                        number = words[collumn_index]
-                        if eval(f"{number} {operator} {comparing_size}"):
-                            return line
-                        
-    return lines_to_return
+    return occurances
 
 
 def sort(commands, files):

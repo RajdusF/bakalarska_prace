@@ -6,7 +6,7 @@ import time
 
 from colorama import Fore
 
-import global_variables
+import python.global_variables as global_variables
 
 history = []
 

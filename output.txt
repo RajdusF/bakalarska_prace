@@ -1,6 +1,3 @@
 C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
 C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap
 C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
-C:\Users\Filip\Documents\bakalarska_prace\files\205_TAU_28.07.22_lung.txt
-C:\Users\Filip\Documents\bakalarska_prace\files\ZPG.txt
-C:\Users\Filip\Documents\bakalarska_prace\files\zzzzz
