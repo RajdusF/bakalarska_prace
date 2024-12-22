@@ -9,6 +9,8 @@ CREATED_WIDTH = 16
 
 path = None
 
+find_occurances = []
+
 
 # Notebook
 # path = "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files"

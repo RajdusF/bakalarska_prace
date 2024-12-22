@@ -1,3 +1,4 @@
+set search 0
 cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
 filter *
 names compute
@@ -10,4 +11,16 @@ compute - database
 save names to names1
 cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
 filter *
-add files contains names1
+filter files contains names1
+set search 2
+filter files name *.out
+find "RESULT" in files
+print occurance[0]
+print occurance[11]
+print occurances[0]
+print occurances[1]
+print occurances[0][2]
+#take 0 number in 0
+#take 0 number in 1
+#if(take 0 number in 2) {print cau}
+#take 0 number in 11

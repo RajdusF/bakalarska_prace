@@ -5,6 +5,7 @@ import time
 
 from colorama import Fore
 
+from python.command_functions import add_if_in_dict
 import python.global_variables as global_variables
 from python.help_func import (progress_bar, recalculate_size, search_folder,
                               time_from_now)
@@ -15,7 +16,7 @@ MODIFIED_WIDTH = 16
 CREATED_WIDTH = 16
 
 
-def filter(commands, input_files = None, input_added_files = None):
+def filter(commands, input_files = None, input_added_files = None, dict = None):
     # Inicialization
     size = None
     size_operator = None
@@ -76,8 +77,10 @@ def filter(commands, input_files = None, input_added_files = None):
             return
                 
     
+    if commands[1] == "files" and commands[2] == "contains":
+        files = add_if_in_dict(input_files, input_added_files, dict, commands[3])
     # If user wants filter "files" or "added_files"
-    if commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
+    elif commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
         temp = []
         if commands[1] == "files":
             temp = input_files.copy()
@@ -95,7 +98,31 @@ def filter(commands, input_files = None, input_added_files = None):
         else:
             files = temp.copy()
     
+        
+        # Deep searching
+        if global_variables.search_folders == 1:
+            for folder in os.isdir(input_files):
+                if name in folder:
+                    temp_files, num_of_folders = search_folder(folder, commands)
+                    files.extend(temp_files)
+        elif global_variables.search_folders == 2:            
+            progress_bar(0, 100, 30)
+            all_directories = [file for file in input_files if os.path.isdir(file)]    
+            
+            for i, folder in enumerate(all_directories):
+                temp_files, num_of_folders_returned = search_folder(folder=folder, commands=commands, progress=i, progress_total=len(all_directories))
+                num_of_folders += num_of_folders_returned
+                files.extend(temp_files)
+                progress_bar(i, len(all_directories), 30)
+                
+            progress_bar(1, 1, 30)
+            print()
+                
+                
+        num_of_folders += len(only_directories)
+        
         input_files.clear()
+        
     else:
         input_files.clear()
         
@@ -147,30 +174,6 @@ def filter(commands, input_files = None, input_added_files = None):
     if size and size_operator:
         files = filter_size(files, size_operator, size, size_unit)
         
-    """
-    if size and size_operator and commands[commands.index("size") - 1] != "not":
-        if size_operator == "<":
-            files = [file for file in files if os.path.getsize(file) < size]
-        elif size_operator == "<=":
-            files = [file for file in files if os.path.getsize(file) <= size]
-        elif size_operator == ">":
-            files = [file for file in files if os.path.getsize(file) > size]
-        elif size_operator == ">=":
-            files = [file for file in files if os.path.getsize(file) >= size]
-        elif size_operator == "=":
-            files = [file for file in files if os.path.getsize(file) == size]
-    elif size and size_operator and commands[commands.index("size") - 1] == "not":
-        if size_operator == "<":
-            files = [file for file in files if os.path.getsize(file) >= size]
-        elif size_operator == "<=":
-            files = [file for file in files if os.path.getsize(file) > size]
-        elif size_operator == ">":
-            files = [file for file in files if os.path.getsize(file) <= size]
-        elif size_operator == ">=":
-            files = [file for file in files if os.path.getsize(file) < size]
-        elif size_operator == "=":
-            files = [file for file in files if os.path.getsize(file) != size]
-    """
     
     #           m_operator modified time_unit
     # filter modified < 10 days

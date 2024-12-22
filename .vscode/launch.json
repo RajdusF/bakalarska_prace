@@ -13,7 +13,7 @@
 			"name": "Python: workspace",
 			"type": "python",
 			"request": "launch",
-			"program": "${workspaceFolder}/main.py",
+			"program": "${workspaceFolder}/configurator.py",
 			"console": "integratedTerminal"
 		},
 		{

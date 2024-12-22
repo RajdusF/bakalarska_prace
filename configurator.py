@@ -11,6 +11,7 @@ from python.help_func import read_commands_from_file, read_json
 
 
 def main(args):
+    os.system('cls')
     files = []
     added_files = []
     dict = {}    
@@ -31,7 +32,7 @@ def main(args):
     
     while True:  
         command = input(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + " >> ")
-        print(Fore.RESET)
+        print(Fore.RESET, end="")
             
         command_start_time = time.time()
         

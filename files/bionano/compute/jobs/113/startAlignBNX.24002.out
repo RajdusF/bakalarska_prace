@@ -1,0 +1,837 @@
++ '[' -x /usr/bin/id ']'
++ '[' -z 1000 ']'
+++ /usr/bin/id -un
++ USER=bionano
++ LOGNAME=bionano
++ MAIL=/var/spool/mail/bionano
++ '[' 1000 = 0 ']'
++ pathmunge /usr/local/sbin after
++ case ":${PATH}:" in
++ pathmunge /usr/sbin after
++ case ":${PATH}:" in
+++ /usr/bin/hostname
++ HOSTNAME=srvfeia0ca.vsb.cz
++ HISTSIZE=1000
++ '[' ignoredups = ignorespace ']'
++ export HISTCONTROL=ignoredups
++ HISTCONTROL=ignoredups
++ export PATH USER LOGNAME MAIL HOSTNAME HISTSIZE HISTCONTROL
++ '[' 1000 -gt 199 ']'
+++ /usr/bin/id -gn
+++ /usr/bin/id -un
++ '[' bionano = bionano ']'
++ umask 002
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/256term.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/256term.sh
+++ local256=
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ unset local256
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/abrt-console-notification.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/abrt-console-notification.sh
+++ tty -s
+++ return 0
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/bash_completion.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/bash_completion.sh
+++ '[' -z '4.2.46(2)-release' -o -z '' -o -n '' ']'
+++ return
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/bionano.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/bionano.sh
+++ source /opt/sge/default/common/settings.sh
++++ SGE_ROOT=/opt/sge
++++ export SGE_ROOT
++++ '[' -x /opt/sge/util/arch ']'
+++++ /opt/sge/util/arch
++++ SGE_ARCH=lx-amd64
++++ export SGE_ARCH
+++++ /opt/sge/util/arch -m
++++ DEFAULTMANPATH=/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
+++++ /opt/sge/util/arch -mt
++++ MANTYPE=man
++++ DRMAA_LIBRARY_PATH=/opt/sge/lib//libdrmaa.so
++++ SGE_CELL=default
++++ export SGE_CELL
++++ SGE_CLUSTER_NAME=p6444
++++ export SGE_CLUSTER_NAME
++++ unset SGE_QMASTER_PORT
++++ unset SGE_EXECD_PORT
++++ '[' -d /opt/sge/man ']'
++++ '[' /opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man = '' ']'
++++ MANPATH=/opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
++++ export MANPATH
++++ PATH=/opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
++++ export PATH
++++ '[' -d /opt/sge/lib/lx-amd64 ']'
++++ case $SGE_ARCH in
++++ unset DEFAULTMANPATH MANTYPE
+++ export DRMAA_LIBRARY_PATH=/opt/sge/lib/lx-amd64/libdrmaa.so.1.0
+++ DRMAA_LIBRARY_PATH=/opt/sge/lib/lx-amd64/libdrmaa.so.1.0
+++ export LD_LIBRARY_PATH=/opt/sge/lib/lx-amd64//opt/sge/lib/lx-amd64/
+++ LD_LIBRARY_PATH=/opt/sge/lib/lx-amd64//opt/sge/lib/lx-amd64/
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/colorgrep.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/colorgrep.sh
+++ /usr/libexec/grepconf.sh -c
+++ alias 'grep=grep --color=auto'
+++ alias 'egrep=egrep --color=auto'
+++ alias 'fgrep=fgrep --color=auto'
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/colorls.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/colorls.sh
+++ '[' '!' -t 0 ']'
+++ return
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/flatpak.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/flatpak.sh
+++ '[' /exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share = /home/bionano/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share ']'
+++ export XDG_DATA_DIRS
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/lang.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/lang.sh
+++ sourced=0
+++ '[' -n en_US.UTF-8 ']'
+++ saved_lang=en_US.UTF-8
+++ '[' -f /home/bionano/.i18n ']'
+++ LANG=en_US.UTF-8
+++ unset saved_lang
+++ '[' 0 = 1 ']'
+++ unset sourced
+++ unset langfile
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/less.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/less.sh
+++ '[' -x /usr/bin/lesspipe.sh ']'
+++ export 'LESSOPEN=||/usr/bin/lesspipe.sh %s'
+++ LESSOPEN='||/usr/bin/lesspipe.sh %s'
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/mc.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/mc.sh
+++ '[' -n '4.2.46(2)-release' ']'
+++ alias 'mc=. /usr/libexec/mc/mc-wrapper.sh'
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/PackageKit.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/PackageKit.sh
+++ [[ -n '' ]]
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/qt-graphicssystem.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/qt-graphicssystem.sh
+++ '[' -z 1 -a -z '' ']'
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/qt.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/qt.sh
+++ '[' -z /usr/lib64/qt-3.3 ']'
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/vim.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/vim.sh
+++ '[' -n '4.2.46(2)-release' -o -n '' -o -n '' ']'
+++ '[' -x /usr/bin/id ']'
++++ /usr/bin/id -u
+++ ID=1000
+++ '[' -n 1000 -a 1000 -le 200 ']'
+++ alias vi
+++ alias vi=vim
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/vte.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/vte.sh
+++ '[' -n '4.2.46(2)-release' -o -n '' ']'
+++ [[ hxB == *i* ]]
+++ return 0
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/which2.sh ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/which2.sh
+++ alias 'which=alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
++ for i in '/etc/profile.d/*.sh' /etc/profile.d/sh.local
++ '[' -r /etc/profile.d/sh.local ']'
++ '[' hxB '!=' hxB ']'
++ . /etc/profile.d/sh.local
++ unset i
++ unset -f pathmunge
++ '[' -f /home/bionano/.bashrc ']'
++ . /home/bionano/.bashrc
+++ '[' -f /etc/bashrc ']'
+++ . /etc/bashrc
++++ '[' '' ']'
++++ shopt -q login_shell
+++ export NVM_DIR=/home/bionano/.nvm
+++ NVM_DIR=/home/bionano/.nvm
+++ '[' -s /home/bionano/.nvm/nvm.sh ']'
+++ . /home/bionano/.nvm/nvm.sh
++++ NVM_SCRIPT_SOURCE=']'
++++ '[' -z '' ']'
++++ export NVM_CD_FLAGS=
++++ NVM_CD_FLAGS=
++++ nvm_has unsetopt
++++ type unsetopt
++++ '[' -z /home/bionano/.nvm ']'
++++ unset NVM_SCRIPT_SOURCE
++++ '[' -z '' ']'
++++ export NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist
++++ NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist
++++ '[' -z '' ']'
++++ export NVM_IOJS_ORG_MIRROR=https://iojs.org/dist
++++ NVM_IOJS_ORG_MIRROR=https://iojs.org/dist
++++ nvm_process_parameters
++++ local NVM_AUTO_MODE
++++ NVM_AUTO_MODE=use
++++ nvm_supports_source_options
+++++ echo '[ $# -gt 0 ] && echo $1'
+++++ . /dev/stdin yes
++++ '[' _yes = _yes ']'
++++ '[' 0 -ne 0 ']'
++++ nvm_auto use
++++ local NVM_MODE
++++ NVM_MODE=use
++++ local VERSION
++++ '[' _use = _install ']'
++++ '[' _use = _use ']'
+++++ nvm_resolve_local_alias default
++++ VERSION=v8.9.4
++++ '[' -n v8.9.4 ']'
++++ nvm use --silent v8.9.4
++++ '[' 3 -lt 1 ']'
++++ local COMMAND
++++ COMMAND=use
++++ shift
++++ local VERSION
++++ local ADDITIONAL_PARAMETERS
++++ case $COMMAND in
++++ local PROVIDED_VERSION
++++ local NVM_USE_SILENT
++++ NVM_USE_SILENT=0
++++ local NVM_DELETE_PREFIX
++++ NVM_DELETE_PREFIX=0
++++ local NVM_LTS
++++ '[' 2 -ne 0 ']'
++++ case "$1" in
++++ NVM_USE_SILENT=1
++++ shift
++++ '[' 1 -ne 0 ']'
++++ case "$1" in
++++ '[' -n v8.9.4 ']'
++++ PROVIDED_VERSION=v8.9.4
++++ shift
++++ '[' 0 -ne 0 ']'
++++ '[' -n '' ']'
++++ '[' -z v8.9.4 ']'
+++++ nvm_match_version v8.9.4
+++++ local NVM_IOJS_PREFIX
++++++ nvm_iojs_prefix
++++++ nvm_echo iojs
++++++ command printf '%s\n' iojs
+++++ NVM_IOJS_PREFIX=iojs
+++++ local PROVIDED_VERSION
+++++ PROVIDED_VERSION=v8.9.4
+++++ case "_$PROVIDED_VERSION" in
+++++ nvm_version v8.9.4
+++++ local PATTERN
+++++ PATTERN=v8.9.4
+++++ local VERSION
+++++ '[' -z v8.9.4 ']'
+++++ '[' v8.9.4 = current ']'
+++++ local NVM_NODE_PREFIX
++++++ nvm_node_prefix
++++++ nvm_echo node
++++++ command printf '%s\n' node
+++++ NVM_NODE_PREFIX=node
+++++ case "_${PATTERN}" in
++++++ nvm_ls v8.9.4
++++++ command tail -1
++++++ local PATTERN
++++++ tail -1
++++++ PATTERN=v8.9.4
++++++ local VERSIONS
++++++ VERSIONS=
++++++ '[' v8.9.4 = current ']'
++++++ local NVM_IOJS_PREFIX
+++++++ nvm_iojs_prefix
+++++++ nvm_echo iojs
+++++++ command printf '%s\n' iojs
++++++ NVM_IOJS_PREFIX=iojs
++++++ local NVM_NODE_PREFIX
+++++++ nvm_node_prefix
+++++++ nvm_echo node
+++++++ command printf '%s\n' node
++++++ NVM_NODE_PREFIX=node
++++++ local NVM_VERSION_DIR_IOJS
+++++++ nvm_version_dir iojs
+++++++ local NVM_WHICH_DIR
+++++++ NVM_WHICH_DIR=iojs
+++++++ '[' -z iojs ']'
+++++++ '[' iojs = new ']'
+++++++ '[' _iojs = _iojs ']'
+++++++ nvm_echo /home/bionano/.nvm/versions/io.js
+++++++ command printf '%s\n' /home/bionano/.nvm/versions/io.js
++++++ NVM_VERSION_DIR_IOJS=/home/bionano/.nvm/versions/io.js
++++++ local NVM_VERSION_DIR_NEW
+++++++ nvm_version_dir new
+++++++ local NVM_WHICH_DIR
+++++++ NVM_WHICH_DIR=new
+++++++ '[' -z new ']'
+++++++ '[' new = new ']'
+++++++ nvm_echo /home/bionano/.nvm/versions/node
+++++++ command printf '%s\n' /home/bionano/.nvm/versions/node
++++++ NVM_VERSION_DIR_NEW=/home/bionano/.nvm/versions/node
++++++ local NVM_VERSION_DIR_OLD
+++++++ nvm_version_dir old
+++++++ local NVM_WHICH_DIR
+++++++ NVM_WHICH_DIR=old
+++++++ '[' -z old ']'
+++++++ '[' old = new ']'
+++++++ '[' _old = _iojs ']'
+++++++ '[' _old = _old ']'
+++++++ nvm_echo /home/bionano/.nvm
+++++++ command printf '%s\n' /home/bionano/.nvm
++++++ NVM_VERSION_DIR_OLD=/home/bionano/.nvm
++++++ case "${PATTERN}" in
++++++ nvm_resolve_local_alias v8.9.4
++++++ '[' -z v8.9.4 ']'
++++++ local VERSION
++++++ local EXIT_CODE
+++++++ nvm_resolve_alias v8.9.4
+++++++ '[' -z v8.9.4 ']'
+++++++ local PATTERN
+++++++ PATTERN=v8.9.4
+++++++ local ALIAS
+++++++ ALIAS=v8.9.4
+++++++ local ALIAS_TEMP
+++++++ local SEEN_ALIASES
+++++++ SEEN_ALIASES=v8.9.4
+++++++ true
++++++++ nvm_alias v8.9.4
++++++++ echo
+++++++ ALIAS_TEMP=
+++++++ '[' -z '' ']'
+++++++ break
+++++++ '[' -n v8.9.4 ']'
+++++++ '[' _v8.9.4 '!=' _v8.9.4 ']'
+++++++ nvm_validate_implicit_alias v8.9.4
+++++++ return 2
++++++ VERSION=
++++++ EXIT_CODE=2
++++++ '[' -z '' ']'
++++++ return 2
+++++++ nvm_ensure_version_prefix v8.9.4
+++++++ local NVM_VERSION
++++++++ nvm_strip_iojs_prefix v8.9.4
++++++++ local NVM_IOJS_PREFIX
++++++++ command sed -e 's/^\([0-9]\)/v\1/g'
++++++++ sed -e 's/^\([0-9]\)/v\1/g'
+++++++++ nvm_iojs_prefix
+++++++++ nvm_echo iojs
+++++++++ command printf '%s\n' iojs
++++++++ NVM_IOJS_PREFIX=iojs
++++++++ '[' v8.9.4 = iojs ']'
++++++++ nvm_echo v8.9.4
++++++++ command printf '%s\n' v8.9.4
+++++++ NVM_VERSION=v8.9.4
+++++++ nvm_is_iojs_version v8.9.4
+++++++ case "${1-}" in
+++++++ return 1
+++++++ nvm_echo v8.9.4
+++++++ command printf '%s\n' v8.9.4
++++++ PATTERN=v8.9.4
++++++ '[' v8.9.4 = N/A ']'
++++++ local NVM_PATTERN_STARTS_WITH_V
++++++ case $PATTERN in
++++++ NVM_PATTERN_STARTS_WITH_V=true
++++++ '[' true = true ']'
+++++++ nvm_num_version_groups v8.9.4
+++++++ local VERSION
+++++++ VERSION=v8.9.4
+++++++ VERSION=8.9.4
+++++++ VERSION=8.9.4
+++++++ '[' -z 8.9.4 ']'
+++++++ local NVM_NUM_DOTS
++++++++ nvm_echo 8.9.4
++++++++ command printf '%s\n' 8.9.4
++++++++ command sed -e 's/[^\.]//g'
++++++++ sed -e 's/[^\.]//g'
+++++++ NVM_NUM_DOTS=..
+++++++ local NVM_NUM_GROUPS
+++++++ NVM_NUM_GROUPS=...
+++++++ nvm_echo 3
+++++++ command printf '%s\n' 3
++++++ '[' _3 = _3 ']'
++++++ nvm_is_version_installed v8.9.4
++++++ '[' -n v8.9.4 ']'
+++++++ nvm_version_path v8.9.4
++++++ '[' -d /home/bionano/.nvm/versions/node/v8.9.4 ']'
++++++ VERSIONS=v8.9.4
++++++ '[' '' = true ']'
++++++ '[' -z v8.9.4 ']'
++++++ nvm_echo v8.9.4
++++++ command printf '%s\n' v8.9.4
+++++ VERSION=v8.9.4
+++++ '[' -z v8.9.4 ']'
+++++ '[' _v8.9.4 = _N/A ']'
+++++ nvm_echo v8.9.4
+++++ command printf '%s\n' v8.9.4
++++ VERSION=v8.9.4
++++ '[' -z v8.9.4 ']'
++++ '[' _v8.9.4 = _system ']'
++++ '[' _v8.9.4 = _∞ ']'
++++ nvm_ensure_version_installed v8.9.4
++++ local PROVIDED_VERSION
++++ PROVIDED_VERSION=v8.9.4
++++ local LOCAL_VERSION
++++ local EXIT_CODE
+++++ nvm_version v8.9.4
+++++ local PATTERN
+++++ PATTERN=v8.9.4
+++++ local VERSION
+++++ '[' -z v8.9.4 ']'
+++++ '[' v8.9.4 = current ']'
+++++ local NVM_NODE_PREFIX
++++++ nvm_node_prefix
++++++ nvm_echo node
++++++ command printf '%s\n' node
+++++ NVM_NODE_PREFIX=node
+++++ case "_${PATTERN}" in
++++++ nvm_ls v8.9.4
++++++ command tail -1
++++++ tail -1
++++++ local PATTERN
++++++ PATTERN=v8.9.4
++++++ local VERSIONS
++++++ VERSIONS=
++++++ '[' v8.9.4 = current ']'
++++++ local NVM_IOJS_PREFIX
+++++++ nvm_iojs_prefix
+++++++ nvm_echo iojs
+++++++ command printf '%s\n' iojs
++++++ NVM_IOJS_PREFIX=iojs
++++++ local NVM_NODE_PREFIX
+++++++ nvm_node_prefix
+++++++ nvm_echo node
+++++++ command printf '%s\n' node
++++++ NVM_NODE_PREFIX=node
++++++ local NVM_VERSION_DIR_IOJS
+++++++ nvm_version_dir iojs
+++++++ local NVM_WHICH_DIR
+++++++ NVM_WHICH_DIR=iojs
+++++++ '[' -z iojs ']'
+++++++ '[' iojs = new ']'
+++++++ '[' _iojs = _iojs ']'
+++++++ nvm_echo /home/bionano/.nvm/versions/io.js
+++++++ command printf '%s\n' /home/bionano/.nvm/versions/io.js
++++++ NVM_VERSION_DIR_IOJS=/home/bionano/.nvm/versions/io.js
++++++ local NVM_VERSION_DIR_NEW
+++++++ nvm_version_dir new
+++++++ local NVM_WHICH_DIR
+++++++ NVM_WHICH_DIR=new
+++++++ '[' -z new ']'
+++++++ '[' new = new ']'
+++++++ nvm_echo /home/bionano/.nvm/versions/node
+++++++ command printf '%s\n' /home/bionano/.nvm/versions/node
++++++ NVM_VERSION_DIR_NEW=/home/bionano/.nvm/versions/node
++++++ local NVM_VERSION_DIR_OLD
+++++++ nvm_version_dir old
+++++++ local NVM_WHICH_DIR
+++++++ NVM_WHICH_DIR=old
+++++++ '[' -z old ']'
+++++++ '[' old = new ']'
+++++++ '[' _old = _iojs ']'
+++++++ '[' _old = _old ']'
+++++++ nvm_echo /home/bionano/.nvm
+++++++ command printf '%s\n' /home/bionano/.nvm
++++++ NVM_VERSION_DIR_OLD=/home/bionano/.nvm
++++++ case "${PATTERN}" in
++++++ nvm_resolve_local_alias v8.9.4
++++++ '[' -z v8.9.4 ']'
++++++ local VERSION
++++++ local EXIT_CODE
+++++++ nvm_resolve_alias v8.9.4
+++++++ '[' -z v8.9.4 ']'
+++++++ local PATTERN
+++++++ PATTERN=v8.9.4
+++++++ local ALIAS
+++++++ ALIAS=v8.9.4
+++++++ local ALIAS_TEMP
+++++++ local SEEN_ALIASES
+++++++ SEEN_ALIASES=v8.9.4
+++++++ true
++++++++ nvm_alias v8.9.4
++++++++ echo
+++++++ ALIAS_TEMP=
+++++++ '[' -z '' ']'
+++++++ break
+++++++ '[' -n v8.9.4 ']'
+++++++ '[' _v8.9.4 '!=' _v8.9.4 ']'
+++++++ nvm_validate_implicit_alias v8.9.4
+++++++ return 2
++++++ VERSION=
++++++ EXIT_CODE=2
++++++ '[' -z '' ']'
++++++ return 2
+++++++ nvm_ensure_version_prefix v8.9.4
+++++++ local NVM_VERSION
++++++++ nvm_strip_iojs_prefix v8.9.4
++++++++ local NVM_IOJS_PREFIX
++++++++ command sed -e 's/^\([0-9]\)/v\1/g'
++++++++ sed -e 's/^\([0-9]\)/v\1/g'
+++++++++ nvm_iojs_prefix
+++++++++ nvm_echo iojs
+++++++++ command printf '%s\n' iojs
++++++++ NVM_IOJS_PREFIX=iojs
++++++++ '[' v8.9.4 = iojs ']'
++++++++ nvm_echo v8.9.4
++++++++ command printf '%s\n' v8.9.4
+++++++ NVM_VERSION=v8.9.4
+++++++ nvm_is_iojs_version v8.9.4
+++++++ case "${1-}" in
+++++++ return 1
+++++++ nvm_echo v8.9.4
+++++++ command printf '%s\n' v8.9.4
++++++ PATTERN=v8.9.4
++++++ '[' v8.9.4 = N/A ']'
++++++ local NVM_PATTERN_STARTS_WITH_V
++++++ case $PATTERN in
++++++ NVM_PATTERN_STARTS_WITH_V=true
++++++ '[' true = true ']'
+++++++ nvm_num_version_groups v8.9.4
+++++++ local VERSION
+++++++ VERSION=v8.9.4
+++++++ VERSION=8.9.4
+++++++ VERSION=8.9.4
+++++++ '[' -z 8.9.4 ']'
+++++++ local NVM_NUM_DOTS
++++++++ nvm_echo 8.9.4
++++++++ command sed -e 's/[^\.]//g'
++++++++ command printf '%s\n' 8.9.4
++++++++ sed -e 's/[^\.]//g'
+++++++ NVM_NUM_DOTS=..
+++++++ local NVM_NUM_GROUPS
+++++++ NVM_NUM_GROUPS=...
+++++++ nvm_echo 3
+++++++ command printf '%s\n' 3
++++++ '[' _3 = _3 ']'
++++++ nvm_is_version_installed v8.9.4
++++++ '[' -n v8.9.4 ']'
+++++++ nvm_version_path v8.9.4
++++++ '[' -d /home/bionano/.nvm/versions/node/v8.9.4 ']'
++++++ VERSIONS=v8.9.4
++++++ '[' '' = true ']'
++++++ '[' -z v8.9.4 ']'
++++++ nvm_echo v8.9.4
++++++ command printf '%s\n' v8.9.4
+++++ VERSION=v8.9.4
+++++ '[' -z v8.9.4 ']'
+++++ '[' _v8.9.4 = _N/A ']'
+++++ nvm_echo v8.9.4
+++++ command printf '%s\n' v8.9.4
++++ LOCAL_VERSION=v8.9.4
++++ EXIT_CODE=0
++++ local NVM_VERSION_DIR
++++ '[' 0 '!=' 0 ']'
++++ nvm_is_version_installed v8.9.4
++++ '[' -n v8.9.4 ']'
+++++ nvm_version_path v8.9.4
++++ '[' -d /home/bionano/.nvm/versions/node/v8.9.4 ']'
++++ local NVM_VERSION_DIR
+++++ nvm_version_path v8.9.4
+++++ local VERSION
+++++ VERSION=v8.9.4
+++++ '[' -z v8.9.4 ']'
+++++ nvm_is_iojs_version v8.9.4
+++++ case "${1-}" in
+++++ return 1
+++++ nvm_version_greater 0.12.0 v8.9.4
+++++ command awk 'BEGIN {
+    if (ARGV[1] == "" || ARGV[2] == "") exit(1)
+    split(ARGV[1], a, /\./);
+    split(ARGV[2], b, /\./);
+    for (i=1; i<=3; i++) {
+      if (a[i] && a[i] !~ /^[0-9]+$/) exit(2);
+      if (b[i] && b[i] !~ /^[0-9]+$/) { exit(0); }
+      if (a[i] < b[i]) exit(3);
+      else if (a[i] > b[i]) exit(0);
+    }
+    exit(4)
+  }' 0.12.0 8.9.4
+++++ awk 'BEGIN {
+    if (ARGV[1] == "" || ARGV[2] == "") exit(1)
+    split(ARGV[1], a, /\./);
+    split(ARGV[2], b, /\./);
+    for (i=1; i<=3; i++) {
+      if (a[i] && a[i] !~ /^[0-9]+$/) exit(2);
+      if (b[i] && b[i] !~ /^[0-9]+$/) { exit(0); }
+      if (a[i] < b[i]) exit(3);
+      else if (a[i] > b[i]) exit(0);
+    }
+    exit(4)
+  }' 0.12.0 8.9.4
++++++ nvm_version_dir new
++++++ local NVM_WHICH_DIR
++++++ NVM_WHICH_DIR=new
++++++ '[' -z new ']'
++++++ '[' new = new ']'
++++++ nvm_echo /home/bionano/.nvm/versions/node
++++++ command printf '%s\n' /home/bionano/.nvm/versions/node
+++++ nvm_echo /home/bionano/.nvm/versions/node/v8.9.4
+++++ command printf '%s\n' /home/bionano/.nvm/versions/node/v8.9.4
++++ NVM_VERSION_DIR=/home/bionano/.nvm/versions/node/v8.9.4
+++++ nvm_strip_path /opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin /bin
+++++ '[' -z /home/bionano/.nvm ']'
+++++ nvm_echo /opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++++ command sed -e 's#/home/bionano/.nvm/[^/]*/bin[^:]*:##g' -e 's#:/home/bionano/.nvm/[^/]*/bin[^:]*##g' -e 's#/home/bionano/.nvm/[^/]*/bin[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/bin[^:]*:##g' -e 's#:/home/bionano/.nvm/versions/[^/]*/[^/]*/bin[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/bin[^:]*##g'
+++++ command printf '%s\n' /opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++++ sed -e 's#/home/bionano/.nvm/[^/]*/bin[^:]*:##g' -e 's#:/home/bionano/.nvm/[^/]*/bin[^:]*##g' -e 's#/home/bionano/.nvm/[^/]*/bin[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/bin[^:]*:##g' -e 's#:/home/bionano/.nvm/versions/[^/]*/[^/]*/bin[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/bin[^:]*##g'
++++ PATH=/opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++++ nvm_prepend_path /opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin /home/bionano/.nvm/versions/node/v8.9.4/bin
+++++ '[' -z /opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin ']'
+++++ nvm_echo /home/bionano/.nvm/versions/node/v8.9.4/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++++ command printf '%s\n' /home/bionano/.nvm/versions/node/v8.9.4/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
++++ PATH=/home/bionano/.nvm/versions/node/v8.9.4/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
++++ nvm_has manpath
++++ type manpath
++++ '[' -z /opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man ']'
+++++ nvm_strip_path /opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man /share/man
+++++ '[' -z /home/bionano/.nvm ']'
+++++ nvm_echo /opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
+++++ command printf '%s\n' /opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
+++++ command sed -e 's#/home/bionano/.nvm/[^/]*/share/man[^:]*:##g' -e 's#:/home/bionano/.nvm/[^/]*/share/man[^:]*##g' -e 's#/home/bionano/.nvm/[^/]*/share/man[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/share/man[^:]*:##g' -e 's#:/home/bionano/.nvm/versions/[^/]*/[^/]*/share/man[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/share/man[^:]*##g'
+++++ sed -e 's#/home/bionano/.nvm/[^/]*/share/man[^:]*:##g' -e 's#:/home/bionano/.nvm/[^/]*/share/man[^:]*##g' -e 's#/home/bionano/.nvm/[^/]*/share/man[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/share/man[^:]*:##g' -e 's#:/home/bionano/.nvm/versions/[^/]*/[^/]*/share/man[^:]*##g' -e 's#/home/bionano/.nvm/versions/[^/]*/[^/]*/share/man[^:]*##g'
++++ MANPATH=/opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
+++++ nvm_prepend_path /opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man /home/bionano/.nvm/versions/node/v8.9.4/share/man
+++++ '[' -z /opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man ']'
+++++ nvm_echo /home/bionano/.nvm/versions/node/v8.9.4/share/man:/opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
+++++ command printf '%s\n' /home/bionano/.nvm/versions/node/v8.9.4/share/man:/opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
++++ MANPATH=/home/bionano/.nvm/versions/node/v8.9.4/share/man:/opt/sge/man:/opt/sge/man:/usr/share/man/overrides:/usr/share/man:/usr/local/share/man
++++ export MANPATH
++++ export PATH
++++ hash -r
++++ export NVM_PATH=/home/bionano/.nvm/versions/node/v8.9.4/lib/node
++++ NVM_PATH=/home/bionano/.nvm/versions/node/v8.9.4/lib/node
++++ export NVM_BIN=/home/bionano/.nvm/versions/node/v8.9.4/bin
++++ NVM_BIN=/home/bionano/.nvm/versions/node/v8.9.4/bin
++++ '[' '' = true ']'
++++ local NVM_USE_OUTPUT
++++ '[' 1 -ne 1 ']'
++++ '[' _v8.9.4 '!=' _system ']'
++++ local NVM_USE_CMD
++++ NVM_USE_CMD='nvm use --delete-prefix'
++++ '[' -n v8.9.4 ']'
++++ NVM_USE_CMD='nvm use --delete-prefix v8.9.4'
++++ '[' 1 -eq 1 ']'
++++ NVM_USE_CMD='nvm use --delete-prefix v8.9.4 --silent'
++++ nvm_die_on_prefix 0 'nvm use --delete-prefix v8.9.4 --silent'
++++ local NVM_DELETE_PREFIX
++++ NVM_DELETE_PREFIX=0
++++ case "$NVM_DELETE_PREFIX" in
++++ local NVM_COMMAND
++++ NVM_COMMAND='nvm use --delete-prefix v8.9.4 --silent'
++++ '[' -z 'nvm use --delete-prefix v8.9.4 --silent' ']'
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ nvm_has npm
++++ type npm
++++ local NVM_NPM_PREFIX
+++++ npm config --loglevel=warn get prefix
++++ NVM_NPM_PREFIX=/home/bionano/.nvm/versions/node/v8.9.4
++++ nvm_tree_contains_path /home/bionano/.nvm /home/bionano/.nvm/versions/node/v8.9.4
++++ '[' -n '' ']'
++ PATH=/home/bionano/.nvm/versions/node/v8.9.4/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/opt/sge/bin:/opt/sge/bin/lx-amd64:/tmp/24002.1.pipeline:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/bionano/.local/bin:/home/bionano/bin
++ export PATH
++ JSON='{"args":" --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp ","url":"http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment","outobject":{"projectpk":1,"userpk":"2","jobpk":113,"objectpk":247,"samplepk":1,"projectobjectpk":114,"outputname":"output"}}'
++ LOGFILE=/data1/bionano/share/jobs/113/log.json
++ ME=startAlignBNX
++ source /home/bionano/tools/access/1.0/lib.sh
+++ URL='http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment","outobject":{"projectpk":1,"userpk":"2","jobpk":113,"objectpk":247,"samplepk":1,"projectobjectpk":114,"outputname":"output"}}'
+++ URL=http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment
+++ export OMP_WAIT_POLICY=PASSIVE
+++ OMP_WAIT_POLICY=PASSIVE
++++ date +%s
+++ BEGINSEC=1558353436
++ check 'gunzip -c -f /data1/bionano/share/jobs/113/all.bnx.gz > /data1/bionano/compute/jobs/113/all.bnx'
++ eval 'gunzip -c -f /data1/bionano/share/jobs/113/all.bnx.gz > /data1/bionano/compute/jobs/113/all.bnx'
+++ gunzip -c -f /data1/bionano/share/jobs/113/all.bnx.gz
++ RESULT=0
++ '[' 0 -ne 0 ']'
++ check 'python '\''/home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0/align_bnx_to_cmap.py'\'' --mol '\''/data1/bionano/compute/jobs/113/all.bnx'\'' --pipeline '\''/home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0'\'' --ra '\''/home/bionano/tools/access/1.0/../../pipeline/1.0/RefAligner/1.0'\'' --nthreads 56 --output '\''/data1/bionano/compute/jobs/113/output'\''  --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp '
++ eval 'python '\''/home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0/align_bnx_to_cmap.py'\'' --mol '\''/data1/bionano/compute/jobs/113/all.bnx'\'' --pipeline '\''/home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0'\'' --ra '\''/home/bionano/tools/access/1.0/../../pipeline/1.0/RefAligner/1.0'\'' --nthreads 56 --output '\''/data1/bionano/compute/jobs/113/output'\''  --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp '
+++ python /home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0/align_bnx_to_cmap.py --mol /data1/bionano/compute/jobs/113/all.bnx --pipeline /home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0 --ra /home/bionano/tools/access/1.0/../../pipeline/1.0/RefAligner/1.0 --nthreads 56 --output /data1/bionano/compute/jobs/113/output --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp
+  Prerun Tests:
+	0 ERRORS
+	0 WARNINGS
+
+Tools Version: N/A
+Solve Version: N/A
+Pipeline Version: 7981
+RefAligner Version: 7989
+
+Assmebly ID: 523
+
+  Pipeline start time: Mon May 20 13:57:48 2019
+
+checkScanScaling: autoNoise= True
+Executing stage number 1 : AutoNoise + SplitBNX
+
+Molecule Stats (/data1/bionano/compute/jobs/113/output/all.bnx):
+Total number of molecules: 5213750
+Total length (Mbp)       : 774182.471
+Average length (kbp)     :    148.489
+Molecule N50 (kbp)       :    253.500
+Label density (/100kb)   :     15.153
+
+autoNoise0
+ Starting Multi-Threaded Process:
+  Autonoise0
+  Running 1 jobs with 1 threads, sleepTime=0.05
+   START    1:                     Autonoise0,   1 Thr,    1 R,    1 T,    0 F,    0 Q
+   STOP     1:                     Autonoise0,   1 Thr,    0 R,    1 T,    1 F,    0 Q  TotalTime= 0h 50.05m  RunTime= 0h 50.05m  CPUload=4752% host=NA
+ Finished Multi-Threaded Process:
+  Autonoise0
+
+Using scan scaled bnx: /data1/bionano/compute/jobs/113/output/contigs/auto_noise/autoNoise0_rescaled.bnx for autoNoise1
+
+autoNoise1
+ Starting Multi-Threaded Process:
+  Autonoise1
+  Running 1 jobs with 1 threads, sleepTime=0.05
+   START    1:                     Autonoise1,   1 Thr,    1 R,    1 T,    0 F,    0 Q
+   STOP     1:                     Autonoise1,   1 Thr,    0 R,    1 T,    1 F,    0 Q  TotalTime= 0h 40.55m  RunTime= 0h 40.56m  CPUload=17805% host=NA
+ Finished Multi-Threaded Process:
+  Autonoise1
+
+Using scan scaled bnx: /data1/bionano/compute/jobs/113/output/contigs/auto_noise/autoNoise1_rescaled.bnx
+
+Finished noise evaluation -noiseonly, exiting
+Traceback (most recent call last):
+  File "/home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0/pipelineCL.py", line 49, in <module>
+    dnpipeline.run(varsP)
+  File "/home/bionano/tools/pipeline/Solve3.3_10252018/Pipeline/10252018/Pipeline.py", line 1640, in run
+    self.finalizePipeline(varsP)
+  File "/home/bionano/tools/pipeline/Solve3.3_10252018/Pipeline/10252018/Pipeline.py", line 2045, in finalizePipeline
+    util.writeFinalReport(varsP.infoReportFile, finalReport, varsP.outputContigFolder, varsP.outputContigPrefix )           #Simple, finalReport )
+  File "/home/bionano/tools/pipeline/Solve3.3_10252018/Pipeline/10252018/utilities.py", line 2076, in writeFinalReport
+    clusterSV=runClusterSV(outputContigFolder, outputContigPrefix)
+  File "/home/bionano/tools/pipeline/Solve3.3_10252018/Pipeline/10252018/utilities.py", line 1727, in runClusterSV
+    mergedSmapDir=os.path.join(outputContigFolder, "merged_smaps")
+  File "/usr/lib64/python2.7/posixpath.py", line 77, in join
+    elif path == '' or path.endswith('/'):
+AttributeError: 'NoneType' object has no attribute 'endswith'
+qrypath=  /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap
+Using output dir /data1/bionano/compute/jobs/113/output/contigs/alignmolvref
+Aligning /data1/bionano/compute/jobs/113/output/contigs/auto_noise/autoNoise1_rescaled.bnx 
+To /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap 
+
+Tools Version: N/A
+Solve Version: N/A
+Pipeline Version: 7981
+RefAligner Version: 7989
+
+Assmebly ID: None
+
+  Pipeline start time: Mon May 20 15:28:41 2019
+
+checkScanScaling: autoNoise= False
+Not performing autoNoise (see -y): setting doScanScale = False, hence not using _rescaled.bnx for BNX splits
+Loaded noise parameters:
+readparameters:/data1/bionano/compute/jobs/113/output/contigs/auto_noise/autoNoise1.errbin
+
+ Starting Multi-Threaded Process:
+  alignmolvref
+  Running 1 jobs with 56 threads, sleepTime=0.05
+   START    1:                   alignmolvref,  56 Thr,    1 R,    1 T,    0 F,    0 Q
+WARNING: Job alignmolvref has cpuTime= 0.0000, cpuPercent= 0.0000
+
+   STOP     1:                   alignmolvref,  56 Thr,    0 R,    1 T,    1 F,    0 Q  TotalTime= 0h 20.36m  RunTime= 0h 0.00m  CPUload=0% host=NA
+ Finished Multi-Threaded Process:
+  alignmolvref
+
+Starting AlignModule Align Stats stage for alignmolvref
+doref : reflen= 3088.2698
+Molecule Stats (/data1/bionano/compute/jobs/113/output/contigs/auto_noise/autoNoise1_rescaled.bnx):
+Total number of molecules: 1587734
+Total length (Mbp)       : 508735.946
+Average length (kbp)     :    320.416
+Molecule N50 (kbp)       :    333.789
+Label density (/100kb)   :     15.886
+Raw coverage of reference (X):    164.732
+
+Molecules aligned to reference:
+Total number of aligned molecules  :   1482672
+Fraction of aligned molecules      :         0.934
+Total molecule align length (Mbp)  :    381105.1
+Total reference align length (Mbp) :    382561.3
+Effective coverage of reference (X):       123.876
+Average aligned length (kbp)       :       257.0
+Fraction aligned length            :         0.749
+Average confidence                 :        40.5
+Molecules aligned to reference:
+Total number of aligned molecules  :   1482672
+Fraction of aligned molecules      :         0.934
+Total molecule align length (Mbp)  :    381105.1
+Total reference align length (Mbp) :    382561.3
+Effective coverage of reference (X):       123.876
+Average aligned length (kbp)       :       257.0
+Fraction aligned length            :         0.749
+Average confidence                 :        40.5
+Avg NLV           :        10.450
+Avg PLV           :        11.773
+Avg bpp           :       432.1
+Avg sd            :         0.023
+Avg sf            :         0.096
+Avg sr            :         0.015
+
+Finished AlignModule Align Stats stage for alignmolvref
+
+Warning in AlignModule.callCopyNumber: skipping copy number because missing merged alignments file alignmolvref/merge/alignmolvref_merge_r.cmap
+
+
+Warning/Error messages:
+warning : Warning in AlignModule.callCopyNumber: skipping copy number because missing merged alignments file alignmolvref/merge/alignmolvref_merge_r.cmap
+
+Warning summary:
+	1 warning(s)
+
+/usr/bin/python /home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0/pipelineCL.py -y -x -z -T 56 -j 56 -b /data1/bionano/compute/jobs/113/all.bnx -l /data1/bionano/compute/jobs/113/output -e exp -a /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml -t /home/bionano/tools/access/1.0/../../pipeline/1.0/RefAligner/1.0 -r /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap -F 0
+/usr/bin/python /home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0/runAlignMol.py -q /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap -r -b /data1/bionano/compute/jobs/113/output/contigs/auto_noise/autoNoise1_rescaled.bnx -a /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml -o /data1/bionano/compute/jobs/113/output/contigs/alignmolvref -t /home/bionano/tools/access/1.0/../../pipeline/1.0/RefAligner/1.0 -T 56 -j 56 -E /data1/bionano/compute/jobs/113/output/contigs/auto_noise/autoNoise1.errbin -p /home/bionano/tools/access/1.0/../../pipeline/1.0/Pipeline/1.0 -F 0
++ RESULT=0
++ '[' 0 -ne 0 ']'
++ checkfile /data1/bionano/compute/jobs/113/output/alignments.tar.gz
++ '[' '!' -e /data1/bionano/compute/jobs/113/output/alignments.tar.gz ']'
++ check 'mv '\''/data1/bionano/compute/jobs/113/output/alignments.tar.gz'\'' '\''/data1/bionano/share/jobs/113/alignments.tar.gz'\'''
++ eval 'mv '\''/data1/bionano/compute/jobs/113/output/alignments.tar.gz'\'' '\''/data1/bionano/share/jobs/113/alignments.tar.gz'\'''
+++ mv /data1/bionano/compute/jobs/113/output/alignments.tar.gz /data1/bionano/share/jobs/113/alignments.tar.gz
++ RESULT=0
++ '[' 0 -ne 0 ']'
++ message '{"subject":"startAlignBNX","input":{"args":" --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp ","url":"http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment","outobject":{"projectpk":1,"userpk":"2","jobpk":113,"objectpk":247,"samplepk":1,"projectobjectpk":114,"outputname":"output"}},"output":"/data1/bionano/share/jobs/113/alignments.tar.gz"}'
++ echo '{"subject":"startAlignBNX","input":{"args":" --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp ","url":"http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment","outobject":{"projectpk":1,"userpk":"2","jobpk":113,"objectpk":247,"samplepk":1,"projectobjectpk":114,"outputname":"output"}},"output":"/data1/bionano/share/jobs/113/alignments.tar.gz"}'
+{"subject":"startAlignBNX","input":{"args":" --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp ","url":"http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment","outobject":{"projectpk":1,"userpk":"2","jobpk":113,"objectpk":247,"samplepk":1,"projectobjectpk":114,"outputname":"output"}},"output":"/data1/bionano/share/jobs/113/alignments.tar.gz"}
++ '[' -n /data1/bionano/share/jobs/113/log.json ']'
+++ dirname /data1/bionano/share/jobs/113/log.json
++ mkdir -p /data1/bionano/share/jobs/113
++ echo '{"subject":"startAlignBNX","input":{"args":" --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp ","url":"http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment","outobject":{"projectpk":1,"userpk":"2","jobpk":113,"objectpk":247,"samplepk":1,"projectobjectpk":114,"outputname":"output"}},"output":"/data1/bionano/share/jobs/113/alignments.tar.gz"}'
++ '[' -n http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment ']'
++ curl --insecure --max-time 60 -X POST -H 'Content-Type: application/json' -d '{"subject":"startAlignBNX","input":{"args":" --ref /data1/bionano/share/jobs/113/hg38_DLE1_0kb_0labels.cmap --optArgs /data1/bionano/share/jobs/113/optArguments_haplotype_DLE1_saphyr_human.xml --prefix exp ","url":"http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment","outobject":{"projectpk":1,"userpk":"2","jobpk":113,"objectpk":247,"samplepk":1,"projectobjectpk":114,"outputname":"output"}},"output":"/data1/bionano/share/jobs/113/alignments.tar.gz"}' http://158.196.145.143:3005/ProjectBrowser/bnx/bnx_app/api/1.0/finishBnxAlignment
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   511    0    28  100   483  10397   175k --:--:-- --:--:-- --:--:--  235k
+posted finishBnxAlignment OK+ elapsed
+++ date +%s
++ ENDSEC=1558361071
+++ expr 1558361071 - 1558353436
++ echo 'Elapsed time: 7635 seconds'
+Elapsed time: 7635 seconds
++ BEGINSEC=1558361071

@@ -49,13 +49,14 @@ def add(name : str, files : list, added_files : list):
     print(f"Added {len(added_files) - i} files")
     return(len(added_files) - i)
 
-def add_in_dict(files : list, added_files : list, dict : dict, dict_name : str):
+def add_if_in_dict(files : list, added_files : list, dict : dict, dict_name : str):
+    r = []
+    
     for x in files:
         if x.split("\\")[-1] in dict[dict_name]:
-            if x not in added_files:
-                added_files.append(x)
+                r.append(x)
     
-    return added_files
+    return r
 
 
 def add_folder(folder : str, recursive: bool = False):
@@ -171,11 +172,8 @@ def find(to_find : str, files : list):
                 lines = f.readlines()
                 for i, line in enumerate(lines):
                     if to_find in line:
-                        print(f"File: {file}")
-                        print(f"Line: {line}")
-                        print(f"Line number: {i}")
-                        print()
-                        occurances.append(line)
+                        print(f"{file} : {i} : {line}")
+                        occurances.append([file, line.strip()])
             
     return occurances
 
@@ -368,3 +366,6 @@ def remove(commands, added_files):
             print("File not found")
         
     return original_length - len(added_files)
+
+def search_folders():
+    pass
