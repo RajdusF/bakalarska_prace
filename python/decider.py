@@ -1,6 +1,7 @@
 import os
 
 from colorama import Fore
+from tabulate import tabulate
 
 import python.global_variables as global_variables
 from python.command_functions import (add, add_folder, add_if_in_dict, find,
@@ -8,59 +9,22 @@ from python.command_functions import (add, add_folder, add_if_in_dict, find,
                                       select, set_operations, settings,
                                       show_files, sort)
 from python.global_variables import find_occurances as find_occurances
-from python.help_func import (add_history, help_add, help_cd, help_filter,
-                              help_output, help_select, help_sort,
-                              load_history, my_help, print_history,
-                              show_added_files, show_current_folder)
-
-
-def get_variable(message : str):
-    r = []
-    
-    if "occurances" in message and "[" not in message and "]" not in message:
-                for i, x in enumerate(find_occurances):
-                    # print(f"{i}: {x}")
-                    r.append(x)
-                return r
-    
-    elif "occurances" in message and "[" in message and "]" in message and message.count("[") == 2 and message.count("]") == 2:
-        try:
-            index = int(message[message.index("[") + 1:message.index("]")])
-            second_bracket_index = int(message.find("[", message.index("[") + 1))
-            part = int(message[second_bracket_index + 1: message.index("]", second_bracket_index)])
-            for occurance in find_occurances:
-                # print(occurance[index])
-                r.append(occurance[index].split("\\")[-2])
-            return r
-        except:
-            print("Wrong input")
-    
-    elif "occurances" in message and "[" in message and "]" in message:
-        try:
-            index = int(message[message.index("[") + 1:message.index("]")])
-            for occurance in find_occurances:
-                # print(occurance[index])
-                r.append(occurance[index])
-            return r
-        except:
-            print("Wrong input")
-    
-    elif "occurance" in message and "[" in message and "]" in message:
-        try:
-            index = int(message[message.index("[") + 1:message.index("]")])
-            # print(f"{index}: {find_occurances[index]}")
-            return find_occurances[index]
-        except:
-            print("Wrong input")
-    
-    return -1
+from python.global_variables import result as result
+from python.help_func import (add_history, get_variable, help_add, help_cd,
+                              help_filter, help_output, help_select, help_sort,
+                              help_take_float, help_take_int, load_history,
+                              my_help, print_history, print_occurances,
+                              show_added_files, show_current_folder,
+                              take_float, take_int)
 
 
 def process_command(command : str, dict, files : list, added_files : list):
     from python.filter import filter
     global find_occurances
+    global result
     
     commands = command.split(" ")
+    original_command = command
     
     if "if" in command and "(" in command and ")" in command and "{" in command and "}" in command:
         if_condition = command[command.index("(") + 1:command.index(")")]
@@ -77,294 +41,399 @@ def process_command(command : str, dict, files : list, added_files : list):
                     process_command(s, dict, files, added_files)
             
     else:
-        if command == "exit":
-            return -1
-        
-        if command == "?":
-            my_help()
-            return
-        
-        if commands[0] == "print":
-            message = command[6:]
+        try:
+            result.clear()
+            result = get_variable(command, find_occurances)
+            print("To save result use \"save result to variable/file.txt\"")
+            print("Result:")
+            for x in result:
+                print(x)
+        except:
+            if command == "exit":
+                return -1
             
-            try:
-                result = get_variable(message)
-                for x in result:
-                    print(x)
-            except:
-                print(command[6:])
-            return
-        
-        if "**" in command:
-            print("Wrong input")
-            return
-        
-        if command == "*":
-            show_current_folder()
-            # for file in os.listdir(global_variables.path):
-            #     print(file)
+            if command == "?" or command == "help":
+                my_help()
+                return
+            
+            if commands[0] == "print":
+                message = command[6:]
                 
-        elif command == "cd.." or command == "cd ..":
-            global_variables.path = os.path.abspath(os.path.join(global_variables.path, os.pardir))
-            print(f"Current path: {global_variables.path}")
+                try:
+                    result = get_variable(command, find_occurances)
+                    for x in result:
+                        print(x)
+                except:
+                    print(command[6:])
+                return
             
-        elif "cd" in command:
-            path_index = commands.index("cd") + 1
+            if "**" in command:
+                print("Wrong input")
+                return
             
-            if global_variables.path == None:
-                global_variables.path = ""
-            
-            if path_index < len(commands):
-                path = commands[path_index]
-                if os.path.isdir(path):
-                    global_variables.path = path
-                    print(f"Current path: {global_variables.path}")
-                elif os.path.isdir(global_variables.path + "\\" + path):
-                    global_variables.path = global_variables.path + "\\" + path
-                    print(f"Current path: {global_variables.path}")
-                else:
-                    print(Fore.RED + "Path not found" + Fore.RESET)
-            else:
+            if command == "*" or command == "ls":
+                show_current_folder()
+  
+            elif command == "cd.." or command == "cd ..":
+                global_variables.path = os.path.abspath(os.path.join(global_variables.path, os.pardir))
                 print(f"Current path: {global_variables.path}")
                 
-            if commands[0] == "cd" and len(commands) == 1:
-                help_cd()
+            elif "cd" in command:
+                path_index = commands.index("cd") + 1
                 
-        elif "filter" in commands:
-            if commands[0] == "filter" and len(commands) == 1:
-                help_filter()
-                return
-            
-            temp = filter(commands, files, added_files, dict)
-            files.clear()
-            files.extend(temp)
-            
-            
-            add_history(command, files)
-        
-        elif "sort" in commands:
-            if commands[0] == "sort" and len(commands) == 1:
-                help_sort()
-                return
-            
-            temp = sort(commands, files)
-            files.clear()
-            files.extend(temp)
-            add_history(command, files)
-            
-        elif "select" in commands:
-            if commands[0] == "select" and len(commands) == 1:
-                help_select()
-                return
-            
-            temp = select(commands, files)
-            files.clear()
-            files.extend(temp)
-            add_history(command, files)
-        
-        elif commands[0] == "find":
-            find_occurances.clear()
-            
-            first_mark = command.index("\"")
-            second_mark = command.index("\"", first_mark + 1)
-            
-            to_find = command[first_mark + 1:second_mark]
-            
-            command.replace(to_find, "")
-            
-            if commands[2] == "in" and commands[3] == "files":
-                find_occurances = find(to_find, files)
-            elif commands[2] == "in" and commands[3] == "added":
-                find_occurances = find(to_find, added_files)
+                if global_variables.path == None:
+                    global_variables.path = ""
                 
-            print(Fore.GREEN + f"Found {len(find_occurances)} occurances:" + Fore.RESET)
-                
-            for i, x in enumerate(find_occurances):
-                print(f"{i}: {x}")
-                
-            print(find_occurances)
-                
-        
-        elif commands[0] == "take" and len(commands) == 5:
-            try:
-                number_index = None
-                occurances_index = None
-                
-                if commands[2] == "number":
-                    number_index = int(commands[1])
-                
-                if commands[3] == "in":
-                    occurances_index = int(commands[4])
-                    
-                text = find_occurances[occurances_index][1]
-                
-                numbers = []
-                current_number = ""
-
-                for char in text:
-                    if char.isdigit():
-                        current_number += char
-                    elif current_number:
-                        numbers.append(int(current_number))
-                        current_number = ""
-
-                if current_number:
-                    numbers.append(int(current_number))
-                    
-                if number_index >= len(numbers):
-                    print("Number not found")
-                    return
-                    
-                print(f"Number {number_index}: {numbers[number_index]}")
-                return numbers[number_index]
-            except ValueError:
-                print("Invalid number format in command.")
-            except IndexError:
-                print("Command arguments are out of range.")
-            except Exception as e:
-                print("An unexpected error occurred:", str(e))
-                
-            print("Invalid command format or insufficient arguments.")
-                
-        
-        elif "add" in commands and len(commands) > 1:
-            if commands[0] == "add" and len(commands) == 1:
-                help_add()
-                return
-            
-            if commands[1] == "files" and commands[2] == "contains":
-                r = add_if_in_dict(files, added_files, dict, commands[3])
-                for file in r:
-                    if file not in added_files:
-                        added_files.append(file)
-            
-            elif commands[1] == "*" and len(commands) == 2:
-                add("*", files, added_files)
-            elif "\\" in command and len(commands) == 2:
-                added_files.extend(add_folder(commands[1]))
-            elif "\\" in command and len(commands) == 3 and "all" in commands:
-                added_files.extend(add_folder(commands[2], recursive=True))
-                
-            elif len(commands) == 2:
-                    name = commands[1]
-                    add(name, files, added_files)
-            else:
-                print("Wrong input")
-                return
-            
-            print(f"Added files ({len(added_files)}):")
-            for x in added_files:
-                print(x)
-                
-        elif "remove" in commands:
-            r = remove(commands, added_files)
-            print(f"Removed {r} files")
-                
-        elif "show" in commands:
-            if len(commands) == 2 and commands[1] == "added":
-                show_added_files(added_files)
-            elif len(commands) == 2 and commands[1] == "files":
-                show_files(files)
-            elif len(commands) == 2 and commands[1] == "dist":
-                print(dict)
-            elif len(commands) == 2:                          # dict[commands[1]]):
-                if dict.get(commands[1]) != None:
-                    print(f"Files in \"{commands[1]}\":")
-                    for x in dict[commands[1]]:
-                        print(x)
+                if path_index < len(commands):
+                    path = commands[path_index]
+                    if os.path.isdir(path):
+                        global_variables.path = path
+                        print(f"Current path: {global_variables.path}")
+                    elif os.path.isdir(global_variables.path + "\\" + path):
+                        global_variables.path = global_variables.path + "\\" + path
+                        print(f"Current path: {global_variables.path}")
+                    else:
+                        print(Fore.RED + "Path not found" + Fore.RESET)
                 else:
-                    print(f"Save file {commands[1]} not found")
-                    return
-            else:
-                print("Added files:")
-                for x in added_files:
-                    print(x)
-            
-        elif "set" in commands:
-            if "unit" in commands and len(commands) == 3:
-                settings(0, commands[2])
-            elif "search" in commands and len(commands) == 3:
-                settings(1, int(commands[2]))
-            elif "duplicity" in commands or "duplicate" in commands and len(commands) == 3:
-                settings(2, int(commands[2]))
-            elif "path" in commands and len(commands) == 3:
-                settings(3, commands[2])
-            elif len(commands) == 1:
-                print(f"Default unit: {global_variables.default_unit}")
-                print(f"Search folders: {global_variables.search_folders}")
-                print(f"Show duplicity: {global_variables.show_duplicity}")
-                return
-
-            
-        elif commands[0] == "save" and commands[2] == "to" and len(commands) == 4:
-            if commands[1] == "files" or commands[1] == "names":
-                save(commands[3], files, dict)
-            elif commands[1] == "added":
-                save(commands[3], added_files, dict)
-            else:
-                print("Wrong input")
-            
-        elif commands[0] == "load" and commands[1] == "from" and command[3] == "to" and len(commands) == 5:
-            if commands[2] in dict:
-                if commands[4] == "files":
-                    files = dict[commands[2]].copy()
-                    print("Files loaded from \"" + commands[2] + "\"")
-                else:
-                    added_files = dict[commands[2]].copy()
-                    print("Files loaded from \"" + commands[2] + "\"")
-            else:
-                print("File not found")
+                    print(f"Current path: {global_variables.path}")
                     
-        elif "input" in commands:
-            if len(commands) == 1:
-                input_files(added_files)
-            elif len(commands) == 2:
-                input_files(added_files, commands[1])
-        
-        elif "output" in commands:
-            if commands[0] == "output" and len(commands) == 1:
-                help_output()
-                return
-            
-            extend_choice = True if "extend" in commands else False
+                if commands[0] == "cd" and len(commands) == 1:
+                    help_cd()
+                    
+            elif "filter" in commands:
+                if commands[0] == "filter" and len(commands) == 1:
+                    help_filter()
+                    return
                 
-            if 2 <= len(commands) <= 3 :
-                output(added_files=added_files, output_file=commands[1], extend=extend_choice)
-            
-        elif "names" in commands:
-            if len(commands) == 1:
-                print(dict)
-            elif len(commands) == 2:
-                names = []
-                for x in files:
-                    names.append(x.split("\\")[-1])
-                dict[commands[1]] = names
-        
-        elif "history" in commands and len(commands) == 1:
-            print_history()
-            
-        elif "history" in commands and len(commands) == 2:
-            try:
-                temp = load_history(int(commands[1]))
+                temp = filter(command, commands, files, added_files, dict)
                 files.clear()
                 files.extend(temp)
-                show_files(files)
-            except:
-                print("Wrong input")
                 
-        elif "ls" in commands and len(commands) == 1:
-            show_current_folder()
+                
+                add_history(command, files)
             
-        # Sjednocení, průnik, rozdíl
-        elif "A" in commands or "U" in commands or "-" in commands:
-            temp = set_operations(command, dict)
-            files.clear()
-            files.extend(temp)
-            add_history(command, files)
+            elif "sort" in commands:
+                if commands[0] == "sort" and len(commands) == 1:
+                    help_sort()
+                    return
+                
+                temp = sort(commands, files)
+                files.clear()
+                files.extend(temp)
+                add_history(command, files)
+                
+            elif "select" in commands:
+                if commands[0] == "select" and len(commands) == 1:
+                    help_select()
+                    return
+                
+                temp = select(commands, files)
+                files.clear()
+                files.extend(temp)
+                add_history(command, files)
             
+            elif commands[0] == "find":
+                find_occurances.clear()
+                
+                first_mark = command.index("\"")
+                second_mark = command.index("\"", first_mark + 1)
+                
+                to_find = command[first_mark + 1:second_mark]
+                
+                command = command.replace("\""+to_find+"\"", "").strip()
+                commands = command.split(" ")
+                
+                if len(commands) > 3:
+                    if commands[2] == "in" and commands[3] == "files":
+                        find_occurances = find(to_find, files)
+                    elif commands[2] == "in" and commands[3] == "added":
+                        find_occurances = find(to_find, added_files)
+                else:
+                    find_occurances = find(to_find, files)
+                    
+                print_occurances(find_occurances)
+                
+                add_history(original_command, files, find_occurances)
+                
+            elif "take_int" in commands[0]:
+                if command == "take_int":
+                    help_take_int()
+                    return
+                brackets_string_original = command[command.index("(") + 1:command.index(")")]
+                brackets_string = brackets_string_original.replace(" ", "")
+                command = command.replace(brackets_string_original, brackets_string)
+                commands = command.split(" ")
+                args = brackets_string.split(",")
+                what_to_take = args[0]
+                index = int(args[1])
+                
+                symbol = ""
+                if len(commands) >= 2:
+                    symbol = commands[1]
+                
+                number = ""
+                if len(commands) >= 3:
+                    number = commands[2]
+                
+                temp_occurances = []
+                for x in find_occurances:
+                    if what_to_take in ("lines", "line", "Lines", "Line"):
+                        taken_int = take_int(x[1], index)
+                        if taken_int != None:
+                            if eval(f"{taken_int}{symbol}{number}"):
+                                temp_occurances.append(x)
+                    elif what_to_take in ("file", "File"):
+                        taken_int = take_int(x[0], index)
+                        if taken_int != None:
+                            if eval(f"{taken_int}{symbol}{number}"):
+                                temp_occurances.append(x)
+                
+                find_occurances.clear()
+                find_occurances.extend(temp_occurances)
+                print_occurances(find_occurances)
+                
+                add_history(original_command, files, find_occurances)
+                
+            elif "take_float" in commands[0]:
+                if command == "take_float":
+                    help_take_float()
+                    return
+                brackets_string_original = command[command.index("(") + 1:command.index(")")]
+                brackets_string = brackets_string_original.replace(" ", "")
+                command = command.replace(brackets_string_original, brackets_string)
+                commands = command.split(" ")
+                args = brackets_string.split(",")
+                what_to_take = args[0]
+                index = int(args[1])
+                
+                symbol = ""
+                if len(commands) >= 2:
+                    symbol = commands[1]
+                
+                number = ""
+                if len(commands) >= 3:
+                    number = commands[2]
+                
+                temp_occurances = []
+                for x in find_occurances:
+                    if what_to_take in ("lines", "line", "Lines", "Line"):
+                        taken_float = take_float(x[1], index)
+                        if taken_float != None:
+                            if eval(f"{taken_float}{symbol}{number}"):
+                                temp_occurances.append(x)
+                    elif what_to_take in ("file", "File"):
+                        taken_float = take_float(x[0], index)
+                        if taken_float != None:
+                            if eval(f"{taken_float}{symbol}{number}"):
+                                temp_occurances.append(x)
+                
+                find_occurances.clear()
+                find_occurances.extend(temp_occurances)
+                print_occurances(find_occurances)
+                
+                add_history(original_command, files, find_occurances)
+
+            elif commands[0] == "take" and len(commands) == 5:
+                """
+                try:
+                    number_index = None
+                    occurances_index = None
+                    
+                    if commands[2] == "number":
+                        number_index = int(commands[1])
+                    
+                    if commands[3] == "in":
+                        occurances_index = int(commands[4])
+                        
+                    text = find_occurances[occurances_index][1]
+                    
+                    numbers = []
+                    current_number = ""
+
+                    for char in text:
+                        if char.isdigit():
+                            current_number += char
+                        elif current_number:
+                            numbers.append(int(current_number))
+                            current_number = ""
+
+                    if current_number:
+                        numbers.append(int(current_number))
+                        
+                    if number_index >= len(numbers):
+                        print("Number not found")
+                        return
+                        
+                    print(f"Number {number_index}: {numbers[number_index]}")
+                    return numbers[number_index]
+                except ValueError:
+                    print("Invalid number format in command.")
+                except IndexError:
+                    print("Command arguments are out of range.")
+                except Exception as e:
+                    print("An unexpected error occurred:", str(e))
+                    
+                print("Invalid command format or insufficient arguments.")
+            """
             
-        elif command == "":
-            return
+            elif command in ("occ to files", "occ to added", "occurances to files", "occurances to added"):
+                files.clear()
+                files.extend([x[0] for x in find_occurances])
+                add_history(command, files, find_occurances)
+                        
+            elif "add" in commands and len(commands) > 1:
+                if commands[0] == "add" and len(commands) == 1:
+                    help_add()
+                    return
+                
+                if commands[1] == "files" and commands[2] == "contains":
+                    r = add_if_in_dict(files, added_files, dict, commands[3])
+                    for file in r:
+                        if file not in added_files:
+                            added_files.append(file)
+                
+                elif commands[1] == "*" and len(commands) == 2:
+                    add("*", files, added_files)
+                elif "\\" in command and len(commands) == 2:
+                    added_files.extend(add_folder(commands[1]))
+                elif "\\" in command and len(commands) == 3 and "all" in commands:
+                    added_files.extend(add_folder(commands[2], recursive=True))
+                    
+                elif len(commands) == 2:
+                        name = commands[1]
+                        add(name, files, added_files)
+                else:
+                    print("Wrong input")
+                    return
+                
+                print(f"Added files ({len(added_files)}):")
+                for x in added_files:
+                    print(x)
+                    
+            elif "remove" in commands:
+                r = remove(commands, added_files)
+                print(f"Removed {r} files")
+                    
+            elif "show" in commands:
+                if len(commands) == 2 and commands[1] == "added":
+                    show_added_files(added_files)
+                elif len(commands) == 2 and commands[1] == "files":
+                    show_files(files)
+                elif len(commands) == 2 and commands[1] == "dist":
+                    print(dict)
+                elif len(commands) == 2:                          # dict[commands[1]]):
+                    if dict.get(commands[1]) != None:
+                        print(f"Files in \"{commands[1]}\":")
+                        for x in dict[commands[1]]:
+                            print(x)
+                    else:
+                        print(f"Save file {commands[1]} not found")
+                        return
+                else:
+                    print("Added files:")
+                    for x in added_files:
+                        print(x)
+                
+            elif "set" in commands:
+                if "unit" in commands and len(commands) == 3:
+                    settings(0, commands[2])
+                elif "search" in commands and len(commands) == 3:
+                    settings(1, int(commands[2]))
+                elif "duplicity" in commands or "duplicate" in commands and len(commands) == 3:
+                    settings(2, int(commands[2]))
+                elif "path" in commands and len(commands) == 3:
+                    settings(3, commands[2])
+                elif len(commands) == 1:
+                    print(f"Default unit: {global_variables.default_unit}")
+                    print(f"Search folders: {global_variables.search_folders}")
+                    print(f"Show duplicity: {global_variables.show_duplicity}")
+                    return
         
-        else:
-            print("Wrong input")
+            elif commands[0] == "save" and commands[2] == "to" and len(commands) == 4:
+                if commands[1] == "result":
+                    if "." in command[3]:
+                        output(added_files=result, output_file=commands[3], extend=False)
+                    else:
+                        dict[commands[3]] = result.copy()
+                        print(f"Result saved to \"{commands[3]}\"")
+                elif commands[1] == "files" or commands[1] == "names":
+                    save(commands[3], files, dict)
+                elif commands[1] == "added":
+                    save(commands[3], added_files, dict)
+                elif commands[1] == "occurances":
+                    temp = []
+                    temp = [row[0] for row in find_occurances]
+                    save(commands[3], temp, dict)
+                else:
+                    print("Wrong input")
+                
+            elif commands[0] == "load" and commands[1] == "from" and command[3] == "to" and len(commands) == 5:
+                if commands[2] in dict:
+                    if commands[4] == "files":
+                        files = dict[commands[2]].copy()
+                        print("Files loaded from \"" + commands[2] + "\"")
+                    else:
+                        added_files = dict[commands[2]].copy()
+                        print("Files loaded from \"" + commands[2] + "\"")
+                else:
+                    print("File not found")
+                        
+            elif "input" in commands:
+                if len(commands) == 1:
+                    input_files(added_files)
+                elif len(commands) == 2:
+                    input_files(added_files, commands[1])
+            
+            elif "output" in commands:
+                if commands[0] == "output" and len(commands) == 1:
+                    help_output()
+                    return
+                
+                if commands[1] in dict:
+                    output(added_files=dict[commands[1]], output_file="output.txt", extend=False)
+                else:
+                    extend_choice = True if "extend" in commands else False
+                        
+                    if 2 <= len(commands) <= 3 :
+                        output(added_files=added_files, output_file=commands[1], extend=extend_choice)
+                
+            elif "names" in commands:
+                if len(commands) == 1:
+                    print(dict)
+                elif len(commands) == 2:
+                    try:
+                        if len(files) == 0:
+                            raise Exception("No files to save")
+                        names = []
+                        for x in files:
+                            names.append(x.split("\\")[-1])
+                        dict[commands[1]] = names
+                        
+                        print(f"Names saved to \"{commands[1]}\"")
+                    except Exception as e:
+                        print(Fore.RED + "Error during saving names: ", e)
+            
+            elif "history" in commands and len(commands) == 1:
+                print_history()
+                
+            elif "history" in commands and len(commands) == 2:
+                r = load_history(int(commands[1]), files, find_occurances)
+                if r == 0:
+                    print("History loaded successfully")
+                else:
+                    print("History error occured")
+
+                
+            # Sjednocení, průnik, rozdíl
+            elif "A" in commands or "U" in commands or "-" in commands:
+                temp = set_operations(command, dict)
+                files.clear()
+                files.extend(temp)
+                add_history(command, files)
+                
+                
+            elif command == "":
+                return
+            
+            else:
+                print("Wrong input")

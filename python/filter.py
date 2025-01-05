@@ -5,8 +5,8 @@ import time
 
 from colorama import Fore
 
-from python.command_functions import add_if_in_dict
 import python.global_variables as global_variables
+from python.command_functions import add_if_in_dict
 from python.help_func import (progress_bar, recalculate_size, search_folder,
                               time_from_now)
 
@@ -16,7 +16,7 @@ MODIFIED_WIDTH = 16
 CREATED_WIDTH = 16
 
 
-def filter(commands, input_files = None, input_added_files = None, dict = None):
+def filter(command, commands, input_files = None, input_added_files = None, dict = None):
     # Inicialization
     size = None
     size_operator = None
@@ -77,8 +77,9 @@ def filter(commands, input_files = None, input_added_files = None, dict = None):
             return
                 
     
-    if commands[1] == "files" and commands[2] == "contains":
-        files = add_if_in_dict(input_files, input_added_files, dict, commands[3])
+    # if commands[1] == "files" and commands[2] == "contains":
+    #     files = add_if_in_dict(input_files, input_added_files, dict, commands[3])
+    
     # If user wants filter "files" or "added_files"
     elif commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
         temp = []
@@ -171,10 +172,17 @@ def filter(commands, input_files = None, input_added_files = None, dict = None):
                 
         num_of_folders += len(only_directories)
         
+   
+    # command = filter name *.txt size > 100KB contains names1 (dict)
+    if "contains" in commands:
+        contains_name = commands[commands.index("contains") + 1]
+        files = add_if_in_dict(files, dict, contains_name)
+    
+    
     if size and size_operator:
         files = filter_size(files, size_operator, size, size_unit)
         
-    
+
     #           m_operator modified time_unit
     # filter modified < 10 days
     if modified and modified_operator and modified_time_unit: 

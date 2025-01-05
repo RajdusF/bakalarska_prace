@@ -1,3 +1,2 @@
-C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
-C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap
-C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
+C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs\113\startAlignBNX.24002.out
+C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs\113\startAlignBNX.24002.out

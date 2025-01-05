@@ -689,7 +689,7 @@ Input BNX file:	/data1/bionano/compute/jobs/116/startMQR.190716103949492639694/E
 Output folder:	/data1/bionano/compute/jobs/116/startMQR.190716103949492639694
 Minimum nicks in each channel of the molecule:	9
 Minimum length of the molecule in kb:	150
-SNR cutoff for channel 1:	0.000
+SNR cutoff for channel 1:	2.5522
 
 SUMMARY
 Instrument SN:    B037
@@ -738,7 +738,9 @@ Average molecule intensity for channel 1:	0.05
 + curl --insecure --max-time 60 -X POST -H 'Content-Type: application/json' -d '{"subject":"startMQR","input":{"RCmap":"","jobpk":116,"objectpk":253,"cmappk":0,"Population":0,"numchannels":1,"primarychannel":1,"url":"http://158.196.145.143:3005/ProjectBrowser/api/1.0/finishedMQR"},"output":[{"populationid":0,"quantity":29525496945.1,"mol_n_50":543055.9,"mol_n_50_ge_20kb":467785.9,"avg_mol_snr":9.93,"ave_mol_intensity":0.05,"avg_label_density":10.41,"ref_length":0,"bpp":0,"stretch_percent":0,"channelid":1,"scaling_sd":0,"relative_sd":0,"se":0,"sf":0,"sr":0,"num_maps":0,"num_goodmaps":0,"map_rate":0,"fp_per_100kb":0,"fp_rate":0,"fn_rate":0,"num_molecules":137937,"SNR_cutoff":0}] }' http://158.196.145.143:3005/ProjectBrowser/api/1.0/finishedMQR
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   628    0    21  100   607   6005   169k --:--:-- --:--:-- --:--:--  197k
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   628    0    21  100   607   6005   169k --:--:-- --:--:-- --:--:--  197k
 posted finishedMQR OK+ ERRORS=0
 + ls -l /data1/bionano/compute/jobs/116/startMQR.190716103949492639694
 total 96540

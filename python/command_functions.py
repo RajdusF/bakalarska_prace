@@ -49,12 +49,12 @@ def add(name : str, files : list, added_files : list):
     print(f"Added {len(added_files) - i} files")
     return(len(added_files) - i)
 
-def add_if_in_dict(files : list, added_files : list, dict : dict, dict_name : str):
+def add_if_in_dict(files : list, dict : dict, dict_name : str):
     r = []
     
     for x in files:
         if x.split("\\")[-1] in dict[dict_name]:
-                r.append(x)
+            r.append(x)
     
     return r
 
@@ -168,12 +168,16 @@ def find(to_find : str, files : list):
     
     for file in files:
         if os.path.isfile(file):
-            with open(file) as f:
-                lines = f.readlines()
-                for i, line in enumerate(lines):
-                    if to_find in line:
-                        print(f"{file} : {i} : {line}")
-                        occurances.append([file, line.strip()])
+            try:
+                with open(file, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+                    for i, line in enumerate(lines):
+                        if to_find in line:
+                            occurances.append([file, line.strip()])
+            except UnicodeDecodeError:
+                print(Fore.YELLOW + f"Skipping {file}: Not a valid text file." + Fore.RESET)
+            except Exception as e:
+                print(Fore.YELLOW + f"Skipping {file} due to error: {e}" + Fore.RESET)
             
     return occurances
 
@@ -326,10 +330,11 @@ def set_operations(expression: str, dictionary: dict):
 
 def save(name, files_to_save, dict):
     try:
+        if len(files_to_save) == 0:
+            raise Exception("No files to save")
         dict[name] = files_to_save.copy()
-    except:
-        print("An error occurred while saving")
-        return
+    except Exception as e:
+        print(Fore.RED + "Error: {e}")
     
     print(f"Successfully saved to \"{name}\"")
     

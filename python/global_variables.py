@@ -10,6 +10,7 @@ CREATED_WIDTH = 16
 path = None
 
 find_occurances = []
+result = []
 
 
 # Notebook

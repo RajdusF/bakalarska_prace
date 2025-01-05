@@ -686,7 +686,7 @@ Input BNX file:	/data1/bionano/compute/jobs/124/startMQR.190718090214326230635/a
 Output folder:	/data1/bionano/compute/jobs/124/startMQR.190718090214326230635
 Minimum nicks in each channel of the molecule:	9
 Minimum length of the molecule in kb:	150
-SNR cutoff for channel 1:	3.999
+SNR cutoff for channel 1:	4.2
 
 SUMMARY
 Instrument SN:    
