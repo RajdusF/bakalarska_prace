@@ -1,11 +1,23 @@
 import copy
 import json
+import operator
 import os
+import re
+import textwrap
 
 from colorama import Fore
+from tabulate import tabulate
 
 import python.global_variables as global_variables
 
+ops = {
+    "==": operator.eq,
+    "!=": operator.ne,
+    "<": operator.lt,
+    ">": operator.gt,
+    "<=": operator.le,
+    ">=": operator.ge
+}
 
 def show_files(files):
     from python.help_func import recalculate_size, time_from_now
@@ -84,6 +96,7 @@ def settings(option, value):
     search_folders = None
     show_duplicity = None
     path = None
+    wraps = None
     
     if option == 0:
         if value == "0":
@@ -99,7 +112,7 @@ def settings(option, value):
             print("Size unit set to gigabytes")
             unit = "GB"
         else:
-            print("Wrong input")
+            print(Fore.RED + "Wrong input")
             
     elif option == 1:
         if value == 0:
@@ -109,7 +122,7 @@ def settings(option, value):
         elif value == 2:
             print("Search folders set to \"Search all folders\"")
         else:
-            print("Wrong input")
+            print(Fore.RED + "Wrong input")
             return
         search_folders = value
             
@@ -128,8 +141,12 @@ def settings(option, value):
         else:
             print(Fore.RED + "Path not found" + Fore.RESET)
             return
+   
+    elif option == 4:
+        wraps = value
+   
     else:
-        print("Wrong input")
+        print(Fore.RED + "Wrong input")
     
     settings_data = {}
 
@@ -158,12 +175,18 @@ def settings(option, value):
         global_variables.path = path
     else:
         settings_data["path"] = global_variables.path
+        
+    if wraps is not None:
+        settings_data["wraps"] = wraps
+        global_variables.wraps = wraps
+    else:
+        settings_data["wraps"] = global_variables.wraps
 
     with open(settings_path, 'w') as json_file:
         json.dump(settings_data, json_file, indent=4)
 
 
-def find(to_find : str, files : list):          
+def find(to_find : str, files : list, ignore_case : bool = False):          
     occurances = []
     
     for file in files:
@@ -171,9 +194,15 @@ def find(to_find : str, files : list):
             try:
                 with open(file, "r", encoding="utf-8") as f:
                     lines = f.readlines()
-                    for i, line in enumerate(lines):
-                        if to_find in line:
-                            occurances.append([file, line.strip()])
+                    
+                    if ignore_case:
+                        for line in lines:
+                            if re.search(to_find, line, re.IGNORECASE):
+                                occurances.append([file, line.strip()])
+                    else:
+                        for line in lines:
+                            if re.search(to_find, line, ):
+                                occurances.append([file, line.strip()])
             except UnicodeDecodeError:
                 print(Fore.YELLOW + f"Skipping {file}: Not a valid text file." + Fore.RESET)
             except Exception as e:
@@ -181,6 +210,118 @@ def find(to_find : str, files : list):
             
     return occurances
 
+def browse(added_files, command):
+    # TODO: Try dictionary instead of list
+    molecules = []
+    headers = []
+    filters = []
+    
+    operators = ["<", ">", "<=", ">=", "==", "!=", "U", "A", "-"]
+    
+    commands = command.split(" ")
+    
+    script_dir = os.path.dirname(os.path.abspath(__file__))  
+    header_path = os.path.join(script_dir, "..", "input", "header.txt")
+    
+    with open(header_path, "r", encoding="utf-8") as fh:
+        lines = fh.readlines()
+        for line in lines:
+            if line.startswith("#"):
+                line = line[1:]  # Odstranění prvního #
+            headers.append(re.split(r"[\t ]+", line.strip()))
+            
+    key = None
+    operator = None
+    value = None
+    for c in commands[1:]:
+        
+        if key is None:
+            for h in headers:
+                if c in h:
+                    key = c
+                    break
+                
+        if c in operators:
+            operator = c
+            continue
+        
+        if key is not None and operator is not None:
+            value = c
+        
+        if key is not None and operator is not None and value is not None:
+            filters.append([key, operator, value])
+            key = None
+            operator = None
+            value = None
+    
+    for file in added_files:
+        try:
+            with open(file, "r", encoding="utf-8") as f:               
+                for line in f:
+                    filters_fail = False
+                    if line.startswith("#") or not line.strip():
+                        continue
+                    
+                    flag_added = False
+                    values = line.strip().split("\t")
+                    
+                    if filters != []:
+                        for filter in filters:    
+                            for h in headers:
+                                if filter[0] in h:
+                                    header_index = h.index(filter[0]) - 1
+                                    break
+                            
+                            if filter[1] in ops:
+                                result = ops[filter[1]](values[header_index], filter[2])
+                                if not result:
+                                    filters_fail = True
+                                    break
+                            else:
+                                raise ValueError(f"Invalid operator: {filter[1]}")
+                    
+                    if filters_fail == False:
+                        for i, x in enumerate(molecules):
+                            if values[0] == molecules[i][0][0]:
+                                molecules[i].append(values)
+                                flag_added = True
+                                break
+                        
+                        if flag_added == False:
+                            molecules.append([values])
+        except UnicodeDecodeError:
+            print(Fore.RED + f"Skipping {file}: Not a valid text file.")
+        except Exception as e:
+            print(Fore.RED + f"Skipping {file} due to error: {e}")
+
+    max_columns = 99  # Maximální počet sloupců
+    max_width = 22  # Maximální šířka textu v jedné buňce
+    
+    """"""
+    # Tabulky pro každou část molecules
+    for i, molecule in enumerate(molecules):
+        formatted_data = []
+        
+        # Skip additional info
+        if i > 0:
+            break
+        
+        for row in molecule:  # Iterace přes řádky aktuální molekuly
+            if len(row) > max_columns:
+                row = [*row[:max_columns], "..."]
+            wrapped_row = [textwrap.fill(str(cell), max_width) for cell in row]
+            formatted_data.append(wrapped_row)
+
+        # Výpis tabulky s odpovídajícími hlavičkami
+        print(f"\n=== Molekula {i + 1} ===")
+        for x in headers:
+            if x[0][0] == molecule[0][0][0]:
+                header = x
+                break
+
+        # print(header[1:])
+        table = tabulate(formatted_data, headers=header[1:], tablefmt="grid")
+        print(table)
 
 def sort(commands, files):
     if commands[1] == "desc" and len(commands) == 2:
@@ -255,10 +396,34 @@ def output(added_files, extend, output_file="output.txt"):
         
     with open(output_file, 'a') as f:
         for file in added_files:
-            if os.path.isfile(file):
-                f.write(file + '\n')
+            if type(file) == list:
+                for x in file:
+                    f.write(x + '\t')
+                f.write('\n')
+            else:
+                if os.path.isfile(file):
+                    f.write(file + '\n')
             
-    print(f"Added files saved to {output_file}")
+    print(f"Successfully saved to {output_file}")
+    
+
+def output_occurances(occurances, output_file="output.txt"):
+    # already_added = []
+    """    
+    with open(output_file, 'w') as f:
+        for occurance in occurances:
+            if os.path.isfile(occurance[0]):
+                if occurance[0] not in already_added:
+                    f.write(occurance[0] + '\n')
+                    already_added.append(occurance[0])
+    """            
+    
+    with open(output_file, 'w') as f:
+        for occurance in occurances:
+            f.write(occurance[0] + '\n')
+            f.write("\t" + occurance[1] + '\n')
+            
+    print(f"Successfully saved to {output_file}")
     
     
 def set_operations(expression: str, dictionary: dict):

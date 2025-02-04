@@ -1,6 +1,7 @@
 {
-    "unit": "GB",
-    "search_folders": 2,
-    "show_duplicity": false,
-    "path": "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\bionano\\compute\\jobs"
+	"unit": "GB",
+	"search_folders": 2,
+	"show_duplicity": false,
+	"path": "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\bionano\\compute\\jobs",
+	"wraps": [5, 25, 100]
 }

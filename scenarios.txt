@@ -88,3 +88,40 @@ find "Total number of molecules"
 save occurances to occ
 show occ
 take_int(lines, 0) > 6000
+
+
+
+set search 0
+cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
+filter *
+names all
+names
+cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\database\align\
+filter *
+names completed
+names
+all - completed
+save names to_go
+cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
+filter *
+names
+filter files contains to_go
+set search 2
+filter files name *.out
+find "RESULT" in files
+find "RESULT=1" in files
+filter *
+find "Total number of molecules"
+take_int(Line, 0) > 6000
+output occ high_molecules.txt
+filter *
+find "RESULT=1"
+occ to files
+find "SNR cutoff"
+take_float(Line, 1) > 4.0
+output occ high_SNR.txt
+occurances
+save result test.txt
+output occurances mytest.txt
+
+

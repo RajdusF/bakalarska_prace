@@ -57,12 +57,12 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             try:
                 modified = float(commands[commands.index("modified") + 2])
             except:
-                print("Wrong input")
+                print(Fore.RED + "Wrong input")
                 return
             if commands.index("modified") + 2 < len(commands):
                 modified_time_unit = commands[commands.index("modified") + 3]
         if modified_operator == None or modified == None or modified_time_unit == None:
-            print("Wrong input")
+            print(Fore.RED + "Wrong input")
             return
         
         
@@ -73,7 +73,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             if commands.index("created") + 2 < len(commands):
                 created_time_unit = commands[commands.index("created") + 3]
         if created_operator == None or created == None or created_time_unit == None:
-            print("Wrong input")
+            print(Fore.RED + "Wrong input")
             return
                 
     
@@ -133,7 +133,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             return []
         
         if name == None and size == None and modified == None and created == None:
-            print("Wrong input")
+            print(Fore.RED + "Wrong input")
             return
         
         # NAME
@@ -220,14 +220,17 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             file_name = file.split("\\")[-1]
             file_size = os.path.getsize(file)
             is_folder = os.path.isdir(file)
-            print(Fore.LIGHTBLUE_EX, end="") if is_folder else print(Fore.RESET, end="")
             
             if "-d" in commands and not is_folder:
                 print(f"{file_name:{FILE_NAME_WIDTH}} {recalculate_size(file_size):{SIZE_WIDTH}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
             elif "-d" in commands and is_folder:
-                print(f"{file_name:{FILE_NAME_WIDTH+SIZE_WIDTH+1}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
+                print( Fore.LIGHTBLUE_EX + f"{file_name:{FILE_NAME_WIDTH+SIZE_WIDTH+1}}", end="" )
+                print(f"{time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
             else:
-                print(f"{file_name:{FILE_NAME_WIDTH}}", end="")
+                if is_folder:
+                    print(Fore.LIGHTBLUE_EX + f"{file_name:{FILE_NAME_WIDTH}}", end="")
+                else:  
+                    print(f"{file_name:{FILE_NAME_WIDTH}}", end="")
                 if size and size_operator and not is_folder:
                     print(f"{recalculate_size(file_size):{SIZE_WIDTH}}", end="")
                 else:

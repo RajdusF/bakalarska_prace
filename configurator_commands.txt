@@ -1,18 +1,15 @@
-cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter *
-find "RESULT=1"
-occurances[0]
-filter *
-find "Total number of molecules"
-take_int(lines, 0) > 6000
-save occurances to r
-names
-output r
-take_int(file,0)
-filter *
-find "RESULT=1"
-occ to files
-find "SNR cutoff"
-take_float(lines, 1)
-take_float(lines, 1) > 4
-take_float(lines, 1) > 4.0
+add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+find
+find "Avg" in added
+find "*Avg*" in added
+# find "\d" in added
+# find "\d+" in added
+# find "^#" in added
+# find "^.{0,190}$" in added
+find "bnx" in added
+find "bnx" in added -I
+find "\b100\b" in added
+output occ
+#browse MoleculeID == "4" Length > 1
+browse MoleculeID == 4
+#browse MoleculeID > 4

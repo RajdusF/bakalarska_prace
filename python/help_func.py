@@ -2,6 +2,7 @@ import glob
 import json
 import os
 import sys
+import textwrap
 import time
 
 from colorama import Fore, Style, init
@@ -78,7 +79,7 @@ def take_int(message : str, position : int = 0):
             print("Number not found")
             return
             
-        print(f"Number {position}: {numbers[position]}")
+        # print(f"Number {position}: {numbers[position]}")
         return numbers[position]
     except:
         return None
@@ -107,10 +108,13 @@ def take_float(message : str, position : int = 0):
             print("Number not found")
             return
             
-        print(f"Number {position}: {numbers[position]}")
+        # print(f"Number {position}: {numbers[position]}")
         return numbers[position]
     except:
         return None
+
+def wrap_text(text, width):
+    return "\n".join(textwrap.wrap(str(text), width))
 
 def print_occurances(files):
     print(Fore.GREEN + f"Found {len(files)} occurances:" + Fore.RESET)
@@ -118,19 +122,18 @@ def print_occurances(files):
     temp_occurences = []
     for i, occurance in enumerate(files):
         name, line = None, None
-        if len(occurance[0]) > 40:
-            name = "..." + occurance[0][-40:]
-        else:
-            name = occurance[0]
-        if len(occurance[1]) > 60:
-            line = occurance[1][-60:]
-        else:
-            line = occurance[1]
+        name = occurance[0]
+        line = occurance[1]
             
         temp_occurences.append([i, name, line])
     headers = ["Index", "File path", "Line"]
 
-    table = tabulate(temp_occurences, headers=headers, tablefmt="grid")
+    data_wrapped = []
+    for row in temp_occurences:
+        wrapped_row = [wrap_text(cell, global_variables.wraps[col]) for col, cell in enumerate(row)]
+        data_wrapped.append(wrapped_row)
+    
+    table = tabulate(data_wrapped, headers=headers, tablefmt="grid")
     print(table)
 
 def search_folder(folder, commands=None, only_files=None, progress=None, progress_total=None):
@@ -217,6 +220,8 @@ def read_json(file):
     global_variables.show_duplicity = data["show_duplicity"]
     
     global_variables.path = data["path"]
+    
+    global_variables.wraps = data["wraps"]
 
 def recalculate_size(size: int) -> int:
     unit = global_variables.default_unit
@@ -411,6 +416,15 @@ def help_select():
 def help_find():
     print(Fore.LIGHTCYAN_EX + "find" + Fore.RESET + " - find string in files/added_files")
     print("\t[find \"string\" in files] or [find \"RESULT=1\" in added] or [find \"RESULT=1\"] finding in files if not specified\n")
+    # print("You can use regular expressions like - BEFORE EVERY EXPRESSION MUST BE \"\\\": \n\t\\b (bounderies) - for finding whole words \n\t\t[find \"\\bMolecule\\b\"] - will find only \"Molecule\" without \"Molecules\" ...\n")
+    print("You can use regular expressions like: \n\t\\b (bounderies) - for finding whole words \n\t\t[find \"\\bMolecule\\b\"] - will find only \"Molecule\" without \"Molecules\" ...\n")
+    print("\t^ - start of the line (Alt + 94) \n\t\t[find \"^#\"] - will find all lines starting with \"#\"")
+    print("\t\t[find \"^(?!#).+\"]\" - will find all lines that are not comments\n")
+    print("\t\d - digit \n\t\t[find \"\\d\"] - will find all lines with digits")
+    print("\t\t[find \"\b\d+\b\"] - will find all lines digit that are not part of alfanumeric strings\n")
+    print("\tYou can use flag -I for case insensitive search\n\t\t[find \"bnx\" in added -I]\n")
+
+
     
 def help_take_int():
     print(Fore.LIGHTCYAN_EX + "take_int" + Fore.RESET + " - take integer from the message (made for occurances after command \"find\")")
@@ -421,8 +435,9 @@ def help_take_float():
     print("\t[take_float(lines, 0) > 6000,50] - browsing in column with text or [take_float(file, 0)] - browsing in column with file path/file name\n")
       
 def help_output():
-    print(Fore.LIGHTCYAN_EX + "output" + Fore.RESET + " - output files to the console")
-    print("\t[output] or [output file.txt] or [output file.txt extend] - to extend the output file\n")
+    print(Fore.LIGHTCYAN_EX + "output" + Fore.RESET + " - output added files to text file")
+    print("\t[output file.txt] or [output file.txt extend] - to extend the output file\n")
+    print("\t[output occ/occurances file.txt] - output occurances to text file\n")
     
 def help_set_search():
     print(Fore.LIGHTCYAN_EX + "set search" + Fore.RESET + " - set if the program should search in folders")
@@ -445,11 +460,11 @@ def help_show():
     print(Fore.LIGHTCYAN_EX + "show" + Fore.RESET + " - show added files\n")
 
 def help_save():
-    print(Fore.LIGHTCYAN_EX + "save" + Fore.RESET + " - save (files/added files) to variable")
-    print("\t[save files/added to a]\n")
+    print(Fore.LIGHTCYAN_EX + "save" + Fore.RESET + " - save (files/added files/occurances - file names) to variable")
+    print("\t[save files/added/occurances variable]\n")
 
 def help_load():
-    print(Fore.LIGHTCYAN_EX + "load" + Fore.RESET + " - load files from txt to variable")
+    print(Fore.LIGHTCYAN_EX + "load" + Fore.RESET + " - load added files from txt to variable")
     print("\t[load from a.txt to variable]\n")
     
 def help_input():

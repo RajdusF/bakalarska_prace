@@ -1,19 +1,21 @@
 import os
+from pprint import pprint
 
 from colorama import Fore
 from tabulate import tabulate
 
 import python.global_variables as global_variables
-from python.command_functions import (add, add_folder, add_if_in_dict, find,
-                                      input_files, output, remove, save,
-                                      select, set_operations, settings,
-                                      show_files, sort)
+from python.command_functions import (add, add_folder, add_if_in_dict, browse, find,
+                                      input_files, output, output_occurances,
+                                      remove, save, select, set_operations,
+                                      settings, show_files, sort)
 from python.global_variables import find_occurances as find_occurances
 from python.global_variables import result as result
 from python.help_func import (add_history, get_variable, help_add, help_cd,
-                              help_filter, help_output, help_select, help_sort,
-                              help_take_float, help_take_int, load_history,
-                              my_help, print_history, print_occurances,
+                              help_filter, help_find, help_output, help_save,
+                              help_select, help_sort, help_take_float,
+                              help_take_int, load_history, my_help,
+                              print_history, print_occurances,
                               show_added_files, show_current_folder,
                               take_float, take_int)
 
@@ -42,8 +44,11 @@ def process_command(command : str, dict, files : list, added_files : list):
             
     else:
         try:
-            result.clear()
-            result = get_variable(command, find_occurances)
+            temp = None
+            temp = get_variable(command, find_occurances)
+            if temp != None:
+                result.clear()
+                result.extend(temp)
             print("To save result use \"save result to variable/file.txt\"")
             print("Result:")
             for x in result:
@@ -68,7 +73,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                 return
             
             if "**" in command:
-                print("Wrong input")
+                print(Fore.RED + "Wrong input")
                 return
             
             if command == "*" or command == "ls":
@@ -133,6 +138,9 @@ def process_command(command : str, dict, files : list, added_files : list):
                 add_history(command, files)
             
             elif commands[0] == "find":
+                if len(commands) == 1:
+                    help_find()
+                    return
                 find_occurances.clear()
                 
                 first_mark = command.index("\"")
@@ -140,16 +148,33 @@ def process_command(command : str, dict, files : list, added_files : list):
                 
                 to_find = command[first_mark + 1:second_mark]
                 
+                if to_find == "":
+                    print(Fore.RED + "Finding interrputed - no string to find")
+                    return
+                
                 command = command.replace("\""+to_find+"\"", "").strip()
                 commands = command.split(" ")
                 
+                ignore_case = False
+                if "-I" in commands:
+                    ignore_case = True
+                
                 if len(commands) > 3:
                     if commands[2] == "in" and commands[3] == "files":
-                        find_occurances = find(to_find, files)
+                        if len(files) == 0:
+                            print(Fore.RED + "0 files to search in")
+                            return
+                        find_occurances = find(to_find, files, ignore_case)
                     elif commands[2] == "in" and commands[3] == "added":
-                        find_occurances = find(to_find, added_files)
+                        if len(added_files) == 0:
+                            print(Fore.RED + "0 files to search in")
+                            return
+                        find_occurances = find(to_find, added_files, ignore_case)
                 else:
-                    find_occurances = find(to_find, files)
+                    if len(files) == 0:
+                            print(Fore.RED + "0 files to search in")
+                            return
+                    find_occurances = find(to_find, files, ignore_case)
                     
                 print_occurances(find_occurances)
                 
@@ -232,61 +257,18 @@ def process_command(command : str, dict, files : list, added_files : list):
                 print_occurances(find_occurances)
                 
                 add_history(original_command, files, find_occurances)
-
-            elif commands[0] == "take" and len(commands) == 5:
-                """
-                try:
-                    number_index = None
-                    occurances_index = None
-                    
-                    if commands[2] == "number":
-                        number_index = int(commands[1])
-                    
-                    if commands[3] == "in":
-                        occurances_index = int(commands[4])
                         
-                    text = find_occurances[occurances_index][1]
-                    
-                    numbers = []
-                    current_number = ""
-
-                    for char in text:
-                        if char.isdigit():
-                            current_number += char
-                        elif current_number:
-                            numbers.append(int(current_number))
-                            current_number = ""
-
-                    if current_number:
-                        numbers.append(int(current_number))
-                        
-                    if number_index >= len(numbers):
-                        print("Number not found")
-                        return
-                        
-                    print(f"Number {number_index}: {numbers[number_index]}")
-                    return numbers[number_index]
-                except ValueError:
-                    print("Invalid number format in command.")
-                except IndexError:
-                    print("Command arguments are out of range.")
-                except Exception as e:
-                    print("An unexpected error occurred:", str(e))
-                    
-                print("Invalid command format or insufficient arguments.")
-            """
-            
-            elif command in ("occ to files", "occ to added", "occurances to files", "occurances to added"):
-                files.clear()
-                files.extend([x[0] for x in find_occurances])
-                add_history(command, files, find_occurances)
-                        
+            elif "browse" in commands[0]:
+                browse(added_files, command)
+                            
             elif "add" in commands and len(commands) > 1:
                 if commands[0] == "add" and len(commands) == 1:
                     help_add()
                     return
                 
-                if commands[1] == "files" and commands[2] == "contains":
+                if commands[1] == "occ" or commands[1] == "occurances" and len(commands) == 2:
+                    added_files.extend([x[0] for x in find_occurances])
+                elif commands[1] == "files" and commands[2] == "contains":
                     r = add_if_in_dict(files, added_files, dict, commands[3])
                     for file in r:
                         if file not in added_files:
@@ -295,7 +277,10 @@ def process_command(command : str, dict, files : list, added_files : list):
                 elif commands[1] == "*" and len(commands) == 2:
                     add("*", files, added_files)
                 elif "\\" in command and len(commands) == 2:
-                    added_files.extend(add_folder(commands[1]))
+                    if os.path.isdir(commands[1]):
+                        added_files.extend(add_folder(commands[1]))
+                    elif os.path.isfile(commands[1]):
+                        added_files.append(commands[1])
                 elif "\\" in command and len(commands) == 3 and "all" in commands:
                     added_files.extend(add_folder(commands[2], recursive=True))
                     
@@ -303,7 +288,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                         name = commands[1]
                         add(name, files, added_files)
                 else:
-                    print("Wrong input")
+                    print(Fore.RED + "Wrong input")
                     return
                 
                 print(f"Added files ({len(added_files)}):")
@@ -343,29 +328,35 @@ def process_command(command : str, dict, files : list, added_files : list):
                     settings(2, int(commands[2]))
                 elif "path" in commands and len(commands) == 3:
                     settings(3, commands[2])
+                elif "wraps" in commands and len(commands) == 3:
+                    settings(4, [commands[2], commands[3], commands[4]])
                 elif len(commands) == 1:
                     print(f"Default unit: {global_variables.default_unit}")
                     print(f"Search folders: {global_variables.search_folders}")
                     print(f"Show duplicity: {global_variables.show_duplicity}")
+                    print(f"Wraps (column widths): {global_variables.wraps}")
                     return
         
-            elif commands[0] == "save" and commands[2] == "to" and len(commands) == 4:
-                if commands[1] == "result":
-                    if "." in command[3]:
-                        output(added_files=result, output_file=commands[3], extend=False)
+            # save [result/files/names/added/occurances] [file]
+            elif commands[0] == "save":
+                if len(commands) == 1:
+                    help_save()
+                if len(commands) == 3:
+                    if commands[1] == "result":
+                        dict[commands[2]] = result.copy()
+                        print(f"Result saved to \"{commands[2]}\"")
+                    elif commands[1] == "files" or commands[1] == "names":
+                        save(commands[2], files, dict)
+                    elif commands[1] == "added":
+                        save(commands[2], added_files, dict)
+                    elif commands[1] == "occurances":
+                        temp = []
+                        temp = [row[0] for row in find_occurances]
+                        save(commands[2], temp, dict)
                     else:
-                        dict[commands[3]] = result.copy()
-                        print(f"Result saved to \"{commands[3]}\"")
-                elif commands[1] == "files" or commands[1] == "names":
-                    save(commands[3], files, dict)
-                elif commands[1] == "added":
-                    save(commands[3], added_files, dict)
-                elif commands[1] == "occurances":
-                    temp = []
-                    temp = [row[0] for row in find_occurances]
-                    save(commands[3], temp, dict)
+                        print(Fore.RED + "Wrong input")
                 else:
-                    print("Wrong input")
+                    print(Fore.RED + "Wrong input")
                 
             elif commands[0] == "load" and commands[1] == "from" and command[3] == "to" and len(commands) == 5:
                 if commands[2] in dict:
@@ -384,6 +375,8 @@ def process_command(command : str, dict, files : list, added_files : list):
                 elif len(commands) == 2:
                     input_files(added_files, commands[1])
             
+            # output [file] [extend]
+            # output "occurances" [file]
             elif "output" in commands:
                 if commands[0] == "output" and len(commands) == 1:
                     help_output()
@@ -391,6 +384,12 @@ def process_command(command : str, dict, files : list, added_files : list):
                 
                 if commands[1] in dict:
                     output(added_files=dict[commands[1]], output_file="output.txt", extend=False)
+                elif commands[1] == "result":
+                    output(added_files=result, output_file=commands[2], extend=False)
+                elif (commands[1] == "occ" or commands[1] == "occurances") and len(commands) == 2:
+                    output_occurances(find_occurances)
+                elif (commands[1] == "occ" or commands[1] == "occurances") and len(commands) == 3:
+                    output_occurances(find_occurances, commands[2])
                 else:
                     extend_choice = True if "extend" in commands else False
                         
@@ -399,7 +398,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                 
             elif "names" in commands:
                 if len(commands) == 1:
-                    print(dict)
+                    pprint(dict)
                 elif len(commands) == 2:
                     try:
                         if len(files) == 0:
@@ -422,6 +421,15 @@ def process_command(command : str, dict, files : list, added_files : list):
                     print("History loaded successfully")
                 else:
                     print("History error occured")
+                    
+            elif command in ("occ to files", "occ to added", "occurances to files", "occurances to added"):
+                try:
+                    files.clear()
+                    files.extend([x[0] for x in find_occurances])
+                    print("Occurances to files successful")
+                    add_history(command, files, find_occurances)
+                except:
+                    print("Error during conversion occurances to files")
 
                 
             # Sjednocení, průnik, rozdíl
@@ -436,4 +444,4 @@ def process_command(command : str, dict, files : list, added_files : list):
                 return
             
             else:
-                print("Wrong input")
+                print(Fore.RED + "Wrong input")
