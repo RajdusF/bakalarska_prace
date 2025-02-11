@@ -1,7 +1,0 @@
-Creation Date: 17-12-2024
-Creation Date: 10.12.2024
-John Smith
-Mary Johnson
-Peter Brown
-This is an example of writing text to a file.
-Python makes it easy to handle files!

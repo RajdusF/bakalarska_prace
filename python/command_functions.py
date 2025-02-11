@@ -212,76 +212,128 @@ def find(to_find : str, files : list, ignore_case : bool = False):
 
 def browse(added_files, command):
     # TODO: Try dictionary instead of list
-    molecules = []
     headers = []
     filters = []
+    header_indexes = []
+    found_flags = []
+    
+    max_columns = 99  # Maximální počet sloupců
+    max_width = 22  # Maximální šířka textu v jedné buňce
     
     operators = ["<", ">", "<=", ">=", "==", "!=", "U", "A", "-"]
     
-    commands = command.split(" ")
+    commands = list(command.split(" "))
+    flags = ["-a"]
     
-    script_dir = os.path.dirname(os.path.abspath(__file__))  
-    header_path = os.path.join(script_dir, "..", "input", "header.txt")
+    for flag in flags:
+        while flag in commands:
+            found_flags.append(flag)
+            commands.remove(flag)
     
-    with open(header_path, "r", encoding="utf-8") as fh:
-        lines = fh.readlines()
-        for line in lines:
-            if line.startswith("#"):
-                line = line[1:]  # Odstranění prvního #
-            headers.append(re.split(r"[\t ]+", line.strip()))
+    file_names = {}
+    lines_number = 0
+    skipped_lines = 0
+    
+    with open("browse_output.txt", "w") as f_output:
+        for file in added_files:
+            molecules = []
             
-    key = None
-    operator = None
-    value = None
-    for c in commands[1:]:
-        
-        if key is None:
-            for h in headers:
-                if c in h:
-                    key = c
-                    break
+            with open(file, "r", encoding="utf-8") as fh:
+                past_number_of_molecules = False
+                for line in fh:
+                    if "Number of Molecules" in line:
+                        past_number_of_molecules = True
+                        continue
+                    if past_number_of_molecules:
+                        if not line.startswith("# "):
+                            line = line[1:]  # Odstranění prvního #
+                            headers.append(re.split(r"[\t ]+", line.strip()))
+                            continue
+                        if line.startswith("# "):
+                            break
                 
-        if c in operators:
-            operator = c
-            continue
-        
-        if key is not None and operator is not None:
-            value = c
-        
-        if key is not None and operator is not None and value is not None:
-            filters.append([key, operator, value])
             key = None
             operator = None
             value = None
-    
-    for file in added_files:
-        try:
+            filters_to_process = commands[1:].copy()
+            for c in commands[1:]:
+                if key is None:
+                    for h in headers:
+                        if c in h:
+                            key = c
+                            filters_to_process.remove(c)
+                            break
+                        
+                if c in operators:
+                    operator = c
+                    filters_to_process.remove(c)
+                    continue
+                if key is not None and operator is not None:
+                    value = c
+                    filters_to_process.remove(c)
+                if key is not None and operator is not None and value is not None:
+                    filters.append([key, operator, value])
+                    key = None
+                    operator = None
+                    value = None
+            if len(filters_to_process) > 0:
+                print(Fore.RED + "Invalid filter: " + command[1:])
+                return
+                    
+            del(c, h, key, operator, value)
+            
+            if filters != []:
+                for filter in filters:    
+                    for h in headers:
+                        if filter[0] in h:
+                            header_indexes.append(h.index(filter[0]) - 1)
+                            break
+        
+            
+            # try:
             with open(file, "r", encoding="utf-8") as f:               
                 for line in f:
+                    lines_number += 1
                     filters_fail = False
-                    if line.startswith("#") or not line.strip():
+                    if line.startswith("#") or not line.strip() or not line.startswith("0"):
                         continue
                     
                     flag_added = False
                     values = line.strip().split("\t")
                     
-                    if filters != []:
-                        for filter in filters:    
-                            for h in headers:
-                                if filter[0] in h:
-                                    header_index = h.index(filter[0]) - 1
-                                    break
+                    
+                    for i, filter in enumerate(filters):
+                        if header_indexes[i] >= len(values):
+                            skipped_lines += 1
+                            filters_fail = True
+                            break
+                        # if filters_fail == True:
+                        #     break    
+                        if filter[1] in ops:
+                            result = None
+                            left = values[header_indexes[i]]
+                            op=filter[1]
+                            right=filter[2]
                             
-                            if filter[1] in ops:
-                                result = ops[filter[1]](values[header_index], filter[2])
-                                if not result:
-                                    filters_fail = True
-                                    break
-                            else:
-                                raise ValueError(f"Invalid operator: {filter[1]}")
+                            try:
+                                left = float(left)
+                                right = float(right)
+                                if op in ["<", ">", "<=", ">=", "==", "!="]:
+                                    result = ops[op](left, right)
+                            except:
+                                result = left == right
+                                
+                            del(left, right, op)
+                                
+                            if not result:
+                                filters_fail = True
+                                break
+                        else:
+                            raise ValueError(f"Invalid operator: {filter[1]}")
                     
                     if filters_fail == False:
                         for i, x in enumerate(molecules):
+                            # Label matches with the first column of the molecule
                             if values[0] == molecules[i][0][0]:
                                 molecules[i].append(values)
                                 flag_added = True
@@ -289,39 +341,50 @@ def browse(added_files, command):
                         
                         if flag_added == False:
                             molecules.append([values])
-        except UnicodeDecodeError:
-            print(Fore.RED + f"Skipping {file}: Not a valid text file.")
-        except Exception as e:
-            print(Fore.RED + f"Skipping {file} due to error: {e}")
+                            
+                file_names[file] = molecules
+            # except UnicodeDecodeError:
+            #     print(Fore.RED + f"Skipping {file}: Not a valid text file.")
+            # except Exception as e:
+            #     print(Fore.RED + f"Skipping {file} due to error: {e}")
 
-    max_columns = 99  # Maximální počet sloupců
-    max_width = 22  # Maximální šířka textu v jedné buňce
-    
-    """"""
-    # Tabulky pro každou část molecules
-    for i, molecule in enumerate(molecules):
-        formatted_data = []
-        
-        # Skip additional info
-        if i > 0:
-            break
-        
-        for row in molecule:  # Iterace přes řádky aktuální molekuly
-            if len(row) > max_columns:
-                row = [*row[:max_columns], "..."]
-            wrapped_row = [textwrap.fill(str(cell), max_width) for cell in row]
-            formatted_data.append(wrapped_row)
+            if file_names[file] != []:
+                f_output.write(f"{file}\n")
 
-        # Výpis tabulky s odpovídajícími hlavičkami
-        print(f"\n=== Molekula {i + 1} ===")
-        for x in headers:
-            if x[0][0] == molecule[0][0][0]:
-                header = x
-                break
+            
+            for i, molecule in enumerate(file_names[file]):
+                formatted_data = []
+                
+                # Skip additional info
+                if i > 0 and "-a" not in found_flags:
+                    break
+                
+                for row in molecule:  # Iterace přes řádky aktuální molekuly
+                    f_output.write("\t" + "\t".join(map(str, row)) + "\n")
+                    if len(row) > max_columns:
+                        row = [*row[:max_columns], "..."]
+                    wrapped_row = [textwrap.fill(str(cell), max_width) for cell in row]
+                    formatted_data.append(wrapped_row)
 
-        # print(header[1:])
-        table = tabulate(formatted_data, headers=header[1:], tablefmt="grid")
-        print(table)
+                # Výpis tabulky s odpovídajícími hlavičkami
+                print(f"==== {file.split('\\')[-1]} ====")
+                print(f"== Molekula {i + 1} ==")
+                print(f"slopců hlavičky: {len(headers[0]) - 1}, slopců molekuly: {len(molecule[0])}")
+                if len(headers[0]) - 1 != len(molecule[0]):
+                    print(Fore.YELLOW + "Počet sloupců hlavičky se neshoduje s počtem sloupců molekuly" + Fore.RESET)
+                for x in headers:
+                    if x[0][0] == molecule[0][0]:
+                        header = x
+                        break
+
+                # print(header[1:])
+                table = tabulate(formatted_data, headers=header[1:], tablefmt="grid")
+                print(table)
+            headers.clear()
+            
+    print(f"Found {lines_number} lines")
+    if skipped_lines > 0:
+        print(f"Skipped {skipped_lines} lines")
 
 def sort(commands, files):
     if commands[1] == "desc" and len(commands) == 2:
