@@ -5,10 +5,11 @@ from colorama import Fore
 from tabulate import tabulate
 
 import python.global_variables as global_variables
-from python.command_functions import (add, add_folder, add_if_in_dict, browse, find,
-                                      input_files, output, output_occurances,
-                                      remove, save, select, set_operations,
-                                      settings, show_files, sort)
+from python.command_functions import (add, add_folder, add_if_in_dict, browse,
+                                      find, input_files, output,
+                                      output_occurances, remove, save, select,
+                                      set_operations, settings, show_files,
+                                      sort)
 from python.global_variables import find_occurances as find_occurances
 from python.global_variables import result as result
 from python.help_func import (add_history, get_variable, help_add, help_cd,
@@ -25,9 +26,29 @@ def process_command(command : str, dict, files : list, added_files : list):
     global find_occurances
     global result
     
+    if "#" in command:
+        for x in command:
+            if x == "#":
+                first_mark = -1
+                second_mark = -1
+                if "\"" in command:
+                    first_mark = command.index("\"")
+                    second_mark = command.index("\"", first_mark + 1)
+                
+                    if first_mark != -1 and second_mark != -1:
+                        if first_mark < command.index("#") < second_mark:
+                            pass
+                        else:
+                            command = command[:command.index("#")]
+                        
+                else:
+                    command = command[:command.index("#")]
+    
+    
     commands = command.split(" ")
     original_command = command
     
+    # Processing conditions
     if "if" in command and "(" in command and ")" in command and "{" in command and "}" in command:
         if_condition = command[command.index("(") + 1:command.index(")")]
         statement = command[command.index("{") + 1:command.index("}")]
@@ -43,6 +64,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                     process_command(s, dict, files, added_files)
             
     else:
+        # Trying to get variable
         try:
             temp = None
             temp = get_variable(command, find_occurances)
@@ -62,8 +84,6 @@ def process_command(command : str, dict, files : list, added_files : list):
                 return
             
             if commands[0] == "print":
-                message = command[6:]
-                
                 try:
                     result = get_variable(command, find_occurances)
                     for x in result:
@@ -113,7 +133,6 @@ def process_command(command : str, dict, files : list, added_files : list):
                 temp = filter(command, commands, files, added_files, dict)
                 files.clear()
                 files.extend(temp)
-                
                 
                 add_history(command, files)
             
@@ -172,8 +191,8 @@ def process_command(command : str, dict, files : list, added_files : list):
                         find_occurances = find(to_find, added_files, ignore_case)
                 else:
                     if len(files) == 0:
-                            print(Fore.RED + "0 files to search in")
-                            return
+                        print(Fore.RED + "0 files to search in")
+                        return
                     find_occurances = find(to_find, files, ignore_case)
                     
                 print_occurances(find_occurances)
@@ -300,9 +319,9 @@ def process_command(command : str, dict, files : list, added_files : list):
                 print(f"Removed {r} files")
                     
             elif "show" in commands:
-                if len(commands) == 2 and commands[1] == "added":
+                if len(commands) == 2 and commands[1] == "added" or command == "added":
                     show_added_files(added_files)
-                elif len(commands) == 2 and commands[1] == "files":
+                elif len(commands) == 2 and commands[1] == "files" or command == "files":
                     show_files(files)
                 elif len(commands) == 2 and commands[1] == "dist":
                     print(dict)

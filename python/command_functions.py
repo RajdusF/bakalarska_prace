@@ -187,26 +187,40 @@ def settings(option, value):
 
 
 def find(to_find : str, files : list, ignore_case : bool = False):          
-    occurances = []
+    occurances = {}
     
-    for file in files:
-        if os.path.isfile(file):
-            try:
-                with open(file, "r", encoding="utf-8") as f:
-                    lines = f.readlines()
-                    
-                    if ignore_case:
-                        for line in lines:
-                            if re.search(to_find, line, re.IGNORECASE):
-                                occurances.append([file, line.strip()])
-                    else:
-                        for line in lines:
-                            if re.search(to_find, line, ):
-                                occurances.append([file, line.strip()])
-            except UnicodeDecodeError:
-                print(Fore.YELLOW + f"Skipping {file}: Not a valid text file." + Fore.RESET)
-            except Exception as e:
-                print(Fore.YELLOW + f"Skipping {file} due to error: {e}" + Fore.RESET)
+    with open("output\\find_output.txt", "w") as f_output:
+        for file in files:
+            new = True
+            file_occurances = []
+            if os.path.isfile(file):
+                try:
+                    with open(file, "r", encoding="utf-8") as f:
+                        lines = f.readlines()
+                        
+                        if ignore_case:
+                            for line in lines:
+                                if re.search(to_find, line, re.IGNORECASE):
+                                    file_occurances.append(line.strip())
+                                    if new:
+                                        f_output.write(f"{file}\n")
+                                        new = False
+                                    f_output.write("\t" + line)
+                        else:
+                            for line in lines:
+                                if re.search(to_find, line, ):
+                                    file_occurances.append(line.strip())
+                                    if new:
+                                        f_output.write(f"{file}\n")
+                                        new = False
+                                    f_output.write("\t" + line)
+                                    
+                    if file_occurances != []:
+                        occurances[file] = file_occurances
+                except UnicodeDecodeError:
+                    print(Fore.YELLOW + f"Skipping {file}: Not a valid text file." + Fore.RESET)
+                except Exception as e:
+                    print(Fore.YELLOW + f"Skipping {file} due to error: {e}" + Fore.RESET)
             
     return occurances
 
@@ -230,13 +244,16 @@ def browse(added_files, command):
             found_flags.append(flag)
             commands.remove(flag)
     
+    del(flag)
+    
     file_names = {}
     lines_number = 0
     skipped_lines = 0
     
-    with open("browse_output.txt", "w") as f_output:
+    with open("output\\browse_output.txt", "w") as f_output:
         for file in added_files:
             molecules = []
+            new_file = True
             
             with open(file, "r", encoding="utf-8") as fh:
                 past_number_of_molecules = False
@@ -291,47 +308,77 @@ def browse(added_files, command):
         
             
             # try:
-            with open(file, "r", encoding="utf-8") as f:               
+            with open(file, "r", encoding="utf-8") as f:     
+                molecule_is_added = False          
                 for line in f:
                     lines_number += 1
                     filters_fail = False
-                    if line.startswith("#") or not line.strip() or not line.startswith("0"):
+                    
+                    line_stripped = line.strip()
+                    if not line_stripped or line.startswith("#"):
                         continue
                     
                     flag_added = False
-                    values = line.strip().split("\t")
+                    values = line_stripped.split("\t")
+                    
+                    if values[0] == "0":
+                        molecule_is_added = False
                     
                     
-                    for i, filter in enumerate(filters):
-                        if header_indexes[i] >= len(values):
+                    if not molecule_is_added:
+                        # Check if all filters are possible
+                        filters_possible = True
+                        for filter in filters:
+                            header_to_find = filter[0]
+                            header_found = False
+                            for header in headers[::2]:
+                                if header[0][0] == values[0] and header_to_find in header:
+                                    header_found = True
+                                    break
+                            if header_found == False:
+                                filters_possible = False
+                                break
+                        
+                        if filters_possible == False:
                             skipped_lines += 1
-                            filters_fail = True
-                            break
-                        # if filters_fail == True:
-                        #     break    
-                        if filter[1] in ops:
-                            result = None
-                            left = values[header_indexes[i]]
-                            op=filter[1]
-                            right=filter[2]
-                            
-                            try:
-                                left = float(left)
-                                right = float(right)
-                                if op in ["<", ">", "<=", ">=", "==", "!="]:
-                                    result = ops[op](left, right)
-                            except:
-                                result = left == right
-                                
-                            del(left, right, op)
-                                
-                            if not result:
+                            continue
+                        
+                        del(header_to_find, header_found, filters_possible)
+                        
+                        for i, filter in enumerate(filters):
+                            if header_indexes[i] >= len(values):
+                                skipped_lines += 1
                                 filters_fail = True
                                 break
-                        else:
-                            raise ValueError(f"Invalid operator: {filter[1]}")
+
+                            if filter[1] in ops:
+                                result = None
+                                left = values[header_indexes[i]]
+                                op=filter[1]
+                                right=filter[2]
+                                
+                                try:
+                                    left = float(left)
+                                    right = float(right)
+                                    if op in ["<", ">", "<=", ">=", "==", "!="]:
+                                        result = ops[op](left, right)
+                                except:
+                                    result = left == right
+                                    
+                                del(left, right, op)
+                                    
+                                if not result:
+                                    filters_fail = True
+                                    break
+                            else:
+                                raise ValueError(f"Invalid operator: {filter[1]}")
                     
                     if filters_fail == False:
+                        if new_file:
+                            f_output.write(f"{file}\n")
+                        f_output.write("\t" + line)
+                        new_file = False
+                        
                         for i, x in enumerate(molecules):
                             # Label matches with the first column of the molecule
                             if values[0] == molecules[i][0][0]:
@@ -342,14 +389,13 @@ def browse(added_files, command):
                         if flag_added == False:
                             molecules.append([values])
                             
+                        molecule_is_added = True
+                            
                 file_names[file] = molecules
             # except UnicodeDecodeError:
             #     print(Fore.RED + f"Skipping {file}: Not a valid text file.")
             # except Exception as e:
             #     print(Fore.RED + f"Skipping {file} due to error: {e}")
-
-            if file_names[file] != []:
-                f_output.write(f"{file}\n")
 
             
             for i, molecule in enumerate(file_names[file]):
@@ -360,7 +406,6 @@ def browse(added_files, command):
                     break
                 
                 for row in molecule:  # Iterace přes řádky aktuální molekuly
-                    f_output.write("\t" + "\t".join(map(str, row)) + "\n")
                     if len(row) > max_columns:
                         row = [*row[:max_columns], "..."]
                     wrapped_row = [textwrap.fill(str(cell), max_width) for cell in row]
@@ -369,17 +414,23 @@ def browse(added_files, command):
                 # Výpis tabulky s odpovídajícími hlavičkami
                 print(f"==== {file.split('\\')[-1]} ====")
                 print(f"== Molekula {i + 1} ==")
+                print(f"Výsledků: {len(molecule)}")
                 print(f"slopců hlavičky: {len(headers[0]) - 1}, slopců molekuly: {len(molecule[0])}")
+                print_easy = False
                 if len(headers[0]) - 1 != len(molecule[0]):
                     print(Fore.YELLOW + "Počet sloupců hlavičky se neshoduje s počtem sloupců molekuly" + Fore.RESET)
+                    print_easy = True
                 for x in headers:
                     if x[0][0] == molecule[0][0]:
                         header = x
                         break
-
-                # print(header[1:])
-                table = tabulate(formatted_data, headers=header[1:], tablefmt="grid")
-                print(table)
+                        
+                if print_easy:
+                    print(header)
+                    print(molecule)
+                else:
+                    table = tabulate(formatted_data, headers=header[1:], tablefmt="grid")
+                    print(table)
             headers.clear()
             
     print(f"Found {lines_number} lines")

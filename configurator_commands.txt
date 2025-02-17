@@ -1,31 +1,33 @@
 add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
-#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx
+add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx
 add C:\Users\Filip\Documents\bakalarska_prace\files\all_2_cropped.bnx
 #find
 #find "Avg" in added
 #find "*Avg*" in added
-# find "\d" in added
-# find "\d+" in added
-# find "^#" in added
-# find "^.{0,190}$" in added
+#find "\d" in added              # Libovolne cislice
+#find "\d+" in added             # Cele cislice
+#find "^#" in added              # Zacinaji hashtagem
+#find "^.{0,190}$" in added      # 0-190 znaků
 #find "bnx" in added
 #find "bnx" in added -I
-#find "\b100\b" in added
+#find "\b100\b" in added         # "100" bez připlácnutého znaku
 #output occ
-#browse MoleculeID == "4" Length > 1
+#browse MoleculeID == "4" Length > 1         # Vyzkoušet
 #browse MoleculeID == 4
 #browse Length == 874875.00
 #browse Length == 874875
 #browse Length > 1
-#browse ScanNumber == 1
-#browse MoleculeID > 4
-# LabelChannel	MoleculeID	Length	AvgIntensity	SNR	NumberofLabels	OriginalMoleculeId	ScanNumber	ScanDirection	ChipId	Flowcell	RunId	Column	StartFOV	StartX	StartY	EndFOV	EndX	EndY	GlobalScanNumber
+#browse ScanNumber == 1 SNR > 120
+#browse MoleculeID > 4 MoleculeID < 8
 #browse SNR == 113.7
 #browse AvgIntensity > 2000
 #browse Length == 691125.00
 #browse Length == 691125.00 AvgIntensity > 2000
-#add C:\Users\Filip\Documents\bakalarska_prace\all.bnx
+add C:\Users\Filip\Documents\bakalarska_prace\all.bnx
 #browse EndX > 300 EndY < 500
-#browse OriginalMoleculeId > 5
-browse MoleculeID < 15 -a
-#browse Length < 1349000.00 Length > 1049000.00
+browse OriginalMoleculeId > 5 OriginalMoleculeId < 20
+#find "molecule" in added -I
+#find "Label" in added -I
+#browse MoleculeID < 15
+#browse Length < 1349000.00 Length > 1249000.00
+exit

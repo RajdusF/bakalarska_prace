@@ -7,7 +7,7 @@ from colorama import Fore, init
 
 import python.global_variables as global_variables
 from python.decider import process_command
-from python.help_func import read_commands_from_file, read_json
+from python.help_func import debug_write, read_commands_from_file, read_json
 
 
 def main(args):
@@ -28,7 +28,9 @@ def main(args):
         command_start_time = time.time()
         if(process_command(command, dict, files, added_files)) == -1:
             return -1
-        print(f"Command took {time.time() - command_start_time:.4f} seconds to run")
+        print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+        debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+        
     
     while True:         
         command = input(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + " >> ")
@@ -38,7 +40,9 @@ def main(args):
         
         result = process_command(command, dict, files, added_files)
         
-        print(f"Command took {time.time() - command_start_time:.4f} seconds to run")
+        print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+        debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+        
         if result == -1:
             break
 
@@ -47,6 +51,9 @@ if __name__ == "__main__":
     init(autoreset=True)
     parser = argparse.ArgumentParser(description="Process some integers.")
     parser.add_argument('-p', type=str, default="", help='Path to the folder')
+    
+    if os.path.isfile("debug.txt"):
+        os.remove("debug.txt")
     
     args = parser.parse_args()
     
@@ -68,7 +75,7 @@ if __name__ == "__main__":
     print(f"Show duplicity: {global_variables.show_duplicity}")
 
     
-    # cProfile.run("main(args)", sort="tottime")
-    main(args)
+    cProfile.run("main(args)", sort="tottime")
+    # main(args)
     
     print(f"Program took {time.time() - start_time:.4f} seconds to run")

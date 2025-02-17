@@ -116,25 +116,37 @@ def take_float(message : str, position : int = 0):
 def wrap_text(text, width):
     return "\n".join(textwrap.wrap(str(text), width))
 
-def print_occurances(files):
-    print(Fore.GREEN + f"Found {len(files)} occurances:" + Fore.RESET)
-                    
-    temp_occurences = []
-    for i, occurance in enumerate(files):
-        name, line = None, None
-        name = occurance[0]
-        line = occurance[1]
-            
-        temp_occurences.append([i, name, line])
-    headers = ["Index", "File path", "Line"]
-
-    data_wrapped = []
-    for row in temp_occurences:
-        wrapped_row = [wrap_text(cell, global_variables.wraps[col]) for col, cell in enumerate(row)]
-        data_wrapped.append(wrapped_row)
+def print_occurances(occurances : dict):
     
-    table = tabulate(data_wrapped, headers=headers, tablefmt="grid")
-    print(table)
+    s = ""
+    total_occurances = 0
+    
+    for key, values in occurances.items():
+        s += f"{key}\n"
+        for value in values:
+            s += f"\t{value}\n"
+            total_occurances += 1
+        s += "\n"
+        
+    print(Fore.GREEN + f"Found {total_occurances} occurances:" + Fore.RESET)
+    print(s)
+                    
+    # temp_occurences = []
+    # for i, occurance in enumerate(files):
+    #     name, line = None, None
+    #     name = occurance[0]
+    #     line = occurance[1]
+            
+    #     temp_occurences.append([i, name, line])
+    # headers = ["Index", "File path", "Line"]
+
+    # data_wrapped = []
+    # for row in temp_occurences:
+    #     wrapped_row = [wrap_text(cell, global_variables.wraps[col]) for col, cell in enumerate(row)]
+    #     data_wrapped.append(wrapped_row)
+    
+    # table = tabulate(data_wrapped, headers=headers, tablefmt="grid")
+    # print(table)
 
 def search_folder(folder, commands=None, only_files=None, progress=None, progress_total=None):
     num_of_folders = 0
@@ -479,3 +491,6 @@ def help_history():
     print(Fore.LIGHTCYAN_EX + "history" + Fore.RESET + " - show history of commands")
     print("\t[history] - print history\n\t[history 0] - load history\n")
       
+def debug_write(message):
+    with open("debug.txt", "a") as file:
+        file.write(f"{message}\n")
