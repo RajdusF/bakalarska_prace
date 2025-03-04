@@ -9,6 +9,8 @@ from colorama import Fore
 from tabulate import tabulate
 
 import python.global_variables as global_variables
+from python.help_func import find_name_of_browse_file, find_name_of_find_file
+from python.my_file import Molecule, My_file
 
 ops = {
     "==": operator.eq,
@@ -36,13 +38,14 @@ def show_files(files):
 def add(name : str, files : list, added_files : list):
     from python.help_func import search_folder
     i = len(added_files)
-    for x in files:
-        if name in x:
-            name = x
+    
+    for file in files:
+        if file.split("\\")[-1] == name:
+            name = file
             break
         
     # if is folder
-    if os.path.isdir(name):
+    if os.path.isdir(name) and name != ".":
         added_files.extend(search_folder(name))
     else:
         if name == "*":
@@ -61,11 +64,11 @@ def add(name : str, files : list, added_files : list):
     print(f"Added {len(added_files) - i} files")
     return(len(added_files) - i)
 
-def add_if_in_dict(files : list, dict : dict, dict_name : str):
+def add_if_in_variables(files : list, variables : dict, variables_name : str):
     r = []
     
     for x in files:
-        if x.split("\\")[-1] in dict[dict_name]:
+        if x.split("\\")[-1] in variables[variables_name]:
             r.append(x)
     
     return r
@@ -188,41 +191,93 @@ def settings(option, value):
 
 def find(to_find : str, files : list, ignore_case : bool = False):          
     occurances = {}
+    re_flags = re.IGNORECASE if ignore_case else 0
     
-    with open("output\\find_output.txt", "w") as f_output:
+    output_file = find_name_of_find_file()
+    
+    with open("output\\" + output_file, "w") as f_output:
         for file in files:
+            if not os.path.isfile(file):
+                continue
+            
             new = True
             file_occurances = []
-            if os.path.isfile(file):
-                try:
-                    with open(file, "r", encoding="utf-8") as f:
-                        lines = f.readlines()
-                        
-                        if ignore_case:
-                            for line in lines:
-                                if re.search(to_find, line, re.IGNORECASE):
-                                    file_occurances.append(line.strip())
-                                    if new:
-                                        f_output.write(f"{file}\n")
-                                        new = False
-                                    f_output.write("\t" + line)
-                        else:
-                            for line in lines:
-                                if re.search(to_find, line, ):
-                                    file_occurances.append(line.strip())
-                                    if new:
-                                        f_output.write(f"{file}\n")
-                                        new = False
-                                    f_output.write("\t" + line)
-                                    
-                    if file_occurances != []:
-                        occurances[file] = file_occurances
-                except UnicodeDecodeError:
-                    print(Fore.YELLOW + f"Skipping {file}: Not a valid text file." + Fore.RESET)
-                except Exception as e:
-                    print(Fore.YELLOW + f"Skipping {file} due to error: {e}" + Fore.RESET)
+            try:
+                with open(file, "r", encoding="utf-8") as f:
+                    for line in f:
+                        if re.search(to_find, line, re_flags):
+                            file_occurances.append(line.strip())
+                            if new:
+                                f_output.write(f"{file}\n")
+                                new = False
+                            f_output.write("\t" + line)
+                                
+                if file_occurances:
+                    occurances[file] = file_occurances
+            except UnicodeDecodeError:
+                print(Fore.YELLOW + f"Skipping {file}: Not a valid text file." + Fore.RESET)
+            except Exception as e:
+                print(Fore.YELLOW + f"Skipping {file} due to error: {e}" + Fore.RESET)
             
     return occurances
+
+
+def load(name):
+    if isinstance(name, list):
+        files = []
+        for file in name:
+            files.append(load(file))
+                
+        return files
+    elif os.path.isfile(name):
+        with open(name, 'r') as f:
+            my_f = My_file()
+            
+            my_f.name = name
+            my_f.size = os.path.getsize(name)
+            my_f.content = f.read()
+            lines = my_f.content.split("\n")
+            
+            for line in lines:
+                if line.startswith("#h"):
+                    my_f.header = line.removeprefix("#h").strip().split("\t")
+                    # print(my_f.header)
+                    
+                if not line.startswith("#"):
+                    molecule = Molecule()
+                    
+                    if line == "":
+                        continue
+                    data = line.strip().split("\t")
+                        
+                    header = my_f.header
+                    
+                    for i, x in enumerate(header):
+                        molecule.__setattr__(x, data[i])
+                    
+                    my_f.molecules.append(molecule)
+            
+            #print(my_f)
+            
+            return my_f
+    else:
+        print(Fore.RED + "load error")
+
+def write_line_based_on_file(input_file="", input_line="", output="output/output.txt"):
+    
+    if not os.path.exists(output):
+        with open(output, 'w') as file:
+            pass
+    
+    with open(output, 'r+') as f:
+        for line in f:
+            if line.startswith("\t"):
+                continue
+            if line.strip() == input_file:
+                f.write('\t' + input_line + '\n')
+                return
+        
+        f.write(input_file + '\n\t' + input_line + '\n')
 
 def browse(added_files, command):
     # TODO: Try dictionary instead of list
@@ -250,7 +305,9 @@ def browse(added_files, command):
     lines_number = 0
     skipped_lines = 0
     
-    with open("output\\browse_output.txt", "w") as f_output:
+    browse_output = find_name_of_browse_file()
+    
+    with open("output\\" + browse_output, "w") as f_output:
         for file in added_files:
             molecules = []
             new_file = True
@@ -294,7 +351,7 @@ def browse(added_files, command):
                     operator = None
                     value = None
             if len(filters_to_process) > 0:
-                print(Fore.RED + "Invalid filter: " + command[1:])
+                print(Fore.RED + "Invalid filter: " + command)
                 return
                     
             del(c, h, key, operator, value)
@@ -607,11 +664,11 @@ def set_operations(expression: str, dictionary: dict):
         return result
 
 
-def save(name, files_to_save, dict):
+def save(name, files_to_save, variables):
     try:
         if len(files_to_save) == 0:
             raise Exception("No files to save")
-        dict[name] = files_to_save.copy()
+        variables[name] = files_to_save.copy()
     except Exception as e:
         print(Fore.RED + "Error: {e}")
     

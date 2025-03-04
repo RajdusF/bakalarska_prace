@@ -5,14 +5,16 @@ from colorama import Fore
 from tabulate import tabulate
 
 import python.global_variables as global_variables
-from python.command_functions import (add, add_folder, add_if_in_dict, browse,
-                                      find, input_files, output,
+from python.command_functions import (add, add_folder, add_if_in_variables,
+                                      browse, find, input_files, load, output,
                                       output_occurances, remove, save, select,
                                       set_operations, settings, show_files,
                                       sort)
 from python.global_variables import find_occurances as find_occurances
 from python.global_variables import result as result
-from python.help_func import (add_history, get_variable, help_add, help_cd,
+from python.help_func import (add_history,
+                              convert_variables_to_variables_from_dict,
+                              execute_command, get_variable, help_add, help_cd,
                               help_filter, help_find, help_output, help_save,
                               help_select, help_sort, help_take_float,
                               help_take_int, load_history, my_help,
@@ -21,30 +23,12 @@ from python.help_func import (add_history, get_variable, help_add, help_cd,
                               take_float, take_int)
 
 
-def process_command(command : str, dict, files : list, added_files : list):
+def process_command(command : str, variables, files : list, added_files : list):
     from python.filter import filter
     global find_occurances
     global result
     
-    if "#" in command:
-        for x in command:
-            if x == "#":
-                first_mark = -1
-                second_mark = -1
-                if "\"" in command:
-                    first_mark = command.index("\"")
-                    second_mark = command.index("\"", first_mark + 1)
-                
-                    if first_mark != -1 and second_mark != -1:
-                        if first_mark < command.index("#") < second_mark:
-                            pass
-                        else:
-                            command = command[:command.index("#")]
-                        
-                else:
-                    command = command[:command.index("#")]
-    
-    
+    command = command.strip()
     commands = command.split(" ")
     original_command = command
     
@@ -57,11 +41,11 @@ def process_command(command : str, dict, files : list, added_files : list):
         try:
             if eval(if_condition):
                 for s in statements:
-                    process_command(s, dict, files, added_files)
+                    process_command(s, variables, files, added_files)
         except:
-            if process_command(statement, dict, files, added_files):
+            if process_command(statement, variables, files, added_files):
                 for s in statements:
-                    process_command(s, dict, files, added_files)
+                    process_command(s, variables, files, added_files)
             
     else:
         # Trying to get variable
@@ -71,10 +55,10 @@ def process_command(command : str, dict, files : list, added_files : list):
             if temp != None:
                 result.clear()
                 result.extend(temp)
-            print("To save result use \"save result to variable/file.txt\"")
-            print("Result:")
-            for x in result:
-                print(x)
+                print("To save result use \"save result to variable/file.txt\"")
+                print("Result:")
+                for x in result:
+                    print(x)
         except:
             if command == "exit":
                 return -1
@@ -130,7 +114,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                     help_filter()
                     return
                 
-                temp = filter(command, commands, files, added_files, dict)
+                temp = filter(command, commands, files, added_files, variables)
                 files.clear()
                 files.extend(temp)
                 
@@ -195,7 +179,9 @@ def process_command(command : str, dict, files : list, added_files : list):
                         return
                     find_occurances = find(to_find, files, ignore_case)
                     
-                print_occurances(find_occurances)
+                print_occurances(find_occurances)              
+                files.clear()
+                files.extend(list(find_occurances.keys()))
                 
                 add_history(original_command, files, find_occurances)
                 
@@ -288,7 +274,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                 if commands[1] == "occ" or commands[1] == "occurances" and len(commands) == 2:
                     added_files.extend([x[0] for x in find_occurances])
                 elif commands[1] == "files" and commands[2] == "contains":
-                    r = add_if_in_dict(files, added_files, dict, commands[3])
+                    r = add_if_in_variables(files, added_files, variables, commands[3])
                     for file in r:
                         if file not in added_files:
                             added_files.append(file)
@@ -300,8 +286,8 @@ def process_command(command : str, dict, files : list, added_files : list):
                         added_files.extend(add_folder(commands[1]))
                     elif os.path.isfile(commands[1]):
                         added_files.append(commands[1])
-                elif "\\" in command and len(commands) == 3 and "all" in commands:
-                    added_files.extend(add_folder(commands[2], recursive=True))
+                    else:
+                        print(Fore.RED + "File not found")
                     
                 elif len(commands) == 2:
                         name = commands[1]
@@ -318,17 +304,22 @@ def process_command(command : str, dict, files : list, added_files : list):
                 r = remove(commands, added_files)
                 print(f"Removed {r} files")
                     
+            elif command == "files":
+                show_files(files)
+            elif command == "added":
+                show_added_files(added_files)
+            
             elif "show" in commands:
-                if len(commands) == 2 and commands[1] == "added" or command == "added":
+                if len(commands) == 2 and commands[1] == "added":
                     show_added_files(added_files)
-                elif len(commands) == 2 and commands[1] == "files" or command == "files":
+                elif len(commands) == 2 and commands[1] == "files":
                     show_files(files)
                 elif len(commands) == 2 and commands[1] == "dist":
-                    print(dict)
-                elif len(commands) == 2:                          # dict[commands[1]]):
-                    if dict.get(commands[1]) != None:
+                    print(variables)
+                elif len(commands) == 2:                          # variables[commands[1]]):
+                    if variables.get(commands[1]) != None:
                         print(f"Files in \"{commands[1]}\":")
-                        for x in dict[commands[1]]:
+                        for x in variables[commands[1]]:
                             print(x)
                     else:
                         print(f"Save file {commands[1]} not found")
@@ -362,28 +353,28 @@ def process_command(command : str, dict, files : list, added_files : list):
                     help_save()
                 if len(commands) == 3:
                     if commands[1] == "result":
-                        dict[commands[2]] = result.copy()
+                        variables[commands[2]] = result.copy()
                         print(f"Result saved to \"{commands[2]}\"")
                     elif commands[1] == "files" or commands[1] == "names":
-                        save(commands[2], files, dict)
+                        save(commands[2], files, variables)
                     elif commands[1] == "added":
-                        save(commands[2], added_files, dict)
+                        save(commands[2], added_files, variables)
                     elif commands[1] == "occurances":
                         temp = []
                         temp = [row[0] for row in find_occurances]
-                        save(commands[2], temp, dict)
+                        save(commands[2], temp, variables)
                     else:
                         print(Fore.RED + "Wrong input")
                 else:
                     print(Fore.RED + "Wrong input")
                 
             elif commands[0] == "load" and commands[1] == "from" and command[3] == "to" and len(commands) == 5:
-                if commands[2] in dict:
+                if commands[2] in variables:
                     if commands[4] == "files":
-                        files = dict[commands[2]].copy()
+                        files = variables[commands[2]].copy()
                         print("Files loaded from \"" + commands[2] + "\"")
                     else:
-                        added_files = dict[commands[2]].copy()
+                        added_files = variables[commands[2]].copy()
                         print("Files loaded from \"" + commands[2] + "\"")
                 else:
                     print("File not found")
@@ -401,8 +392,8 @@ def process_command(command : str, dict, files : list, added_files : list):
                     help_output()
                     return
                 
-                if commands[1] in dict:
-                    output(added_files=dict[commands[1]], output_file="output.txt", extend=False)
+                if commands[1] in variables:
+                    output(added_files=variables[commands[1]], output_file="output.txt", extend=False)
                 elif commands[1] == "result":
                     output(added_files=result, output_file=commands[2], extend=False)
                 elif (commands[1] == "occ" or commands[1] == "occurances") and len(commands) == 2:
@@ -417,7 +408,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                 
             elif "names" in commands:
                 if len(commands) == 1:
-                    pprint(dict)
+                    pprint(variables)
                 elif len(commands) == 2:
                     try:
                         if len(files) == 0:
@@ -425,7 +416,7 @@ def process_command(command : str, dict, files : list, added_files : list):
                         names = []
                         for x in files:
                             names.append(x.split("\\")[-1])
-                        dict[commands[1]] = names
+                        variables[commands[1]] = names
                         
                         print(f"Names saved to \"{commands[1]}\"")
                     except Exception as e:
@@ -453,14 +444,46 @@ def process_command(command : str, dict, files : list, added_files : list):
                 
             # Sjednocení, průnik, rozdíl
             elif "A" in commands or "U" in commands or "-" in commands:
-                temp = set_operations(command, dict)
+                temp = set_operations(command, variables)
                 files.clear()
                 files.extend(temp)
                 add_history(command, files)
                 
+            elif command.startswith("load"):    
+                parenthesses = command[command.index("(") + 1:command.index(")")]
+                if parenthesses == "added" or parenthesses == "added_files":
+                    return load(added_files)            
+                else:
+                    return load(command[command.index("(") + 1:command.index(")")])
                 
+                
+            # b = 5     Variables...
+            elif len(commands) > 1 and "=" in commands[1]:
+                variables[commands[0]] = process_command(command[command.index("=") + 1:], variables, files, added_files)
+                if commands[0] in variables:
+                    print(f"Variable \"{commands[0]}\" saved")
+                else:
+                    print(Fore.RED + "Error during saving variable")
+                    
+                print(variables)
+            
             elif command == "":
                 return
             
+            elif command.startswith("\"") and command.endswith("\""):
+                return command[1:-1]
+            
+            elif command.isdecimal():
+                try:
+                    return float(command)
+                except:
+                    return int(command)
+            
             else:
-                print(Fore.RED + "Wrong input")
+                # try:
+                command_to_run = convert_variables_to_variables_from_dict(command, variables)
+                return execute_command(command_to_run, variables)
+
+                # except Exception as e:
+                #     print(Fore.RED + "Error: ", e)
+                #     print(Fore.RED + "Wrong input")

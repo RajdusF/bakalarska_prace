@@ -1,5 +1,4 @@
-Command "add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx" took 0.0023 seconds to run
-Command "add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx" took 0.0000 seconds to run
-Command "add C:\Users\Filip\Documents\bakalarska_prace\files\all_2_cropped.bnx" took 0.0000 seconds to run
-Command "add C:\Users\Filip\Documents\bakalarska_prace\all.bnx" took 0.0005 seconds to run
-Command "browse OriginalMoleculeId > 5 OriginalMoleculeId < 20" took 110.0832 seconds to run
+Command "add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap" took 0.0020 seconds to run
+Command "add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx" took 0.0000 seconds to run
+Command "f = load(added)" took 0.0017 seconds to run
+Command "print(f)" took 0.0005 seconds to run

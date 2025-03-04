@@ -7,14 +7,16 @@ from colorama import Fore, init
 
 import python.global_variables as global_variables
 from python.decider import process_command
-from python.help_func import debug_write, read_commands_from_file, read_json
+from python.help_func import (comments_removal, debug_write,
+                              read_commands_from_file, read_json)
 
 
 def main(args):
     os.system('cls')
     files = []
     added_files = []
-    dict = {}    
+    variables = {}
+    variables["test"] = ["test", "test2", "test3"]    
         
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
             
@@ -22,11 +24,16 @@ def main(args):
     
     while len(commands) > 0:
         command = commands.pop(0)
-        if command.startswith("#"):
+        
+        
+        if command.startswith("#") or command == "":
             continue
+        
+        command = comments_removal(command)
+        
         print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> {command}" + Fore.RESET)
         command_start_time = time.time()
-        if(process_command(command, dict, files, added_files)) == -1:
+        if(process_command(command, variables, files, added_files)) == -1:
             return -1
         print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
         debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
@@ -35,10 +42,12 @@ def main(args):
     while True:         
         command = input(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + " >> ")
         print(Fore.RESET, end="")
+        
+        command = comments_removal(command)
             
         command_start_time = time.time()
         
-        result = process_command(command, dict, files, added_files)
+        result = process_command(command, variables, files, added_files)
         
         print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
         debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
@@ -54,6 +63,9 @@ if __name__ == "__main__":
     
     if os.path.isfile("debug.txt"):
         os.remove("debug.txt")
+        
+    if os.path.isfile("output/output.txt"):
+        os.remove("output/output.txt")
     
     args = parser.parse_args()
     
@@ -75,7 +87,7 @@ if __name__ == "__main__":
     print(f"Show duplicity: {global_variables.show_duplicity}")
 
     
-    cProfile.run("main(args)", sort="tottime")
-    # main(args)
+    # cProfile.run("main(args)", sort="tottime")
+    main(args)
     
     print(f"Program took {time.time() - start_time:.4f} seconds to run")

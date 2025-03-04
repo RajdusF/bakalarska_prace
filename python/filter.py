@@ -6,7 +6,7 @@ import time
 from colorama import Fore
 
 import python.global_variables as global_variables
-from python.command_functions import add_if_in_dict
+from python.command_functions import add_if_in_variables
 from python.help_func import (progress_bar, recalculate_size, search_folder,
                               time_from_now)
 

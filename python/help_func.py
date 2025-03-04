@@ -1,6 +1,7 @@
 import glob
 import json
 import os
+import re
 import sys
 import textwrap
 import time
@@ -8,10 +9,10 @@ import time
 from colorama import Fore, Style, init
 from tabulate import tabulate
 
+import python.command_functions as command_functions
 import python.global_variables as global_variables
 
 history = []
-
 
 def get_variable(message : str, find_occurances : list):
     r = []
@@ -24,20 +25,7 @@ def get_variable(message : str, find_occurances : list):
         print_occurances(find_occurances)
         return r
     
-    # occurances[0]
-    # elif "occurances" in message and "[" in message and "]" in message and message.count("[") == 2 and message.count("]") == 2:
-    #     try:
-    #         index = int(message[message.index("[") + 1:message.index("]")])
-    #         second_bracket_index = int(message.find("[", message.index("[") + 1))
-    #         part = int(message[second_bracket_index + 1: message.index("]", second_bracket_index)])
-    #         for occurance in find_occurances:
-    #             # print(occurance[index])
-    #             r.append(occurance[index].split("\\")[-2])
-    #         return r
-    #     except:
-    #         pass
     
-    # occurances[0][0]
     elif message.startswith("occurances") and "[" in message and "]" in message:
         try:
             index = int(message[message.index("[") + 1:message.index("]")])
@@ -59,6 +47,18 @@ def get_variable(message : str, find_occurances : list):
     
     raise Exception("Variable not found")
 
+def execute_command(command, variables):
+    globals()["write_line_based_on_file"] = command_functions.write_line_based_on_file
+    try:
+        result = eval(command, globals(), locals())
+        return result
+    except SyntaxError:
+        try:
+            exec(command, globals(), locals())
+        except Exception as e:
+            print(Fore.RED + f"Exec error: {e}")
+    except Exception as e:
+        print(Fore.RED + f"Eval error: {e}")
 
 def take_int(message : str, position : int = 0):
     try:      
@@ -341,8 +341,24 @@ def load_history(x : int, files : list, find_occurances : list):
     
 def read_commands_from_file():
     try:
+        commands = []
+        current_command = ""
+
         with open("configurator_commands.txt", "r") as file:
-            commands = [line.strip() for line in file.readlines()]
+            for line in file:
+                stripped = line.rstrip()
+
+                if current_command:
+                    if stripped and (stripped[0] == " " or stripped[0] == "\t"):
+                        current_command += "\n" + stripped
+                    else:
+                        commands.append(current_command)
+                        current_command = stripped
+                else:
+                    current_command = stripped
+                
+            if current_command:
+                commands.append(current_command)
         
         return commands
 
@@ -350,7 +366,74 @@ def read_commands_from_file():
         print(Fore.RED + "The file 'configurator_commands.txt' does not exist" + Fore.RESET)
         return None
     
+def find_name_of_browse_file():
+    # list of files
+    files = os.listdir("output")
     
+    max = 0
+    
+    for file in files:
+        if file.startswith("browse_output"):
+            file = file.split(".")[0]
+            if len(file.split("_")) == 3:
+                num = int(file.split("_")[2])
+                if num >= max:
+                    max = num + 1
+    
+    return "browse_output_" + str(max) + ".txt"
+
+def find_name_of_find_file():
+    # list of files
+    files = os.listdir("output")
+    
+    max = 0
+    
+    for file in files:
+        if file.startswith("find_output"):
+            file = file.split(".")[0]
+            if len(file.split("_")) == 3:
+                num = int(file.split("_")[2])
+                if num >= max:
+                    max = num + 1
+    
+    return "find_output_" + str(max) + ".txt"
+
+def comments_removal(string : str) -> str:
+    last_end_mark = 0
+    if "#" in string:
+        for i, x in enumerate(string):
+            if x == "#":
+                first_mark = -1
+                second_mark = -1
+                if "\"" in string:
+                    first_mark = string.find("\"", last_end_mark + 1)
+                    second_mark = string.find("\"", first_mark + 1)
+                    last_end_mark = second_mark
+                
+                    if first_mark != -1 or second_mark != -1:
+                        if first_mark < str(string). index("#") < second_mark:
+                            pass
+                        else:
+                            string = string[:i]
+                        
+                else:
+                    string = string[:string.index("#")]
+                    
+    return string.strip()
+    
+def convert_variables_to_variables_from_dict(string: str, variables: dict) -> str:
+    print(f"BEFORE: {string}")
+    
+    # Pro každý klíč v dictionary nahradíme proměnnou odpovídající hodnotou
+    for key, value in variables.items():
+        # Použijeme regulární výraz pro nahrazení pouze celého slova
+        # Zajišťujeme, že proměnná je samostatné slovo, ne součást nějakého jiného slova
+        string = re.sub(rf'\b{re.escape(key)}\b', f'variables["{key}"]', string)
+    
+    print(f"AFTER: {string}")
+    
+    return string
+
 def my_help():
     print(Fore.YELLOW)
     print("Arguments:", end=" ")
