@@ -239,21 +239,25 @@ def load(name):
             lines = my_f.content.split("\n")
             
             for line in lines:
+                if line == "":
+                    continue
                 if line.startswith("#h"):
                     my_f.header = line.removeprefix("#h").strip().split("\t")
-                    # print(my_f.header)
+                elif line[0] == "#" and (line[1].isdecimal() or line[1] in "Q") and line[2] == "h":
+                    my_f.header.append(line.strip().split("\t")[1:])
                     
                 if not line.startswith("#"):
                     molecule = Molecule()
                     
-                    if line == "":
-                        continue
                     data = line.strip().split("\t")
                         
-                    header = my_f.header
-                    
-                    for i, x in enumerate(header):
-                        molecule.__setattr__(x, data[i])
+                    headers = my_f.header  
+                    for i, header in enumerate(headers):
+                        if isinstance(header, list):
+                            for j, h in enumerate(header):
+                                molecule.__setattr__(h, data[j])
+                        else:
+                            molecule.__setattr__(header, data[i])
                     
                     my_f.molecules.append(molecule)
             

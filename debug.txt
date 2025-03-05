@@ -1,4 +1,19 @@
-Command "add C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap" took 0.0176 seconds to run
-Command "add C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx" took 0.0000 seconds to run
-Command "f = load(added)" took 0.0247 seconds to run
+Command "cislo = 50" took 0.0010 seconds to run
+Command "veta = "Hello World!"" took 0.0010 seconds to run
+Command "add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap" took 0.0000 seconds to run
+Command "add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx" took 0.0000 seconds to run
+Command "f = load(added)" took 0.0020 seconds to run
 Command "print(f)" took 0.0000 seconds to run
+Command "f = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)" took 0.0020 seconds to run
+Command "print(f.molecules[2])" took 0.0021 seconds to run
+Command "ids = []" took 0.0097 seconds to run
+Command "for i, molecule in enumerate(f.molecules):
+    if float(molecule.lnSNRsd) < 0.2:
+        molecule.lnSNRsd = -1
+    if float(molecule.lnSNRsd) > 0.5:
+        print(molecule)
+        ids.append(i)
+        write_line_based_on_file(f.name, str(molecule))" took 0.0409 seconds to run
+Command "for i, molecule in enumerate(f.molecules):
+    if float(molecule.lnSNRsd) < 0.2:
+        print(str(molecule))" took 0.0305 seconds to run

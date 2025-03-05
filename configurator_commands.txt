@@ -1,6 +1,10 @@
-# add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
+
+cislo = 50
+veta = "Hello World!"
+
+#add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
 add C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
-# add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
 add C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx
 
 
@@ -10,20 +14,22 @@ f = load(added)
 
 print(f)
 
-#print(f.molecules[2])
+f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)
 
-#ids = []
-#for i, molecule in enumerate(f.molecules):
-#    if float(molecule.lnSNRsd) < 0.2:
-#        molecule.lnSNRsd = -1
-#    if float(molecule.lnSNRsd) > 0.5:
-#        print(molecule)
-#        ids.append(i)
-#        write_line_based_on_file(f.name, str(molecule))
-#
-#for i, molecule in enumerate(f.molecules):
-#    if float(molecule.lnSNRsd) < 0.2:
-#        print(str(molecule))
+print(f.molecules[2])
+
+ids = []
+for i, molecule in enumerate(f.molecules):
+    if float(molecule.lnSNRsd) < 0.2:
+        molecule.lnSNRsd = -1
+    if float(molecule.lnSNRsd) > 0.5:
+        print(molecule)
+        ids.append(i)
+        write_line_based_on_file(f.name, str(molecule))
+
+for i, molecule in enumerate(f.molecules):
+    if float(molecule.lnSNRsd) < 0.2:
+        print(str(molecule))
 
 
 
