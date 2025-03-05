@@ -1,5 +1,10 @@
-add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
-add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+# add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
+add C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
+# add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+add C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx
+
+
+
 
 f = load(added)
 
