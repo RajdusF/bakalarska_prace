@@ -1,27 +1,14 @@
-
-cislo = 50
-veta = "Hello World!"
-
-#add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
-add C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
-#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
-add C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx
+filter name *.cmap
 
 
-
-
-f = load(added)
+f = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
 
 print(f)
-
-f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)
 
 print(f.molecules[2])
 
 ids = []
 for i, molecule in enumerate(f.molecules):
-    if float(molecule.lnSNRsd) < 0.2:
-        molecule.lnSNRsd = -1
     if float(molecule.lnSNRsd) > 0.5:
         print(molecule)
         ids.append(i)
@@ -31,61 +18,16 @@ for i, molecule in enumerate(f.molecules):
     if float(molecule.lnSNRsd) < 0.2:
         print(str(molecule))
 
+print(ids)
 
+f = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)
 
+print(f)
 
+for molecule in f.molecules:
+    if hasattr(molecule, "AvgIntensity"):
+        if float(molecule.AvgIntensity) > 1400:
+            print(molecule)
+            write_line_based_on_file(f.name, str(molecule))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
-#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx
-#add C:\Users\Filip\Documents\bakalarska_prace\files\all_2_cropped.bnx
-#add C:\Users\Filip\Documents\bakalarska_prace\all.bnx
-#add C:\Users\Filip\Documents\bakalarska_prace\files\big_cropped.bnx
-#cd C:\Users\Filip\Documents\bakalarska_prace
-#set search 2
-#filter name *.bnx
-#add *
-#find "Base" in added
-#find
-#find "Avg" in added
-#find "*Avg*" in added
-#find "\d" in added              # Libovolne cislice
-#find "\d+" in added             # Cele cislice
-#find "^#" in added              # Zacinaji hashtagem
-#find "^.{0,190}$" in added      # 0-190 znaků
-#find "bnx" in added
-#find "bnx" in added -I
-#find "\b100\b" in added         # "100" bez připlácnutého znaku
-#output occ
-#browse MoleculeID == "4" Length > 1         # Vyzkoušet
-#browse MoleculeID == 4
-#browse Length == 874875.00
-#browse Length == 874875
-#browse Length > 1
-#browse ScanNumber == 1 SNR > 120
-#browse MoleculeID > 4 MoleculeID < 8
-#browse SNR == 113.7
-#browse AvgIntensity > 2000 AvgIntensity < 2050
-#browse AvgIntensity > 2000 AvgIntensity < 2050 RunId == 9
-#browse Length == 691125.00
-#browse file.bnx Length == 691125.00 AvgIntensity > 2000
-#browse EndX > 300 EndY < 500
-#browse OriginalMoleculeId > 5 OriginalMoleculeId < 20
-#find "molecule" in added -I
-#find "Label" in added -I
-#browse MoleculeID < 15
-#browse Length < 1349000.00 Length > 1249000.00
 

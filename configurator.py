@@ -15,8 +15,7 @@ def main(args):
     os.system('cls')
     files = []
     added_files = []
-    variables = {}
-    variables["test"] = ["test", "test2", "test3"]    
+    variables = {}  
         
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
             

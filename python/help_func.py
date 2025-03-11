@@ -422,7 +422,7 @@ def comments_removal(string : str) -> str:
     return string.strip()
     
 def convert_variables_to_variables_from_dict(string: str, variables: dict) -> str:
-    print(f"BEFORE: {string}")
+    # print(f"BEFORE: {string}")
     
     # Pro každý klíč v dictionary nahradíme proměnnou odpovídající hodnotou
     for key, value in variables.items():
@@ -430,7 +430,7 @@ def convert_variables_to_variables_from_dict(string: str, variables: dict) -> st
         # Zajišťujeme, že proměnná je samostatné slovo, ne součást nějakého jiného slova
         string = re.sub(rf'\b{re.escape(key)}\b', f'variables["{key}"]', string)
     
-    print(f"AFTER: {string}")
+    # print(f"AFTER: {string}")
     
     return string
 

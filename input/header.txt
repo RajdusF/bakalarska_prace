@@ -1,6 +1,0 @@
-#0h LabelChannel	MoleculeID	Length	AvgIntensity	SNR	NumberofLabels	OriginalMoleculeId	ScanNumber	ScanDirection	ChipId	Flowcell	RunId	Column	StartFOV	StartX	StartY	EndFOV	EndX	EndY	GlobalScanNumber
-#0f int	 int	 float	float	float	int	int	int	int	string	int	int	int	int	int	int	int	int	int	int
-#1h LabelChannel	LabelPositions[N]
-#1f int	float
-#Qh QualityScoreID	QualityScores[N]
-#Qf string	float[N]

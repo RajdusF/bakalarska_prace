@@ -1,160 +1,23 @@
-SCENARIO 1
-cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter name *.xlsx
-sort by size desc
-select top 1
-save files to a
-cd folder_2
-filter name *.py
-save files to b
-show b
-show a
-a U b
-save files to c
-add *
-history
-output output.txt
-filter added * -d
+#add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
+#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
 
-SCENARIO 2
-add C:\Users\Filip\Documents\bakalarska_prace\files\folder_2
-add C:\Users\Filip\Documents\bakalarska_prace\files\folder\second_folder
-cd C:\Users\Filip\Downloads
-filter name *.pdf -d
-sort by size desc
-select top 10
-add *
-show added
-filter added -d
-output folder_2+second_folder+pdf
+#load(added)
 
+f = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
 
-cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter * -d
-sort by size desc
-filter files size > 10 MB
+print(f)
 
+print(f.molecules[2])
 
-SCENARIO 3
-cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter name *.bnx
-add *
-filter name *cropped.xmap
-add *
-filter name *cropped.cmap
-add *
+ids = []
+for i, molecule in enumerate(f.molecules):
+    if float(molecule.lnSNRsd) < 0.2:
+        molecule.lnSNRsd = -1
+    if float(molecule.lnSNRsd) > 0.5:
+        print(molecule)
+        ids.append(i)
+        write_line_based_on_file(f.name, str(molecule))
 
-show added
-output output.txt
-
-
-
-
-set search 0
-cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
-filter *
-names compute
-names
-cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\database\align\
-filter *
-names database
-names
-compute - database
-save names to names1
-cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
-filter *
-filter files contains names1
-set search 2
-filter files name *.out
-find "RESULT" in files
-find "RESULT=1" in files
-occurances
-occurances[0]
-occurances[1]
-occurances[1][1]
-occurance
-occurance[1]
-
-
-
-
-
-cd C:\Users\Filip\Documents\bakalarska_prace\files
-filter *
-find "RESULT=1"
-occurances[-2]
-filter *
-find "Total number of molecules"
-save occurances to occ
-show occ
-take_int(lines, 0) > 6000
-
-
-
-set search 0
-cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
-filter *
-names all
-names
-cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\database\align\
-filter *
-names completed
-names
-all - completed
-save names to_go
-cd C:\Users\Filip\Documents\bakalarska_prace\files\bionano\compute\jobs
-filter *
-names
-filter files contains to_go
-set search 2
-filter files name *.out
-find "RESULT" in files
-find "RESULT=1" in files
-filter *
-find "Total number of molecules"
-take_int(Line, 0) > 6000
-output occ high_molecules.txt
-filter *
-find "RESULT=1"
-occ to files
-find "SNR cutoff"
-take_float(Line, 1) > 4.0
-output occ high_SNR.txt
-occurances
-save result test.txt
-output occurances mytest.txt
-
-
-add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
-#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx
-add C:\Users\Filip\Documents\bakalarska_prace\files\all_2_cropped.bnx
-#find
-#find "Avg" in added
-#find "*Avg*" in added
-# find "\d" in added
-# find "\d+" in added
-# find "^#" in added
-# find "^.{0,190}$" in added
-#find "bnx" in added
-#find "bnx" in added -I
-#find "\b100\b" in added
-#output occ
-#browse MoleculeID == "4" Length > 1
-#browse MoleculeID == 4
-#browse Length == 874875.00
-#browse Length == 874875
-#browse Length > 1
-#browse ScanNumber == 1
-#browse MoleculeID > 4
-# LabelChannel	MoleculeID	Length	AvgIntensity	SNR	NumberofLabels	OriginalMoleculeId	ScanNumber	ScanDirection	ChipId	Flowcell	RunId	Column	StartFOV	StartX	StartY	EndFOV	EndX	EndY	GlobalScanNumber
-#browse SNR == 113.7
-#browse AvgIntensity > 2000
-#browse Length == 691125.00
-#browse Length == 691125.00 AvgIntensity > 2000
-#add C:\Users\Filip\Documents\bakalarska_prace\all.bnx
-#browse EndX > 300 EndY < 500
-#browse OriginalMoleculeId > 5
-find "molecule" in added -I
-find "Label" in added -I
-#browse MoleculeID < 15
-#browse Length < 1349000.00 Length > 1049000.00
+for i, molecule in enumerate(f.molecules):
+    if float(molecule.lnSNRsd) < 0.2:
+        print(str(molecule))

@@ -28,9 +28,9 @@ class My_file:
         self.molecules = []
         
     def __str__(self):
-        return (f"\n\tname: {self.name}\n\theader: {self.header}\n\tcontent: {repr(self.content[:100])}..."
+        return (f"\tname: {self.name}\n\theader: {self.header}\n\tcontent: {repr(self.content[:100])}..."
             f"\n\tsize: {self.size} bytes\n\tnumber of molecules: {len(self.molecules)}\n")
     
     def __repr__(self):
-        return (f"\n\tname: {self.name}\n\theader: {self.header}\n\tcontent: {repr(self.content[:100])}..."
+        return (f"\tname: {self.name}\n\theader: {self.header}\n\tcontent: {repr(self.content[:100])}..."
             f"\n\tsize: {self.size} bytes\n\tnumber of molecules: {len(self.molecules)}\n")

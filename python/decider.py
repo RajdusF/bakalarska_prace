@@ -465,8 +465,8 @@ def process_command(command : str, variables, files : list, added_files : list):
                 else:
                     print(Fore.RED + "Error during saving variable")
                     
-                for variable in variables:
-                    print(f"{variable}= {variables[variable]}")
+                # for variable in variables:
+                #     print(f"{variable}= {variables[variable]}")
                 # print(variables)
             
             elif command == "":
