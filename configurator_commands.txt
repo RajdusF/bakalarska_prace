@@ -1,26 +1,14 @@
-filter name *.cmap
 
+a = filter name *.bnx
+b = filter name *.cmap
+c = filter name *.xmap
 
-f = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
+all = a+b+c
 
-print(f)
-
-print(f.molecules[2])
-
-ids = []
-for i, molecule in enumerate(f.molecules):
-    if float(molecule.lnSNRsd) > 0.5:
-        print(molecule)
-        ids.append(i)
-        write_line_based_on_file(f.name, str(molecule))
-
-for i, molecule in enumerate(f.molecules):
-    if float(molecule.lnSNRsd) < 0.2:
-        print(str(molecule))
-
-print(ids)
+variables
 
 f = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)
+
 
 print(f)
 

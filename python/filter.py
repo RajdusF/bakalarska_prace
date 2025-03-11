@@ -134,7 +134,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         
         if name == None and size == None and modified == None and created == None:
             print(Fore.RED + "Wrong input")
-            return
+            return []
         
         # NAME
         if name:
@@ -176,7 +176,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
     # command = filter name *.txt size > 100KB contains names1 (dict)
     if "contains" in commands:
         contains_name = commands[commands.index("contains") + 1]
-        files = add_if_in_dict(files, dict, contains_name)
+        files = add_if_in_variables(files, dict, contains_name)
     
     
     if size and size_operator:

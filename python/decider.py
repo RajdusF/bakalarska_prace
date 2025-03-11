@@ -6,10 +6,11 @@ from tabulate import tabulate
 
 import python.global_variables as global_variables
 from python.command_functions import (add, add_folder, add_if_in_variables,
-                                      browse, find, input_files, load, output,
+                                      find, input_files, output,
                                       output_occurances, remove, save, select,
                                       set_operations, settings, show_files,
                                       sort)
+from python.file_handling import load
 from python.global_variables import find_occurances as find_occurances
 from python.global_variables import result as result
 from python.help_func import (add_history,
@@ -82,6 +83,16 @@ def process_command(command : str, variables, files : list, added_files : list):
             
             if command == "*" or command == "ls":
                 show_current_folder()
+                
+            # b = 5     Variables...
+            elif len(commands) > 2 and commands[1] == "=":
+                variables[commands[0]] = process_command(command[command.index("=") + 1:], variables, files, added_files)
+                if commands[0] in variables:
+                    print(f"Variable \"{commands[0]}\" saved")
+                else:
+                    print(Fore.RED + "Error during saving variable")
+            elif command == "":
+                return
   
             elif command == "cd.." or command == "cd ..":
                 global_variables.path = os.path.abspath(os.path.join(global_variables.path, os.pardir))
@@ -95,12 +106,14 @@ def process_command(command : str, variables, files : list, added_files : list):
                 
                 if path_index < len(commands):
                     path = commands[path_index]
-                    if os.path.isdir(path):
+                    if os.path.isdir(path) and "\\" in path or "/" in path:
                         global_variables.path = path
                         print(f"Current path: {global_variables.path}")
+                        settings(3, global_variables.path)
                     elif os.path.isdir(global_variables.path + "\\" + path):
                         global_variables.path = global_variables.path + "\\" + path
                         print(f"Current path: {global_variables.path}")
+                        settings(3, global_variables.path)
                     else:
                         print(Fore.RED + "Path not found" + Fore.RESET)
                 else:
@@ -119,6 +132,8 @@ def process_command(command : str, variables, files : list, added_files : list):
                 files.extend(temp)
                 
                 add_history(command, files)
+                
+                return files.copy()
             
             elif "sort" in commands:
                 if commands[0] == "sort" and len(commands) == 1:
@@ -185,86 +200,6 @@ def process_command(command : str, variables, files : list, added_files : list):
                 
                 add_history(original_command, files, find_occurances)
                 
-            elif "take_int" in commands[0]:
-                if command == "take_int":
-                    help_take_int()
-                    return
-                brackets_string_original = command[command.index("(") + 1:command.index(")")]
-                brackets_string = brackets_string_original.replace(" ", "")
-                command = command.replace(brackets_string_original, brackets_string)
-                commands = command.split(" ")
-                args = brackets_string.split(",")
-                what_to_take = args[0]
-                index = int(args[1])
-                
-                symbol = ""
-                if len(commands) >= 2:
-                    symbol = commands[1]
-                
-                number = ""
-                if len(commands) >= 3:
-                    number = commands[2]
-                
-                temp_occurances = []
-                for x in find_occurances:
-                    if what_to_take in ("lines", "line", "Lines", "Line"):
-                        taken_int = take_int(x[1], index)
-                        if taken_int != None:
-                            if eval(f"{taken_int}{symbol}{number}"):
-                                temp_occurances.append(x)
-                    elif what_to_take in ("file", "File"):
-                        taken_int = take_int(x[0], index)
-                        if taken_int != None:
-                            if eval(f"{taken_int}{symbol}{number}"):
-                                temp_occurances.append(x)
-                
-                find_occurances.clear()
-                find_occurances.extend(temp_occurances)
-                print_occurances(find_occurances)
-                
-                add_history(original_command, files, find_occurances)
-                
-            elif "take_float" in commands[0]:
-                if command == "take_float":
-                    help_take_float()
-                    return
-                brackets_string_original = command[command.index("(") + 1:command.index(")")]
-                brackets_string = brackets_string_original.replace(" ", "")
-                command = command.replace(brackets_string_original, brackets_string)
-                commands = command.split(" ")
-                args = brackets_string.split(",")
-                what_to_take = args[0]
-                index = int(args[1])
-                
-                symbol = ""
-                if len(commands) >= 2:
-                    symbol = commands[1]
-                
-                number = ""
-                if len(commands) >= 3:
-                    number = commands[2]
-                
-                temp_occurances = []
-                for x in find_occurances:
-                    if what_to_take in ("lines", "line", "Lines", "Line"):
-                        taken_float = take_float(x[1], index)
-                        if taken_float != None:
-                            if eval(f"{taken_float}{symbol}{number}"):
-                                temp_occurances.append(x)
-                    elif what_to_take in ("file", "File"):
-                        taken_float = take_float(x[0], index)
-                        if taken_float != None:
-                            if eval(f"{taken_float}{symbol}{number}"):
-                                temp_occurances.append(x)
-                
-                find_occurances.clear()
-                find_occurances.extend(temp_occurances)
-                print_occurances(find_occurances)
-                
-                add_history(original_command, files, find_occurances)
-                        
-            elif "browse" in commands[0]:
-                browse(added_files, command)
                             
             elif "add" in commands and len(commands) > 1:
                 if commands[0] == "add" and len(commands) == 1:
@@ -456,21 +391,6 @@ def process_command(command : str, variables, files : list, added_files : list):
                 else:
                     return load(command[command.index("(") + 1:command.index(")")])
                 
-                
-            # b = 5     Variables...
-            elif len(commands) > 1 and "=" in commands[1]:
-                variables[commands[0]] = process_command(command[command.index("=") + 1:], variables, files, added_files)
-                if commands[0] in variables:
-                    print(f"Variable \"{commands[0]}\" saved")
-                else:
-                    print(Fore.RED + "Error during saving variable")
-                    
-                # for variable in variables:
-                #     print(f"{variable}= {variables[variable]}")
-                # print(variables)
-            
-            elif command == "":
-                return
             
             elif command.startswith("\"") and command.endswith("\""):
                 return command[1:-1]
@@ -481,11 +401,15 @@ def process_command(command : str, variables, files : list, added_files : list):
                 except:
                     return int(command)
             
+            elif command == "variables":
+                for x in variables:
+                    if isinstance(variables[x], list):
+                        print(f"{x}:")
+                        for y in variables[x]:
+                            print("\t" + y)
+                    else:
+                        print(f"{x}: {variables[x]}")
+            
             else:
-                # try:
                 command_to_run = convert_variables_to_variables_from_dict(command, variables)
                 return execute_command(command_to_run, variables)
-
-                # except Exception as e:
-                #     print(Fore.RED + "Error: ", e)
-                #     print(Fore.RED + "Wrong input")

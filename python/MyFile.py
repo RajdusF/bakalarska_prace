@@ -19,7 +19,7 @@ class Molecule:
             text += str(x) + "\t"
         return text
 
-class My_file:
+class MyFile:
     def __init__(self):
         self.name = ""
         self.size = -1
@@ -34,3 +34,9 @@ class My_file:
     def __repr__(self):
         return (f"\tname: {self.name}\n\theader: {self.header}\n\tcontent: {repr(self.content[:100])}..."
             f"\n\tsize: {self.size} bytes\n\tnumber of molecules: {len(self.molecules)}\n")
+        
+    def add_molecule(self, molecule):
+        self.molecules.append(molecule)
+
+    def get_molecule(self, index):
+        return self.molecules[index]

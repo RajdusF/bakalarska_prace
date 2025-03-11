@@ -11,8 +11,6 @@ print(f.molecules[2])
 
 ids = []
 for i, molecule in enumerate(f.molecules):
-    if float(molecule.lnSNRsd) < 0.2:
-        molecule.lnSNRsd = -1
     if float(molecule.lnSNRsd) > 0.5:
         print(molecule)
         ids.append(i)
@@ -21,3 +19,17 @@ for i, molecule in enumerate(f.molecules):
 for i, molecule in enumerate(f.molecules):
     if float(molecule.lnSNRsd) < 0.2:
         print(str(molecule))
+
+print(ids)
+
+f = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)
+
+print(f)
+
+for molecule in f.molecules:
+    if hasattr(molecule, "AvgIntensity"):
+        if float(molecule.AvgIntensity) > 1400:
+            print(molecule)
+            write_line_based_on_file(f.name, str(molecule))
+
+

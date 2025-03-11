@@ -231,7 +231,10 @@ def read_json(file):
         
     global_variables.show_duplicity = data["show_duplicity"]
     
-    global_variables.path = data["path"]
+    if os.path.isdir(data["path"]):
+        global_variables.path = data["path"]
+    else:
+        global_variables.path = os.getcwd()
     
     global_variables.wraps = data["wraps"]
 
