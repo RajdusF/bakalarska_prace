@@ -1,10 +1,10 @@
-Command "a = filter name *.bnx" took 0.0150 seconds to run
-Command "b = filter name *.cmap" took 0.0065 seconds to run
-Command "c = filter name *.xmap" took 0.0035 seconds to run
-Command "all = a+b+c" took 0.0005 seconds to run
-Command "variables" took 0.0020 seconds to run
-Command "f = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0025 seconds to run
-Command "print(f)" took 0.0005 seconds to run
+Command "a = filter name *.bnx" took 0.0977 seconds to run
+Command "b = filter name *.cmap" took 0.0948 seconds to run
+Command "c = filter name *.xmap" took 0.0912 seconds to run
+Command "all = a+b+c" took 0.0060 seconds to run
+Command "variables" took 0.0149 seconds to run
+Command "f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0019 seconds to run
+Command "print(f)" took 0.0000 seconds to run
 Command "for i, molecule in enumerate(f.molecules):
     if hasattr(molecule, "AvgIntensity"):
         if float(molecule.AvgIntensity) > 1500:
@@ -12,4 +12,6 @@ Command "for i, molecule in enumerate(f.molecules):
             write_line_based_on_file(f.name, str(molecule))
             print(f.molecules[i+1])
             print(f.molecules[i+2])
-            print(f.molecules[i+3])" took 0.0911 seconds to run
+            print(f.molecules[i+3])" took 0.1507 seconds to run
+Command "f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)" took 0.0073 seconds to run
+Command "print(f)" took 0.0006 seconds to run

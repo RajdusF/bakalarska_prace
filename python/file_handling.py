@@ -114,3 +114,40 @@ def load_cmap(name):
             return my_f
     else:
         print(Fore.RED + "load error")
+        
+def load_xmap(name):
+    if os.path.isfile(name):
+        with open(name, 'r') as f:
+            my_f = MyFile()
+            
+            my_f.name = name
+            my_f.size = os.path.getsize(name)
+            my_f.content = f.read()
+            lines = my_f.content.split("\n")
+            
+            for line in lines:
+                if line == "":
+                    continue
+                if line.startswith("#h"):
+                    my_f.header = line.removeprefix("#h").strip().split("\t")
+                    
+                if not line.startswith("#"):
+                    molecule = Molecule()
+                    
+                    data = line.strip().split("\t")
+                        
+                    headers = my_f.header  
+                    for i, header in enumerate(headers):
+                        if isinstance(header, list):
+                            if len(header) == len(data):
+                                for j, h in enumerate(header):
+                                    molecule.__setattr__(h, data[j])
+                        else:
+                            molecule.__setattr__(header, data[i])
+                    
+                    my_f.molecules.append(molecule)
+            
+            
+            return my_f
+    else:
+        print(Fore.RED + "load error")

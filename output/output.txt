@@ -1,4 +1,4 @@
-C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx
 	0	1	874875.00	2199.94	118.90	125	1	1	-1	chips,SN_AEO6H7OJP3ZZFNWU,Run_220eac77-51a8-4066-ab25-fdcecd81eae0,539583347	1	1	6	1	931	220	2	931	720	1	
 	0	2	691125.00	2281.71	156.23	123	2	1	-1	chips,SN_AEO6H7OJP3ZZFNWU,Run_220eac77-51a8-4066-ab25-fdcecd81eae0,539583347	1	1	20	1	984	939	2	984	948	1	
 	0	4	511875.00	2032.94	113.70	115	4	1	-1	chips,SN_AEO6H7OJP3ZZFNWU,Run_220eac77-51a8-4066-ab25-fdcecd81eae0,539583347	1	1	9	1	721	864	2	722	395	1	
