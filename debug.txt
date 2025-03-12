@@ -1,5 +1,15 @@
-Command "a = filter name *.bnx" took 0.0086 seconds to run
-Command "b = filter name *.cmap" took 0.0056 seconds to run
-Command "c = filter name *.xmap" took 0.0040 seconds to run
-Command "all = a+b+c" took 0.0010 seconds to run
-Command "variables" took 0.0040 seconds to run
+Command "a = filter name *.bnx" took 0.0150 seconds to run
+Command "b = filter name *.cmap" took 0.0065 seconds to run
+Command "c = filter name *.xmap" took 0.0035 seconds to run
+Command "all = a+b+c" took 0.0005 seconds to run
+Command "variables" took 0.0020 seconds to run
+Command "f = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0025 seconds to run
+Command "print(f)" took 0.0005 seconds to run
+Command "for i, molecule in enumerate(f.molecules):
+    if hasattr(molecule, "AvgIntensity"):
+        if float(molecule.AvgIntensity) > 1500:
+            print(molecule)
+            write_line_based_on_file(f.name, str(molecule))
+            print(f.molecules[i+1])
+            print(f.molecules[i+2])
+            print(f.molecules[i+3])" took 0.0911 seconds to run
