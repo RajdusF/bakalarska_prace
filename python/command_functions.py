@@ -34,6 +34,16 @@ def show_files(files):
         else:
             print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
 
+def show_added_files(added_files):
+    print("Added files:")
+    for file in added_files:
+        file_name = file.split("\\")[-1]
+        file_size = os.path.getsize(file)
+        is_folder = os.path.isdir(file)
+        if is_folder:
+            print(Fore.LIGHTBLUE_EX + f"{file_name:{global_variables.FILE_NAME_WIDTH+global_variables.SIZE_WIDTH+1}}" + Fore.RESET + f"{time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")  
+        else:
+            print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
 
 def add(name : str, files : list, added_files : list):
     from python.help_func import search_folder

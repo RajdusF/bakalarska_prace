@@ -1,35 +1,104 @@
-#add C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap
-#add C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+ls
+cd C:\Users\Filip\Documents\bakalarska_prace\files\folder\second_folder
+ls
+cd C:\Users\Filip\Documents\bakalarska_prace\files
 
-#load(added)
+filter name *.bnx -d
+add *
+filter name *.cmap -d
+add *
+filter name *.xmap -d
+add *
 
-f = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
+filter added size < 90 MB
+remove *
+add *
+
+filter *
+files
+added
+
+#find "^#" in added
+
+#find "molecule" in added -I
+find "map" in added -I
+
+finds = find "map" in added -I
+
+variables
+
+for key, listt in finds.items():
+    if not isinstance(listt, list):
+        continue
+    for line in listt:
+        if "Maps" not in line:
+            continue
+        for split in re.split(r"\s+", line):
+            try:
+                if int(split) > 50:
+                    print(key)
+                    print(line)
+            except ValueError:
+                pass
+
+########################
+
+ls
+cd C:\Users\Filip\Documents\bakalarska_prace\files\folder\second_folder
+ls
+cd C:\Users\Filip\Documents\bakalarska_prace\files
+
+filter name *.bnx -d
+add *
+filter name *.cmap -d
+add *
+filter name *.xmap -d
+add *
+
+names = [file.split("\\")[-1] for file in added]
+print(names)
+
+filter *
+
+for file in files:
+    for name in names:
+        if name in file:
+            print(file)
+
+
+##########################
+
+
+LAST:
+a = filter name *.bnx
+b = filter name *.cmap
+c = filter name *.xmap
+
+all = a+b+c
+
+variables
+
+# C:\Users\Administrator\Documents\bakalarska_prace\files
+# C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)
+
 
 print(f)
 
-print(f.molecules[2])
-
-ids = []
 for i, molecule in enumerate(f.molecules):
-    if float(molecule.lnSNRsd) > 0.5:
-        print(molecule)
-        ids.append(i)
-        write_line_based_on_file(f.name, str(molecule))
-
-for i, molecule in enumerate(f.molecules):
-    if float(molecule.lnSNRsd) < 0.2:
-        print(str(molecule))
-
-print(ids)
-
-f = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)
-
-print(f)
-
-for molecule in f.molecules:
     if hasattr(molecule, "AvgIntensity"):
-        if float(molecule.AvgIntensity) > 1400:
+        if float(molecule.AvgIntensity) > 1500:
             print(molecule)
             write_line_based_on_file(f.name, str(molecule))
+            print(f.molecules[i+1])
+            print(f.molecules[i+2])
+            print(f.molecules[i+3])
+
+f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
+
+print(f)
 
 
+f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
+
+print(f)

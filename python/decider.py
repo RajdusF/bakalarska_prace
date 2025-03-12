@@ -17,11 +17,9 @@ from python.help_func import (add_history,
                               convert_variables_to_variables_from_dict,
                               execute_command, get_variable, help_add, help_cd,
                               help_filter, help_find, help_output, help_save,
-                              help_select, help_sort, help_take_float,
-                              help_take_int, load_history, my_help,
+                              help_select, help_sort, load_history, my_help,
                               print_history, print_occurances,
-                              show_added_files, show_current_folder,
-                              take_float, take_int)
+                              show_current_folder)
 
 
 def process_command(command : str, variables, files : list, added_files : list):
@@ -68,14 +66,14 @@ def process_command(command : str, variables, files : list, added_files : list):
                 my_help()
                 return
             
-            if commands[0] == "print":
-                try:
-                    result = get_variable(command, find_occurances)
-                    for x in result:
-                        print(x)
-                except:
-                    print(command[6:])
-                return
+            # if commands[0] == "print":
+            #     try:
+            #         result = get_variable(command, find_occurances)
+            #         for x in result:
+            #             print(x)
+            #     except:
+            #         print(command[6:])
+            #     return
             
             if "**" in command:
                 print(Fore.RED + "Wrong input")
@@ -108,11 +106,11 @@ def process_command(command : str, variables, files : list, added_files : list):
                     path = commands[path_index]
                     if os.path.isdir(path) and "\\" in path or "/" in path:
                         global_variables.path = path
-                        print(f"Current path: {global_variables.path}")
+                        # print(f"Current path: {global_variables.path}")
                         settings(3, global_variables.path)
                     elif os.path.isdir(global_variables.path + "\\" + path):
                         global_variables.path = global_variables.path + "\\" + path
-                        print(f"Current path: {global_variables.path}")
+                        # print(f"Current path: {global_variables.path}")
                         settings(3, global_variables.path)
                     else:
                         print(Fore.RED + "Path not found" + Fore.RESET)
@@ -133,6 +131,7 @@ def process_command(command : str, variables, files : list, added_files : list):
                 
                 add_history(command, files)
                 
+                variables["files"] = files
                 return files.copy()
             
             elif "sort" in commands:
@@ -200,6 +199,8 @@ def process_command(command : str, variables, files : list, added_files : list):
                 
                 add_history(original_command, files, find_occurances)
                 
+                return find_occurances.copy()
+                
                             
             elif "add" in commands and len(commands) > 1:
                 if commands[0] == "add" and len(commands) == 1:
@@ -235,18 +236,21 @@ def process_command(command : str, variables, files : list, added_files : list):
                 for x in added_files:
                     print(x)
                     
+                variables["added"] = added_files
+                    
             elif "remove" in commands:
                 r = remove(commands, added_files)
                 print(f"Removed {r} files")
                     
-            elif command == "files":
-                show_files(files)
-            elif command == "added":
-                show_added_files(added_files)
+            elif commands[0] == "files" and len(commands) == 1:
+                    show_files(files)
+                    
+            elif commands[0] == "added" and len(commands) == 1:
+                    show_files(added_files)
             
             elif "show" in commands:
                 if len(commands) == 2 and commands[1] == "added":
-                    show_added_files(added_files)
+                    show_files(added_files)
                 elif len(commands) == 2 and commands[1] == "files":
                     show_files(files)
                 elif len(commands) == 2 and commands[1] == "dist":
@@ -341,7 +345,7 @@ def process_command(command : str, variables, files : list, added_files : list):
                     if 2 <= len(commands) <= 3 :
                         output(added_files=added_files, output_file=commands[1], extend=extend_choice)
                 
-            elif "names" in commands:
+            elif "variables" in commands:
                 if len(commands) == 1:
                     pprint(variables)
                 elif len(commands) == 2:

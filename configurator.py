@@ -34,7 +34,7 @@ def main(args):
         command_start_time = time.time()
         if(process_command(command, variables, files, added_files)) == -1:
             return -1
-        print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+        # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
         debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
         
     
@@ -48,7 +48,7 @@ def main(args):
         
         result = process_command(command, variables, files, added_files)
         
-        print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+        # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
         debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
         
         if result == -1:

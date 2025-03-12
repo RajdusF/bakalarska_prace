@@ -289,11 +289,6 @@ def time_from_now(file : str, option : str) -> str:
     else:
         return f"{seconds_from_now / 604800:8.2f} w" 
         
-def show_added_files(added_files):
-    print("Added files:")
-    for x in added_files:
-        print(x)
-        
 def show_current_folder():
     print(f"{"file":{global_variables.FILE_NAME_WIDTH+4}} {"size":{global_variables.SIZE_WIDTH}} {"modified":{global_variables.MODIFIED_WIDTH}} {"created":{global_variables.CREATED_WIDTH}}")
     for file in glob.glob(global_variables.path + "\\*", recursive=True):

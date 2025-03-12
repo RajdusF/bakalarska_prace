@@ -1,0 +1,15 @@
+C:\Users\Filip\Documents\bakalarska_prace\files\all_2_cropped.bnx
+	# $ cd /home/users/khong/data/SQIMIZ6NPNZWXNWU; /home/users3/tanantharaman/tools/6518/avx/RefAligner -i 94242_Accela_8864_DLE-1_SQIMIZ6NPNZWXNWU_F1P1_10_12_2018_9_16_44_AM_RawMolecules.bnx -merge -sort-runindexinc -subsetGB 480 150 -bnx -o 94242_Accela_8864_DLE-1_SQIMIZ6NPNZWXNWU_F1P1_10_12_2018_9_16_44_AM_RawMolecules480.bnx -f -maxthreads 48
+	#rh SourceFolder	InstrumentSerial	Time	NanoChannelPixelsPerScan	StretchFactor	BasesPerPixel	NumberofScans	ChipId	FlowCell	SNRFilterType	MinMoleculeLength	MinLabelSNR	RunId
+	# Number of Molecules:	6261952
+	#0h LabelChannel	MoleculeID	Length	AvgIntensity	SNR	NumberofLabels	OriginalMoleculeId	ScanNumber	TestBLA 	ChipId	Flowcell	RunId	GlobalScanNumber
+C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+	# $ cd /home/bionano/access/local/chips/SN_AEO6H7OJP3ZZFNWU/Run_220eac77-51a8-4066-ab25-fdcecd81eae0/FC1/mergeRun; /home/bionano/tools/access/1.0/../../pipeline/1.0/RefAligner/1.0/RefAligner -if /home/bionano/access/local/chips/SN_AEO6H7OJP3ZZFNWU/Run_220eac77-51a8-4066-ab25-fdcecd81eae0/FC1/mergeRun/Morse/RawMolecules.bnx.list -o /home/bionano/access/local/chips/SN_AEO6H7OJP3ZZFNWU/Run_220eac77-51a8-4066-ab25-fdcecd81eae0/FC1/mergeRun/Morse/RawMolecules -merge -bnx -maxthreads 9 -f
+	#rh SourceFolder	InstrumentSerial	Time	NanoChannelPixelsPerScan	StretchFactor	BasesPerPixel	NumberofScans	ChipId	FlowCell	SNRFilterType	MinMoleculeLength	MinLabelSNR	RunId
+	# Number of Molecules:	5339529
+	#0h LabelChannel	MoleculeID	Length	AvgIntensity	SNR	NumberofLabels	OriginalMoleculeId	ScanNumber	ScanDirection	ChipId	Flowcell	RunId	Column	StartFOV	StartX	StartY	EndFOV	EndX	EndY	GlobalScanNumber
+C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx
+	# $ cd /home/bionano/access/local/chips/SN_AEO6H7OJP3ZZFNWU/Run_220eac77-51a8-4066-ab25-fdcecd81eae0/FC1/mergeRun; /home/bionano/tools/access/1.0/../../pipeline/1.0/RefAligner/1.0/RefAligner -if /home/bionano/access/local/chips/SN_AEO6H7OJP3ZZFNWU/Run_220eac77-51a8-4066-ab25-fdcecd81eae0/FC1/mergeRun/Morse/RawMolecules.bnx.list -o /home/bionano/access/local/chips/SN_AEO6H7OJP3ZZFNWU/Run_220eac77-51a8-4066-ab25-fdcecd81eae0/FC1/mergeRun/Morse/RawMolecules -merge -bnx -maxthreads 9 -f
+	#rh SourceFolder	InstrumentSerial	Time	NanoChannelPixelsPerScan	StretchFactor	BasesPerPixel	NumberofScans	ChipId	FlowCell	SNRFilterType	MinMoleculeLength	MinLabelSNR	RunId
+	# Number of Molecules:	5339529
+	#0h LabelChannel	MoleculeID	Length	AvgIntensity	SNR	NumberofLabels	OriginalMoleculeId	ScanNumber	ScanDirection	ChipId	Flowcell	RunId	Column	StartFOV	StartX	StartY	EndFOV	EndX	EndY	GlobalScanNumber

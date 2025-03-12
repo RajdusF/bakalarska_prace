@@ -28,8 +28,13 @@ class MyFile:
         self.molecules = []
         
     def __str__(self):
-        return (f"\tname: {self.name}\n\theader: {self.header}\n\tcontent: {repr(self.content[:100])}..."
-            f"\n\tsize: {self.size} bytes\n\tnumber of molecules: {len(self.molecules)}\n")
+        header_str = "\n\t\t".join(map(str, self.header)) if isinstance(self.header, list) else self.header
+        
+        return (f"\tname: {self.name}\n"
+                f"\theader: {header_str}\n"
+                f"\tcontent: {repr(self.content[:100])}...\n"
+                f"\tsize: {self.size} bytes\n"
+                f"\tnumber of molecules: {len(self.molecules)}\n")
     
     def __repr__(self):
         return (f"\tname: {self.name}\n\theader: {self.header}\n\tcontent: {repr(self.content[:100])}..."

@@ -3,9 +3,9 @@
 # CMAP File Version:	0.1
 # Label Channels:	1
 # Nickase Recognition Site 1:	cttaag;green_01
-# Number of Testing Maps:	24
-# Number of Testing Maps:	25
-# Number of Testing Maps:	26
+# Number of Testing Maps:	74
+# Number of Testing Maps:	75
+# Number of Testing Maps:	76
 # Values corresponding to intervals (StdDev) refer to the interval between current site and next site
 #h CMapId	ContigLength	NumSites	SiteID	LabelChannel	Position	StdDev	Coverage	Occurrence	GmeanSNR	lnSNRsd
 #f int	float	int	int	int	float	float	float	float	float	float
