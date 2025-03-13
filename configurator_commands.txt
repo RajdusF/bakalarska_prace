@@ -1,14 +1,4 @@
-a = filter name *.bnx
-b = filter name *.cmap
-c = filter name *.xmap
-
-all = a+b+c
-
-variables
-
-# C:\Users\Administrator\Documents\bakalarska_prace\files
-# C:\Users\Filip\Documents\bakalarska_prace\files
-f = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)
+f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)
 
 
 print(f)
@@ -22,11 +12,20 @@ for i, molecule in enumerate(f.molecules):
             print(f.molecules[i+2])
             print(f.molecules[i+3])
 
-f = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
-
+f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
 print(f)
 
 
-f = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
 
+f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
 print(f)
+
+for i, molecule in enumerate(f.molecules):
+    if hasattr(molecule, "Orientation"):
+        if molecule.Orientation == "+" and i < 20:
+            print(molecule)
+
+for i, molecule in enumerate(f.molecules):
+    if hasattr(molecule, "Orientation"):
+        if molecule.Orientation == "-" and i < 20:
+            print(molecule)

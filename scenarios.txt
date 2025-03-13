@@ -1,7 +1,7 @@
 ls
-cd C:\Users\Filip\Documents\bakalarska_prace\files\folder\second_folder
+cd C:\Users\Administrator\Documents\bakalarska_prace\files\folder\second_folder
 ls
-cd C:\Users\Filip\Documents\bakalarska_prace\files
+cd C:\Users\Administrator\Documents\bakalarska_prace\files
 
 filter name *.bnx -d
 add *
@@ -20,8 +20,7 @@ added
 
 #find "^#" in added
 
-#find "molecule" in added -I
-find "map" in added -I
+find "molecule" in added -I
 
 finds = find "map" in added -I
 
@@ -44,9 +43,9 @@ for key, listt in finds.items():
 ########################
 
 ls
-cd C:\Users\Filip\Documents\bakalarska_prace\files\folder\second_folder
+cd C:\Users\Administrator\Documents\bakalarska_prace\files\folder\second_folder
 ls
-cd C:\Users\Filip\Documents\bakalarska_prace\files
+cd C:\Users\Administrator\Documents\bakalarska_prace\files
 
 filter name *.bnx -d
 add *
@@ -58,7 +57,9 @@ add *
 names = [file.split("\\")[-1] for file in added]
 print(names)
 
-filter *
+filter added size < 100 KB
+remove *
+add *
 
 for file in files:
     for name in names:
@@ -69,7 +70,6 @@ for file in files:
 ##########################
 
 
-LAST:
 a = filter name *.bnx
 b = filter name *.cmap
 c = filter name *.xmap
@@ -95,10 +95,19 @@ for i, molecule in enumerate(f.molecules):
             print(f.molecules[i+3])
 
 f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
-
 print(f)
+
 
 
 f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
-
 print(f)
+
+for i, molecule in enumerate(f.molecules):
+    if hasattr(molecule, "Orientation"):
+        if molecule.Orientation == "+" and i < 20:
+            print(molecule)
+
+for i, molecule in enumerate(f.molecules):
+    if hasattr(molecule, "Orientation"):
+        if molecule.Orientation == "-" and i < 20:
+            print(molecule)
