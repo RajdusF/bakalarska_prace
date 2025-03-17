@@ -287,6 +287,18 @@ def process_command(command : str, variables, files : list, added_files : list):
                     return
         
             # save [result/files/names/added/occurances] [file]
+            elif command.startswith("save") and "(" in command and ")" in command:
+                try:
+                    parenthesses = command[command.index("(") + 1:command.index(")")]
+                    arg_1 = parenthesses.split(",")[0]
+                    arg_2 = parenthesses.split(",")[1]
+                    
+                    arg_2 = arg_2.replace("\"", "").strip()
+                    
+                    save(arg_1, arg_2, variables)
+                except Exception as e:
+                    print(Fore.RED + "Error during saving: {e}")
+
             elif commands[0] == "save":
                 if len(commands) == 1:
                     help_save()

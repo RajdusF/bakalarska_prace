@@ -420,18 +420,20 @@ def comments_removal(string : str) -> str:
     return string.strip()
     
 def convert_variables_to_variables_from_dict(string: str, variables: dict) -> str:
-    # print(f"BEFORE: {string}")
-    
-    # Pro každý klíč v dictionary nahradíme proměnnou odpovídající hodnotou
-    for key, value in variables.items():
-        # Použijeme regulární výraz pro nahrazení pouze celého slova
-        # Zajišťujeme, že proměnná je samostatné slovo, ne součást nějakého jiného slova
-        string = re.sub(rf'\b{re.escape(key)}\b', f'variables["{key}"]', string)
-    
-    # print(f"AFTER: {string}")
-    
-    return string
+    def replace_match(match):
+        text = match.group(0)
+        
+        if text.startswith('"') and text.endswith('"'):
+            return text
 
+        for key, value in variables.items():
+            text = re.sub(rf'\b{re.escape(key)}\b', f'variables["{key}"]', text)
+        return text
+
+    # Zavolat replace pro každý výskyt
+    string = re.sub(r'("[^"]*"|\b\w+\b)', replace_match, string)
+
+    return string
 def my_help():
     print(Fore.YELLOW)
     print("Arguments:", end=" ")

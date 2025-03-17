@@ -1,13 +1,11 @@
-Command "f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0167 seconds to run
-Command "print(f)" took 2.8906 seconds to run
-Command "for i, molecule in enumerate(f.molecules):
-    if hasattr(molecule, "AvgIntensity"):
-        if float(molecule.AvgIntensity) > 1500:
-            print(molecule)
-            write_line_based_on_file(f.name, str(molecule))
-            print(f.molecules[i+1])
-            print(f.molecules[i+2])
-            print(f.molecules[i+3])" took 1.1569 seconds to run
-Command "f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)" took 0.0101 seconds to run
-Command "print(f)" took 0.8672 seconds to run
-Command "f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)" took 2.7685 seconds to run
+Command "data_bnx = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0091 seconds to run
+Command "data_cmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)" took 0.0015 seconds to run
+Command "data_xmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)" took 0.0142 seconds to run
+Command "save(data_bnx, "bnx.json")" took 0.0122 seconds to run
+Command "save(data_cmap, "cmap.json")" took 0.0030 seconds to run
+Command "save(data_xmap, "xmap.json")" took 0.0285 seconds to run
+Command "print(data_bnx["headers"])" took 0.0010 seconds to run
+Command "molecules = data_bnx["data"]" took 0.0000 seconds to run
+Command "for molecule in molecules:
+    if molecule["LabelChannel"] == 0:
+        print(molecule)" took 0.0350 seconds to run

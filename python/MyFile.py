@@ -18,6 +18,23 @@ class Molecule:
         for x in self._specs.values():
             text += str(x) + "\t"
         return text
+    
+class XData:
+    def __init__(self, data=None):
+        if data is None:
+            self.data = dict()
+        else:
+            self.data = data
+            
+    # def __getitem__(self, key):
+    #     return self.data[key]
+    
+    def __getitem__(self, key):
+        if key in self.data:
+            return self.data[key]
+        
+    def __str__(self):
+        return str(self.data)
 
 class MyFile:
     def __init__(self):

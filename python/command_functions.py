@@ -6,11 +6,12 @@ import re
 import textwrap
 
 from colorama import Fore
-from python.MyFile import MyFile, Molecule
 from tabulate import tabulate
 
 import python.global_variables as global_variables
-from python.help_func import find_name_of_browse_file, find_name_of_find_file
+from python.help_func import (find_name_of_browse_file, find_name_of_find_file,
+                              recalculate_size, time_from_now)
+from python.MyFile import Molecule, MyFile, XData
 
 ops = {
     "==": operator.eq,
@@ -408,16 +409,41 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
-
-def save(name, files_to_save, variables):
-    try:
-        if len(files_to_save) == 0:
-            raise Exception("No files to save")
-        variables[name] = files_to_save.copy()
-    except Exception as e:
-        print(Fore.RED + "Error: {e}")
+def save(name, output_file : str, variables):
+    if name in variables:
+        if type(variables[name]) == XData:
+            try:
+                output_dir = "output"
+                if not os.path.exists(output_dir):
+                    os.makedirs(output_dir)
+                
+                if not output_file.endswith(".json"):
+                    output_file = output_file[:output_file.index(".")] + ".json"
+                    
+                output_data = variables[name].data
+                
+                with open(os.path.join(output_dir, output_file), "w") as json_file:
+                    json.dump(output_data, json_file, indent=4)
+                    
+                print(f"Successfully saved to \"{output_file}\"")
+                return
+            except Exception as e:
+                print(Fore.RED + f"Error writing to file: {e}")
+                return -1
     
-    print(f"Successfully saved to \"{name}\"")
+    print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
+
+
+# def save(name, files_to_save, variables):
+    
+#     try:
+#         if len(files_to_save) == 0:
+#             raise Exception("No files to save")
+#         variables[name] = files_to_save.copy()
+#     except Exception as e:
+#         print(Fore.RED + "Error: {e}")
+    
+#     print(f"Successfully saved to \"{name}\"")
     
     
 def remove(commands, added_files):

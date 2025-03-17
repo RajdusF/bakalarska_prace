@@ -1,31 +1,20 @@
-f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)
 
+# C:\Users\Administrator\Documents\bakalarska_prace\files
+# C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
 
-print(f)
+data_bnx = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)
+data_cmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
+data_xmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
 
-for i, molecule in enumerate(f.molecules):
-    if hasattr(molecule, "AvgIntensity"):
-        if float(molecule.AvgIntensity) > 1500:
-            print(molecule)
-            write_line_based_on_file(f.name, str(molecule))
-            print(f.molecules[i+1])
-            print(f.molecules[i+2])
-            print(f.molecules[i+3])
+save(data_bnx, "bnx.json")
+save(data_cmap, "cmap.json")
+save(data_xmap, "xmap.json")
 
-f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
-print(f)
+# print(data_bnx)
+print(data_bnx["headers"])
 
+molecules = data_bnx["data"]
 
-
-f = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
-print(f)
-
-for i, molecule in enumerate(f.molecules):
-    if hasattr(molecule, "Orientation"):
-        if molecule.Orientation == "+" and i < 20:
-            print(molecule)
-
-for i, molecule in enumerate(f.molecules):
-    if hasattr(molecule, "Orientation"):
-        if molecule.Orientation == "-" and i < 20:
-            print(molecule)
+for molecule in molecules:
+    if molecule["LabelChannel"] == 0:
+        print(molecule)

@@ -1,8 +1,10 @@
+import csv
+import json
 import os
 
 from colorama import Fore
 
-from python.MyFile import Molecule, MyFile
+from python.MyFile import Molecule, MyFile, XData
 
 
 def load(name):
@@ -13,6 +15,9 @@ def load(name):
                 
         return files
     
+    
+    return load_json(name)
+
     if name.endswith(".bnx"):
         return load_bnx(name)
     elif name.endswith(".cmap"):
@@ -20,6 +25,114 @@ def load(name):
     elif name.endswith(".xmap"):
         return load_xmap(name)
         
+        
+def load_json(name):
+    data = []
+    comments = []
+    headers = {}
+    data_types = {}
+    warning_count = 0
+
+    if not os.path.isfile(name):
+        print(Fore.RED + "File not found")
+        return -1
+
+    # try:
+    with open(name, 'r') as f:
+        fields = None  # Proměnná pro uchování hlaviček
+
+        for line in f:
+            line = line.strip()
+
+            # Zpracování hlaviček
+            if line.startswith('#h'):
+                headers["h"] = [column.strip() for column in line[2:].split("\t")]
+            elif line.startswith('#f'):
+                data_types["f"] = [dtype.strip() for dtype in line[2:].split("\t")]
+            elif line[0] == "#" and line[1].isdigit() and line[2] == "h":
+                headers[line[1] + "h"] = [column.strip() for column in line[3:].split("\t")]
+            elif line[0] == "#" and line[1].isdigit() and line[2] == "f":
+                data_types[line[1] + "f"] = [dtype.strip() for dtype in line[3:].split("\t")]
+            elif line.startswith('#Qh'):
+                headers["Qh"] = [column.strip() for column in line[3:].split("\t")]
+            elif line.startswith('#Qf'):
+                data_types["Qf"] = [dtype.strip() for dtype in line[3:].split("\t")]
+            elif line.startswith('#'):  # Komentáře
+                comments.append(line)
+            else:
+                # Zpracování datových řádků podle toho, zda začínají '0' nebo '1'
+                if line[0].isdigit():
+                    try:
+                        label_channel = line[0]
+                        fields = headers.get(label_channel + "h")
+                        fields_data_types = data_types.get(label_channel + "f")
+                        if fields is None:
+                            fields = headers.get("h")
+                            fields_data_types = data_types.get("f")
+                    except:
+                        print(Fore.RED + f"Warning: No headers found for row: {line}")
+                        continue
+
+                # Pokud máme hlavičky, čteme data
+                if fields:
+                    values = line.split("\t")
+
+                    data_row = {}
+                    for i in range(len(fields)):
+                        field_name = fields[i]
+                        value = values[i]
+                        try:
+                            if fields_data_types[i] == "float" or fields_data_types[i] == "float[N]":
+                                value = float(value)
+                            elif fields_data_types[i] == "int" or fields_data_types[i] == "int[N]":
+                                value = int(value)
+                            elif fields_data_types[i] == "bool" or fields_data_types[i] == "bool[N]":
+                                value = bool(value)
+                            elif fields_data_types[i] == "string" or fields_data_types[i] == "string[N]":
+                                value = str(value)
+                        except:
+                            print(Fore.YELLOW + f"Warning: Could not convert value '{value}' to type '{fields_data_types[i]}'")
+
+                        # Pokud má pole '[N]' v názvu, rozdělíme hodnotu
+                        if '[' in field_name and ']' in field_name:
+                            try:
+                                if fields_data_types[i] == "float" or fields_data_types[i] == "float[N]":
+                                    data_row[field_name] = [float(v) for v in values[i:]]
+                                elif fields_data_types[i] == "int" or fields_data_types[i] == "int[N]":
+                                    data_row[field_name] = [int(v) for v in values[i:]]
+                                elif fields_data_types[i] == "bool" or fields_data_types[i] == "bool[N]":
+                                    data_row[field_name] = [bool(v) for v in values[i:]]
+                                elif fields_data_types[i] == "string" or fields_data_types[i] == "string[N]":
+                                    data_row[field_name] = [str(v) for v in values[i:]]
+                            except:
+                                print(Fore.YELLOW + f"Warning: Could not convert values '{values[i:]}' to type '{fields_data_types[i]}'")
+                        else:
+                            data_row[field_name] = value
+                    data.append(data_row)
+                else:
+                    print(Fore.RED + f"Warning: No headers found for row: {line}")
+                    warning_count += 1
+                    continue
+
+    # except Exception as e:
+    #     print(Fore.RED + f"An error occurred in load_json(): {e}")
+    #     return -1
+
+    output_data = {
+        "comments": comments,
+        "headers": headers,
+        "data_types": data_types,
+        "data": data
+    }
+    
+    if warning_count > 0:
+        print(Fore.YELLOW + f"Warning: {warning_count} rows were not processed correctly")
+
+    x = XData(output_data)
+        
+    return x
+
+
 def load_bnx(name):
     if os.path.isfile(name):
         with open(name, 'r') as f:
