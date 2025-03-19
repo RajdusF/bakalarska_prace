@@ -4,6 +4,7 @@ import os
 
 from colorama import Fore
 
+import python.global_variables as g
 from python.MyFile import Molecule, MyFile, XData
 
 
@@ -41,8 +42,10 @@ def load_json(name):
     with open(name, 'r') as f:
         fields = None  # Proměnná pro uchování hlaviček
 
-        for line in f:
+        for i, line in enumerate(f):
             line = line.strip()
+            
+            g.status = f"load: Currently processing line: {i}"
 
             # Zpracování hlaviček
             if line.startswith('#h'):
@@ -91,7 +94,8 @@ def load_json(name):
                             elif fields_data_types[i] == "string" or fields_data_types[i] == "string[N]":
                                 value = str(value)
                         except:
-                            print(Fore.YELLOW + f"Warning: Could not convert value '{value}' to type '{fields_data_types[i]}'")
+                            if not value.startswith("QX"):
+                                print(Fore.YELLOW + f"Warning: Could not convert value '{value}' to type '{fields_data_types[i]}'")
 
                         # Pokud má pole '[N]' v názvu, rozdělíme hodnotu
                         if '[' in field_name and ']' in field_name:
@@ -130,6 +134,8 @@ def load_json(name):
 
     x = XData(output_data)
         
+    g.status = ""
+    
     return x
 
 

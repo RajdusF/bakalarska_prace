@@ -344,6 +344,9 @@ def read_commands_from_file():
 
         with open("configurator_commands.txt", "r") as file:
             for line in file:
+                if line.startswith("#") or line == "\n" or line == "":
+                    continue
+                
                 stripped = line.rstrip()
 
                 if current_command:

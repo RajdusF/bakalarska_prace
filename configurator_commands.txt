@@ -1,20 +1,22 @@
 
 # C:\Users\Administrator\Documents\bakalarska_prace\files
-# C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx
+# C:\Users\Filip\Documents\bakalarska_prace\files
 
-data_bnx = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)
-data_cmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
-data_xmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
+data_bnx = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)
+big_cropped = load(C:\Users\Administrator\Documents\bakalarska_prace\files\big_cropped.bnx)
+data_cmap = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)
+data_xmap = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)
 
 save(data_bnx, "bnx.json")
+save(big_cropped, "big_cropped.json")
 save(data_cmap, "cmap.json")
 save(data_xmap, "xmap.json")
 
 # print(data_bnx)
-print(data_bnx["headers"])
+#print(data_bnx["headers"])
 
-molecules = data_bnx["data"]
+#molecules = data_bnx["data"]
 
-for molecule in molecules:
-    if molecule["LabelChannel"] == 0:
-        print(molecule)
+#for molecule in molecules:
+#    if molecule["LabelChannel"] == 0:
+#        print(molecule)

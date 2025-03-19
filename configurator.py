@@ -1,9 +1,11 @@
 import argparse
-import cProfile
 import os
+import threading
 import time
 
 from colorama import Fore, init
+from prompt_toolkit import prompt
+from prompt_toolkit.patch_stdout import patch_stdout
 
 import python.global_variables as global_variables
 from python.decider import process_command
@@ -16,43 +18,84 @@ def main(args):
     files = []
     added_files = []
     variables = {}  
-        
+    
+    lock = threading.Lock()
+    
+    # Inicializace colorama pro barevný výstup
+    init(autoreset=True)
+    
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
             
-    commands = read_commands_from_file()
+    readed_commands = read_commands_from_file()
+    typed_commands = []
+    commands_to_process = readed_commands.copy()
+    current_command = ""
+    finished_commands = []
     
-    while len(commands) > 0:
-        command = commands.pop(0)
-        
-        
-        if command.startswith("#") or command == "":
-            continue
-        
-        command = comments_removal(command)
-        
-        print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> {command}" + Fore.RESET)
-        command_start_time = time.time()
-        if(process_command(command, variables, files, added_files)) == -1:
-            return -1
-        # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
-        debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
-        
-    
-    while True:         
-        command = input(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + " >> ")
-        print(Fore.RESET, end="")
-        
-        command = comments_removal(command)
+    def status_check():
+        while True:
+            time.sleep(0.2)
+            cmd = input()
+            if cmd == "status":
+                with lock:
+                    print(f"Processed commands: {len(finished_commands)} / {len(readed_commands) + len(typed_commands)}", flush=True)
+                    print(f"Past commands: ", flush=True)
+                    for x in finished_commands:
+                        print("\t" + x)
+                    if current_command != "":
+                        print(f"Current command: \n\t{current_command}")
+                        if global_variables.status != "":
+                            print(f"\tStatus: {global_variables.status}")
+                    print(f"Upcoming commands: ", flush=True)
+                    for x in commands_to_process:
+                        print("\t" + x)
+            elif cmd == "exit":
+                break
+            else:
+                commands_to_process.append(cmd)
+                typed_commands.append(cmd)
             
-        command_start_time = time.time()
+    # Spuštění vlákna pro kontrolu statusu
+    threading.Thread(target=status_check, daemon=True).start()
+    while True:
+        if len(commands_to_process) > 0:
+            command = commands_to_process.pop(0)
+            with lock:
+                current_command = command
+            
+            command = comments_removal(command)
+            
+            print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> {command}" + Fore.RESET)
+            command_start_time = time.time()
+            if(process_command(command, variables, files, added_files)) == -1:
+                return -1
+            # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+            debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+            
+            with lock:
+                finished_commands.append(command)
+                current_command = ""
+        else:
+            time.sleep(0.2)
         
-        result = process_command(command, variables, files, added_files)
+    # Neblokující smyčka pro další příkazy
+    # while True:         
+    #     with patch_stdout():  # Zabrání překrývání výstupu
+    #         command = input(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + " >> ")
         
-        # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
-        debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+    #     print(Fore.RESET, end="")
         
-        if result == -1:
-            break
+    #     command = comments_removal(command)
+            
+    #     command_start_time = time.time()
+        
+    #     result = process_command(command, variables, files, added_files)
+        
+    #     # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+    #     debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+        
+    #     if result == -1:
+    #         break
 
 
 if __name__ == "__main__":
@@ -69,7 +112,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     start_time = time.time()  
-    
     read_json("settings.json")
     
     if args.p != "":

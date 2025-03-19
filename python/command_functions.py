@@ -7,6 +7,7 @@ import textwrap
 
 from colorama import Fore
 from tabulate import tabulate
+from tqdm import tqdm
 
 import python.global_variables as global_variables
 from python.help_func import (find_name_of_browse_file, find_name_of_find_file,
@@ -409,7 +410,7 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
-def save(name, output_file : str, variables):
+def save(name, output_file: str, variables):
     if name in variables:
         if type(variables[name]) == XData:
             try:
@@ -422,9 +423,18 @@ def save(name, output_file : str, variables):
                     
                 output_data = variables[name].data
                 
+                # Calculate total number of data points for progress bar
+                total_data = len(output_data)
+                
                 with open(os.path.join(output_dir, output_file), "w") as json_file:
-                    json.dump(output_data, json_file, indent=4)
-                    
+                    # Create a progress bar for saving the data
+                    with tqdm(total=total_data, desc="Saving data", unit="item") as pbar:
+                        # This is just an example, assuming each data point is written one at a time.
+                        for item in output_data:
+                            json.dump(item, json_file)
+                            json_file.write("\n")  # Write each item in a new line or the preferred format
+                            pbar.update(1)  # Update progress bar by 1 item
+
                 print(f"Successfully saved to \"{output_file}\"")
                 return
             except Exception as e:

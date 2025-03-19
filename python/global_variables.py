@@ -12,6 +12,7 @@ path = None
 
 find_occurances = {}
 result = []
+status = ""
 
 
 # Notebook
