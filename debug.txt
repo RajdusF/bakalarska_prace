@@ -1,8 +1,8 @@
-Command "data_bnx = load(C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0046 seconds to run
-Command "big_cropped = load(C:\Users\Filip\Documents\bakalarska_prace\files\big_cropped.bnx)" took 13.7732 seconds to run
-Command "data_cmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)" took 0.0010 seconds to run
-Command "data_xmap = load(C:\Users\Filip\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)" took 0.0105 seconds to run
-Command "save(data_bnx, "bnx.json")" took 0.0121 seconds to run
-Command "save(big_cropped, "big_cropped.json")" took 0.0016 seconds to run
-Command "save(data_cmap, "cmap.json")" took 0.0010 seconds to run
-Command "save(data_xmap, "xmap.json")" took 0.0010 seconds to run
+Command "data_bnx = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0046 seconds to run
+Command "big_cropped = load(C:\Users\Administrator\Documents\bakalarska_prace\files\big_cropped.bnx)" took 15.2579 seconds to run
+Command "data_cmap = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)" took 0.0029 seconds to run
+Command "data_xmap = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)" took 0.0164 seconds to run
+Command "save(data_bnx, "bnx.json")" took 0.0224 seconds to run
+Command "save(big_cropped, "big_cropped.json")" took 0.0000 seconds to run
+Command "save(data_cmap, "cmap.json")" took 0.0052 seconds to run
+Command "save(data_xmap, "xmap.json")" took 0.0020 seconds to run
