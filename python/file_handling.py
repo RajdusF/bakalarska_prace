@@ -1,14 +1,29 @@
 import csv
 import json
 import os
+import re
 
 from colorama import Fore
 
 import python.global_variables as g
+from python.help_func import execute_command
 from python.MyFile import Molecule, MyFile, XData
 
 
-def load(name):
+def load(name, variables):
+    
+    name = name.replace("\\", "\\\\")  # Escape backslashes
+    escaped_path = re.escape(g.path)  # Escape regex special chars in the path
+    name = re.sub(
+        r'\bpath\b(?=(?:[^"]*"[^"]*")*[^"]*$)',
+        f'"{escaped_path}"',
+        name
+    )
+    
+    if "+" in name and all(part.strip(' "\'') for part in name.split("+")):
+        parts = [part.strip(' "\'') for part in name.split("+")]
+        name = os.path.join(parts[0], parts[1].lstrip("\\"))
+
     if isinstance(name, list):
         files = []
         for file in name:

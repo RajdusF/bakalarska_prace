@@ -5,12 +5,14 @@ import re
 import sys
 import textwrap
 import time
+import datetime
 
 from colorama import Fore, Style, init
 from tabulate import tabulate
 
 import python.command_functions as command_functions
 import python.global_variables as global_variables
+import python.parallel_for as parallel_for
 
 history = []
 
@@ -49,6 +51,8 @@ def get_variable(message : str, find_occurances : list):
 
 def execute_command(command, variables):
     globals()["write_line_based_on_file"] = command_functions.write_line_based_on_file
+    globals()["pfor"] = parallel_for.pfor
+    
     try:
         result = eval(command, globals(), locals())
         return result

@@ -1,4 +1,5 @@
 import os
+import re
 from pprint import pprint
 
 from colorama import Fore
@@ -28,6 +29,7 @@ def process_command(command : str, variables, files : list, added_files : list):
     global result
     
     command = command.strip()
+    
     commands = command.split(" ")
     original_command = command
     
@@ -403,9 +405,9 @@ def process_command(command : str, variables, files : list, added_files : list):
             elif command.startswith("load"):    
                 parenthesses = command[command.index("(") + 1:command.index(")")]
                 if parenthesses == "added" or parenthesses == "added_files":
-                    return load(added_files)            
+                    return load(added_files, variables)            
                 else:
-                    return load(command[command.index("(") + 1:command.index(")")])
+                    return load(command[command.index("(") + 1:command.index(")")], variables)
                 
             
             elif command.startswith("\"") and command.endswith("\""):
