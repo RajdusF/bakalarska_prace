@@ -150,9 +150,9 @@ def settings(option, value):
             show_duplicity = False
             
     elif option == 3:
-        print(f"Path set to {value}")
         if os.path.isdir(value):
             path = value
+            print(f"Path set to {value}")
         else:
             print(Fore.RED + "Path not found" + Fore.RESET)
             return

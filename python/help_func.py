@@ -472,9 +472,10 @@ def my_help():
     help_output()
     help_input()
     help_names()
+    help_set_unit()
     help_set_search()
     help_set_duplicity()
-    help_set_unit()
+    help_set_path()
     
     help_history()
     
@@ -559,6 +560,10 @@ def help_set_unit():
     print("\t1 - kilobytes")
     print("\t2 - megabytes")
     print("\t3 - gigabytes\n")
+    
+def help_set_path():
+    print(Fore.LIGHTCYAN_EX + "set path" + Fore.RESET + " - set path to the folder")
+    print("\t[set path \"C:\\Users\\Documents\"]\n")
 
 def help_show():
     print(Fore.LIGHTCYAN_EX + "show" + Fore.RESET + " - show added files\n")

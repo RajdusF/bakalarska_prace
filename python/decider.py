@@ -143,7 +143,12 @@ def process_command(command : str, variables, files : list, added_files : list):
                     help_sort()
                     return
                 
-                temp = sort(commands, files)
+                if "added" in commands:
+                    commands.remove("added")
+                    temp = sort(commands, added_files)
+                else:
+                    temp = sort(commands, files)
+                
                 files.clear()
                 files.extend(temp)
                 add_history(command, files)
@@ -211,7 +216,10 @@ def process_command(command : str, variables, files : list, added_files : list):
                     help_add()
                     return
                 
-                if commands[1] == "occ" or commands[1] == "occurances" and len(commands) == 2:
+                if commands[1] in variables and type(variables[commands[1]]) == list:
+                    added_files.extend(variables[commands[1]])
+                
+                elif commands[1] == "occ" or commands[1] == "occurances" and len(commands) == 2:
                     added_files.extend([x[0] for x in find_occurances])
                 elif commands[1] == "files" and commands[2] == "contains":
                     r = add_if_in_variables(files, added_files, variables, commands[3])
@@ -288,6 +296,7 @@ def process_command(command : str, variables, files : list, added_files : list):
                     print(f"Search folders: {global_variables.search_folders}")
                     print(f"Show duplicity: {global_variables.show_duplicity}")
                     print(f"Wraps (column widths): {global_variables.wraps}")
+                    print(f"Path: {global_variables.path}")
                     return
         
             # save [result/files/names/added/occurances] [file]
