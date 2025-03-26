@@ -1,3 +1,4 @@
+import ast
 import os
 import re
 from pprint import pprint
@@ -21,6 +22,7 @@ from python.help_func import (add_history,
                               help_select, help_sort, load_history, my_help,
                               print_history, print_occurances,
                               show_current_folder)
+from python.parallel_for import pfor
 
 
 def process_command(command : str, variables, files : list, added_files : list):
@@ -407,7 +409,7 @@ def process_command(command : str, variables, files : list, added_files : list):
                 if parenthesses == "added" or parenthesses == "added_files":
                     return load(added_files, variables)            
                 else:
-                    return load(command[command.index("(") + 1:command.index(")")], variables)
+                    return load(command[command.index("(") + 1:command.index(")")])
                 
             
             elif command.startswith("\"") and command.endswith("\""):
@@ -427,6 +429,76 @@ def process_command(command : str, variables, files : list, added_files : list):
                             print("\t" + y)
                     else:
                         print(f"{x}: {variables[x]}")
+                        
+            elif command.startswith("pfor"):
+                parenthesses = command[command.index("(") + 1:command.index(")")]
+                
+                args = parenthesses.split(",")
+                args = [x.strip() for x in args]
+                
+                temp = []
+                processed_args = []
+                lock = False
+                for arg in args:
+                    if "[" in arg and lock == False:
+                        temp.append(arg[arg.index("[") + 2:-1])
+                        lock = True
+                        continue
+                    if "]" in arg and lock == True:
+                        temp.append(arg[1:arg.index("]")-1])
+                        processed_args.append(temp)
+                        lock = False
+                        continue
+                    if lock == True:
+                        temp.append(arg[1:-1])
+                        continue
+                    
+                    processed_args.append(arg)
+            
+                
+                args = processed_args.copy()
+                processed_args.clear()
+                
+                for arg in args:
+                    if type(arg) != list and arg in variables:
+                        args[args.index(arg)] = f"variables[\"{arg}\"]"
+                
+                for arg in args:
+                    # try:
+                    #     if callable(eval(arg)):
+                    #         processed_args.append(eval(arg))
+                    #     else:
+                    #         processed_args.append(eval(arg))
+                    # except Exception as e:
+                    #     processed_args.append(arg)
+                    try:
+                        processed_args.append(eval(arg))
+                    except:
+                        processed_args.append(arg)
+                        
+                args = processed_args.copy()
+                        
+                
+    
+                # print(f"args: {args}")  # Pro kontrolu, co bude obsahovat 'args'
+                
+                for arg in args:
+                    print(arg)
+                    
+                if args[0].__name__ == "load":
+                    try:
+                        return pfor(args[0], args[1], path=global_variables.path)
+                    except Exception as e:
+                        print(Fore.RED + "Error during pfor: ", e)
+                        
+                elif args[0].__name__ == "save":
+                    try:
+                        return pfor(args[0], args[1], output_files=args[2], path=global_variables.path)
+                    except Exception as e:
+                        print(Fore.RED + "Error during pfor: ", e)
+                
+                else:
+                    print(Fore.RED + "Wrong input")
             
             else:
                 command_to_run = convert_variables_to_variables_from_dict(command, variables)

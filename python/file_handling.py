@@ -6,12 +6,13 @@ import re
 from colorama import Fore
 
 import python.global_variables as g
-from python.help_func import execute_command
 from python.MyFile import Molecule, MyFile, XData
 
 
-def load(name, variables):
-    
+def load(name, path=None):
+    if path is not None:
+        g.path = path
+    # print(f"g.path: {g.path}")
     name = name.replace("\\", "\\\\")  # Escape backslashes
     escaped_path = re.escape(g.path)  # Escape regex special chars in the path
     name = re.sub(

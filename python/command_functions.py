@@ -410,8 +410,8 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
-def save(name, output_file : str, variables):
-    if name in variables:
+def save(name, output_file : str, variables = None):
+    if variables and name in variables:
         if type(variables[name]) == XData:
             try:
                 output_dir = "output"
@@ -431,6 +431,26 @@ def save(name, output_file : str, variables):
             except Exception as e:
                 print(Fore.RED + f"Error writing to file: {e}")
                 return -1
+            
+    elif type(name) == XData:
+        try:
+            output_dir = "output"
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
+            
+            if not output_file.endswith(".json"):
+                output_file = output_file[:output_file.index(".")] + ".json"
+                
+            output_data = name.data
+            
+            with open(os.path.join(output_dir, output_file), "w") as json_file:
+                json.dump(output_data, json_file, indent=4)
+                
+            print(f"Successfully saved to \"{output_file}\"")
+            return
+        except Exception as e:
+            print(Fore.RED + f"Error writing to file: {e}")
+            return -1
     
     print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
 
