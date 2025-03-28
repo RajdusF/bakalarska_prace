@@ -410,8 +410,13 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
+<<<<<<< Updated upstream
 def save(name, output_file : str, variables = None):
     if variables and name in variables:
+=======
+def save(name, output_file : str, variables):
+    if name in variables:
+>>>>>>> Stashed changes
         if type(variables[name]) == XData:
             try:
                 output_dir = "output"
@@ -453,8 +458,8 @@ def save(name, output_file : str, variables = None):
             return -1
     
     print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
-
-
+    
+    
 # def save(name, files_to_save, variables):
     
 #     try:

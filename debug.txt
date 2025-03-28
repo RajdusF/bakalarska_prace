@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0160 seconds to run
 Command "prepared_files = ["C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]" took 0.0000 seconds to run
 Command "results = pfor(load, prepared_files)" took 20.1702 seconds to run
@@ -10,3 +11,14 @@ Command "d4 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small
 Command "d5 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_10.bnx)" took 2.1676 seconds to run
 Command "d6 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_11.bnx)" took 3.7116 seconds to run
 Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0000 seconds to run
+=======
+Command "data_bnx = load(C:\Users\Administrator\Documents\bakalarska_prace\files\all_cropped.bnx)" took 0.0161 seconds to run
+Command "big_cropped = load(C:\Users\Administrator\Documents\bakalarska_prace\files\big_cropped.bnx)" took 15.3736 seconds to run
+Command "data_cmap = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_r_cropped.cmap)" took 0.0348 seconds to run
+Command "data_xmap = load(C:\Users\Administrator\Documents\bakalarska_prace\files\exp_refineFinal1_cropped.xmap)" took 0.0488 seconds to run
+Command "save(data_bnx, "bnx.json")" took 0.0322 seconds to run
+Command "save(big_cropped, "big_cropped.json")" took 147.9707 seconds to run
+Command "save(data_cmap, "cmap.json")" took 0.0157 seconds to run
+Command "save(data_xmap, "xmap.json")" took 0.1451 seconds to run
+Command "satus" took 0.0000 seconds to run
+>>>>>>> Stashed changes
