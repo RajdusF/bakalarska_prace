@@ -9,35 +9,23 @@ import python.global_variables as global_variables
 def worker(func: Callable, items: List[Any], start: int, end: int, 
            result_data: List[Any], output_files: Optional[List[str]] = None, 
            path: Optional[str] = None) -> None:
-    """Worker function to process a chunk of items."""
-    for i in range(start, min(end, len(items))):  # Simplified bounds checking
+    
+    for i in range(start, min(end, len(items))):
         try:
             if func.__name__ == 'load':
                 result_data[i] = func(items[i], path=path)
             elif func.__name__ == 'save' and output_files is not None:
                 result_data[i] = func(items[i], output_files[i])
             else:
-                result_data[i] = func(items[i])  # Handle generic case
+                result_data[i] = func(items[i])
         except Exception as e:
             print(f"Error processing item {i}: {e}")
-            result_data[i] = None  # Ensure the result slot is filled even on error
+            result_data[i] = None
     print(f"Process {multiprocessing.current_process().name} completed items {start}-{end-1}")
 
 def pfor(func: Callable, items: List[Any], path: Optional[str] = None, 
          num_threads: Optional[int] = None, 
          output_files: Optional[List[str]] = None) -> List[Any]:
-    """Parallel for loop implementation.
-    
-    Args:
-        func: Function to apply to each item
-        items: List of items to process
-        path: Optional path parameter for certain functions
-        num_threads: Number of worker processes (defaults to CPU count)
-        output_files: Optional list of output files for save operations
-        
-    Returns:
-        List of results in the same order as input items
-    """
     if not items:
         print("Item list is empty.")
         return []

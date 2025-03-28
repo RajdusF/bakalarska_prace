@@ -1,13 +1,4 @@
-# C:\Users\Administrator\Documents\bakalarska_prace\files
-# C:\Users\Filip\Documents\bakalarska_prace\files
-
 print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
-
-# prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\all.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\big_cropped.bnx"]
-
-# prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx"]
-
 prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]
 
 results = pfor(load, prepared_files)
@@ -15,10 +6,6 @@ results = pfor(load, prepared_files)
 print(results)
 
 print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
-# d1 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_4.bnx)
-# d2 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_5.bnx)
-# d3 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx)
 
 d1 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx)
 d2 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_7.bnx)
@@ -28,6 +15,29 @@ d5 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_10.bnx)
 d6 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_11.bnx)
 
 print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+
+
+
+
+
+# C:\Users\Administrator\Documents\bakalarska_prace\files
+# C:\Users\Filip\Documents\bakalarska_prace\files
+
+
+
+# prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\all.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\big_cropped.bnx"]
+
+# prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx"]
+
+
+
+
+
+# d1 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_4.bnx)
+# d2 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_5.bnx)
+# d3 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx)
+
 
 # print(results)
 

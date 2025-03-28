@@ -1,3 +1,7 @@
+Zkusit jine moznosti p_foru, dynamicke rozdeleni dat
+Zkusit na serveru
+Navratove hodnoty pforu...
+
 1. Uživatel si nastaví výchozí složku.
 2. Vypíše si soubory
 3. Načte soubory končící na .bnx, .cmap a .xmap
@@ -6,8 +10,8 @@
 6. Seřadí si soubory podle data poslední úpravy
 7. Vybere si prvních 5 souborů
 8. Uloží si je to added_files pro zpracování
-9. Hledá v nich zmínku "Version".
-10. Hledá v nich zmínku "Number of" aby zjistil počet molekul.
+9. Hledá v nich zmínku "Version". - Automaticky se uloží výskyty
+10. Hledá v nich zmínku "Number of" aby zjistil počet molekul. - Automaticky se uloží výskyty
 
 
 1. set path C:\Users\Filip\Documents\bakalarska_prace\files
@@ -17,3 +21,27 @@
 
 9. find "Version" in added -I
 9. find "Number of" in added -I
+
+
+
+l = []
+
+a = filter name *.bnx -d
+b = filter name *.cmap -d
+c = filter name *.xmap -d
+
+my_files = a+b+c
+
+for x in my_files:
+    print(x)
+    
+add my_files
+
+sort added by modified
+select top 5
+
+remove *
+add *
+
+find "Version" in added -I
+find "Number of" in added -I

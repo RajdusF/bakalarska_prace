@@ -70,15 +70,6 @@ def process_command(command : str, variables, files : list, added_files : list):
                 my_help()
                 return
             
-            # if commands[0] == "print":
-            #     try:
-            #         result = get_variable(command, find_occurances)
-            #         for x in result:
-            #             print(x)
-            #     except:
-            #         print(command[6:])
-            #     return
-            
             if "**" in command:
                 print(Fore.RED + "Wrong input")
                 return
@@ -110,11 +101,9 @@ def process_command(command : str, variables, files : list, added_files : list):
                     path = commands[path_index]
                     if os.path.isdir(path) and "\\" in path or "/" in path:
                         global_variables.path = path
-                        # print(f"Current path: {global_variables.path}")
                         settings(3, global_variables.path)
                     elif os.path.isdir(global_variables.path + "\\" + path):
                         global_variables.path = global_variables.path + "\\" + path
-                        # print(f"Current path: {global_variables.path}")
                         settings(3, global_variables.path)
                     else:
                         print(Fore.RED + "Path not found" + Fore.RESET)
@@ -216,11 +205,13 @@ def process_command(command : str, variables, files : list, added_files : list):
                     help_add()
                     return
                 
+                # Pridani promenne, ktera je list
                 if commands[1] in variables and type(variables[commands[1]]) == list:
                     added_files.extend(variables[commands[1]])
                 
                 elif commands[1] == "occ" or commands[1] == "occurances" and len(commands) == 2:
                     added_files.extend([x[0] for x in find_occurances])
+                    
                 elif commands[1] == "files" and commands[2] == "contains":
                     r = add_if_in_variables(files, added_files, variables, commands[3])
                     for file in r:
@@ -265,7 +256,7 @@ def process_command(command : str, variables, files : list, added_files : list):
                     show_files(added_files)
                 elif len(commands) == 2 and commands[1] == "files":
                     show_files(files)
-                elif len(commands) == 2 and commands[1] == "dist":
+                elif len(commands) == 2 and commands[1] == "variables":
                     print(variables)
                 elif len(commands) == 2:                          # variables[commands[1]]):
                     if variables.get(commands[1]) != None:
@@ -473,13 +464,6 @@ def process_command(command : str, variables, files : list, added_files : list):
                         args[args.index(arg)] = f"variables[\"{arg}\"]"
                 
                 for arg in args:
-                    # try:
-                    #     if callable(eval(arg)):
-                    #         processed_args.append(eval(arg))
-                    #     else:
-                    #         processed_args.append(eval(arg))
-                    # except Exception as e:
-                    #     processed_args.append(arg)
                     try:
                         processed_args.append(eval(arg))
                     except:
@@ -487,7 +471,6 @@ def process_command(command : str, variables, files : list, added_files : list):
                         
                 args = processed_args.copy()
                         
-                
     
                 # print(f"args: {args}")  # Pro kontrolu, co bude obsahovat 'args'
                 

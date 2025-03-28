@@ -1,21 +1,19 @@
-l = []
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-a = filter name *.bnx -d
-b = filter name *.cmap -d
-c = filter name *.xmap -d
+prepared_files = ["C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]
 
-my_files = a+b+c
+results = pfor(load, prepared_files)
 
-for x in my_files:
-    print(x)
-    
-add my_files
+print(results)
 
-sort added by modified
-select top 5
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-remove *
-add *
+d1 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_6.bnx)
+d2 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_7.bnx)
+d3 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_8.bnx)
+d4 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_9.bnx)
+d5 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_10.bnx)
+d6 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_11.bnx)
 
-find "Version" in added -I
-find "Number of" in added -I
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
