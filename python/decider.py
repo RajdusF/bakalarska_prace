@@ -1,4 +1,6 @@
 import ast
+import importlib
+import inspect
 import os
 import re
 from pprint import pprint
@@ -6,6 +8,7 @@ from pprint import pprint
 from colorama import Fore
 from tabulate import tabulate
 
+import python.custom_functions
 import python.global_variables as global_variables
 from python.command_functions import (add, add_folder, add_if_in_variables,
                                       find, input_files, output,
@@ -17,13 +20,14 @@ from python.global_variables import find_occurances as find_occurances
 from python.global_variables import result as result
 from python.help_func import (add_history,
                               convert_variables_to_variables_from_dict,
-                              execute_command, get_variable, help_add, help_cd,
-                              help_filter, help_find, help_output, help_save,
-                              help_select, help_sort, load_history, my_help,
-                              print_history, print_occurances,
-                              show_current_folder)
-from python.parallel_for import pfor
+                              debug_write, execute_command, get_variable,
+                              help_add, help_cd, help_filter, help_find,
+                              help_output, help_save, help_select, help_sort,
+                              load_history, my_help, print_history,
+                              print_occurances, show_current_folder)
+from python.parallel_for import pfor, pfor_order
 
+custom_functions = importlib.import_module('python.custom_functions')
 
 def process_command(command : str, variables, files : list, added_files : list):
     from python.filter import filter
@@ -34,6 +38,8 @@ def process_command(command : str, variables, files : list, added_files : list):
     
     commands = command.split(" ")
     original_command = command
+    
+    global_variables.variables = variables
     
     # Processing conditions
     if "if" in command and "(" in command and ")" in command and "{" in command and "}" in command:
@@ -66,6 +72,9 @@ def process_command(command : str, variables, files : list, added_files : list):
             if command == "exit":
                 return -1
             
+            elif command == "":
+                return
+            
             if command == "?" or command == "help":
                 my_help()
                 return
@@ -77,15 +86,13 @@ def process_command(command : str, variables, files : list, added_files : list):
             if command == "*" or command == "ls":
                 show_current_folder()
                 
-            # b = 5     Variables...
+            # b = 5     VARIABLES
             elif len(commands) > 2 and commands[1] == "=":
                 variables[commands[0]] = process_command(command[command.index("=") + 1:], variables, files, added_files)
                 if commands[0] in variables:
                     print(f"Variable \"{commands[0]}\" saved")
                 else:
                     print(Fore.RED + "Error during saving variable")
-            elif command == "":
-                return
   
             elif command == "cd.." or command == "cd ..":
                 global_variables.path = os.path.abspath(os.path.join(global_variables.path, os.pardir))
@@ -420,6 +427,10 @@ def process_command(command : str, variables, files : list, added_files : list):
                     return float(command)
                 except:
                     return int(command)
+                
+            elif command == "[]":
+                return []
+                
             
             elif command == "variables":
                 for x in variables:
@@ -465,32 +476,34 @@ def process_command(command : str, variables, files : list, added_files : list):
                 
                 for arg in args:
                     try:
-                        processed_args.append(eval(arg))
-                    except:
+                        processed_args.append(execute_command(arg, variables))
+                    except Exception as e:
                         processed_args.append(arg)
+                        debug_write(f"Error during pfor: {e}")
                         
                 args = processed_args.copy()
                         
+                func = args[0]
+                items = args[1]
+                additional_args = args[2:]
     
                 # print(f"args: {args}")  # Pro kontrolu, co bude obsahovat 'args'
                 
                 for arg in args:
-                    print(arg)
+                    try:
+                        if not callable(arg) and len(arg) < 100:
+                            print(arg)
+                    except Exception as e:
+                        print(Fore.RED + f"Error during pfor: {e}")
                     
-                if args[0].__name__ == "load":
-                    try:
-                        return pfor(args[0], args[1], path=global_variables.path)
-                    except Exception as e:
-                        print(Fore.RED + "Error during pfor: ", e)
-                        
-                elif args[0].__name__ == "save":
-                    try:
-                        return pfor(args[0], args[1], output_files=args[2], path=global_variables.path)
-                    except Exception as e:
-                        print(Fore.RED + "Error during pfor: ", e)
-                
+                # try:
+                if command.startswith("pfor_order"):
+                    return pfor_order(func, items, *additional_args)
                 else:
-                    print(Fore.RED + "Wrong input")
+                    return pfor(func, items, *additional_args)
+                # except Exception as e:
+                #     print(Fore.RED + "Error during pfor: ", e)
+                    
             
             else:
                 command_to_run = convert_variables_to_variables_from_dict(command, variables)

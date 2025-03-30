@@ -1,4 +1,5 @@
 print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]
 
 results = pfor(load, prepared_files)
@@ -15,6 +16,7 @@ d5 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_10.bnx)
 d6 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_11.bnx)
 
 print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 
 
 

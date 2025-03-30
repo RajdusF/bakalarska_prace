@@ -111,3 +111,46 @@ for i, molecule in enumerate(f.molecules):
     if hasattr(molecule, "Orientation"):
         if molecule.Orientation == "-" and i < 20:
             print(molecule)
+
+
+
+#########################
+
+# count_to(200_000_000, False)
+# count_to(200_000_000, False)
+# count_to(200_000_000, False)
+
+
+items = list(range(1, 20000))
+
+# print(pfor_pool(return_list, items))
+
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+r = pfor_order(return_list, items)
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+print(r)
+# variables
+
+
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+r = pfor(return_list, items)
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+print(r)
+
+# r = pfor(return_list, items)
+
+
+# find_44(items)
+# find_44(items)
+# find_44(items)
+# pfor_pool(find_44, items)
+
+# pfor(count_to, 200_000_000)
+
+# for x in items:
+#     if x == 440_00000:
+#         print("Found 44!")
+        
+# print("Done searching!")

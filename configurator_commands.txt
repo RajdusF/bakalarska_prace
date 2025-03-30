@@ -1,19 +1,18 @@
-print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]
 
-prepared_files = ["C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]
+names = []
+
+for x in prepared_files:
+    names.append(x.split("\\")[-1][:-4] +".json")
+
+# prepared_files = "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"
 
 results = pfor(load, prepared_files)
 
 print(results)
 
-print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+results = pfor(save, results, names)
 
-d1 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_6.bnx)
-d2 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_7.bnx)
-d3 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_8.bnx)
-d4 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_9.bnx)
-d5 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_10.bnx)
-d6 = load(C:\Users\Administrator\Documents\bakalarska_prace\files\small_all_11.bnx)
+print(results)
 
-print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
+print("Finished!")

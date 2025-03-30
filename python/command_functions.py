@@ -410,14 +410,14 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
-<<<<<<< Updated upstream
-def save(name, output_file : str, variables = None):
-    if variables and name in variables:
-=======
-def save(name, output_file : str, variables):
-    if name in variables:
->>>>>>> Stashed changes
-        if type(variables[name]) == XData:
+def save(name, output_file : str, shared_data = None, worker_id = None):
+    
+    print(f"worker_id: {worker_id}")
+    
+    print(f"name: {name}")
+    
+    if type(name) == str and global_variables is not None and name in global_variables.variables:
+        if type(global_variables.variables[name]) == XData:
             try:
                 output_dir = "output"
                 if not os.path.exists(output_dir):
@@ -426,7 +426,7 @@ def save(name, output_file : str, variables):
                 if not output_file.endswith(".json"):
                     output_file = output_file[:output_file.index(".")] + ".json"
                     
-                output_data = variables[name].data
+                output_data = global_variables.variables[name].data
                 
                 with open(os.path.join(output_dir, output_file), "w") as json_file:
                     json.dump(output_data, json_file, indent=4)
@@ -437,25 +437,31 @@ def save(name, output_file : str, variables):
                 print(Fore.RED + f"Error writing to file: {e}")
                 return -1
             
-    elif type(name) == XData:
-        try:
-            output_dir = "output"
-            if not os.path.exists(output_dir):
-                os.makedirs(output_dir)
-            
-            if not output_file.endswith(".json"):
-                output_file = output_file[:output_file.index(".")] + ".json"
+    elif type(name) == list:
+        for x in name:
+            try:
+                output_dir = "output"
+                if not os.path.exists(output_dir):
+                    os.makedirs(output_dir)
+                    
+                if type(output_file) == list:
+                    output_file_temp = output_file[worker_id]
+                    
+                print(f"output_file: {output_file_temp}")
                 
-            output_data = name.data
-            
-            with open(os.path.join(output_dir, output_file), "w") as json_file:
-                json.dump(output_data, json_file, indent=4)
+                if not output_file_temp.endswith(".json"):
+                    output_file_temp = output_file_temp[:output_file_temp.index(".")] + ".json"
+                    
+                output_data = x.data
                 
-            print(f"Successfully saved to \"{output_file}\"")
-            return
-        except Exception as e:
-            print(Fore.RED + f"Error writing to file: {e}")
-            return -1
+                with open(os.path.join(output_dir, output_file_temp), "w") as json_file:
+                    json.dump(output_data, json_file, indent=4)
+                    
+                print(f"Successfully saved to \"{output_file_temp}\"")
+                return
+            except Exception as e:
+                print(Fore.RED + f"Error writing to file: {e}")
+                return -1
     
     print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
     

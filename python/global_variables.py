@@ -14,6 +14,8 @@ find_occurances = {}
 result = []
 status = ""
 
+variables = {}
+
 
 # Notebook
 # path = "C:\\Users\\Administrator\\Documents\\bakalarska_prace\\files"

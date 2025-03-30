@@ -1,5 +1,7 @@
 import datetime
 import glob
+import importlib
+import inspect
 import json
 import os
 import re
@@ -10,10 +12,22 @@ import time
 from colorama import Fore, Style, init
 from tabulate import tabulate
 
+path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'python'))
+if path not in sys.path:
+    sys.path.append(path)
+
+
 import python.command_functions as command_functions
+import python.custom_functions
 import python.file_handling as file_handling
 import python.global_variables as global_variables
+import python.parallel_for
 import python.parallel_for as parallel_for
+
+custom_functions = importlib.import_module('python.custom_functions')
+paralell_functions = importlib.import_module('python.parallel_for')
+file_handling_functions = importlib.import_module('python.file_handling')
+command_functions_functions = importlib.import_module('python.command_functions')
 
 history = []
 
@@ -52,8 +66,15 @@ def get_variable(message : str, find_occurances : list):
 
 def execute_command(command, variables):
     globals()["write_line_based_on_file"] = command_functions.write_line_based_on_file
-    # globals()["pfor"] = parallel_for.pfor
-    # globals()["load"] = file_handling.load
+    
+    for name, func in inspect.getmembers(custom_functions, inspect.isfunction):
+        globals()[name] = func
+    for name, func in inspect.getmembers(paralell_functions, inspect.isfunction):
+        globals()[name] = func
+    for name, func in inspect.getmembers(file_handling_functions, inspect.isfunction):
+        globals()[name] = func
+    for name, func in inspect.getmembers(command_functions_functions, inspect.isfunction):
+        globals()[name] = func
     
     try:
         result = eval(command, globals(), locals())
