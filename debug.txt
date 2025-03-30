@@ -1,9 +1,9 @@
-Command "prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]" took 0.0020 seconds to run
+Command "prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]" took 0.0015 seconds to run
 Command "names = []" took 0.0000 seconds to run
 Command "for x in prepared_files:
     names.append(x.split("\\")[-1][:-4] +".json")" took 0.0000 seconds to run
-Command "results = pfor(load, prepared_files)" took 5.3527 seconds to run
+Command "results = pfor(load, prepared_files)" took 5.8192 seconds to run
+Command "print(results)" took 0.0006 seconds to run
+Command "results = pfor(save, results, names)" took 23.6673 seconds to run
 Command "print(results)" took 0.0000 seconds to run
-Command "results = pfor(save, results, names)" took 21.8914 seconds to run
-Command "print(results)" took 0.0005 seconds to run
 Command "print("Finished!")" took 0.0000 seconds to run

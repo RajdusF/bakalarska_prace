@@ -13,7 +13,7 @@ def load(name_input, shared_data=None, worker_id=None):
     if isinstance(name_input, str):
         name_input = [name_input]
         
-    print(f"shared_data from load: {shared_data}")
+    # print(f"shared_data from load: {shared_data}")
     
     path = shared_data["path"]
         
