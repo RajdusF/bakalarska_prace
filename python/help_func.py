@@ -268,7 +268,8 @@ def time_from_now(file : str, option : str) -> str:
         return f"{seconds_from_now / 604800:8.2f} w" 
         
 def show_current_folder():
-    print(f"{"file":{global_variables.FILE_NAME_WIDTH+4}} {"size":{global_variables.SIZE_WIDTH}} {"modified":{global_variables.MODIFIED_WIDTH}} {"created":{global_variables.CREATED_WIDTH}}")
+    print(f'{"file":{global_variables.FILE_NAME_WIDTH+4}} {"size":{global_variables.SIZE_WIDTH}} {"modified":{global_variables.MODIFIED_WIDTH}} {"created":{global_variables.CREATED_WIDTH}}')
+
     for file in glob.glob(global_variables.path + "\\*", recursive=True):
         file_name = file.split("\\")[-1]
         is_folder = os.path.isdir(file)
