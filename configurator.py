@@ -9,17 +9,32 @@ from colorama import Fore, init
 from prompt_toolkit import prompt
 from prompt_toolkit.patch_stdout import patch_stdout
 
+import python.email as email
 import python.global_variables as global_variables
 from python.decider import process_command
 from python.help_func import (comments_removal, debug_write,
                               read_commands_from_file, read_json)
 
+finished_commands_with_time = []
+
+def send_report():
+    email.report_str = f"Processed commands: \n"
+    for x in finished_commands_with_time:
+        email.report_str += f"\t{x}\n"
+    email.report_str += f"\nTime taken: {time.time() - start_time:.2f} seconds"
+    email.report_str += f"\nTime of completion: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}"
+    
+    print(f"Test - report_str: \n{email.report_str}")
+                
+    email.send_report()
 
 def main(args):
     os.system('cls')
     files = []
     added_files = []
     variables = {}  
+    
+    report_sent = False
     
     lock = threading.Lock()
     
@@ -37,13 +52,12 @@ def main(args):
         while True:
             if len(commands_to_process) == 0:
                 print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
-            # else:
-            #     print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET + commands_to_process[0])
+
                 
             time.sleep(0.2)
             cmd = input()
-            sys.stdout.write("\033[F")  # Posune kurzor o řádek zpět
-            sys.stdout.write("\033[K")  # Vymaže celý řádek
+            sys.stdout.write("\033[F")
+            sys.stdout.write("\033[K")
             if cmd == "status":
                 with lock:
                     print(f"Processed commands: {len(finished_commands)} / {len(readed_commands) + len(typed_commands)}", flush=True)
@@ -76,19 +90,28 @@ def main(args):
             
             command_start_time = time.time()
             
-            if(process_command(command, variables, files, added_files)) == -1:
+            result = process_command(command, variables, files, added_files)
+            if result == -1:
                 return -1
+            elif result == "report":
+                send_report()
+            
 
             debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
             
             with lock:
                 finished_commands.append(command)
+                finished_commands_with_time.append(f"{command} - {time.time() - command_start_time:.2f} seconds")
                 current_command = ""
                 
             if len(commands_to_process) == 0:
                 print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
                 
         else:
+            if len(readed_commands) > 0 and report_sent == False:
+                send_report()
+                report_sent = True
+                
             time.sleep(0.2)
         
 

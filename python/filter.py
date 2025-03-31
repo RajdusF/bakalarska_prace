@@ -80,7 +80,6 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
     # if commands[1] == "files" and commands[2] == "contains":
     #     files = add_if_in_dict(input_files, input_added_files, dict, commands[3])
     
-    # If user wants filter "files" or "added_files"
     elif commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
         temp = []
         if commands[1] == "files":
@@ -100,7 +99,6 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             files = temp.copy()
     
         
-        # Deep searching
         if global_variables.search_folders == 1:
             for folder in os.isdir(input_files):
                 if name in folder:

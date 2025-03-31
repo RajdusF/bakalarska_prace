@@ -488,7 +488,6 @@ def process_command(command : str, variables, files : list, added_files : list):
             items = args[1]
             additional_args = args[2:]
 
-            # print(f"args: {args}")  # Pro kontrolu, co bude obsahovat 'args'
             
             for arg in args:
                 try:
@@ -505,6 +504,9 @@ def process_command(command : str, variables, files : list, added_files : list):
             # except Exception as e:
             #     print(Fore.RED + "Error during pfor: ", e)
                 
+        
+        elif command == "report":
+            return "report"
         
         else:
             command_to_run = convert_variables_to_variables_from_dict(command, variables)

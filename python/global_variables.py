@@ -23,24 +23,11 @@ variables = {}
 # PC
 # path = "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files"
 
-# 2 000 files 700 folders 1 GB - 2sec with show
-# 1 sec without show
-# path = "C:\\Program Files\\SteelSeries"
 
 # 29 000 files 5 000 folders 5,5 GB - 20sec with show
 # 14sec without show
 # 12sec without show
 # path = "C:\\Program Files\\Microsoft Visual Studio"
-
-
-# HDD
-# 27 000 files 2 000 folders 40 GB
-# 3 sec without show
-# path = "E:\\F1 22 Champions Edition"
-
-# 34 000 files 5 700 folders 45 GB
-# 4 sec without show
-# path = "E:\\Assetto Corsa"
 
 
 # 170 000 files 6 000 folders 16 GB

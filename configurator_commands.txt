@@ -1,15 +1,22 @@
-items = list(range(1, 300))
+# items = list(range(1, 300))
 
 
-r = pfor_order(return_list, items, num_threads=4)
+# r = pfor_order(return_list, items, num_threads=4)
 
-print(r)
-
-
-r = pfor(return_list, items, num_threads=3)
-
-print(r)
+# print(r)
 
 
+# r = pfor(return_list, items, num_threads=3)
 
-print("Finished!")
+# print(r)
+
+
+
+# print("Finished!")
+
+
+print("Hello world!")
+print("Hello world!")
+print("Hello world!")
+
+item = 55

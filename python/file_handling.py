@@ -13,7 +13,6 @@ def load(name_input, shared_data=None, worker_id=None):
     if isinstance(name_input, str):
         name_input = [name_input]
         
-    # print(f"shared_data from load: {shared_data}")
     
     if shared_data is not None:
         path = shared_data["path"]
@@ -26,9 +25,10 @@ def load(name_input, shared_data=None, worker_id=None):
         if path is None:
             print(Fore.RED + "Path is not set" + Fore.RESET)
             return None
-        # print(f"g.path: {g.path}")
-        name = name.replace("\\", "\\\\")  # Escape backslashes
-        escaped_path = re.escape(path)  # Escape regex special chars in the path
+        
+        # Úprava escape characterů pro Windows
+        name = name.replace("\\", "\\\\")
+        escaped_path = re.escape(path)
         name = re.sub(
             r'\bpath\b(?=(?:[^"]*"[^"]*")*[^"]*$)',
             f'"{escaped_path}"',
@@ -68,7 +68,7 @@ def load_json(name):
 
     try:
         with open(name, 'r') as f:
-            fields = None  # Proměnná pro uchování hlaviček
+            fields = None
 
             for i, line in enumerate(f):
                 line = line.strip()
@@ -91,7 +91,6 @@ def load_json(name):
                 elif line.startswith('#'):  # Komentáře
                     comments.append(line)
                 else:
-                    # Zpracování datových řádků podle toho, zda začínají '0' nebo '1'
                     if line[0].isdigit():
                         try:
                             label_channel = line[0]
@@ -104,7 +103,6 @@ def load_json(name):
                             print(Fore.RED + f"Warning: No headers found for row: {line}")
                             continue
 
-                    # Pokud máme hlavičky, čteme data
                     if fields:
                         values = line.split("\t")
 
@@ -125,7 +123,6 @@ def load_json(name):
                                 if not value.startswith("QX"):
                                     print(Fore.YELLOW + f"Warning: Could not convert value '{value}' to type '{fields_data_types[i]}'")
 
-                            # Pokud má pole '[N]' v názvu, rozdělíme hodnotu
                             if '[' in field_name and ']' in field_name:
                                 try:
                                     if fields_data_types[i] == "float" or fields_data_types[i] == "float[N]":

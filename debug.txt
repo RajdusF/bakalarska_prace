@@ -1,1 +1,4 @@
-Command "items = list(range(1, 300))" took 0.0041 seconds to run
+Command "print("Hello world!")" took 0.0010 seconds to run
+Command "print("Hello world!")" took 0.0000 seconds to run
+Command "print("Hello world!")" took 0.0010 seconds to run
+Command "item = 55" took 0.0000 seconds to run

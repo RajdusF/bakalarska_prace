@@ -1,7 +1,6 @@
 import random
 from time import sleep
 
-import python.global_variables as global_variables
 from python.parallel_for import _shared_globals
 
 

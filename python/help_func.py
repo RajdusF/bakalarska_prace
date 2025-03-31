@@ -125,22 +125,6 @@ def print_occurances(occurances : dict):
     print(Fore.GREEN + f"Found {total_occurances} occurances:" + Fore.RESET)
     print(s)
                     
-    # temp_occurences = []
-    # for i, occurance in enumerate(files):
-    #     name, line = None, None
-    #     name = occurance[0]
-    #     line = occurance[1]
-            
-    #     temp_occurences.append([i, name, line])
-    # headers = ["Index", "File path", "Line"]
-
-    # data_wrapped = []
-    # for row in temp_occurences:
-    #     wrapped_row = [wrap_text(cell, global_variables.wraps[col]) for col, cell in enumerate(row)]
-    #     data_wrapped.append(wrapped_row)
-    
-    # table = tabulate(data_wrapped, headers=headers, tablefmt="grid")
-    # print(table)
 
 def search_folder(folder, commands=None, only_files=None, progress=None, progress_total=None):
     num_of_folders = 0
@@ -362,7 +346,6 @@ def read_commands_from_file():
         return None
     
 def find_name_of_browse_file():
-    # list of files
     files = os.listdir("output")
     
     max = 0
@@ -378,7 +361,6 @@ def find_name_of_browse_file():
     return "browse_output_" + str(max) + ".txt"
 
 def find_name_of_find_file():
-    # list of files
     files = os.listdir("output")
     
     max = 0
