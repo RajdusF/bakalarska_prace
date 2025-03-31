@@ -116,7 +116,9 @@ def main(args):
         
 
 if __name__ == "__main__":
+    print(f"sys.path: {sys.path}")
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    print(f"AFTER: sys.path: {sys.path}")
     init(autoreset=True)
     multiprocessing.freeze_support()
     parser = argparse.ArgumentParser(description="Process some integers.")
