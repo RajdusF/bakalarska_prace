@@ -18,7 +18,6 @@ if path not in sys.path:
 
 
 import python.command_functions as command_functions
-import python.custom_functions
 import python.file_handling as file_handling
 import python.global_variables as global_variables
 import python.parallel_for
