@@ -31,39 +31,6 @@ command_functions_functions = importlib.import_module('python.command_functions'
 
 history = []
 
-def get_variable(message : str, find_occurances : list):
-    r = []
-    
-    # occurances
-    if message.startswith("occurances") and "[" not in message and "]" not in message:
-        for i, x in enumerate(find_occurances):
-            r.append(x)
-            
-        print_occurances(find_occurances)
-        return r
-    
-    
-    elif message.startswith("occurances") and "[" in message and "]" in message:
-        try:
-            index = int(message[message.index("[") + 1:message.index("]")])
-            for occurance in find_occurances:
-                # print(occurance[index])
-                r.append(occurance[index])
-            return r
-        except:
-            pass
-    
-    # occurance
-    elif message.startswith("occurance") and "[" in message and "]" in message:
-        try:
-            index = int(message[message.index("[") + 1:message.index("]")])
-            # print(f"{index}: {find_occurances[index]}")
-            return find_occurances[index]
-        except:
-            pass
-    
-    raise Exception("Variable not found")
-
 def execute_command(command, variables):
     globals()["write_line_based_on_file"] = command_functions.write_line_based_on_file
     
@@ -450,14 +417,18 @@ def comments_removal(string : str) -> str:
     return string.strip()
     
 def convert_variables_to_variables_from_dict(string: str, variables: dict) -> str:
+    last_text = ""
     def replace_match(match):
+        global last_text
         text = match.group(0)
         
-        if text.startswith('"') and text.endswith('"'):
+        if text.startswith('"') and text.endswith('"') and last_text != "f":
             return text
 
         for key, value in variables.items():
             text = re.sub(rf'\b{re.escape(key)}\b', f'variables["{key}"]', text)
+            
+        last_text = text
         return text
 
     # Zavolat replace pro každý výskyt

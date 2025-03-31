@@ -6,7 +6,7 @@ import re
 from colorama import Fore
 
 import python.global_variables as g
-from python.MyFile import Molecule, MyFile, XData
+from python.MyFile import Molecule, XData
 
 
 def load(name_input, shared_data=None, worker_id=None):
@@ -15,9 +15,13 @@ def load(name_input, shared_data=None, worker_id=None):
         
     # print(f"shared_data from load: {shared_data}")
     
-    path = shared_data["path"]
+    if shared_data is not None:
+        path = shared_data["path"]
+    else:
+        path = g.path
         
-    
+    files = []
+        
     for name in name_input:
         if path is None:
             print(Fore.RED + "Path is not set" + Fore.RESET)
@@ -34,16 +38,21 @@ def load(name_input, shared_data=None, worker_id=None):
         if "+" in name and all(part.strip(' "\'') for part in name.split("+")):
             parts = [part.strip(' "\'') for part in name.split("+")]
             name = os.path.join(parts[0], parts[1].lstrip("\\"))
+            
+        files.append(name)
 
-        if isinstance(name, list):
-            files = []
-            for file in name:
-                files.append(load(file))
-                    
-            return files
-    
-    
-    return load_json(name)
+    if isinstance(files, list) and len(files) > 1:
+        results = []
+        for file in files:
+            results.append(load(file))
+                
+        return results
+    else:
+        if name.endswith(".json"):
+            with open(name, "r") as file:
+                return json.load(file)
+        
+        return load_json(name)
         
         
 def load_json(name):
@@ -158,102 +167,102 @@ def load_json(name):
     return x
 
 
-def load_bnx(name):
-    if os.path.isfile(name):
-        with open(name, 'r') as f:
-            my_f = MyFile()
+# def load_bnx(name):
+#     if os.path.isfile(name):
+#         with open(name, 'r') as f:
+#             my_f = MyFile()
             
-            my_f.name = name
-            my_f.size = os.path.getsize(name)
-            my_f.content = f.read()
-            lines = my_f.content.split("\n")
+#             my_f.name = name
+#             my_f.size = os.path.getsize(name)
+#             my_f.content = f.read()
+#             lines = my_f.content.split("\n")
             
-            for line in lines:
-                if line == "":
-                    continue
+#             for line in lines:
+#                 if line == "":
+#                     continue
                 
-                if line[0] == "#" and "h" in line:
-                    first_word = line.split()[0]
-                    header_id = first_word[1:first_word.find("h")]
+#                 if line[0] == "#" and "h" in line:
+#                     first_word = line.split()[0]
+#                     header_id = first_word[1:first_word.find("h")]
                     
-                    if header_id.isdecimal() or header_id == "Q":                        
-                        header = line.split()[1:]
-                        header.insert(0, header_id)
+#                     if header_id.isdecimal() or header_id == "Q":                        
+#                         header = line.split()[1:]
+#                         header.insert(0, header_id)
                         
-                        my_f.header.append(header)
+#                         my_f.header.append(header)
                     
-                if not line.startswith("#"):
-                    molecule = Molecule()
+#                 if not line.startswith("#"):
+#                     molecule = Molecule()
                     
-                    data = line.strip().split("\t")
+#                     data = line.strip().split("\t")
                         
-                    headers = my_f.header  
-                    for i, header in enumerate(headers):
-                        if isinstance(header, list) and len(header) - 1 == len(data) and data[0] == header[0]:
-                            for h, d in zip(header[1:], data):
-                                setattr(molecule, h, d)
-                            break
-                        elif data[0] == header[0]:
-                            for i, h in enumerate(header[1:]):
-                                if "[N]" in h:
-                                    molecule.__setattr__(h, data[i:])
-                                else:
-                                    molecule.__setattr__(h, data[i])
-                            break
-                        elif data[0][0] == header[0]:
-                            for i, h in enumerate(header[1:]):
-                                if "[N]" in h:
-                                    molecule.__setattr__(h, data[i:])
-                                else:
-                                    molecule.__setattr__(h, data[i])
+#                     headers = my_f.header  
+#                     for i, header in enumerate(headers):
+#                         if isinstance(header, list) and len(header) - 1 == len(data) and data[0] == header[0]:
+#                             for h, d in zip(header[1:], data):
+#                                 setattr(molecule, h, d)
+#                             break
+#                         elif data[0] == header[0]:
+#                             for i, h in enumerate(header[1:]):
+#                                 if "[N]" in h:
+#                                     molecule.__setattr__(h, data[i:])
+#                                 else:
+#                                     molecule.__setattr__(h, data[i])
+#                             break
+#                         elif data[0][0] == header[0]:
+#                             for i, h in enumerate(header[1:]):
+#                                 if "[N]" in h:
+#                                     molecule.__setattr__(h, data[i:])
+#                                 else:
+#                                     molecule.__setattr__(h, data[i])
 
                     
-                    if molecule._specs:
-                        my_f.add_molecule(molecule)
+#                     if molecule._specs:
+#                         my_f.add_molecule(molecule)
             
             
-            return my_f
-    else:
-        print(Fore.RED + "load error")
+#             return my_f
+#     else:
+#         print(Fore.RED + "load error")
         
-def load_cmap(name):
-    if os.path.isfile(name):
-        with open(name, 'r') as f:
-            my_f = MyFile()
+# def load_cmap(name):
+#     if os.path.isfile(name):
+#         with open(name, 'r') as f:
+#             my_f = MyFile()
             
-            my_f.name = name
-            my_f.size = os.path.getsize(name)
-            my_f.content = f.read()
-            lines = my_f.content.split("\n")
+#             my_f.name = name
+#             my_f.size = os.path.getsize(name)
+#             my_f.content = f.read()
+#             lines = my_f.content.split("\n")
             
-            for line in lines:
-                if line == "":
-                    continue
-                if line.startswith("#h"):
-                    my_f.header = line.removeprefix("#h").strip().split("\t")
+#             for line in lines:
+#                 if line == "":
+#                     continue
+#                 if line.startswith("#h"):
+#                     my_f.header = line.removeprefix("#h").strip().split("\t")
                     
-                if not line.startswith("#"):
-                    molecule = Molecule()
+#                 if not line.startswith("#"):
+#                     molecule = Molecule()
                     
-                    data = line.strip().split("\t")
+#                     data = line.strip().split("\t")
                         
-                    headers = my_f.header  
-                    for i, header in enumerate(headers):
-                        if isinstance(header, list):
-                            if len(header) == len(data):
-                                for j, h in enumerate(header):
-                                    molecule.__setattr__(h, data[j])
-                        else:
-                            molecule.__setattr__(header, data[i])
+#                     headers = my_f.header  
+#                     for i, header in enumerate(headers):
+#                         if isinstance(header, list):
+#                             if len(header) == len(data):
+#                                 for j, h in enumerate(header):
+#                                     molecule.__setattr__(h, data[j])
+#                         else:
+#                             molecule.__setattr__(header, data[i])
                     
-                    my_f.molecules.append(molecule)
+#                     my_f.molecules.append(molecule)
             
             
-            return my_f
-    else:
-        print(Fore.RED + "load error")
+#             return my_f
+#     else:
+#         print(Fore.RED + "load error")
         
-def load_xmap(name):
+# def load_xmap(name):
     if os.path.isfile(name):
         with open(name, 'r') as f:
             my_f = MyFile()

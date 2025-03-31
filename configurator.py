@@ -1,5 +1,7 @@
 import argparse
+import multiprocessing
 import os
+import sys
 import threading
 import time
 
@@ -21,7 +23,6 @@ def main(args):
     
     lock = threading.Lock()
     
-    # Inicializace colorama pro barevný výstup
     init(autoreset=True)
     
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
@@ -34,8 +35,15 @@ def main(args):
     
     def status_check():
         while True:
+            if len(commands_to_process) == 0:
+                print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
+            # else:
+            #     print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET + commands_to_process[0])
+                
             time.sleep(0.2)
             cmd = input()
+            sys.stdout.write("\033[F")  # Posune kurzor o řádek zpět
+            sys.stdout.write("\033[K")  # Vymaže celý řádek
             if cmd == "status":
                 with lock:
                     print(f"Processed commands: {len(finished_commands)} / {len(readed_commands) + len(typed_commands)}", flush=True)
@@ -55,7 +63,6 @@ def main(args):
                 commands_to_process.append(cmd)
                 typed_commands.append(cmd)
             
-    # Spuštění vlákna pro kontrolu statusu
     threading.Thread(target=status_check, daemon=True).start()
     while True:
         if len(commands_to_process) > 0:
@@ -65,41 +72,29 @@ def main(args):
             
             command = comments_removal(command)
             
-            print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> {command}" + Fore.RESET)
+            print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET + command)
+            
             command_start_time = time.time()
+            
             if(process_command(command, variables, files, added_files)) == -1:
                 return -1
-            # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
+
             debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
             
             with lock:
                 finished_commands.append(command)
                 current_command = ""
+                
+            if len(commands_to_process) == 0:
+                print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
+                
         else:
             time.sleep(0.2)
         
-    # Neblokující smyčka pro další příkazy
-    # while True:         
-    #     with patch_stdout():  # Zabrání překrývání výstupu
-    #         command = input(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + " >> ")
-        
-    #     print(Fore.RESET, end="")
-        
-    #     command = comments_removal(command)
-            
-    #     command_start_time = time.time()
-        
-    #     result = process_command(command, variables, files, added_files)
-        
-    #     # print(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
-    #     debug_write(f'Command "{command}" took {time.time() - command_start_time:.4f} seconds to run')
-        
-    #     if result == -1:
-    #         break
-
 
 if __name__ == "__main__":
     init(autoreset=True)
+    multiprocessing.freeze_support()
     parser = argparse.ArgumentParser(description="Process some integers.")
     parser.add_argument('-p', type=str, default="", help='Path to the folder')
     

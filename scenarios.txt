@@ -154,3 +154,26 @@ print(r)
 #         print("Found 44!")
         
 # print("Done searching!")
+
+
+#######################
+
+
+# prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]
+
+# names = []
+
+# for x in prepared_files:
+#     names.append(x.split("\\")[-1][:-4] +".json")
+
+# # prepared_files = "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"
+
+# results = pfor(load, prepared_files)
+
+# print(results)
+
+# results = pfor(save, results, names)
+
+# print(results)
+
+# print("Finished!")

@@ -1,6 +1,9 @@
 import random
 from time import sleep
 
+import python.global_variables as global_variables
+from python.parallel_for import _shared_globals
+
 
 def count_to(num, display=True):
     """Counts to a given number."""
@@ -22,7 +25,16 @@ def find_44(l : list):
     print("Done searching!")
     return None
 
-def return_list(l : list):
+def return_list(l : list, shared_data=None, worker_id=None):
     sleep(random.uniform(0, 1))
+    
+    print(f"Worker {worker_id} sees path: {_shared_globals['path']}")
+    
+    test = 0
+    
+    for x in l:
+        test = x
+        
+    
     print("Returning list...")
     return l
