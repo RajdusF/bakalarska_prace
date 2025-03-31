@@ -213,7 +213,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
     else:
         print(Fore.GREEN + f"Found {len(files) - len(only_directories)} files and {num_of_folders} folders:" + Fore.RESET)      # Number of occurances
         if "-d" in commands:        # detailed
-            print(f"{"file":{FILE_NAME_WIDTH+4}} {"size":{SIZE_WIDTH}} {"modified":{MODIFIED_WIDTH}} {"created":{CREATED_WIDTH}}")
+            print(f"{'file':{FILE_NAME_WIDTH+4}} {'size':{SIZE_WIDTH}} {'modified':{MODIFIED_WIDTH}} {'created':{CREATED_WIDTH}}")
         for file in files:
             file_name = file.split("\\")[-1]
             file_size = os.path.getsize(file)
