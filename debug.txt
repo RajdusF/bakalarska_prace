@@ -1,4 +1,6 @@
 Command "print("Hello world!")" took 0.0015 seconds to run
-Command "print("Hello world!")" took 0.0000 seconds to run
+Command "print("Hello world!")" took 0.0010 seconds to run
 Command "print("Hello world!")" took 0.0000 seconds to run
 Command "item = 55" took 0.0000 seconds to run
+Command "cd" took 0.0000 seconds to run
+Command "asss" took 0.0005 seconds to run

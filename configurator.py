@@ -49,15 +49,28 @@ def main(args):
     finished_commands = []
     
     def status_check():
+        
+        global start_time
+        
         while True:
             if len(commands_to_process) == 0:
                 print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
+            else:
+                # Vymazani posledniho radku
+                sys.stdout.write("\033[F")
+                sys.stdout.write("\033[K")
 
-                
-            time.sleep(0.2)
+
+            start_pause = time.time()
+            
+            # print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
             cmd = input()
-            sys.stdout.write("\033[F")
-            sys.stdout.write("\033[K")
+            
+            pause_duration = time.time() - start_pause
+            
+            
+            start_time += pause_duration
+            
             if cmd == "status":
                 with lock:
                     print(f"Processed commands: {len(finished_commands)} / {len(readed_commands) + len(typed_commands)}", flush=True)
@@ -111,6 +124,7 @@ def main(args):
             if len(readed_commands) > 0 and report_sent == False:
                 send_report()
                 report_sent = True
+                print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
                 
             time.sleep(0.2)
         

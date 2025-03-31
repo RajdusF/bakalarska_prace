@@ -12,7 +12,7 @@ from tqdm import tqdm
 import python.global_variables as global_variables
 from python.help_func import (find_name_of_browse_file, find_name_of_find_file,
                               recalculate_size, time_from_now)
-from python.MyFile import Molecule, XData
+from python.MyFile import XData
 
 ops = {
     "==": operator.eq,

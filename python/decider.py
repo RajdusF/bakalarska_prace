@@ -87,6 +87,10 @@ def process_command(command : str, variables, files : list, added_files : list):
             print(f"Current path: {global_variables.path}")
             
         elif "cd" in command:
+            if len(commands) == 1:
+                help_cd()
+                return
+            
             path_index = commands.index("cd") + 1
             
             if global_variables.path == None:
@@ -105,8 +109,6 @@ def process_command(command : str, variables, files : list, added_files : list):
             else:
                 print(f"Current path: {global_variables.path}")
                 
-            if commands[0] == "cd" and len(commands) == 1:
-                help_cd()
                 
         elif "filter" in commands:
             if commands[0] == "filter" and len(commands) == 1:
