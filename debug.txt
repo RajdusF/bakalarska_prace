@@ -1,4 +1,4 @@
-Command "print("Hello world!")" took 0.0051 seconds to run
+Command "print("Hello world!")" took 0.0015 seconds to run
 Command "print("Hello world!")" took 0.0000 seconds to run
 Command "print("Hello world!")" took 0.0000 seconds to run
 Command "item = 55" took 0.0000 seconds to run

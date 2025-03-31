@@ -17,11 +17,11 @@ if path not in sys.path:
     sys.path.append(path)
 
 
-import python.command_functions as command_functions
 import python.file_handling as file_handling
 import python.global_variables as global_variables
-import python.parallel_for
 import python.parallel_for as parallel_for
+
+from . import command_functions
 
 custom_functions = importlib.import_module('python.custom_functions')
 paralell_functions = importlib.import_module('python.parallel_for')
