@@ -1,8 +1,24 @@
-Command "cd" took 0.0000 seconds to run
-Command "ls" took 0.0107 seconds to run
-Command "set search 2" took 0.0000 seconds to run
-Command "set duplicity 1" took 0.0010 seconds to run
-Command "files = input output/bionano_files.txt" took 0.0005 seconds to run
-Command "new, duplicates = resolve_duplicity(files)" took 0.3572 seconds to run
-Command "print(f"New files: {new}")" took 0.0023 seconds to run
-Command "print(f"Duplicates: {duplicates}")" took 0.0010 seconds to run
+Command "cd files" took 0.0005 seconds to run
+Command "ls" took 0.0150 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "l = []" took 0.0000 seconds to run
+Command "a = filter name *.bnx -d" took 0.3778 seconds to run
+Command "b = filter name *.cmap -d" took 0.0130 seconds to run
+Command "c = filter name *.xmap -d" took 0.0075 seconds to run
+Command "my_files = a+b+c" took 0.0010 seconds to run
+Command "for x in my_files:
+    print(x)" took 0.0065 seconds to run
+Command "add my_files" took 0.0085 seconds to run
+Command "output bionano_files.txt" took 0.0015 seconds to run
+Command "sort added by modified" took 0.0115 seconds to run
+Command "select top 5" took 0.0040 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0055 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2975 seconds to run
+Command "find "Number of" in added -I" took 2.2655 seconds to run
+Command "print(finds_version)" took 0.0015 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0020 seconds to run
+Command "send_email(my_report, "Function find")" took 1.1749 seconds to run
