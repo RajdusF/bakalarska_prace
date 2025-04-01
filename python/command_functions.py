@@ -155,8 +155,14 @@ def settings(option, value):
             path = value
             print(f"Path set to {value}")
         else:
-            print(Fore.RED + "Path not found" + Fore.RESET)
-            return
+            value = value.replace("\"", "")
+            value = value.replace("'", "")
+            if os.path.isdir(value):
+                path = value
+                print(f"Path set to {value}")
+            else:
+                print(Fore.RED + "Path not found" + Fore.RESET)
+                return
    
     elif option == 4:
         wraps = value
@@ -479,17 +485,6 @@ def save(name, output_file : str, shared_data = None, worker_id = None):
     
     print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
     
-    
-# def save(name, files_to_save, variables):
-    
-#     try:
-#         if len(files_to_save) == 0:
-#             raise Exception("No files to save")
-#         variables[name] = files_to_save.copy()
-#     except Exception as e:
-#         print(Fore.RED + "Error: {e}")
-    
-#     print(f"Successfully saved to \"{name}\"")
     
     
 def remove(commands, added_files):

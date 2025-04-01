@@ -75,12 +75,9 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         if created_operator == None or created == None or created_time_unit == None:
             print(Fore.RED + "Wrong input")
             return
-                
+            
     
-    # if commands[1] == "files" and commands[2] == "contains":
-    #     files = add_if_in_dict(input_files, input_added_files, dict, commands[3])
-    
-    elif commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
+    if commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
         temp = []
         if commands[1] == "files":
             temp = input_files.copy()
@@ -124,6 +121,8 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         
     else:
         input_files.clear()
+        
+        print(f"path: {global_variables.path}")
         
         # TODO: if path is not set, warning and return
         if global_variables.path == None or global_variables.path == "":

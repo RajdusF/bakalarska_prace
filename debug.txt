@@ -1,24 +1,24 @@
-Command "cd files" took 0.0010 seconds to run
-Command "ls" took 0.0115 seconds to run
-Command "set search 2" took 0.0015 seconds to run
-Command "l = []" took 0.0000 seconds to run
-Command "a = filter name *.bnx -d" took 0.3708 seconds to run
-Command "b = filter name *.cmap -d" took 0.0125 seconds to run
-Command "c = filter name *.xmap -d" took 0.0060 seconds to run
-Command "my_files = a+b+c" took 0.0010 seconds to run
+Command "cd files" took 0.0005 seconds to run
+Command "ls" took 0.0026 seconds to run
+Command "set search 2" took 0.0003 seconds to run
+Command "l = []" took 0.0001 seconds to run
+Command "a = filter name *.bnx -d" took 0.0022 seconds to run
+Command "b = filter name *.cmap -d" took 0.0024 seconds to run
+Command "c = filter name *.xmap -d" took 0.0029 seconds to run
+Command "my_files = a+b+c" took 0.0008 seconds to run
 Command "for x in my_files:
-    print(x)" took 0.0085 seconds to run
-Command "add my_files" took 0.0070 seconds to run
-Command "output bionano_files.txt" took 0.0010 seconds to run
-Command "sort added by modified" took 0.0100 seconds to run
-Command "select top 5" took 0.0055 seconds to run
-Command "remove *" took 0.0010 seconds to run
-Command "add *" took 0.0035 seconds to run
-Command "finds_version = find "Version" in added -I" took 2.2965 seconds to run
-Command "find "Number of" in added -I" took 2.2564 seconds to run
-Command "print(finds_version)" took 0.0015 seconds to run
-Command "my_report = """ took 0.0005 seconds to run
+    print(x)" took 0.0007 seconds to run
+Command "add my_files" took 0.0001 seconds to run
+Command "output bionano_files.txt" took 0.0002 seconds to run
+Command "sort added by modified" took 0.0000 seconds to run
+Command "select top 5" took 0.0001 seconds to run
+Command "remove *" took 0.0001 seconds to run
+Command "add *" took 0.0001 seconds to run
+Command "finds_version = find "Version" in added -I" took 0.0001 seconds to run
+Command "find "Number of" in added -I" took 0.0000 seconds to run
+Command "print(finds_version)" took 0.0002 seconds to run
+Command "my_report = """ took 0.0000 seconds to run
 Command "for key, value in finds_version.items():
     print(f"{key}: {value}\n\n")
-    my_report += f"{key}: {value}\n\n"" took 0.0020 seconds to run
-Command "send_email(my_report, "Function find")" took 5.7793 seconds to run
+    my_report += f"{key}: {value}\n\n"" took 0.0004 seconds to run
+Command "send_email(my_report, "Function find")" took 0.1429 seconds to run

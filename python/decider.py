@@ -113,19 +113,20 @@ def process_command(command : str, variables, files : list, added_files : list):
             if len(commands) == 1:
                 help_cd()
                 return
-            
+
             path_index = commands.index("cd") + 1
-            
-            if global_variables.path == None:
-                global_variables.path = ""
-            
+
+            if global_variables.path is None:
+                global_variables.path = os.getcwd()
+
             if path_index < len(commands):
                 path = commands[path_index]
-                if os.path.isdir(path):
-                    global_variables.path = path
-                    settings(3, global_variables.path)
-                elif os.path.isdir(os.path.join(global_variables.path, path)):
-                    global_variables.path = os.path.join(global_variables.path, path)
+
+                # Převést na absolutní cestu
+                full_path = os.path.abspath(os.path.join(global_variables.path, path))
+
+                if os.path.isdir(full_path):
+                    global_variables.path = full_path
                     settings(3, global_variables.path)
                 else:
                     print(Fore.RED + "Path not found" + Fore.RESET)

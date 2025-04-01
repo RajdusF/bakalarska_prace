@@ -2,7 +2,7 @@
     "unit": "GB",
     "search_folders": 2,
     "show_duplicity": true,
-    "path": "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files",
+    "path": "/home/fei/raj0071/bakalarska_prace/files",
     "wraps": [
         5,
         25,
