@@ -1,12 +1,38 @@
 # set path C:\Users\Filip\Documents\bakalarska_prace\files
-cd
+cd files
 ls
 set search 2
-set duplicity 1
 
-files = input output/bionano_files.txt
+l = []
 
-new, duplicates = resolve_duplicity(files)
+a = filter name *.bnx -d
+b = filter name *.cmap -d
+c = filter name *.xmap -d
 
-print(f"New files: {new}")
-print(f"Duplicates: {duplicates}")
+my_files = a+b+c
+
+for x in my_files:
+    print(x)
+    
+add my_files
+
+output bionano_files.txt
+
+sort added by modified
+select top 5
+
+remove *
+add *
+
+
+finds_version = find "Version" in added -I
+find "Number of" in added -I
+
+print(finds_version)
+my_report = ""
+
+for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"
+
+send_email(my_report, "Function find")

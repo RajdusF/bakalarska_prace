@@ -310,6 +310,11 @@ def select(commands, files):
 
 def input_files(added_files, input_file="output.txt"):
     r = []
+    
+    if not os.path.isfile(input_file):
+        print(f"File {input_file} not found")
+        return
+    
     with open(input_file, 'r') as f:
         lines = f.readlines()
         for line in lines:

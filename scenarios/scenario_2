@@ -11,18 +11,14 @@ Poslat k dalsimu zpracovani
 Ulozeni do souboru
 
 # set path C:\Users\Filip\Documents\bakalarska_prace\files
-cd files
+cd
 ls
 set search 2
+set duplicity 1
 
-l = []
+files = input output/bionano_files.txt
 
-a = filter name *.bnx -d
-b = filter name *.cmap -d
-c = filter name *.xmap -d
+new, duplicates = resolve_duplicity(files)
 
-my_files = a+b+c
-
-add my_files
-
-save added
+print(f"New files: {new}")
+print(f"Duplicates: {duplicates}")
