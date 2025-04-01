@@ -29,7 +29,6 @@ def send_report():
     email.send_report()
 
 def main(args):
-    os.system('cls')
     files = []
     added_files = []
     variables = {}  
