@@ -1,7 +1,7 @@
 {
     "unit": "GB",
     "search_folders": 2,
-    "show_duplicity": false,
+    "show_duplicity": true,
     "path": "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files",
     "wraps": [
         5,

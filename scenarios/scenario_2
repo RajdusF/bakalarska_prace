@@ -9,3 +9,20 @@ Ulozit jako soubory ktere probehly v poradku a chceme s nima pracovat
 Overit nejake hodnoty... napřiklad jestli proběhlo všechno v pořádku
 Poslat k dalsimu zpracovani
 Ulozeni do souboru
+
+# set path C:\Users\Filip\Documents\bakalarska_prace\files
+cd files
+ls
+set search 2
+
+l = []
+
+a = filter name *.bnx -d
+b = filter name *.cmap -d
+c = filter name *.xmap -d
+
+my_files = a+b+c
+
+add my_files
+
+save added

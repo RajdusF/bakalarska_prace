@@ -1,5 +1,0 @@
-colorama>=0.4.5
-prompt_toolkit>=3.0.36
-tabulate>=0.8.10
-wcwidth>=0.2.13
-tqdm==4.19.6

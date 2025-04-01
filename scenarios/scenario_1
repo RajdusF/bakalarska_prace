@@ -1,28 +1,20 @@
-Zkusit jine moznosti p_foru, dynamicke rozdeleni dat
-Zkusit na serveru
-Navratove hodnoty pforu...
-
 1. Uživatel si nastaví výchozí složku.
 2. Vypíše si soubory
-3. Načte soubory končící na .bnx, .cmap a .xmap
+3. Načte soubory končící na .bnx, .cmap a .xmap (prohledává i podsložky)
 4. Uloží si je všechny do proměnné my_files
 5. Poté si je může uložit do added_files (soubory pro zpracování)
 6. Seřadí si soubory podle data poslední úpravy
 7. Vybere si prvních 5 souborů
 8. Uloží si je to added_files pro zpracování
-9. Hledá v nich zmínku "Version". - Automaticky se uloží výskyty
-10. Hledá v nich zmínku "Number of" aby zjistil počet molekul. - Automaticky se uloží výskyty
+9. Hledá v nich zmínku "Version". - Automaticky se uloží výskyty v output + find vrátí jako návratovou hodnotu slovník
+10. Hledá v nich zmínku "Number of" aby zjistil počet molekul. - Automaticky se uloží výskyty + find vrátí jako návratovou hodnotu slovník
+11. Po dokončení se automaticky pošle e-mail s informacemi o průběhu nebo můžu poslat email podle sebe
 
 
-1. set path C:\Users\Filip\Documents\bakalarska_prace\files
-2. cd 
-
-
-
-9. find "Version" in added -I
-9. find "Number of" in added -I
-
-
+# set path C:\Users\Filip\Documents\bakalarska_prace\files
+cd files
+ls
+set search 2
 
 l = []
 
@@ -37,11 +29,23 @@ for x in my_files:
     
 add my_files
 
+output bionano_files.txt
+
 sort added by modified
 select top 5
 
 remove *
 add *
 
-find "Version" in added -I
+
+finds_version = find "Version" in added -I
 find "Number of" in added -I
+
+print(finds_version)
+my_report = ""
+
+for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"
+
+send_email(my_report, "Function find")

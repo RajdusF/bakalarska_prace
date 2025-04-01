@@ -17,6 +17,7 @@ if path not in sys.path:
     sys.path.append(path)
 
 
+import python.email as email
 import python.file_handling as file_handling
 import python.global_variables as global_variables
 import python.parallel_for as parallel_for
@@ -27,6 +28,7 @@ custom_functions = importlib.import_module('python.custom_functions')
 paralell_functions = importlib.import_module('python.parallel_for')
 file_handling_functions = importlib.import_module('python.file_handling')
 command_functions_functions = importlib.import_module('python.command_functions')
+email_functions = importlib.import_module('python.email')
 
 history = []
 
@@ -40,6 +42,8 @@ def execute_command(command, variables):
     for name, func in inspect.getmembers(file_handling_functions, inspect.isfunction):
         globals()[name] = func
     for name, func in inspect.getmembers(command_functions_functions, inspect.isfunction):
+        globals()[name] = func
+    for name, func in inspect.getmembers(email_functions, inspect.isfunction):
         globals()[name] = func
     
     try:
@@ -397,26 +401,34 @@ def comments_removal(string : str) -> str:
                     string = string[:string.index("#")]
                     
     return string.strip()
+
+def is_word_in_quotes(text, word):
+    quoted_strings = re.findall(r'"(.*?)"', text)
+    for quoted_text in quoted_strings:
+        if re.search(rf'\b{re.escape(word)}\b', quoted_text):
+            return True
+    return False
     
 def convert_variables_to_variables_from_dict(string: str, variables: dict) -> str:
-    last_text = ""
-    def replace_match(match):
-        global last_text
-        text = match.group(0)
-        
-        if text.startswith('"') and text.endswith('"') and last_text != "f":
-            return text
-
-        for key, value in variables.items():
-            text = re.sub(rf'\b{re.escape(key)}\b', f'variables["{key}"]', text)
-            
-        last_text = text
-        return text
-
-    # Zavolat replace pro každý výskyt
-    string = re.sub(r'("[^"]*"|\b\w+\b)', replace_match, string)
-
+    def process_fstring(match):
+        content = match.group(1)
+        def replace_var(m):
+            var_name = m.group(1).strip()
+            if var_name in variables:
+                return f'{{{f"variables[\"{var_name}\"]"}}}'
+            return m.group(0)
+        # zachytava f stringy
+        content = re.sub(r'{(.*?)}', replace_var, content)
+        return f'f"{content}"'
+    
+    string = re.sub(r'f"(.*?)"', process_fstring, string)
+    
+    for key in sorted(variables.keys(), key=len, reverse=True):
+        if key in string and not is_word_in_quotes(string, key):
+            string = re.sub(rf'(?<![\w"])({re.escape(key)})(?![\w"])', f'variables["{key}"]', string)
+    
     return string
+
 def my_help():
     print(Fore.YELLOW)
     print("Arguments:", end=" ")

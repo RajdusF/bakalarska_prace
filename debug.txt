@@ -1,6 +1,8 @@
-Command "print("Hello world!")" took 0.0015 seconds to run
-Command "print("Hello world!")" took 0.0010 seconds to run
-Command "print("Hello world!")" took 0.0000 seconds to run
-Command "item = 55" took 0.0000 seconds to run
 Command "cd" took 0.0000 seconds to run
-Command "asss" took 0.0005 seconds to run
+Command "ls" took 0.0107 seconds to run
+Command "set search 2" took 0.0000 seconds to run
+Command "set duplicity 1" took 0.0010 seconds to run
+Command "files = input output/bionano_files.txt" took 0.0005 seconds to run
+Command "new, duplicates = resolve_duplicity(files)" took 0.3572 seconds to run
+Command "print(f"New files: {new}")" took 0.0023 seconds to run
+Command "print(f"Duplicates: {duplicates}")" took 0.0010 seconds to run

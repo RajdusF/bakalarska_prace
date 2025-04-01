@@ -24,7 +24,7 @@ def send_report():
     email.report_str += f"\nTime taken: {time.time() - start_time:.2f} seconds"
     email.report_str += f"\nTime of completion: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}"
     
-    print(f"Test - report_str: \n{email.report_str}")
+    # print(f"Test - report_str: \n{email.report_str}")
                 
     email.send_report()
 

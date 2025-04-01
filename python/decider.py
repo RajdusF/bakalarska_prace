@@ -75,12 +75,35 @@ def process_command(command : str, variables, files : list, added_files : list):
             show_current_folder()
             
         # Saving varibales       b = 5      VARIABLES
-        elif len(commands) > 2 and commands[1] == "=":
-            variables[commands[0]] = process_command(command[command.index("=") + 1:], variables, files, added_files)
-            if commands[0] in variables:
-                print(f"Variable \"{commands[0]}\" saved")
+        elif len(commands) > 2 and "=" in command:
+            variables_str = command[:command.index("=")]
+            variables_str = variables_str.replace(" ", "")
+            variables_splitted = variables_str.split(",")
+            del(variables_str)
+
+            result = process_command(command[command.index("=") + 1:], variables, files, added_files)
+
+
+            if isinstance(result, tuple):
+                result1, result2 = result
+            else:
+                result1, result2 = result, None
+            
+            if result1 is not None:
+                variables[variables_splitted[0]] = result1
+            if result2 is not None:
+                variables[variables_splitted[1]] = result2
+            
+            if variables_splitted[0] in variables:
+                print(f"Variable \"{variables_splitted[0]}\" saved")
             else:
                 print(Fore.RED + "Error during saving variable")
+                
+            if result2 is not None:
+                if variables_splitted[1] in variables:
+                    print(f"Variable \"{variables_splitted[1]}\" saved")
+                else:
+                    print(Fore.RED + "Error during saving variable")
 
         elif command == "cd.." or command == "cd ..":
             global_variables.path = os.path.abspath(os.path.join(global_variables.path, os.pardir))
@@ -321,11 +344,11 @@ def process_command(command : str, variables, files : list, added_files : list):
                 print(Fore.RED + "Wrong input")
             
                     
-        elif "input" in commands:
+        elif "input" in commands[0]:
             if len(commands) == 1:
-                input_files(added_files)
+                return input_files(added_files)
             elif len(commands) == 2:
-                input_files(added_files, commands[1])
+                return input_files(added_files, commands[1])
         
         # output [file] [extend]
         # output "occurances" [file]

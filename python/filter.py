@@ -6,7 +6,7 @@ import time
 from colorama import Fore
 
 import python.global_variables as global_variables
-from python.command_functions import add_if_in_variables
+from python.command_functions import add_if_in_variables, resolve_duplicity
 from python.help_func import (progress_bar, recalculate_size, search_folder,
                               time_from_now)
 
@@ -190,20 +190,23 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         files = filter_time(files, created_operator, created, created_time_unit, "created")
 
     if global_variables.show_duplicity:
-        temp = files.copy()
+        files_temp = files.copy()
         files.clear()
-        seen_files = set()
-        duplicates = []
+        
+        files, duplicates = resolve_duplicity(files_temp)
+        
+        # seen_files = set()
+        # duplicates = []
 
-        for x in temp:
-            if x not in seen_files:
-                for i in temp:
-                    if i not in seen_files and x != i and filecmp.cmp(x, i, shallow=True):
-                        duplicates.append(i)
-                        seen_files.add(i)
-                        print(f"{x.split('\\')[-1]:30} == {i.split('\\')[-1]:40} -> Removed {i.split('\\')[-1]}")
-                files.append(x)
-            seen_files.add(x)
+        # for x in files_temp:
+        #     if x not in seen_files:
+        #         for i in files_temp:
+        #             if i not in seen_files and x != i and filecmp.cmp(x, i, shallow=True):
+        #                 duplicates.append(i)
+        #                 seen_files.add(i)
+        #                 print(f"{x.split('\\')[-1]:30} == {i.split('\\')[-1]:40} -> Removed {i.split('\\')[-1]}")
+        #         files.append(x)
+        #     seen_files.add(x)
     
     if len(files) > 1000:
         commands.append("-h")        

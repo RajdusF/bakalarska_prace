@@ -4,7 +4,6 @@ from functools import partial
 from itertools import count
 from typing import Any, Callable, List, Optional
 
-import numpy as np
 from colorama import Fore
 
 import python.global_variables as global_variables

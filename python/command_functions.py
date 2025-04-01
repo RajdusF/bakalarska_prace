@@ -1,4 +1,5 @@
 import copy
+import filecmp
 import json
 import operator
 import os
@@ -308,23 +309,30 @@ def select(commands, files):
 
 
 def input_files(added_files, input_file="output.txt"):
+    r = []
     with open(input_file, 'r') as f:
         lines = f.readlines()
         for line in lines:
             if line[-1] == '\n':
                 line = line[:-1]
             added_files.append(line)
+            r.append(line)
             
     print(f"Added files from {input_file}")
+    
+    return r
 
 
 def output(added_files, extend, output_file="output.txt"):
-    if extend == False and os.path.isfile(output_file):
+    os.makedirs("output", exist_ok=True)  # Vytvoří složku, pokud neexistuje
+    output_file = os.path.join("output", output_file)  # Přidání složky k názvu souboru
+    
+    if not extend and os.path.isfile(output_file):
         os.remove(output_file)
         
     with open(output_file, 'a') as f:
         for file in added_files:
-            if type(file) == list:
+            if isinstance(file, list):
                 for x in file:
                     f.write(x + '\t')
                 f.write('\n')
@@ -333,6 +341,7 @@ def output(added_files, extend, output_file="output.txt"):
                     f.write(file + '\n')
             
     print(f"Successfully saved to {output_file}")
+
     
 
 def output_occurances(occurances, output_file="output.txt"):   
@@ -511,5 +520,19 @@ def remove(commands, added_files):
         
     return original_length - len(added_files)
 
-def search_folders():
-    pass
+def resolve_duplicity(files : list) -> list:
+    seen_files = set()
+    duplicates = []
+    unique_files = []
+
+    for x in files:
+        if x not in seen_files:
+            for i in files:
+                if i not in seen_files and x != i and filecmp.cmp(x, i, shallow=True):
+                    duplicates.append(i)
+                    seen_files.add(i)
+                    print(f"{x.split('\\')[-1]:30} == {i.split('\\')[-1]:40} -> Removed {i.split('\\')[-1]}")
+            unique_files.append(x)
+        seen_files.add(x)
+    
+    return unique_files, duplicates

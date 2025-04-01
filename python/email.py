@@ -7,12 +7,23 @@ receiver_email = "bionano.rajdus@gmail.com"
 password = "qqsx niru xtzm tyru"
 
 report_str = ""
+
+def add_to_email(text : str) -> None:
+    global report_str
+    report_str += text
     
-def send_email(body : str) -> None:
+def change_email(text : str) -> None:
+    global report_str
+    report_str = text
+    
+def send_email(body : str, subject : str = None) -> None:
     msg = MIMEMultipart()
     msg["From"] = sender_email
     msg["To"] = receiver_email
-    msg["Subject"] = "Bionano report"
+    if subject is not None:
+        msg["Subject"] = subject
+    else:
+        msg["Subject"] = "Bionano report"
 
     msg.attach(MIMEText(body, "plain"))
 
