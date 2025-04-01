@@ -132,7 +132,7 @@ def main(args):
 if __name__ == "__main__":
     if os.name == 'nt':
         os.system('cls')
-    else:
+    elif os.name == 'posix':
         os.system('clear')
         
     print(f"sys.path: {sys.path}")
