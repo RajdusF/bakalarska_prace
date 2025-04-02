@@ -430,7 +430,7 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
-def save(name, output_file : str, shared_data = None, worker_id = None):
+def save(name, output_file : str = None, shared_data = None, worker_id = None):
     
     print(f"worker_id: {worker_id}")
     
@@ -442,6 +442,9 @@ def save(name, output_file : str, shared_data = None, worker_id = None):
                 output_dir = "output"
                 if not os.path.exists(output_dir):
                     os.makedirs(output_dir)
+                
+                if output_file == None:
+                    output_file = name + ".json"
                 
                 if not output_file.endswith(".json"):
                     output_file = output_file[:output_file.index(".")] + ".json"
@@ -458,11 +461,15 @@ def save(name, output_file : str, shared_data = None, worker_id = None):
                 return -1
             
     elif type(name) == list:
+        output_file_temp = None
         for x in name:
             try:
                 output_dir = "output"
                 if not os.path.exists(output_dir):
                     os.makedirs(output_dir)
+                    
+                if output_file == None:
+                    output_file_temp = name + ".json"
                     
                 if type(output_file) == list:
                     output_file_temp = output_file[worker_id]

@@ -1,7 +1,7 @@
 {
     "unit": "GB",
     "search_folders": 2,
-    "show_duplicity": true,
+    "show_duplicity": false,
     "path": "/home/fei/raj0071/bakalarska_prace/files",
     "wraps": [
         5,

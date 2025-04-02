@@ -14,9 +14,8 @@
 # set path C:\Users\Filip\Documents\bakalarska_prace\files
 cd files
 ls
+set duplicity 0
 set search 2
-
-l = []
 
 a = filter name *.bnx -d
 b = filter name *.cmap -d

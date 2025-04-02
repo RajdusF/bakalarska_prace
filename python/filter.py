@@ -2,6 +2,7 @@ import filecmp
 import glob
 import os
 import time
+from pathlib import Path
 
 from colorama import Fore
 
@@ -122,8 +123,6 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
     else:
         input_files.clear()
         
-        print(f"path: {global_variables.path}")
-        
         # TODO: if path is not set, warning and return
         if global_variables.path == None or global_variables.path == "":
             print(Fore.RED + "Path is not set for filtering" + Fore.RESET)
@@ -135,18 +134,36 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         
         # NAME
         if name:
-            if "name" in commands and commands[commands.index("name") - 1] == "not":                # NOT NAME
-                all_files = glob.glob(global_variables.path + "\\*", recursive=True)
-                name_files = glob.glob(global_variables.path + "\\" + name, recursive=True)
-                files = [file for file in all_files if file not in name_files]
+            path = Path(global_variables.path)
+
+            if "name" in commands and commands[commands.index("name") - 1] == "not":  # NOT NAME
+                all_files = list(path.glob("*"))
+                name_files = list(path.glob(name))
                 
-                only_directories = [d for d in files if os.path.isdir(d)]
-            else:                                                                                   # NAME
-                files = glob.glob(global_variables.path + "\\" + name, recursive=True)
-                only_directories = [d for d in files if os.path.isdir(d)]
-        else:                                                                                       # NO NAME                      
-            files = glob.glob(global_variables.path + "\\*", recursive=True)
-            only_directories = [d for d in files if os.path.isdir(d)]
+                # Převod na řetězce, pokud je to nutné
+                all_files = [str(file) for file in all_files]
+                name_files = [str(file) for file in name_files]
+
+                files = [file for file in all_files if file not in name_files]
+
+                # Převod zpět na Path objekty pro použití os.path.isdir
+                only_directories = [d for d in map(Path, files) if d.is_dir()]
+
+            else:  # NAME
+                files = list(path.glob(name))
+                files = [str(file) for file in files]
+
+                # Převod zpět na Path objekty pro použití os.path.isdir
+                only_directories = [d for d in map(Path, files) if d.is_dir()]
+
+        else:  # NO NAME
+            files = list(path.glob("*"))
+            files = [str(file) for file in files]
+
+            print(f"in else: {files}")
+
+            # Převod zpět na Path objekty pro použití os.path.isdir
+            only_directories = [d for d in map(Path, files) if d.is_dir()]
             
         
         if global_variables.search_folders == 1:
