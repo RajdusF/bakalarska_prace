@@ -4,11 +4,13 @@ print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 set duplicity 0
 
-a = filter name *.bnx -d
-b = filter name *.cmap -d
-c = filter name *.xmap -d
+a = filter name *.bnx -d size < 100 MB
+b = filter name *.cmap -d size < 100 MB
+c = filter name *.xmap -d size < 100 MB
 
 my_files = a+b+c
+
+my_files = my_files[:5]
 
 # results = pfor(load, prepared_files)
 
@@ -25,12 +27,16 @@ my_files = a+b+c
 
 # print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-results = pfor(load, my_files)
+
+results = pfor_order(load, my_files)
+
+# name_result = zip(my_files, results)
+# print(name_result)
 
 
 print(results)
 
+file_names = [os.path.basename(file) for file in my_files]
 
-results = pfor(save, results)
 
-print(results)
+results = pfor_order(save, results, file_names)

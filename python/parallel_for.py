@@ -4,6 +4,7 @@ from functools import partial
 from itertools import count
 from typing import Any, Callable, List, Optional
 
+import numpy as np
 from colorama import Fore
 
 import python.global_variables as global_variables
@@ -25,28 +26,25 @@ def worker_wrapper(func, args_tuple, shared_data, chunk_with_id):
         print(Fore.RED + f"Worker wrapper {chunk_id} error: {e}" + Fore.RESET)
         return []
 
-def pfor_order(func, items, *args, num_threads=None):
+def pfor_order(func, items, *args, num_cores=None):
     if not items:
         return []
     
     items = [items] if isinstance(items, str) else list(items)
-    num_threads = num_threads or multiprocessing.cpu_count()
-    num_threads = min(num_threads, len(items))
+    num_cores = num_cores or multiprocessing.cpu_count()
+    num_cores = min(num_cores, len(items))
     
-    chunk_size = (len(items) + num_threads - 1) // num_threads
-    chunks_with_ids = [
-        (i, items[i*chunk_size:(i+1)*chunk_size]) 
-        for i in range(num_threads)
-    ]
+    chunks = np.array_split(items, num_cores)
+    chunks_with_ids = [(i, list(chunk)) for i, chunk in enumerate(chunks) if len(chunk) > 0]
     
     shared_data = {
         'path': getattr(global_variables, 'path', ''),
         'variables': getattr(global_variables, 'variables', {})
     }
 
-    print(f"{Fore.YELLOW}Starting {num_threads} threads...{Fore.RESET}")
+    print(f"{Fore.YELLOW}Starting {num_cores} cores...{Fore.RESET}")
     
-    with multiprocessing.Pool(num_threads, initializer=init_worker, initargs=(shared_data,)) as pool:
+    with multiprocessing.Pool(num_cores, initializer=init_worker, initargs=(shared_data,)) as pool:
         try:
             worker_partial = partial(
                 worker_wrapper,
@@ -64,29 +62,26 @@ def pfor_order(func, items, *args, num_threads=None):
             pool.join()
 
 
-def pfor(func, items, *args, num_threads=None):
+def pfor(func, items, *args, num_cores=None):
     if not items:
         return []
     
     items = [items] if isinstance(items, str) else list(items)
-    num_threads = num_threads or multiprocessing.cpu_count()
-    num_threads = min(num_threads, len(items))
+    num_cores = num_cores or multiprocessing.cpu_count()
+    num_cores = min(num_cores, len(items))
     
-    chunk_size = (len(items) + num_threads - 1) // num_threads
-    chunks_with_ids = [
-        (i, items[i*chunk_size:(i+1)*chunk_size]) 
-        for i in range(num_threads)
-    ]
+    chunks = np.array_split(items, num_cores)
+    chunks_with_ids = [(i, list(chunk)) for i, chunk in enumerate(chunks) if len(chunk) > 0]
     
     shared_data = {
         'path': getattr(global_variables, 'path', ''),
         'variables': getattr(global_variables, 'variables', {})
     }
     
-    print(f"{Fore.YELLOW}Starting {num_threads} threads...{Fore.RESET}")
+    print(f"{Fore.YELLOW}Starting {num_cores} cores...{Fore.RESET}")
     
 
-    with multiprocessing.Pool(num_threads) as pool:
+    with multiprocessing.Pool(num_cores) as pool:
         try:
             worker_partial = partial(
                 worker_wrapper,

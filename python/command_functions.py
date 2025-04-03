@@ -430,12 +430,7 @@ def set_operations(expression: str, dictionary: dict):
     else:
         return result
 
-def save(name, output_file : str = None, shared_data = None, worker_id = None):
-    
-    print(f"worker_id: {worker_id}")
-    
-    print(f"name: {name}")
-    
+def save(name, output_file : str = None, shared_data = None, worker_id = None):    
     if type(name) == str and global_variables is not None and name in global_variables.variables:
         if type(global_variables.variables[name]) == XData:
             try:
@@ -460,37 +455,48 @@ def save(name, output_file : str = None, shared_data = None, worker_id = None):
                 print(Fore.RED + f"Error writing to file: {e}")
                 return -1
             
-    elif type(name) == list:
-        output_file_temp = None
-        for x in name:
+    elif (type(name) == list and type(name[0]) == XData) or type(name) == XData:
+        xdata = name
+    
+        if type(xdata) == list:
+            for x in xdata:
+                save(x, output_file, shared_data, worker_id)
+        else:
             try:
-                output_dir = "output"
+                
+                output_dir = os.getcwd()
+                output_dir = os.path.join(output_dir, "output")
+                
+                output_filename = ""
+                
                 if not os.path.exists(output_dir):
                     os.makedirs(output_dir)
                     
                 if output_file == None:
-                    output_file_temp = name + ".json"
+                    output_filename = xdata.name + ".json"
                     
-                if type(output_file) == list:
-                    output_file_temp = output_file[worker_id]
+                elif type(output_file) == list:
+                    output_filename = output_file[worker_id]
                     
-                print(f"output_file: {output_file_temp}")
                 
-                if not output_file_temp.endswith(".json"):
-                    output_file_temp = output_file_temp[:output_file_temp.index(".")] + ".json"
+                if not output_filename.endswith(".json"):
+                    output_filename = output_filename[:output_filename.index(".")] + ".json"
                     
-                output_data = x.data
+                output_data = xdata.data
                 
-                with open(os.path.join(output_dir, output_file_temp), "w") as json_file:
+                output_dir_file = os.path.join(output_dir, output_filename)
+                print(f"output_dir_file: {output_dir_file}")
+                
+                with open(output_dir_file, "w") as json_file:
                     json.dump(output_data, json_file, indent=4)
                     
-                print(f"Successfully saved to \"{output_file_temp}\"")
-                return
+                print(f"Successfully saved to \"{output_filename}\"")
+                return None
             except Exception as e:
                 print(Fore.RED + f"Error writing to file: {e}")
                 return -1
-    
-    print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
+    else:
+        print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
     
     
     

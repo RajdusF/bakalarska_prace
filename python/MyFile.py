@@ -20,11 +20,13 @@ class Molecule:
         return text
     
 class XData:
-    def __init__(self, data=None):
+    def __init__(self, data=None, name=None):
         if data is None:
             self.data = dict()
         else:
             self.data = data
+            
+        self.name = name if name is not None else None
             
     # def __getitem__(self, key):
     #     return self.data[key]

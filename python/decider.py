@@ -466,10 +466,10 @@ def process_command(command : str, variables, files : list, added_files : list):
             args = parenthesses.split(",")
             args = [x.strip() for x in args]
             
-            num_threads = None
+            num_cores = None
             for i, arg in enumerate(args):
-                if arg.startswith("num_threads="):
-                    num_threads = int(arg.split("=")[1])
+                if arg.startswith("num_cores="):
+                    num_cores = int(arg.split("=")[1])
                     args.pop(i)
                     
                     break
@@ -524,9 +524,9 @@ def process_command(command : str, variables, files : list, added_files : list):
                 
             # try:
             if command.startswith("pfor_order"):
-                return pfor_order(func, items, *additional_args, num_threads=num_threads)
+                return pfor_order(func, items, *additional_args, num_cores=num_cores)
             else:
-                return pfor(func, items, *additional_args, num_threads=num_threads)
+                return pfor(func, items, *additional_args, num_cores=num_cores)
             # except Exception as e:
             #     print(Fore.RED + "Error during pfor: ", e)
                 
