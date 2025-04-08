@@ -1,42 +1,72 @@
-print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+# cd /data1/bionano
+cd /data1/bionano-old/compute/jobs
+
+# filter name *.bnx size < 5 GB
+
+# filter files size > 600 MB
+
+# sort by size
+
+# select top 2
+
+# output my_selected_files.txt
+
+loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
+
+# print(loaded_files)
+
+for x in loaded_files:
+    loaded_files.append(load(x))
+    
+# results = pfor(load, prepared_files)
+    
+for x in loaded_files:
+    save(x)
+
+
+# results = pfor_order(save, results)
+
+
+
+# print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 # prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]
 
-set duplicity 0
+# set duplicity 0
 
-a = filter name *.bnx -d size < 100 MB
-b = filter name *.cmap -d size < 100 MB
-c = filter name *.xmap -d size < 100 MB
+# a = filter name *.bnx -d size < 100 MB
+# b = filter name *.cmap -d size < 100 MB
+# c = filter name *.xmap -d size < 100 MB
 
-my_files = a+b+c
+# my_files = a+b+c
 
-my_files = my_files[:5]
+# my_files = my_files[:5]
 
-# results = pfor(load, prepared_files)
+# # results = pfor(load, prepared_files)
+
+# # print(results)
+
+# # print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+# # d1 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx)
+# # d2 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_7.bnx)
+# # d3 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_8.bnx)
+# # d4 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_9.bnx)
+# # d5 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_10.bnx)
+# # d6 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_11.bnx)
+
+# # print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+
+# results = pfor_order(load, my_files)
+
+# # name_result = zip(my_files, results)
+# # print(name_result)
+
 
 # print(results)
 
-# print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
-# d1 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx)
-# d2 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_7.bnx)
-# d3 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_8.bnx)
-# d4 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_9.bnx)
-# d5 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_10.bnx)
-# d6 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_11.bnx)
-
-# print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+# file_names = [os.path.basename(file) for file in my_files]
 
 
-results = pfor_order(load, my_files)
-
-# name_result = zip(my_files, results)
-# print(name_result)
-
-
-print(results)
-
-file_names = [os.path.basename(file) for file in my_files]
-
-
-results = pfor_order(save, results, file_names)
+# results = pfor_order(save, results, file_names)

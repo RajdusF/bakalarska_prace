@@ -1,11 +1,7 @@
-Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0020 seconds to run
-Command "set duplicity 0" took 0.0000 seconds to run
-Command "a = filter name *.bnx -d size < 100 MB" took 0.0986 seconds to run
-Command "b = filter name *.cmap -d size < 100 MB" took 0.0914 seconds to run
-Command "c = filter name *.xmap -d size < 100 MB" took 0.0906 seconds to run
-Command "my_files = a+b+c" took 0.0010 seconds to run
-Command "my_files = my_files[:5]" took 0.0010 seconds to run
-Command "results = pfor_order(load, my_files)" took 3.7999 seconds to run
-Command "print(results)" took 0.0010 seconds to run
-Command "file_names = [os.path.basename(file) for file in my_files]" took 0.0000 seconds to run
-Command "results = pfor_order(save, results, file_names)" took 17.7114 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+Command "loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt" took 0.0002 seconds to run
+Processing "/data1/bionano-old/compute/jobs/229/startMQR.190911100342983678220/2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx" with size 619.2110595703125 MB
+Command "for x in loaded_files:
+    loaded_files.append(load(x))" took 0.0039 seconds to run
+Command "for x in loaded_files:
+    save(x)" took 0.0003 seconds to run

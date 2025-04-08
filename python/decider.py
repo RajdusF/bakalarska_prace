@@ -270,10 +270,10 @@ def process_command(command : str, variables, files : list, added_files : list):
                 show_files(added_files)
         
         elif "show" in commands:
-            if len(commands) == 2 and commands[1] == "added":
-                show_files(added_files)
-            elif len(commands) == 2 and commands[1] == "files":
-                show_files(files)
+            if commands[1] == "added":
+                show_files(added_files, commands)
+            elif commands[1] == "files":
+                show_files(files, commands)
             elif len(commands) == 2 and commands[1] == "variables":
                 print(variables)
             elif len(commands) == 2:                          # variables[commands[1]]):
@@ -303,7 +303,12 @@ def process_command(command : str, variables, files : list, added_files : list):
             elif len(commands) == 1:
                 print(f"Default unit: {global_variables.default_unit}")
                 print(f"Search folders: {global_variables.search_folders}")
-                print(f"Show duplicity: {global_variables.show_duplicity}")
+                if global_variables.show_duplicity == 0: 
+                    print(f"Show duplicity: {global_variables.show_duplicity} (Don't search folders)")
+                elif global_variables.show_duplicity == 1: 
+                    print(f"Show duplicity: {global_variables.show_duplicity} (Search in folders that matches filter)")
+                elif global_variables.show_duplicity == 2: 
+                    print(f"Show duplicity: {global_variables.show_duplicity} (Search all folders)")
                 print(f"Wraps (column widths): {global_variables.wraps}")
                 print(f"Path: {global_variables.path}")
                 return

@@ -2,7 +2,7 @@
     "unit": "GB",
     "search_folders": 2,
     "show_duplicity": false,
-    "path": "C:\\Users\\Filip\\Documents\\bakalarska_prace",
+    "path": "/data1/bionano-old/compute/jobs",
     "wraps": [
         5,
         25,

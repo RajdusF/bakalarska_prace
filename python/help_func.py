@@ -132,7 +132,7 @@ def print_occurances(occurances : dict):
 def search_folder(folder, commands=None, only_files=None, progress=None, progress_total=None):
     num_of_folders = 0
     
-    if commands == None:
+    if commands is None:
         only_files = []
         for f in glob.glob(os.path.join(folder, '*')):
             if os.path.isfile(f):
@@ -151,19 +151,22 @@ def search_folder(folder, commands=None, only_files=None, progress=None, progres
         elif commands[commands.index("filter") + 1] == "*":
             name = "*" 
                 
+        folder = os.path.normpath(folder)
+                
                 
         if name:
             if "name" in commands and commands[commands.index("name") - 1] == "not":                # NOT NAME
-                all_files = glob.glob(folder + "\\*", recursive=True)
-                name_files = glob.glob(folder + "\\" + name, recursive=True)
+                all_files = glob.glob(os.path.join(folder, '**'), recursive=True)
+                name_pattern = os.path.join(folder, name)
+                name_files = glob.glob(name_pattern, recursive=True)
                 files = [file for file in all_files if file not in name_files]
-                
                 only_directories = [d for d in files if os.path.isdir(d)]
             else:                                                                                   # NAME
-                files = glob.glob(folder + "\\" + name, recursive=True)
+                name_pattern = os.path.join(folder, name)
+                files = glob.glob(name_pattern, recursive=True)
                 only_directories = [d for d in files if os.path.isdir(d)]
         else:                                                                                       # NO NAME                      
-            files = glob.glob(folder + "\\*", recursive=True)
+            files = glob.glob(os.path.join(folder, '*'))
             only_directories = [d for d in files if os.path.isdir(d)]
             
         if global_variables.search_folders == 1:
@@ -482,6 +485,8 @@ def help_filter():
     print("\t[filter name *.txt created < 30 days]")
     print("\t[filter files size > 1000 KB]")
     print("\t[filter added_files name *.txt]\n")
+    print("\n\tFLAGS:")
+    print("\t-h - hide file details (automatic if more than 1 000 files)")
     
 def help_add():
     print(Fore.LIGHTCYAN_EX + "add" + Fore.RESET + " - add files from filtered list")

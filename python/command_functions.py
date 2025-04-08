@@ -24,8 +24,19 @@ ops = {
     ">=": operator.ge
 }
 
-def show_files(files):
+def show_files(files, commands = None):
     from python.help_func import recalculate_size, time_from_now
+    
+    detailed_view = False
+    
+    if commands is not None:
+        for command in commands:
+            if command == "-d":
+                detailed_view = True
+    
+    if len(files) > 1000 and detailed_view == False:    
+        print(Fore.GREEN + f"Found {len(files)} files " + Fore.RESET)
+        return
     
     print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurrences
     for file in files:
@@ -259,46 +270,35 @@ def write_line_based_on_file(input_file="", input_line="", output="output/output
 
 
 def sort(commands, files):
+    
+    r = None
+    
     if commands[1] == "desc" and len(commands) == 2:
         r = sorted(files, reverse=True)
-        show_files(r)
-        return r
     elif commands[1] == "by" and commands[2] == "name":
         if len(commands) == 3:
             r = sorted(files)
-            show_files(r)
-            return r
         elif commands[3] == "desc":
             r = sorted(files, reverse=True)
-            show_files(r)
-            return r
     elif commands[1] == "by" and commands[2] == "size":
         if len(commands) == 3:
             r = sorted(files, key=os.path.getsize)
-            show_files(r)
-            return r
         elif commands[3] == "desc":
             r = sorted(files, key=os.path.getsize, reverse=True)
-            show_files(r)
-            return r
     elif commands[1] == "by" and commands[2] == "modified":
         if len(commands) == 3:
             r = sorted(files, key=os.path.getmtime, reverse=True)
-            show_files(r)
-            return r
         elif commands[3] == "desc":
             r = sorted(files, key=os.path.getmtime)
-            show_files(r)
-            return r
     elif commands[1] == "by" and commands[2] == "created":
         if len(commands) == 3:
             r = sorted(files, key=os.path.getctime, reverse=True)
-            show_files(r)
-            return r
         elif commands[3] == "desc":
             r = sorted(files, key=os.path.getctime)
-            show_files(r)
-            return r
+    
+    if r is not None:
+        show_files(r)
+        return r
         
         
 def select(commands, files):

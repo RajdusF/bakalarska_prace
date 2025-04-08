@@ -1,5 +1,8 @@
 import json
 import os
+import time
+import python.help_func
+
 
 from colorama import Fore
 
@@ -61,15 +64,25 @@ def load(name_input, shared_data=None, worker_id=None):
         
         
 def load_json(name):
+    from python.help_func import debug_write
     data = []
     comments = []
+    
     headers = {}
     data_types = {}
+    
     warning_count = 0
+    
+    
+    start_time = time.time()
 
     if not os.path.isfile(name):
         print(Fore.RED + "File not found")
         return -1
+    
+    size = os.path.getsize(name) / 1024 / 1024
+    
+    debug_write(f"Processing \"{name}\" with size {size} MB")
 
     try:
         with open(name, 'r') as f:
@@ -78,21 +91,51 @@ def load_json(name):
             for i, line in enumerate(f):
                 line = line.strip()
                 
-                g.status = f"load: Currently processing line: {i}"
+                g.status = f"load: Currently \"{name}\" processing line: {i}"
 
                 # Zpracování hlaviček
                 if line.startswith('#h'):
-                    headers["h"] = [column.strip() for column in line[2:].split("\t")]
+                    # headers["h"] = [column.strip() for column in line[2:].split("\t")]
+                    header = [column.strip() for column in line[2:].split("\t") if column != ""]
+                    if header is not "":
+                        headers["h"] = header
+                    else:
+                        print(Fore.RED + f"Warning: Fault header found in line: {line}")
                 elif line.startswith('#f'):
-                    data_types["f"] = [dtype.strip() for dtype in line[2:].split("\t")]
+                    # data_types["f"] = [dtype.strip() for dtype in line[2:].split("\t")]
+                    data_type = [dtype.strip() for dtype in line[2:].split("\t") if dtype != ""]
+                    if data_type is not "":
+                        data_types["f"] = data_type
+                    else:
+                        print(Fore.RED + f"Warning: Fault header found in line: {line}")
                 elif line[0] == "#" and line[1].isdigit() and line[2] == "h":
-                    headers[line[1] + "h"] = [column.strip() for column in line[3:].split("\t")]
+                    # headers[line[1] + "h"] = [column.strip() for column in line[3:].split("\t")]
+                    header = [column.strip() for column in line[3:].split("\t") if column != ""]
+                    if header is not "":
+                        headers[line[1] + "h"] = header
+                    else:
+                        print(Fore.RED + f"Warning: Fault header found in line: {line}")
                 elif line[0] == "#" and line[1].isdigit() and line[2] == "f":
-                    data_types[line[1] + "f"] = [dtype.strip() for dtype in line[3:].split("\t")]
+                    # data_types[line[1] + "f"] = [dtype.strip() for dtype in line[3:].split("\t")]
+                    data_type = [dtype.strip() for dtype in line[3:].split("\t") if dtype != ""]
+                    if data_type is not "":
+                        data_types[line[1] + "f"] = data_type
+                    else:
+                        print(Fore.RED + f"Warning: Fault header found in line: {line}")
                 elif line.startswith('#Qh'):
-                    headers["Qh"] = [column.strip() for column in line[3:].split("\t")]
+                    # headers["Qh"] = [column.strip() for column in line[3:].split("\t")]
+                    header = [column.strip() for column in line[3:].split("\t") if column != ""]
+                    if header is not "":
+                        headers["Qh"] = header
+                    else:
+                        print(Fore.RED + f"Warning: Fault header found in line: {line}")
                 elif line.startswith('#Qf'):
-                    data_types["Qf"] = [dtype.strip() for dtype in line[3:].split("\t")]
+                    # data_types["Qf"] = [dtype.strip() for dtype in line[3:].split("\t")]
+                    data_type = [dtype.strip() for dtype in line[3:].split("\t") if dtype != ""]
+                    if data_type is not "":
+                        data_types["Qf"] = data_type
+                    else:
+                        print(Fore.RED + f"Warning: Fault header found in line: {line}")
                 elif line.startswith('#'):  # Komentáře
                     comments.append(line)
                 else:
@@ -104,12 +147,23 @@ def load_json(name):
                             if fields is None:
                                 fields = headers.get("h")
                                 fields_data_types = data_types.get("f")
+                                
+                                
+                            print(f"line: {line}")
+                            print(f"label_channel: {label_channel}")
+                            print(f"fields: {fields}")
+                            print(f"fields_data_types: {fields_data_types}")
+                            print(f"headers: {headers}")
+                            print(f"data_types: {data_types}")
+                            print("\n")
                         except:
                             print(Fore.RED + f"Warning: No headers found for row: {line}")
                             continue
 
                     if fields:
                         values = line.split("\t")
+                        
+                        print(f"line: {line}")
 
                         data_row = {}
                         for i in range(len(fields)):
@@ -127,6 +181,7 @@ def load_json(name):
                             except:
                                 if not value.startswith("QX"):
                                     print(Fore.YELLOW + f"Warning: Could not convert value '{value}' to type '{fields_data_types[i]}'")
+                                    return
 
                             if '[' in field_name and ']' in field_name:
                                 try:
@@ -140,6 +195,7 @@ def load_json(name):
                                         data_row[field_name] = [str(v) for v in values[i:]]
                                 except:
                                     print(Fore.YELLOW + f"Warning: Could not convert values '{values[i:]}' to type '{fields_data_types[i]}'")
+                                    return
                             else:
                                 data_row[field_name] = value
                         data.append(data_row)
@@ -167,5 +223,9 @@ def load_json(name):
     print(f"name saved: {x.name}")
         
     g.status = ""
+    
+    end_time = time.time()
+    execution_time = end_time - start_time
+    debug_write(f"Execution time of load {name} and size {size} MB took: {execution_time:.3f} seconds")
     
     return x
