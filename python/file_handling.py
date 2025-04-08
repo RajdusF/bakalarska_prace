@@ -1,7 +1,5 @@
-import csv
 import json
 import os
-import re
 
 from colorama import Fore
 
