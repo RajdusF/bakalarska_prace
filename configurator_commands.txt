@@ -1,5 +1,6 @@
 # cd /data1/bionano
-cd /data1/bionano-old/compute/jobs
+# cd /data1/bionano-old/compute/jobs
+# cd C:\Users\Filip\Downloads
 
 # filter name *.bnx size < 5 GB
 
@@ -11,17 +12,31 @@ cd /data1/bionano-old/compute/jobs
 
 # output my_selected_files.txt
 
-loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
+# loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
+# loaded_files = ["C:\\Users\\Filip\\Downloads\\2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx"]
 
 # print(loaded_files)
 
-for x in loaded_files:
-    loaded_files.append(load(x))
+# print(loaded_files)
+
+# result_load = []
+
+# for x in loaded_files:
+    # result_load.append(load(x))
     
 # results = pfor(load, prepared_files)
     
-for x in loaded_files:
-    save(x)
+l_file = load("C:\\Users\\Filip\\Downloads\\2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx")
+
+save(l_file)
+    
+    
+# for x in result_load:
+#     save(x)
+
+second = load("C:\\Users\\Filip\\Documents\\bakalarska_prace\\output\\_Users_Filip_Downloads_2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.json")
+    
+print("FINISH!")
 
 
 # results = pfor_order(save, results)

@@ -121,6 +121,7 @@ def main(args):
                 
         else:
             if len(readed_commands) > 0 and report_sent == False:
+                continue
                 send_report()
                 report_sent = True
                 print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")

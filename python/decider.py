@@ -317,12 +317,17 @@ def process_command(command : str, variables, files : list, added_files : list):
         elif command.startswith("save") and "(" in command and ")" in command:
             try:
                 parenthesses = command[command.index("(") + 1:command.index(")")]
-                arg_1 = parenthesses.split(",")[0]
-                arg_2 = parenthesses.split(",")[1]
                 
-                arg_2 = arg_2.replace("\"", "").strip()
+                splits = parenthesses.split(",")
                 
-                save(arg_1, arg_2, variables)
+                arg_1 = splits[0]
+                
+                if len(splits) > 1:
+                    arg_2 = splits(",")[1]
+                    arg_2 = arg_2.replace("\"", "").strip()
+                    save(arg_1, arg_2, variables)
+                else:
+                    save(arg_1, shared_data=variables)
             except Exception as e:
                 print(Fore.RED + "Error during saving: {e}")
 

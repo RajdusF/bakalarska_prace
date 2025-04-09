@@ -1,7 +1,7 @@
-Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
-Command "loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt" took 0.0002 seconds to run
-Processing "/data1/bionano-old/compute/jobs/229/startMQR.190911100342983678220/2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx" with size 619.2110595703125 MB
-Command "for x in loaded_files:
-    loaded_files.append(load(x))" took 0.0039 seconds to run
-Command "for x in loaded_files:
-    save(x)" took 0.0003 seconds to run
+Command "" took 0.0022 seconds to run
+Processing "C:\Users\Filip\Downloads\2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx" with size 70.37828636169434 MB
+Execution time of load C:\Users\Filip\Downloads\2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx and size 70.37828636169434 MB took: 5.127 seconds
+Command "l_file = load("C:\\Users\\Filip\\Downloads\\2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx")" took 5.1284 seconds to run
+Command "save(l_file)" took 14.1393 seconds to run
+Command "second = load("C:\\Users\\Filip\\Documents\\bakalarska_prace\\output\\_Users_Filip_Downloads_2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.json")" took 2.7883 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run

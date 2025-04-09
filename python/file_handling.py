@@ -1,12 +1,11 @@
 import json
 import os
 import time
-import python.help_func
-
 
 from colorama import Fore
 
 import python.global_variables as g
+import python.help_func
 from python.MyFile import XData
 
 
@@ -14,9 +13,13 @@ def load(name_input, shared_data=None, worker_id=None):
     if isinstance(name_input, str):
         name_input = [name_input]
         
+    # for x in name_input:
+    #     x = x.replace("\"", "")
+        
     files = []
     
     for name in name_input:
+        name = name.strip('"')
         name = os.path.normpath(name)
 
         if not os.path.isabs(name):
@@ -91,6 +94,9 @@ def load_json(name):
             for i, line in enumerate(f):
                 line = line.strip()
                 
+                # if i >= 920545 and i < 7_099_993:
+                #     continue
+                
                 g.status = f"load: Currently \"{name}\" processing line: {i}"
 
                 # Zpracování hlaviček
@@ -139,34 +145,40 @@ def load_json(name):
                 elif line.startswith('#'):  # Komentáře
                     comments.append(line)
                 else:
-                    if line[0].isdigit():
-                        try:
-                            label_channel = line[0]
-                            fields = headers.get(label_channel + "h")
-                            fields_data_types = data_types.get(label_channel + "f")
-                            if fields is None:
-                                fields = headers.get("h")
-                                fields_data_types = data_types.get("f")
-                                
-                                
-                            print(f"line: {line}")
-                            print(f"label_channel: {label_channel}")
-                            print(f"fields: {fields}")
-                            print(f"fields_data_types: {fields_data_types}")
-                            print(f"headers: {headers}")
-                            print(f"data_types: {data_types}")
-                            print("\n")
-                        except:
-                            print(Fore.RED + f"Warning: No headers found for row: {line}")
-                            continue
+                    # if line[0].isdigit():
+                    try:
+                        label_channel = line[0]
+                        fields = headers.get(label_channel + "h")
+                        fields_data_types = data_types.get(label_channel + "f")
+                        if fields is None:
+                            fields = headers.get("h")
+                            fields_data_types = data_types.get("f")
+                            
+                            
+                        # print(f"line: {line}")
+                        # print(f"label_channel: {label_channel}")
+                        # print(f"fields: {fields}")
+                        # print(f"fields_data_types: {fields_data_types}")
+                        # print(f"headers: {headers}")
+                        # print(f"data_types: {data_types}")
+                        # print("\n")
+                    except:
+                        print(Fore.RED + f"Warning: No headers found for row: {line}")
+                        continue
 
                     if fields:
                         values = line.split("\t")
                         
-                        print(f"line: {line}")
+                        # print(f"line: {line}")
+                        # print(f"len(values): {len(values)}")
+            
+
 
                         data_row = {}
                         for i in range(len(fields)):
+                            if i >= len(values):
+                                # print(Fore.YELLOW + f"Warning: No value found for field '{fields[i]}' in row: {line}")
+                                break
                             field_name = fields[i]
                             value = values[i]
                             try:
@@ -181,7 +193,6 @@ def load_json(name):
                             except:
                                 if not value.startswith("QX"):
                                     print(Fore.YELLOW + f"Warning: Could not convert value '{value}' to type '{fields_data_types[i]}'")
-                                    return
 
                             if '[' in field_name and ']' in field_name:
                                 try:
@@ -195,7 +206,6 @@ def load_json(name):
                                         data_row[field_name] = [str(v) for v in values[i:]]
                                 except:
                                     print(Fore.YELLOW + f"Warning: Could not convert values '{values[i:]}' to type '{fields_data_types[i]}'")
-                                    return
                             else:
                                 data_row[field_name] = value
                         data.append(data_row)
@@ -209,6 +219,8 @@ def load_json(name):
         return None
 
     output_data = {
+        "filename": name,
+        "path": os.path.basename(name),
         "comments": comments,
         "headers": headers,
         "data_types": data_types,
@@ -220,6 +232,7 @@ def load_json(name):
 
     x = XData(output_data)
     x.name = os.path.basename(name)
+    x.path = os.path.dirname(name)
     print(f"name saved: {x.name}")
         
     g.status = ""

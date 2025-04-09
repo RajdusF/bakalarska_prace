@@ -433,23 +433,43 @@ def set_operations(expression: str, dictionary: dict):
 def save(name, output_file : str = None, shared_data = None, worker_id = None):    
     if type(name) == str and global_variables is not None and name in global_variables.variables:
         if type(global_variables.variables[name]) == XData:
+            xdata = global_variables.variables[name]
             try:
-                output_dir = "output"
+                output_dir = os.getcwd()
+                output_dir = os.path.join(output_dir, "output")
+                
+                output_filename = ""
+                
                 if not os.path.exists(output_dir):
                     os.makedirs(output_dir)
-                
-                if output_file == None:
-                    output_file = name + ".json"
-                
-                if not output_file.endswith(".json"):
-                    output_file = output_file[:output_file.index(".")] + ".json"
                     
-                output_data = global_variables.variables[name].data
+                if output_file == None:
+                    try:
+                        output_filename = xdata.name[:xdata.name.index(".")] + ".json"
+                    except:
+                        output_filename = xdata.name + ".json"
+                        
+                elif type(output_file) == list:
+                    output_filename = output_file[0]
+                    
+                if not output_filename.endswith(".json"):
+                    if(output_filename.find(".") != -1):
+                        output_filename = output_filename[:output_filename.index(".")] + ".json"
+                    else:
+                        output_filename = output_filename + ".json"
                 
-                with open(os.path.join(output_dir, output_file), "w") as json_file:
+                    
+                output_data = xdata.data
+                
+                output_filename = os.path.join(xdata.path, output_filename)
+                output_filename = output_filename.replace(os.sep, '_')
+                
+                output_dir_file = os.path.join(output_dir, output_filename)
+                
+                with open(output_dir_file, "w") as json_file:
                     json.dump(output_data, json_file, indent=4)
                     
-                print(f"Successfully saved to \"{output_file}\"")
+                print(f"Successfully saved to \"{output_dir_file}\"")
                 return
             except Exception as e:
                 print(Fore.RED + f"Error writing to file: {e}")
@@ -473,7 +493,10 @@ def save(name, output_file : str = None, shared_data = None, worker_id = None):
                     os.makedirs(output_dir)
                     
                 if output_file == None:
-                    output_filename = xdata.name + ".json"
+                    try:
+                        output_filename = xdata.name[:xdata.name.index(".")] + ".json"
+                    except:
+                        output_filename = xdata.name + ".json"
                     
                 elif type(output_file) == list:
                     output_filename = output_file[worker_id]
@@ -484,13 +507,15 @@ def save(name, output_file : str = None, shared_data = None, worker_id = None):
                     
                 output_data = xdata.data
                 
+                output_filename = os.path.join(xdata.path, output_filename)
+                output_filename = output_filename.replace(os.sep, '_')
+                
                 output_dir_file = os.path.join(output_dir, output_filename)
-                print(f"output_dir_file: {output_dir_file}")
                 
                 with open(output_dir_file, "w") as json_file:
                     json.dump(output_data, json_file, indent=4)
                     
-                print(f"Successfully saved to \"{output_filename}\"")
+                print(f"Successfully saved to \"{output_dir_file}\"")
                 return None
             except Exception as e:
                 print(Fore.RED + f"Error writing to file: {e}")
