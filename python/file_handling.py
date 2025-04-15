@@ -233,7 +233,6 @@ def load_json(name):
     x = XData(output_data)
     x.name = os.path.basename(name)
     x.path = os.path.dirname(name)
-    print(f"name saved: {x.name}")
         
     g.status = ""
     

@@ -1,0 +1,95 @@
+Command "cd /data1/bionano-old/compute/jobs" took 0.0028 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0005 seconds to run
+Command "filter name *.json" took 0.0006 seconds to run
+Command "print(loaded_files)" took 0.0006 seconds to run
+Command "result_load = []" took 0.0001 seconds to run
+Command "for x in loaded_files:
+    result_load.append(load(x))" took 0.0005 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0113 seconds to run
+Command "loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt" took 0.0003 seconds to run
+Command "print(loaded_files)" took 0.0017 seconds to run
+Command "result_load = []" took 0.0001 seconds to run
+Processing "/data1/bionano-old/compute/jobs/229/startMQR.190911100342983678220/2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx" with size 619.2110595703125 MB
+Execution time of load /data1/bionano-old/compute/jobs/229/startMQR.190911100342983678220/2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx and size 619.2110595703125 MB took: 110.105 seconds
+Processing "/data1/bionano-old/compute/jobs/160/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 656.7509889602661 MB
+Execution time of load /data1/bionano-old/compute/jobs/160/output/contigs/auto_noise/autoNoise1_rescaled.bnx and size 656.7509889602661 MB took: 75.844 seconds
+Command "for x in loaded_files:
+    result_load.append(load(x))" took 185.9517 seconds to run
+Command "for x in result_load:
+    save(x)" took 478.7676 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0064 seconds to run
+Command "loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt" took 0.0006 seconds to run
+Command "print(loaded_files)" took 0.0010 seconds to run
+Command "result_load = []" took 0.0001 seconds to run
+Processing "/data1/bionano-old/compute/jobs/229/startMQR.190911100342983678220/2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx" with size 619.2110595703125 MB
+Command "cd /data1/bionano-old/compute/jobs" took 0.0074 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0003 seconds to run
+Command "filter name *.json" took 0.0011 seconds to run
+Command "add *" took 0.0003 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0046 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0004 seconds to run
+Command "filtered = filter name *.json" took 0.0011 seconds to run
+Command "add *" took 0.0003 seconds to run
+Command "loaded = load(filtered)" took 0.0001 seconds to run
+Command "print(loaded)" took 0.0005 seconds to run
+Command "print("FINISH")" took 0.0002 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0036 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0004 seconds to run
+Command "filtered = filter name *.json" took 0.0009 seconds to run
+Command "add *" took 0.0002 seconds to run
+Command "loaded = load(filtered)" took 0.0001 seconds to run
+Command "print(loaded)" took 0.0005 seconds to run
+Command "print("FINISH")" took 0.0002 seconds to run
+Command "result_load = []" took 0.0000 seconds to run
+Command "for x in loaded:
+    result_load.append(load(x))" took 0.0005 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0038 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0003 seconds to run
+Command "filtered = filter name *.json" took 0.0008 seconds to run
+Command "add *" took 0.0002 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0044 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0004 seconds to run
+Command "filtered = filter name *.json" took 0.0014 seconds to run
+Command "add *" took 0.0003 seconds to run
+Command "result_load = []" took 0.0001 seconds to run
+Command "for x in filtered:
+    result_load.append(load(x))" took 71.8025 seconds to run
+Command "print(result_load)" took 0.0019 seconds to run
+Command "print("FINISH")" took 0.0003 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0043 seconds to run
+Command "loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt" took 0.0002 seconds to run
+Command "result_load = []" took 0.0001 seconds to run
+Processing "/data1/bionano-old/compute/jobs/229/startMQR.190911100342983678220/2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx" with size 619.2110595703125 MB
+Execution time of load /data1/bionano-old/compute/jobs/229/startMQR.190911100342983678220/2019-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx and size 619.2110595703125 MB took: 107.835 seconds
+Processing "/data1/bionano-old/compute/jobs/160/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 656.7509889602661 MB
+Execution time of load /data1/bionano-old/compute/jobs/160/output/contigs/auto_noise/autoNoise1_rescaled.bnx and size 656.7509889602661 MB took: 71.646 seconds
+Command "for x in loaded_files:
+    result_load.append(load(x))" took 179.4829 seconds to run
+Command "print(result_load)" took 0.0006 seconds to run
+Command "print("FINISH")" took 0.0002 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0064 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0003 seconds to run
+Command "filtered = filter name *.json" took 0.0011 seconds to run
+Command "add *" took 0.0002 seconds to run
+Command "my_files = added_files" took 0.0000 seconds to run
+Command "print(my_files)" took 0.0012 seconds to run
+Command "l_file = load("C:\\Users\\Filip\\Downloads\\2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx")" took 0.0001 seconds to run
+Command "save(l_file)" took 0.0000 seconds to run
+Command "print("FINISH!")" took 0.0002 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0047 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0004 seconds to run
+Command "filtered = filter name *.json" took 0.0018 seconds to run
+Command "add *" took 0.0004 seconds to run
+Command "my_files = added_files" took 0.0002 seconds to run
+Command "print(my_files)" took 0.0011 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0049 seconds to run
+Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0003 seconds to run
+Command "filtered = filter name *.json" took 0.0011 seconds to run
+Command "add *" took 0.0002 seconds to run
+Command "my_files = added_files" took 0.0000 seconds to run
+Command "print(my_files)" took 0.0010 seconds to run
+Command "result_load = []" took 0.0001 seconds to run
+Command "for x in my_files:
+    result_load.append(load(x))" took 64.6963 seconds to run
+Command "print(result_load)" took 0.0019 seconds to run
+Command "print("FINISH!")" took 0.0003 seconds to run

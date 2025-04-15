@@ -2,7 +2,7 @@
     "unit": "GB",
     "search_folders": 2,
     "show_duplicity": false,
-    "path": "/data1/bionano-old/compute/jobs",
+    "path": "/home/fei/raj0071/bakalarska_prace/output",
     "wraps": [
         5,
         25,

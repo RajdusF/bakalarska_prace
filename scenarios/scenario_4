@@ -14,52 +14,34 @@ cd /data1/bionano-old/compute/jobs
 
 # output my_selected_files.txt
 
-# loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
+loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
 
-cd /home/fei/raj0071/bakalarska_prace/output
-filtered = filter name *.json
+# cd /home/fei/raj0071/bakalarska_prace/output
+# filter name *.json
 
-add *
+print(loaded_files)
 
-
-my_files = added_files
-
-print(my_files)
+# print(loaded_files)
 
 result_load = []
 
-for x in my_files:
+for x in loaded_files:
     result_load.append(load(x))
     
-
-print(result_load)
-
-
-
-# print("FINISH")
-
-# print(loaded_files)
-
-# print(loaded_files)
-
-
     
 # results = pfor(load, prepared_files)
     
 # l_file = load("C:\\Users\\Filip\\Downloads\\2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.bnx")
 
-# load(added_files)
-
 # save(l_file)
     
-
-
-# for x in result_load:
-#     save(x)
+    
+for x in result_load:
+    save(x)
 
 # second = load("C:\\Users\\Filip\\Documents\\bakalarska_prace\\output\\_Users_Filip_Downloads_2019_cropped_-08-29_TBMNNDOLPRZXVNWU_F2P1_8_30_2019_6_16_55_AM_RawMolecules.json")
     
-print("FINISH!")
+# print("FINISH!")
 
 
 # results = pfor_order(save, results)

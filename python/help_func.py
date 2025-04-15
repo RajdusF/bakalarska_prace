@@ -583,3 +583,5 @@ def help_history():
 def debug_write(message):
     with open("debug.txt", "a") as file:
         file.write(f"{message}\n")
+    with open("log.txt", "a") as file:
+        file.write(f"{message}\n")

@@ -68,6 +68,9 @@ def process_command(command : str, variables, files : list, added_files : list):
             print(Fore.RED + "Wrong input")
             return
         
+        if command == "added" or command == "added_files":
+            return added_files
+        
         if command == "*" or command == "ls":
             show_current_folder()
             
