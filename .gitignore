@@ -1,11 +1,6 @@
 all.bnx
 files/big_cropped.bnx
-<<<<<<< Updated upstream
 settings.json
 output/
-
-=======
-output/
-output/big_cropped.json
->>>>>>> Stashed changes
 debug.txt
+log.txt
