@@ -27,10 +27,16 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
     created = None
     created_operator = None
     created_time_unit = None
+    max_files = None
     num_of_folders = 0
     duplicates = []
     files = []
     only_directories = []
+    
+    if "-MAX:" in command:
+        max_files = int(command.split("-MAX:")[1].split()[0])
+        command = command.replace(f"-MAX:{max_files}", "")
+        commands.remove(f"-MAX:{max_files}")
     
     # Searching for name, size, modified
     if "name" in commands:
@@ -118,6 +124,9 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         
         input_files.clear()
         
+        if max_files != None:
+            files = files[:max_files]
+        
     else:
         input_files.clear()
         
@@ -138,20 +147,18 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 all_files = list(path.glob("*"))
                 name_files = list(path.glob(name))
                 
-                # Převod na řetězce, pokud je to nutné
                 all_files = [str(file) for file in all_files]
                 name_files = [str(file) for file in name_files]
 
                 files = [file for file in all_files if file not in name_files]
 
-                # Převod zpět na Path objekty pro použití os.path.isdir
                 only_directories = [d for d in map(Path, files) if d.is_dir()]
 
             else:  # NAME
                 files = list(path.glob(name))
                 files = [str(file) for file in files]
 
-                # Převod zpět na Path objekty pro použití os.path.isdir
+
                 only_directories = [d for d in map(Path, files) if d.is_dir()]
 
         else:  # NO NAME
@@ -160,12 +167,13 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
 
             print(f"in else: {files}")
 
-            # Převod zpět na Path objekty pro použití os.path.isdir
             only_directories = [d for d in map(Path, files) if d.is_dir()]
             
         
         if global_variables.search_folders == 1:
             for folder in only_directories:
+                if max_files != None and len(files) >= max_files:
+                    break
                 temp_files, num_of_folders = search_folder(folder, commands)
                 files.extend(temp_files)
         elif global_variables.search_folders == 2:            
@@ -173,6 +181,8 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             all_directories = [os.path.abspath(entry.path) for entry in os.scandir(global_variables.path) if entry.is_dir()]        
             
             for i, folder in enumerate(all_directories):
+                if max_files != None and len(files) >= max_files:
+                    break
                 temp_files, num_of_folders_returned = search_folder(folder=folder, commands=commands, progress=i, progress_total=len(all_directories))
                 num_of_folders += num_of_folders_returned
                 files.extend(temp_files)
@@ -208,27 +218,22 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         files.clear()
         
         files, duplicates = resolve_duplicity(files_temp)
+    
+    if max_files != None:
+        files = files[:max_files]
+        num_of_folders = 0
+        for x in files:
+            if os.path.isdir(x):
+                num_of_folders += 1
         
-        # seen_files = set()
-        # duplicates = []
-
-        # for x in files_temp:
-        #     if x not in seen_files:
-        #         for i in files_temp:
-        #             if i not in seen_files and x != i and filecmp.cmp(x, i, shallow=True):
-        #                 duplicates.append(i)
-        #                 seen_files.add(i)
-        #                 print(f"{x.split('\\')[-1]:30} == {i.split('\\')[-1]:40} -> Removed {i.split('\\')[-1]}")
-        #         files.append(x)
-        #     seen_files.add(x)
     
     if len(files) > 1000:
         commands.append("-h")        
     
     if "-h" in commands:        # hide
-        print(Fore.GREEN + f"Found {len(files) - len(only_directories)} files and {num_of_folders} folders:" + Fore.RESET)
+        print(Fore.GREEN + f"Found {len(files) - num_of_folders} files and {num_of_folders} folders:" + Fore.RESET)
     else:
-        print(Fore.GREEN + f"Found {len(files) - len(only_directories)} files and {num_of_folders} folders:" + Fore.RESET)      # Number of occurances
+        print(Fore.GREEN + f"Found {len(files) - num_of_folders} files and {num_of_folders} folders:" + Fore.RESET)      # Number of occurances
         if "-d" in commands:        # detailed
             print(f"{'file':{FILE_NAME_WIDTH+4}} {'size':{SIZE_WIDTH}} {'modified':{MODIFIED_WIDTH}} {'created':{CREATED_WIDTH}}")
         for file in files:

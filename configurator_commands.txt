@@ -5,18 +5,19 @@
 # filter name *.bnx size < 1 GB
 # add *
 
-cd C:\Users\Filip\Documents\bakalarska_prace\output
+cd C:\Users\Filip\Documents\bakalarska_prace
 
-filter name *.json size < 200 MB -d
-add *
+filter * -MAX:5
 
-loaded_files = pfor(load, added_files)
+# add *
+
+# loaded_files = pfor(load, added_files)
 
 # print(loaded_files)
 
 # pfor(save, loaded_files)
 
-results = pfor(show_length, loaded_files)
+# results = pfor(show_length, loaded_files)
 
 # print(results[1])
 

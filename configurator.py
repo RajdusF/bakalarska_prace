@@ -48,7 +48,6 @@ def main(args):
     finished_commands = []
     
     def status_check():
-        
         global start_time
         
         while True:
@@ -64,6 +63,7 @@ def main(args):
             
             # print(Fore.LIGHTBLUE_EX + f"{global_variables.path}" + Fore.GREEN + f" >> " + Fore.RESET, end="")
             cmd = input()
+            time.sleep(0.2)
             
             pause_duration = time.time() - start_pause
             
@@ -83,8 +83,6 @@ def main(args):
                     print(f"Upcoming commands: ", flush=True)
                     for x in commands_to_process:
                         print("\t" + x)
-            elif cmd == "exit":
-                break
             else:
                 commands_to_process.append(cmd)
                 typed_commands.append(cmd)
