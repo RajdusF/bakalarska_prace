@@ -260,7 +260,7 @@ def process_command(command : str, variables, files : list, added_files : list):
             for x in added_files:
                 print(x)
                 
-            variables["added"] = added_files
+            variables["added_files"] = added_files
                 
         elif "remove" in commands:
             r = remove(commands, added_files)
@@ -525,12 +525,12 @@ def process_command(command : str, variables, files : list, added_files : list):
             additional_args = args[2:]
 
             
-            for arg in args:
-                try:
-                    if not callable(arg) and len(arg) < 100:
-                        print(arg)
-                except Exception as e:
-                    print(Fore.RED + f"Error during pfor: {e}")
+            # for arg in args:
+            #     try:
+            #         if not callable(arg) and len(arg) < 100:
+            #             print(arg)
+            #     except Exception as e:
+            #         print(Fore.RED + f"Error during pfor: {e}")
                 
             # try:
             if command.startswith("pfor_order"):

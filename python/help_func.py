@@ -33,6 +33,9 @@ email_functions = importlib.import_module('python.email')
 history = []
 
 def execute_command(command, variables):
+    if command == "added_files" or command == "added":
+        return variables["added_files"]
+    
     globals()["write_line_based_on_file"] = command_functions.write_line_based_on_file
     
     for name, func in inspect.getmembers(custom_functions, inspect.isfunction):
@@ -517,8 +520,8 @@ def help_find():
     print("You can use regular expressions like: \n\t\\b (bounderies) - for finding whole words \n\t\t[find \"\\bMolecule\\b\"] - will find only \"Molecule\" without \"Molecules\" ...\n")
     print("\t^ - start of the line (Alt + 94) \n\t\t[find \"^#\"] - will find all lines starting with \"#\"")
     print("\t\t[find \"^(?!#).+\"]\" - will find all lines that are not comments\n")
-    print("\t\d - digit \n\t\t[find \"\\d\"] - will find all lines with digits")
-    print("\t\t[find \"\b\d+\b\"] - will find all lines digit that are not part of alfanumeric strings\n")
+    print(r"\t\d - digit \n\t\t[find ""\\d""] - will find all lines with digits")
+    print(r"\t\t[find ""\b\d+\b""] - will find all lines digit that are not part of alfanumeric strings\n")
     print("\tYou can use flag -I for case insensitive search\n\t\t[find \"bnx\" in added -I]\n")
 
 

@@ -1,11 +1,9 @@
-Command "cd /data1/bionano-old/compute/jobs" took 0.0049 seconds to run
-Command "cd /home/fei/raj0071/bakalarska_prace/output" took 0.0003 seconds to run
-Command "filtered = filter name *.json" took 0.0011 seconds to run
-Command "add *" took 0.0002 seconds to run
-Command "my_files = added_files" took 0.0000 seconds to run
-Command "print(my_files)" took 0.0010 seconds to run
-Command "result_load = []" took 0.0001 seconds to run
-Command "for x in my_files:
-    result_load.append(load(x))" took 64.6963 seconds to run
-Command "print(result_load)" took 0.0019 seconds to run
-Command "print("FINISH!")" took 0.0003 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0030 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0140 seconds to run
+Command "add *" took 0.0044 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 10.2812 seconds to run
+Command "results = pfor(show_length, loaded_files)" took 78.6363 seconds to run
+Command "print("FINISH!")" took 0.0020 seconds to run
+Command "print(results[0])" took 0.0010 seconds to run
+Command "print(len(results))" took 0.0010 seconds to run
+Command "print(results[:5])" took 0.0010 seconds to run

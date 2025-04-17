@@ -93,3 +93,142 @@ Command "for x in my_files:
     result_load.append(load(x))" took 64.6963 seconds to run
 Command "print(result_load)" took 0.0019 seconds to run
 Command "print("FINISH!")" took 0.0003 seconds to run
+Command "filter name *.bnx size < 1 GB" took 0.1252 seconds to run
+Command "print("FINISH!")" took 0.0005 seconds to run
+Command "filter name *.bnx" took 0.0974 seconds to run
+Command "filter name *.bnx -d" took 0.1012 seconds to run
+Command "filter name *.bnx size < 1 GB" took 0.0991 seconds to run
+Command "add *" took 0.0010 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 0.0000 seconds to run
+Command "print(loaded_files)" took 0.0010 seconds to run
+Command "pfor(save, loaded_files)" took 0.0010 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "filter name *.bnx size < 1 GB" took 0.1089 seconds to run
+Command "add *" took 0.0060 seconds to run
+Command "filter name *.bnx size < 1 GB" took 0.1004 seconds to run
+Command "add *" took 0.0021 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_1.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.018 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\big_cropped.bnx" with size 183.51080226898193 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_11.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_3.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_5.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_7.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_8.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.047 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx" with size 0.0943155288696289 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_9.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.016 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_5.bnx and size 27.67490577697754 MB took: 2.987 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_8.bnx and size 27.67490577697754 MB took: 3.052 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx and size 27.67490577697754 MB took: 3.096 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_3.bnx and size 27.67490577697754 MB took: 3.347 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_11.bnx and size 27.67490577697754 MB took: 3.437 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_2.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_7.bnx and size 27.67490577697754 MB took: 3.434 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_9.bnx and size 27.67490577697754 MB took: 3.419 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all.bnx and size 27.67490577697754 MB took: 3.464 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_0.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_4.bnx and size 27.67490577697754 MB took: 3.449 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\files\small_all_10.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_0.bnx and size 27.67490577697754 MB took: 2.530 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_2.bnx and size 27.67490577697754 MB took: 2.545 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\small_all_10.bnx and size 27.67490577697754 MB took: 2.555 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\files\big_cropped.bnx and size 183.51080226898193 MB took: 13.877 seconds
+Command "loaded_files = pfor(load, added_files)" took 18.5159 seconds to run
+Command "print(loaded_files)" took 0.0015 seconds to run
+Command "pfor(save, loaded_files)" took 134.9566 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "filter name *.json" took 0.1045 seconds to run
+Command "add *" took 0.0025 seconds to run
+Command "filter name *.json -d" took 0.1115 seconds to run
+Command "add *" took 0.0043 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 46.4668 seconds to run
+Command "filter name *.json size < 1 GB -d" took 0.1149 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 14.1059 seconds to run
+Command "filter name *.json size < 1 GB -d" took 0.1003 seconds to run
+Command "add *" took 0.0025 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 13.4421 seconds to run
+Command "cd" took 0.0020 seconds to run
+Command "input()" took 0.0005 seconds to run
+Command "filter name *.json size < 1 GB -d" took 0.1000 seconds to run
+Command "add *" took 0.0015 seconds to run
+Command "filter name *.json size < 1 GB -d" took 0.1001 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+Command "filter name *.json size < 1 GB -d" took 0.0103 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+Command "filter name *.json size < 1 GB -d" took 0.0068 seconds to run
+Command "add *" took 0.0013 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 15.2113 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0062 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.3086 seconds to run
+Command "results = show_length(loaded_files)" took 0.0010 seconds to run
+Command "print(results[:5])" took 0.0000 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0066 seconds to run
+Command "add *" took 0.0021 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.1957 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0060 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.1946 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0107 seconds to run
+Command "add *" took 0.0010 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.1227 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0025 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0115 seconds to run
+Command "add *" took 0.0021 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.1364 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0025 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0110 seconds to run
+Command "add *" took 0.0061 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 17.4879 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0035 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0075 seconds to run
+Command "add *" took 0.0060 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 17.7516 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0069 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.3282 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0030 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0159 seconds to run
+Command "add *" took 0.0066 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 19.6585 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0025 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0063 seconds to run
+Command "add *" took 0.0013 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.3150 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0030 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0147 seconds to run
+Command "add *" took 0.0060 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 14.8948 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0024 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0095 seconds to run
+Command "add *" took 0.0010 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 8.7120 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0021 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0123 seconds to run
+Command "add *" took 0.0052 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 14.0200 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0030 seconds to run
+Command "filter name *.json size < 200 MB -d" took 0.0140 seconds to run
+Command "add *" took 0.0044 seconds to run
+Command "loaded_files = pfor(load, added_files)" took 10.2812 seconds to run
+Command "results = pfor(show_length, loaded_files)" took 78.6363 seconds to run
+Command "print("FINISH!")" took 0.0020 seconds to run
+Command "print(results[0])" took 0.0010 seconds to run
+Command "print(len(results))" took 0.0010 seconds to run
+Command "print(results[:5])" took 0.0010 seconds to run

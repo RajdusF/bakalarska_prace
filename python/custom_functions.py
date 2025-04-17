@@ -4,6 +4,23 @@ from time import sleep
 from python.parallel_for import _shared_globals
 
 
+def show_length(l:dict, shared_data=None, worker_id=None):
+    
+    r = []
+    
+    data = l["data"]
+    
+    print(f"len(data) = {len(data)}")
+    
+    # print(data[1])
+    
+    for x in data:
+        if dict(x).get("Length") != None and x["Length"] > 1_000_000:
+            r.append(x)        
+            
+    return r
+    
+
 def count_to(num, display=True):
     """Counts to a given number."""
     

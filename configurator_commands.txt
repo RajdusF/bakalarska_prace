@@ -1,8 +1,26 @@
 # cd /data1/bionano
-cd /data1/bionano-old/compute/jobs
+# cd /data1/bionano-old/compute/jobs
 # cd C:\Users\Filip\Downloads
 
-# filter name *.bnx size < 5 GB
+# filter name *.bnx size < 1 GB
+# add *
+
+cd C:\Users\Filip\Documents\bakalarska_prace\output
+
+filter name *.json size < 200 MB -d
+add *
+
+loaded_files = pfor(load, added_files)
+
+# print(loaded_files)
+
+# pfor(save, loaded_files)
+
+results = pfor(show_length, loaded_files)
+
+# print(results[1])
+
+# print(loaded_files[""])
 
 # filter files size > 600 MB
 
@@ -16,23 +34,23 @@ cd /data1/bionano-old/compute/jobs
 
 # loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
 
-cd /home/fei/raj0071/bakalarska_prace/output
-filtered = filter name *.json
+# cd /home/fei/raj0071/bakalarska_prace/output
+# filtered = filter name *.json
 
-add *
+# add *
 
 
-my_files = added_files
+# my_files = added_files
 
-print(my_files)
+# print(my_files)
 
-result_load = []
+# result_load = []
 
-for x in my_files:
-    result_load.append(load(x))
+# for x in my_files:
+#     result_load.append(load(x))
     
 
-print(result_load)
+# print(result_load)
 
 
 

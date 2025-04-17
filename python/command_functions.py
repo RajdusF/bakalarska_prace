@@ -558,19 +558,18 @@ def remove(commands, added_files):
         
     return original_length - len(added_files)
 
-def resolve_duplicity(files : list) -> list:
+def resolve_duplicity(files : list):
     seen_files = set()
-    duplicates = []
-    unique_files = []
+    duplicates, unique_files = []
 
-    for x in files:
-        if x not in seen_files:
-            for i in files:
-                if i not in seen_files and x != i and filecmp.cmp(x, i, shallow=True):
-                    duplicates.append(i)
-                    seen_files.add(i)
-                    print(f"{x.split('\\')[-1]:30} == {i.split('\\')[-1]:40} -> Removed {i.split('\\')[-1]}")
-            unique_files.append(x)
-        seen_files.add(x)
+    for current_file in files:
+        if current_file not in seen_files:
+            for other_file in files:
+                if other_file not in seen_files and current_file != other_file and filecmp.cmp(current_file, other_file, shallow=True):
+                    duplicates.append(other_file)
+                    seen_files.add(other_file)
+                    print(f"{current_file.split('\\')[-1]:30} == {other_file.split('\\')[-1]:40} -> Removed {other_file.split('\\')[-1]}")
+            unique_files.append(current_file)
+        seen_files.add(current_file)
     
     return unique_files, duplicates

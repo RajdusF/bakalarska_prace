@@ -18,10 +18,21 @@ def init_worker(shared_data):
 
 def worker_wrapper(func, args_tuple, shared_data, chunk_with_id):
     chunk_id, chunk = chunk_with_id
-    
+    results = []
+
     try:
         func.__globals__["_shared_globals"] = _shared_globals
-        return func(chunk, *args_tuple, shared_data=shared_data, worker_id=chunk_id)
+
+        for item in chunk:
+            result = func(item, *args_tuple, shared_data=shared_data, worker_id=chunk_id)
+            if result is not None:
+                if isinstance(result, list):
+                    results.extend(result)
+                else:
+                    results.append(result)
+
+        return results
+
     except Exception as e:
         print(Fore.RED + f"Worker wrapper {chunk_id} error: {e}" + Fore.RESET)
         return []
