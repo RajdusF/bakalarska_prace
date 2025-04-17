@@ -282,3 +282,11 @@ Command "print("FINISH!")" took 0.0000 seconds to run
 Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0150 seconds to run
 Command "filter * -MAX:5" took 0.0035 seconds to run
 Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0078 seconds to run
+Command "filter * -MAX:5" took 0.0013 seconds to run
+Command "print("FINISH!")" took 0.0004 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0036 seconds to run
+Command "filter *" took 690.1702 seconds to run
+Command "filter name *.bnx size > 1 GB" took 21.8224 seconds to run
+Command "print("FINISH!")" took 0.0014 seconds to run
+Command "show files" took 0.0272 seconds to run

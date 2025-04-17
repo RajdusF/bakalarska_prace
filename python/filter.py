@@ -9,6 +9,8 @@ from python.command_functions import add_if_in_variables, resolve_duplicity
 from python.help_func import (progress_bar, recalculate_size, search_folder,
                               time_from_now)
 
+import python.global_variables as g
+
 FILE_NAME_WIDTH = 48
 SIZE_WIDTH = 18
 MODIFIED_WIDTH = 16
@@ -32,6 +34,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
     duplicates = []
     files = []
     only_directories = []
+    g.status = ""
     
     if "-MAX:" in command:
         max_files = int(command.split("-MAX:")[1].split()[0])
@@ -106,6 +109,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 if name in folder:
                     temp_files, num_of_folders = search_folder(folder, commands)
                     files.extend(temp_files)
+                    g.status = f"filter: Currently {len(files)} files"
         elif global_variables.search_folders == 2:            
             progress_bar(0, 100, 30)
             all_directories = [file for file in input_files if os.path.isdir(file)]    
@@ -114,6 +118,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 temp_files, num_of_folders_returned = search_folder(folder=folder, commands=commands, progress=i, progress_total=len(all_directories))
                 num_of_folders += num_of_folders_returned
                 files.extend(temp_files)
+                g.status = f"filter: Currently {len(files)} files"
                 progress_bar(i, len(all_directories), 30)
                 
             progress_bar(1, 1, 30)

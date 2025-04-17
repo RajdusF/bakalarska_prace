@@ -1,13 +1,16 @@
 # cd /data1/bionano
-# cd /data1/bionano-old/compute/jobs
+cd /data1/bionano-old/compute/jobs
 # cd C:\Users\Filip\Downloads
 
 # filter name *.bnx size < 1 GB
 # add *
 
-cd C:\Users\Filip\Documents\bakalarska_prace
+# cd C:\Users\Filip\Documents\bakalarska_prace
 
-filter * -MAX:5
+# filter * -MAX:5
+filter *
+
+filter name *.bnx size > 1 GB
 
 # add *
 
