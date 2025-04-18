@@ -3,13 +3,14 @@ import time
 from pathlib import Path
 
 from colorama import Fore
+from tabulate import tabulate
 
 import python.global_variables as global_variables
-from python.command_functions import add_if_in_variables, resolve_duplicity
-from python.help_func import (progress_bar, recalculate_size, search_folder,
-                              time_from_now)
-
 import python.global_variables as g
+from python.command_functions import (add_if_in_variables, resolve_duplicity,
+                                      show_files)
+from python.help_func import (format_time, parse_time, progress_bar,
+                              recalculate_size, search_folder, time_from_now)
 
 FILE_NAME_WIDTH = 48
 SIZE_WIDTH = 18
@@ -61,7 +62,13 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 
     if "modified" in commands:
         modified_operator = commands[commands.index("modified") + 1]
-        if commands.index("modified") + 1 < len(commands):
+        if commands.index("modified") + 2 < len(commands) and "/" in commands[commands.index("modified") + 2]:
+            modified = commands[commands.index("modified") + 2]
+            
+            if modified == None or modified_operator == None:
+                print(Fore.RED + "Wrong input")
+                return
+        elif commands.index("modified") + 1 < len(commands):
             try:
                 modified = float(commands[commands.index("modified") + 2])
             except:
@@ -69,9 +76,10 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 return
             if commands.index("modified") + 2 < len(commands):
                 modified_time_unit = commands[commands.index("modified") + 3]
-        if modified_operator == None or modified == None or modified_time_unit == None:
-            print(Fore.RED + "Wrong input")
-            return
+                
+            if modified_operator == None or modified == None or modified_time_unit == None:
+                print(Fore.RED + "Wrong input")
+                return
         
         
     if "created" in commands:
@@ -212,7 +220,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
 
     #           m_operator modified time_unit
     # filter modified < 10 days
-    if modified and modified_operator and modified_time_unit: 
+    if modified and modified_operator and modified_time_unit or "/" in modified and modified_operator: 
         files = filter_time(files, modified_operator, modified, modified_time_unit, "modified")
         
     if created and created_operator and created_time_unit: 
@@ -239,11 +247,38 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         print(Fore.GREEN + f"Found {len(files) - num_of_folders} files and {num_of_folders} folders:" + Fore.RESET)
     else:
         print(Fore.GREEN + f"Found {len(files) - num_of_folders} files and {num_of_folders} folders:" + Fore.RESET)      # Number of occurances
+        
+        show_files(files)
+        
+        """
+        files_info = []
+        
+        for file in files:
+            file_size = os.path.getsize(file)
+            modified_time = format_time(os.path.getmtime(file))
+            created_time = format_time(os.path.getctime(file))
+            
+            if os.path.isdir(file):
+                display_name = f"{Fore.LIGHTBLUE_EX}{file}{Fore.RESET}"
+            else:
+                display_name = file
+
+            files_info.append([
+                display_name,
+                recalculate_size(file_size),
+                modified_time,
+                created_time
+            ])
+            
+        headers = ["File", "Size", "Modified Time", "Created Time"]
+        print(tabulate(files_info, headers=headers, tablefmt="pretty"))
+        """
+        
+        """
         if "-d" in commands:        # detailed
             print(f"{'file':{FILE_NAME_WIDTH+4}} {'size':{SIZE_WIDTH}} {'modified':{MODIFIED_WIDTH}} {'created':{CREATED_WIDTH}}")
         for file in files:
             file_name = file.split("\\")[-1]
-            file_size = os.path.getsize(file)
             is_folder = os.path.isdir(file)
             
             if "-d" in commands and not is_folder:
@@ -265,7 +300,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 if created and created_operator and created_time_unit:
                     print(f"{time_from_now(file, "created"):{CREATED_WIDTH}}", end="")
                 print()
-            
+        """    
             
     if global_variables.show_duplicity == True:
         print(Fore.RED + f"Found {len(duplicates)} duplicates:" + Fore.RESET)
@@ -274,55 +309,80 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             file_size = os.path.getsize(duplicate)
             print(f"{file_name:35} {recalculate_size(file_size):13}")
     
-    return files
+    return files, duplicates
 
 
 def filter_time(in_files, modified_operator, modified, time_unit, option):
-    if time_unit == "s" or time_unit == "second" or time_unit == "seconds" or time_unit == "sec":
-        n = 1
-    elif time_unit == "m" or time_unit == "minute" or time_unit == "minutes" or time_unit == "min":
-        n = 60
-    elif time_unit == "h" or time_unit == "hour" or time_unit == "hours" or time_unit == "hr":
-        n = 60 * 60
-    elif time_unit == "d" or time_unit == "day" or time_unit == "days":
-        n = 24 * 60 * 60
-    elif time_unit == "w" or time_unit == "week" or time_unit == "weeks":
-        n = 7 * 24 * 60 * 60
-    elif time_unit == "m" or time_unit == "month" or time_unit == "months":
-        n = 30 * 24 * 60 * 60
-    elif time_unit == "y" or time_unit == "year" or time_unit == "years":
-        n = 365 * 24 * 60 * 60
-    else:
-        print("Wrong time unit")
-        return
-    
-    current_time = time.time()
-    
     out_files = []
     
-    for file in in_files:
-        if option == "modified":
-            modification_time = os.path.getmtime(os.path.join(file))
-            seconds_from_now = current_time - modification_time
-        elif option == "created":
-            created_time = os.path.getctime(os.path.join(file))
-            seconds_from_now = current_time - created_time
     
-        if modified_operator == "<":
-            if seconds_from_now / n < modified:
-                out_files.append(file)
-        elif modified_operator == "<=":
-            if seconds_from_now / n <= modified:
-                out_files.append(file)
-        elif modified_operator == ">":
-            if seconds_from_now / n > modified:
-                out_files.append(file)
-        elif modified_operator == ">=":
-            if seconds_from_now / n >= modified:
-                out_files.append(file)
-        elif modified_operator == "=":
-            if seconds_from_now / n == modified:
-                out_files.append(file)
+    if "/" in modified and time_unit == None:
+        modified = parse_time(modified)
+        for file in in_files:
+            if option == "modified":
+                comparision_time = os.path.getmtime(os.path.join(file))
+            elif option == "created":
+                comparision_time = os.path.getctime(os.path.join(file))
+
+            if modified_operator == ">":
+                if comparision_time > modified:
+                    out_files.append(file)
+            elif modified_operator == ">=":
+                if comparision_time >= modified:
+                    out_files.append(file)
+            elif modified_operator == "<":
+                if comparision_time < modified:
+                    out_files.append(file)
+            elif modified_operator == "<=":
+                if comparision_time <= modified:
+                    out_files.append(file)
+            elif modified_operator == "=" or modified_operator == "==":
+                if modified == comparision_time:
+                    out_files.append(file)
+    else:
+        current_time = time.time()
+        if time_unit == "s" or time_unit == "second" or time_unit == "seconds" or time_unit == "sec":
+            n = 1
+        elif time_unit == "m" or time_unit == "minute" or time_unit == "minutes" or time_unit == "min":
+            n = 60
+        elif time_unit == "h" or time_unit == "hour" or time_unit == "hours" or time_unit == "hr":
+            n = 60 * 60
+        elif time_unit == "d" or time_unit == "day" or time_unit == "days":
+            n = 24 * 60 * 60
+        elif time_unit == "w" or time_unit == "week" or time_unit == "weeks":
+            n = 7 * 24 * 60 * 60
+        elif time_unit == "m" or time_unit == "month" or time_unit == "months":
+            n = 30 * 24 * 60 * 60
+        elif time_unit == "y" or time_unit == "year" or time_unit == "years":
+            n = 365 * 24 * 60 * 60
+        else:
+            print("Wrong time unit")
+            return
+        
+        
+        for file in in_files:
+            if option == "modified":
+                modification_time = os.path.getmtime(os.path.join(file))
+                seconds_from_now = current_time - modification_time
+            elif option == "created":
+                created_time = os.path.getctime(os.path.join(file))
+                seconds_from_now = current_time - created_time
+        
+            if modified_operator == "<":
+                if seconds_from_now / n < modified:
+                    out_files.append(file)
+            elif modified_operator == "<=":
+                if seconds_from_now / n <= modified:
+                    out_files.append(file)
+            elif modified_operator == ">":
+                if seconds_from_now / n > modified:
+                    out_files.append(file)
+            elif modified_operator == ">=":
+                if seconds_from_now / n >= modified:
+                    out_files.append(file)
+            elif modified_operator == "=":
+                if seconds_from_now / n == modified:
+                    out_files.append(file)
                 
     return out_files
 

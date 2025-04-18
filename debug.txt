@@ -1,5 +1,5 @@
-Command "cd /data1/bionano-old/compute/jobs" took 0.0036 seconds to run
-Command "filter *" took 690.1702 seconds to run
-Command "filter name *.bnx size > 1 GB" took 21.8224 seconds to run
-Command "print("FINISH!")" took 0.0014 seconds to run
-Command "show files" took 0.0272 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified <= 11/4/2025 -MAX:200" took 0.1041 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "sort by modified" took 0.0601 seconds to run

@@ -1,8 +1,8 @@
 {
     "unit": "GB",
-    "search_folders": 2,
+    "search_folders": 0,
     "show_duplicity": false,
-    "path": "/data1/bionano-old/compute/jobs",
+    "path": "C:\\Users\\Filip\\Downloads",
     "wraps": [
         5,
         25,

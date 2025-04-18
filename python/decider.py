@@ -75,7 +75,7 @@ def process_command(command : str, variables, files : list, added_files : list):
             show_current_folder()
             
         # Saving varibales       b = 5      VARIABLES
-        elif len(commands) > 2 and "=" in command:
+        elif len(commands) > 2 and "=" in command and command[command.index("=") - 1] not in ["<", ">"]:
             variables_str = command[:command.index("=")]
             variables_str = variables_str.replace(" ", "")
             variables_splitted = variables_str.split(",")
@@ -139,7 +139,7 @@ def process_command(command : str, variables, files : list, added_files : list):
                 help_filter()
                 return
             
-            temp = filter(command, commands, files, added_files, variables)
+            temp, variables["duplicates"] = filter(command, commands, files, added_files, variables)
             files.clear()
             files.extend(temp)
             

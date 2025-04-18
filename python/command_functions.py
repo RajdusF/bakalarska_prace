@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 import python.global_variables as global_variables
 from python.help_func import (find_name_of_browse_file, find_name_of_find_file,
-                              recalculate_size, time_from_now)
+                              format_time, recalculate_size, time_from_now)
 from python.MyFile import XData
 
 ops = {
@@ -38,6 +38,30 @@ def show_files(files, commands = None):
         print(Fore.GREEN + f"Found {len(files)} files " + Fore.RESET)
         return
     
+    files_info = []
+        
+    for file in files:
+        file_size = os.path.getsize(file)
+        modified_time = format_time(os.path.getmtime(file))
+        created_time = format_time(os.path.getctime(file))
+        
+        if os.path.isdir(file):
+            display_name = f"{Fore.LIGHTBLUE_EX}{file}{Fore.RESET}"
+        else:
+            display_name = file
+
+        files_info.append([
+            display_name,
+            recalculate_size(file_size),
+            modified_time,
+            created_time
+        ])
+        
+    headers = ["File", "Size", "Modified Time", "Created Time"]
+    if len(files) > 0:
+        print(tabulate(files_info, headers=headers, tablefmt="pretty", colalign=("left", "right", "right", "right")))
+    
+    """
     print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurrences
     for file in files:
         file_name = file.split("\\")[-1]
@@ -47,6 +71,7 @@ def show_files(files, commands = None):
             print(Fore.LIGHTBLUE_EX + f"{file_name:{global_variables.FILE_NAME_WIDTH+global_variables.SIZE_WIDTH+1}}" + Fore.RESET + f"{time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")  
         else:
             print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
+    """
 
 def show_added_files(added_files):
     print("Added files:")
@@ -295,6 +320,9 @@ def sort(commands, files):
             r = sorted(files, key=os.path.getctime, reverse=True)
         elif commands[3] == "desc":
             r = sorted(files, key=os.path.getctime)
+    else:
+        print("Wrong command")
+        return []
     
     if r is not None:
         show_files(r)

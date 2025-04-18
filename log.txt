@@ -290,3 +290,110 @@ Command "filter *" took 690.1702 seconds to run
 Command "filter name *.bnx size > 1 GB" took 21.8224 seconds to run
 Command "print("FINISH!")" took 0.0014 seconds to run
 Command "show files" took 0.0272 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0090 seconds to run
+Command "filter *" took 14.4981 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "show fiels" took 0.0000 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0060 seconds to run
+Command "filter *" took 8.9138 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0020 seconds to run
+Command "filter *" took 8.9390 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0030 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0030 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0020 seconds to run
+Command "filter * -MAX:900" took 0.3707 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0200 seconds to run
+Command "filter * -MAX:900" took 0.2987 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0060 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0060 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0030 seconds to run
+Command "filter * -MAX:900" took 0.3213 seconds to run
+Command "print("FINISH!")" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0050 seconds to run
+Command "filter * -MAX:900" took 0.3334 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0030 seconds to run
+Command "filter * -MAX:900" took 0.3210 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0050 seconds to run
+Command "filter * -MAX:900" took 0.3294 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0030 seconds to run
+Command "filter * -MAX:900" took 0.4596 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0025 seconds to run
+Command "filter * -MAX:900" took 0.3227 seconds to run
+Command "print("FINISH!")" took 0.0005 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0070 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0070 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0065 seconds to run
+Command "filter * modified > 20/10/2023 -MAX:1000" took 0.3907 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0000 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0000 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "set search 0" took 0.0030 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified < 20/10/2023 -MAX:1000" took 0.0450 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0000 seconds to run
+Command "set search 0" took 0.0065 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified < 1/4/2022 -MAX:1000" took 0.1927 seconds to run
+Command "print("FINISH!")" took 0.0014 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0000 seconds to run
+Command "set search 0" took 0.0060 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified < 1/4/2022 -MAX:1000" took 0.8505 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0000 seconds to run
+Command "filter * modified < 1/4/2025 -MAX:1000" took 0.7087 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "set search 0" took 0.0060 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0000 seconds to run
+Command "filter * modified < 1/4/2025 -MAX:1000" took 0.0571 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "set search 0" took 0.0070 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified < 1/4/2025 -MAX:1000" took 0.1847 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "sort by modified" took 0.1496 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0000 seconds to run
+Command "filter * modified <= 1/4/2025 -MAX:1000" took 0.0000 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "set search 0" took 6.8836 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0020 seconds to run
+Command "set search 0" took 1.4354 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 2.8910 seconds to run
+Command "set search 0" took 1.6428 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 1.2435 seconds to run
+Command "" took 0.0000 seconds to run
+Command "set search 0" took 0.0030 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified <= 1/4/2025 -MAX:200" took 0.1020 seconds to run
+Command "print("FINISH!")" took 0.0000 seconds to run
+Command "set search 0" took 0.0030 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified <= 1/4/2025 -MAX:200" took 0.1076 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "sort by modified" took 0.0586 seconds to run
+Command "set search 0" took 0.0020 seconds to run
+Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
+Command "filter * modified <= 11/4/2025 -MAX:200" took 0.1041 seconds to run
+Command "print("FINISH!")" took 0.0010 seconds to run
+Command "sort by modified" took 0.0601 seconds to run

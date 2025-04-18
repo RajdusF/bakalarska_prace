@@ -1,4 +1,3 @@
-timport datetime
 import glob
 import importlib
 import inspect
@@ -8,6 +7,7 @@ import re
 import sys
 import textwrap
 import time
+from datetime import datetime
 
 from colorama import Fore, Style, init
 from tabulate import tabulate
@@ -59,6 +59,12 @@ def execute_command(command, variables):
             print(Fore.RED + f"Exec error: {e}")
     except Exception as e:
         print(Fore.RED + f"Eval error: {e}")
+        
+def format_time(timestamp):
+    return datetime.fromtimestamp(timestamp).strftime("%d/%m/%Y")
+
+def parse_time(date_string):
+    return datetime.strptime(date_string, "%d/%m/%Y").timestamp()
 
 def take_int(message : str, position : int = 0):
     try:      
