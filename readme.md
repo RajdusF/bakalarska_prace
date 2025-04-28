@@ -17,11 +17,13 @@ Tato práce se zabývá **vývojem softwarového nástroje** pro efektivní zpra
 ## ▶️ Jak spustit
 
 1. Nainstalujte závislosti:
-   pip install -r requirements.txt
+   
+    pip install -r requirements.txt
 
     python3 configurator.py
 
 2. Spuštění prvních příkazů:
-   cd C:\Users\Administrator\Documents\...
+   
+    cd C:\Users\Administrator\Documents\...
 
     filter \*
