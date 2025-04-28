@@ -1,6 +1,6 @@
 # Nástroj pro zpracování dat optického mapování DNA
 
-## 📌 O čem práce je?
+## O čem práce je?
 
 Tato práce se zabývá **vývojem softwarového nástroje** pro efektivní zpracování dat z optického mapování DNA (formáty BNX/CMAP/XMAP). Hlavní cíle:
 
@@ -8,13 +8,13 @@ Tato práce se zabývá **vývojem softwarového nástroje** pro efektivní zpra
 -   Detekce duplicitních souborů
 -   Optimalizace výpočetních úloh pomocí paralelního zpracování
 
-## 🛠️ Technologie
+## Technologie
 
 -   **Programovací jazyk:** Python 3.x
 -   **Klíčové knihovny:** os, re, glob, multiprocessing, json
 -   **Formáty souborů:** BNX, CMAP, XMAP (Bionano Genomics)
 
-## ▶️ Jak spustit
+## Jak spustit
 
 1. Nainstalujte závislosti:
    
