@@ -332,12 +332,16 @@ def load_history(x : int, files : list, find_occurances : list):
     
     return 0
     
-def read_commands_from_file():
+def read_commands_from_file(file):
+    
+    if file is None:
+        file = "configurator_commands.txt"
+    
     try:
         commands = []
         current_command = ""
 
-        with open("configurator_commands.txt", "r") as file:
+        with open(file, "r") as file:
             for line in file:
                 if line.startswith("#") or line == "\n" or line == "":
                     continue
@@ -359,7 +363,7 @@ def read_commands_from_file():
         return commands
 
     except FileNotFoundError:
-        print(Fore.RED + "The file 'configurator_commands.txt' does not exist" + Fore.RESET)
+        print(Fore.RED + f"The file '{file}' does not exist" + Fore.RESET)
         return None
     
 def find_name_of_browse_file():

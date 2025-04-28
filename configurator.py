@@ -5,12 +5,11 @@ import sys
 import threading
 import time
 
+import python.email as email
+import python.global_variables as global_variables
 from colorama import Fore, init
 from prompt_toolkit import prompt
 from prompt_toolkit.patch_stdout import patch_stdout
-
-import python.email as email
-import python.global_variables as global_variables
 from python.decider import process_command
 from python.help_func import (comments_removal, debug_write,
                               read_commands_from_file, read_json)
@@ -32,6 +31,7 @@ def main(args):
     files = []
     added_files = []
     variables = {}  
+    input_commands_files = args.input
     
     report_sent = False
     
@@ -41,7 +41,7 @@ def main(args):
     
     print(Fore.YELLOW + "Type '?' for help" + Fore.RESET)
             
-    readed_commands = read_commands_from_file()
+    readed_commands = read_commands_from_file(input_commands_files)
     typed_commands = []
     commands_to_process = readed_commands.copy()
     current_command = ""
@@ -133,14 +133,13 @@ if __name__ == "__main__":
     elif os.name == 'posix':
         os.system('clear')
         
-    # print(f"sys.path: {sys.path}")
-    # sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    # print(f"AFTER: sys.path: {sys.path}")
 
     
     init(autoreset=True)
     multiprocessing.freeze_support()
     parser = argparse.ArgumentParser(description="Process some integers.")
+    parser.add_argument('input', nargs='?', type=str, default=None,
+                      help='Scenario file containing commands to execute (optional)')
     parser.add_argument('-p', type=str, default="", help='Path to the folder')
     
     if os.path.isfile("debug.txt"):
@@ -160,7 +159,7 @@ if __name__ == "__main__":
             global_variables.path = args.p
         else:
             print(Fore.RED + "Path not found" + Fore.RESET)
-        
+            
         
     print(Fore.YELLOW + "Settings:" + Fore.RESET)
     print(f"Default unit: {global_variables.default_unit}")

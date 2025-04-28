@@ -1,0 +1,4 @@
+/data1/bionano-old/compute/jobs/509/output/contigs/exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_r.cmap
+	# Number of Consensus Maps:	24
+/data1/bionano-old/compute/jobs/509/output/contigs/exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_q.cmap
+	# Number of Consensus Maps:	4872

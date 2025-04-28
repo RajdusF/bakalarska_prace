@@ -439,3 +439,68 @@ Command "set search 2" took 0.0005 seconds to run
 Command "filter *" took 232.1840 seconds to run
 Command "print("FINISH!")" took 0.0480 seconds to run
 Command "print(len(files))" took 0.0007 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0035 seconds to run
+Command "set search 2" took 0.0002 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0030 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "cd files" took 0.0026 seconds to run
+Command "ls" took 0.0190 seconds to run
+Command "set duplicity 0" took 0.0014 seconds to run
+Command "set search 2" took 0.0004 seconds to run
+Command "a = filter name *.bnx -d" took 156.1972 seconds to run
+Command "b = filter name *.cmap -d" took 352.8322 seconds to run
+Command "c = filter name *.xmap -d" took 23.3892 seconds to run
+Command "my_files = a+b+c" took 0.1855 seconds to run
+Command "for x in my_files:
+    print(x)" took 138.0168 seconds to run
+Command "add my_files" took 127.8260 seconds to run
+Command "output bionano_files.txt" took 20.5686 seconds to run
+Command "sort added by modified" took 19.6103 seconds to run
+Command "select top 5" took 0.0452 seconds to run
+Command "remove *" took 0.0409 seconds to run
+Command "add *" took 0.0003 seconds to run
+Command "finds_version = find "Version" in added -I" took 6.1772 seconds to run
+Command "find "Number of" in added -I" took 5.4410 seconds to run
+Command "print(finds_version)" took 0.0009 seconds to run
+Command "my_report = """ took 0.0001 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0004 seconds to run
+Command "send_email(my_report, "Function find")" took 0.1714 seconds to run
+Command "print(finds_version)" took 0.0009 seconds to run
+Command "" took 0.0000 seconds to run
+Command "for key, value in finds_version.items():" took 0.0007 seconds to run
+Command "for key, value in finds_version.items():\n	print(value)" took 0.0004 seconds to run
+Command "for x in range(10): print(x)" took 0.0009 seconds to run
+Command "for x in range(10):\nprint(x)" took 0.0005 seconds to run
+Command "for x in range(10):\n	print(value)" took 0.0008 seconds to run
+Command "for x in range(10):\n	print(x)" took 0.0005 seconds to run
+Command "" took 0.0000 seconds to run
+Command "" took 0.0000 seconds to run
+Command "" took 0.0000 seconds to run
+Command "for x in range(10):\n  print(x)" took 0.0006 seconds to run
+Command "for x in range(10):\n    print(x)" took 0.0004 seconds to run
+Command "for x in range(10):\\n	print(x)" took 0.0005 seconds to run
+Command "for x in range(10):^" took 0.0007 seconds to run
+Command "for x in range(10): ^" took 0.0006 seconds to run
+Command "for key, value in finds_version.items():" took 0.0008 seconds to run
+Command "print(f"{key}: {value}\n\n")" took 0.0003 seconds to run
+Command "my_report += f"{key}: {value}\n\n"print(type(finds_version))" took 0.0009 seconds to run
+Command "print(type(finds_version))" took 0.0004 seconds to run
+Command "for key, value in finds_version.items():" took 0.0005 seconds to run
+Command "print(f"{key}: {value}\n\n")for key, value in finds_version.items():" took 0.0005 seconds to run
+Command "print(f"{key}: {value}\n\n")for key, value in finds_version.items():" took 0.0004 seconds to run
+Command "print(f"{key}: {value}\n\n")for key, value in finds_version.items():" took 0.0004 seconds to run
+Command "print(f"{key}: {value}\n\n")for key, value in finds_version.items():" took 0.0004 seconds to run
+Command "print(f"{key}: {value}\n\n")for key, value in finds_version.items():" took 0.0004 seconds to run
+Command "print(f"{key}: {value}\n\n")for key, value in finds_version.items():" took 0.0003 seconds to run
+Command "print(f"{key}:" took 0.0005 seconds to run
+Command "" took 0.0000 seconds to run
+Command "" took 0.0000 seconds to run
+Command "" took 0.0000 seconds to run
+Command "for x in range(10): \    print(x)" took 0.0004 seconds to run
+Command "for x in range(10):\n\tprint(x)" took 0.0006 seconds to run
+Command "for x in range(10):\n\t \print(x)" took 0.0006 seconds to run
+Command "for x in range(10):\nprint(x)" took 0.0006 seconds to run
+Command "python" took 0.0006 seconds to run
+Command "python3" took 0.0003 seconds to run
