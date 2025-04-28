@@ -1,20 +1,23 @@
 # cd /data1/bionano
-# cd /data1/bionano-old/compute/jobs
+cd /data1/bionano-old/compute/jobs
 
-set search 0
+set search 2
 
 
-cd C:\Users\Filip\Downloads
+# cd C:\Users\Filip\Downloads
 
-# filter name *.bnx size < 1 GB
 # add *
 
 # cd C:\Users\Filip\Documents\bakalarska_prace
 
 # filter * -MAX:5
-filter * modified <= 11/4/2025 -MAX:200
+# filter * modified <= 11/4/2025 -MAX:200
 
-# filter name *.bnx size > 1 GB
+# filter name *.bnx size > 1 GB modified > 1/1/2020
+filter *
+
+# for x in files[0:200]:
+    # print(x)
 
 # add *
 

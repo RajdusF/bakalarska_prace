@@ -397,3 +397,45 @@ Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
 Command "filter * modified <= 11/4/2025 -MAX:200" took 0.1041 seconds to run
 Command "print("FINISH!")" took 0.0010 seconds to run
 Command "sort by modified" took 0.0601 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0097 seconds to run
+Command "set search 0" took 0.0005 seconds to run
+Command "filter name *.bnx size > 1 GB modified > 1/1/2022" took 0.0026 seconds to run
+Command "print("FINISH!")" took 0.0004 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0034 seconds to run
+Command "set search 2" took 0.0004 seconds to run
+Command "filter name *.bnx size > 1 GB modified > 1/1/2022" took 95.6383 seconds to run
+Command "print("FINISH!")" took 0.0006 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0117 seconds to run
+Command "set search 2" took 0.0002 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0109 seconds to run
+Command "set search 2" took 0.0002 seconds to run
+Command "filter name *.bnx" took 18.0745 seconds to run
+Command "print("FINISH!")" took 0.0126 seconds to run
+Command "print(files)" took 32.3111 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0042 seconds to run
+Command "set search 2" took 0.0002 seconds to run
+Command "filter name *.bnx" took 17.1531 seconds to run
+Command "print("FINISH!")" took 0.0114 seconds to run
+Command "print(files)" took 36.8739 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0037 seconds to run
+Command "set search 2" took 0.0003 seconds to run
+Command "filter name *.bnx" took 17.9897 seconds to run
+Command "for x in files[0:200]:
+    print(x)" took 0.0182 seconds to run
+Command "print("FINISH!")" took 0.0003 seconds to run
+Command "show_files(files[:200])" took 0.1292 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0048 seconds to run
+Command "set search 2" took 0.0003 seconds to run
+Command "filter name *.bnx size > 1 GB modified > 1/1/2020" took 23.1737 seconds to run
+Command "print("FINISH!")" took 0.0006 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0043 seconds to run
+Command "set search 2" took 0.0003 seconds to run
+Command "filter name *.bnx size > 1 GB modified > 1/1/2020" took 22.5295 seconds to run
+Command "print("FINISH!")" took 0.0006 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0036 seconds to run
+Command "set search 2" took 0.0002 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0042 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "filter *" took 232.1840 seconds to run
+Command "print("FINISH!")" took 0.0480 seconds to run
+Command "print(len(files))" took 0.0007 seconds to run

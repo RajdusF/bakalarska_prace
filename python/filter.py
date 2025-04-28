@@ -117,7 +117,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 if name in folder:
                     temp_files, num_of_folders = search_folder(folder, commands)
                     files.extend(temp_files)
-                    g.status = f"filter: Currently {len(files)} files"
+                    g.status = f"filter: Currently found {len(files)} files"
         elif global_variables.search_folders == 2:            
             progress_bar(0, 100, 30)
             all_directories = [file for file in input_files if os.path.isdir(file)]    
@@ -126,7 +126,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
                 temp_files, num_of_folders_returned = search_folder(folder=folder, commands=commands, progress=i, progress_total=len(all_directories))
                 num_of_folders += num_of_folders_returned
                 files.extend(temp_files)
-                g.status = f"filter: Currently {len(files)} files"
+                g.status = f"filter: Currently found {len(files)} files"
                 progress_bar(i, len(all_directories), 30)
                 
             progress_bar(1, 1, 30)
@@ -220,7 +220,7 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
 
     #           m_operator modified time_unit
     # filter modified < 10 days
-    if modified and modified_operator and modified_time_unit or "/" in modified and modified_operator: 
+    if modified and modified_operator and modified_time_unit or modified_operator and "/" in modified: 
         files = filter_time(files, modified_operator, modified, modified_time_unit, "modified")
         
     if created and created_operator and created_time_unit: 

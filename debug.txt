@@ -1,5 +1,5 @@
-Command "set search 0" took 0.0020 seconds to run
-Command "cd C:\Users\Filip\Downloads" took 0.0010 seconds to run
-Command "filter * modified <= 11/4/2025 -MAX:200" took 0.1041 seconds to run
-Command "print("FINISH!")" took 0.0010 seconds to run
-Command "sort by modified" took 0.0601 seconds to run
+Command "cd /data1/bionano-old/compute/jobs" took 0.0042 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "filter *" took 232.1840 seconds to run
+Command "print("FINISH!")" took 0.0480 seconds to run
+Command "print(len(files))" took 0.0007 seconds to run
