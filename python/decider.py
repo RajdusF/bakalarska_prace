@@ -1,3 +1,4 @@
+import code
 import importlib
 import os
 from pprint import pprint
@@ -7,21 +8,21 @@ from tabulate import tabulate
 
 import python.custom_functions
 import python.global_variables as global_variables
-from python.command_functions import (add, add_folder, add_if_in_variables,
+from python.command_functions import (add, add_folder, add_if_in_variables, delete_file,
                                       find, input_files, output,
                                       output_occurances, remove, save, select,
                                       set_operations, settings, show_files,
-                                      sort)
+                                      sort, write)
 from python.file_handling import load
 from python.global_variables import find_occurances as find_occurances
 from python.global_variables import result as result
 from python.help_func import (add_history,
                               convert_variables_to_variables_from_dict,
-                              debug_write, execute_command, help_add, help_cd,
-                              help_filter, help_find, help_output, help_save,
-                              help_select, help_sort, load_history, my_help,
-                              print_history, print_occurances,
-                              show_current_folder)
+                              custom_interact, debug_write, execute_command,
+                              help_add, help_cd, help_filter, help_find,
+                              help_output, help_save, help_select, help_sort,
+                              load_history, my_help, print_history,
+                              print_occurances, show_current_folder)
 from python.parallel_for import pfor, pfor_order
 
 custom_functions = importlib.import_module('python.custom_functions')
@@ -57,8 +58,39 @@ def process_command(command : str, variables, files : list, added_files : list):
         if command == "exit":
             return -1
         
-        elif command == "":
+        if command.startswith("read") and "(" in command and ")" in command:
+            parenthesses = command[command.index("(") + 1:command.index(")")]
+            if parenthesses == "":
+                print(Fore.RED + "Error during reading file")
+                return
+            
+            if os.path.isfile(parenthesses):
+                with open(parenthesses, "r") as f:
+                    return f.read()
+            else:
+                print(Fore.RED + "File not found")
+                return
+            
+        if command.startswith("run") and "(" in command and ")" in command:
+            parenthesses = command[command.index("(") + 1:command.index(")")]
+            if parenthesses == "":
+                print(Fore.RED + "Error during running file")
+                return
+            
+            if os.path.isfile(parenthesses):
+                with open(parenthesses, "r") as f:
+                    return process_command(f.read(), variables, files, added_files)
+            elif parenthesses in variables:
+                return process_command(variables[parenthesses], variables, files, added_files)
+            else:
+                print(Fore.RED + "File not found")
+                return
+        
+        if command == "":
             return
+
+        if command == "\"\"":
+            return ""
         
         if command == "?" or command == "help":
             my_help()
@@ -75,7 +107,7 @@ def process_command(command : str, variables, files : list, added_files : list):
             show_current_folder()
             
         # Saving varibales       b = 5      VARIABLES
-        elif len(commands) > 2 and "=" in command and command[command.index("=") - 1] not in ["<", ">"]:
+        if len(commands) > 2 and "=" in command and command[command.index("=") - 1] not in ["<", ">"] and not command.startswith("for") and not command.startswith("if"):
             variables_str = command[:command.index("=")]
             variables_str = variables_str.replace(" ", "")
             variables_splitted = variables_str.split(",")
@@ -145,7 +177,7 @@ def process_command(command : str, variables, files : list, added_files : list):
             
             add_history(command, files)
             
-            variables["files"] = files
+            variables["files"] = files.copy()
             return files.copy()
         
         elif "sort" in commands:
@@ -355,7 +387,7 @@ def process_command(command : str, variables, files : list, added_files : list):
                 print(Fore.RED + "Wrong input")
             
                     
-        elif "input" in commands[0]:
+        elif commands[0] == "input":
             if len(commands) == 1:
                 return input_files(added_files)
             elif len(commands) == 2:
@@ -363,7 +395,7 @@ def process_command(command : str, variables, files : list, added_files : list):
         
         # output [file] [extend]
         # output "occurances" [file]
-        elif "output" in commands:
+        elif command.startswith("output"):
             if commands[0] == "output" and len(commands) == 1:
                 help_output()
                 return
@@ -540,6 +572,14 @@ def process_command(command : str, variables, files : list, added_files : list):
             # except Exception as e:
             #     print(Fore.RED + "Error during pfor: ", e)
                 
+        
+        elif command.startswith("write") and "(" in command and ")" in command:
+            write(command)
+            return
+        
+        elif command.startswith("delete_file") and "(" in command and ")" in command:
+            delete_file(command)
+            return
         
         elif command == "report":
             return "report"

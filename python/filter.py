@@ -93,12 +93,14 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
             return
             
     
-    if commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added":
+    if commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added" or commands[1] in g.variables:
         temp = []
         if commands[1] == "files":
             temp = input_files.copy()
         elif commands[1] == "added_files" or commands[1] == "added":
             temp = input_added_files.copy()
+        elif commands[1] in g.variables:
+            temp = g.variables[commands[1]].copy()
             
         if name and "not" in commands:
             for x in temp:

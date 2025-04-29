@@ -504,3 +504,1285 @@ Command "for x in range(10):\n\t \print(x)" took 0.0006 seconds to run
 Command "for x in range(10):\nprint(x)" took 0.0006 seconds to run
 Command "python" took 0.0006 seconds to run
 Command "python3" took 0.0003 seconds to run
+Command "cod" took 0.0025 seconds to run
+Command "read(command.txt)" took 0.0085 seconds to run
+Command "read(command.txt)" took 0.0005 seconds to run
+Command "read(command.txt)" took 0.0030 seconds to run
+Command "my_command = read(command.txt)" took 0.0010 seconds to run
+Command "variables" took 0.0005 seconds to run
+Command "my_var = read(command.txt)" took 0.0025 seconds to run
+Command "varibales" took 0.0005 seconds to run
+Command "variables" took 0.0005 seconds to run
+Command "run(my_var)" took 0.0005 seconds to run
+Command "my_var = run(command.txt)" took 0.0025 seconds to run
+Command "my_var = read(command.txt)" took 0.0005 seconds to run
+Command "variables" took 0.0000 seconds to run
+Command "run(my_var)" took 0.0005 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\files" took 0.0020 seconds to run
+Command "ls" took 0.0035 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "a = filter name *.bnx -d" took 0.1006 seconds to run
+Command "my_files = a+b+c" took 0.0005 seconds to run
+Command "for x in my_files[0:10]:
+    print(x)" took 0.0010 seconds to run
+Command "add my_files" took 0.0010 seconds to run
+Command "output bionano_files.txt" took 0.0010 seconds to run
+Command "sort added by modified" took 0.0000 seconds to run
+Command "select top 5" took 0.0000 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0010 seconds to run
+Command "finds_version = find "Version" in added -I" took 0.0030 seconds to run
+Command "find "Number of" in added -I" took 0.0035 seconds to run
+Command "print(finds_version)" took 0.0010 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0015 seconds to run
+Command "send_email(my_report, "Function find")" took 1.4043 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+Command "ls" took 0.0140 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0000 seconds to run
+Command "a = filter name *.bnx -d" took 0.0115 seconds to run
+Command "my_files = a+b+c" took 0.0015 seconds to run
+Command "for x in my_files[0:10]:
+    print(x)" took 0.0010 seconds to run
+Command "add my_files" took 0.0010 seconds to run
+Command "output bionano_files.txt" took 0.0035 seconds to run
+Command "sort added by modified" took 0.0000 seconds to run
+Command "select top 5" took 0.0000 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0010 seconds to run
+Command "finds_version = find "Version" in added -I" took 0.0010 seconds to run
+Command "find "Number of" in added -I" took 0.0005 seconds to run
+Command "print(finds_version)" took 0.0005 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0010 seconds to run
+Command "send_email(my_report, "Function find")" took 1.0324 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+Command "ls" took 0.0105 seconds to run
+Command "set duplicity 0" took 0.0000 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "a = filter name *.bnx -d" took 0.0125 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0070 seconds to run
+Command "add a" took 0.0090 seconds to run
+Command "output bionano_files.txt" took 0.0020 seconds to run
+Command "sort added by modified" took 0.0060 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0035 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2169 seconds to run
+Command "find "Number of" in added -I" took 2.1989 seconds to run
+Command "print(finds_version)" took 0.0020 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0015 seconds to run
+Command "send_email(my_report, "Function find")" took 1.1126 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0020 seconds to run
+Command "ls" took 0.0105 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0000 seconds to run
+Command "a = filter name *.bnx -d" took 0.0095 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0074 seconds to run
+Command "add a" took 0.0105 seconds to run
+Command "output bionano_files.txt" took 0.0015 seconds to run
+Command "sort added by modified" took 0.0055 seconds to run
+Command "select top 5" took 0.0020 seconds to run
+Command "remove *" took 0.0035 seconds to run
+Command "add *" took 0.0035 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2364 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1043 seconds to run
+Command "print(finds_version)" took 0.0015 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "print(f"type(finds_version) {type(finds_version)}")" took 0.0005 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")" took 0.0085 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0010 seconds to run
+Command "send_email(my_report, "Function find")" took 1.5760 seconds to run
+Command "print(type(finds_version))" took 0.0005 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0030 seconds to run
+Command "ls" took 0.0165 seconds to run
+Command "set duplicity 0" took 0.0010 seconds to run
+Command "set search 2" took 0.0010 seconds to run
+Command "a = filter name *.bnx -d" took 0.0145 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0040 seconds to run
+Command "add a" took 0.0055 seconds to run
+Command "output bionano_files.txt" took 0.0025 seconds to run
+Command "sort added by modified" took 0.0070 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.3260 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.2614 seconds to run
+Command "print(finds_version)" took 0.0040 seconds to run
+Command "my_report = """ took 0.0010 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")" took 0.0045 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0025 seconds to run
+Command "send_email(my_report, "Function find")" took 1.0909 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+Command "ls" took 0.0165 seconds to run
+Command "set duplicity 0" took 0.0010 seconds to run
+Command "set search 2" took 0.0010 seconds to run
+Command "a = filter name *.bnx -d" took 0.0160 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0040 seconds to run
+Command "add a" took 0.0050 seconds to run
+Command "output bionano_files.txt" took 0.0020 seconds to run
+Command "sort added by modified" took 0.0075 seconds to run
+Command "select top 5" took 0.0030 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0025 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.3605 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+Command "ls" took 0.0160 seconds to run
+Command "set duplicity 0" took 0.0010 seconds to run
+Command "set search 2" took 0.0010 seconds to run
+Command "a = filter name *.bnx -d" took 0.0145 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 4.4593 seconds to run
+Command "add a" took 0.0050 seconds to run
+Command "output bionano_files.txt" took 0.0025 seconds to run
+Command "sort added by modified" took 0.0080 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0025 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2730 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1619 seconds to run
+Command "print(finds_version)" took 67.6552 seconds to run
+Command "my_report = """ took 0.0010 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")" took 68.3017 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+Command "ls" took 0.0100 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0000 seconds to run
+Command "a = filter name *.bnx -d" took 0.0135 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0075 seconds to run
+Command "add a" took 0.0090 seconds to run
+Command "output bionano_files.txt" took 0.0030 seconds to run
+Command "sort added by modified" took 0.0060 seconds to run
+Command "select top 5" took 0.0020 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0063 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2205 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1118 seconds to run
+Command "print(finds_version)" took 0.0015 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")" took 0.0050 seconds to run
+Command "for key, value in finds_version.items():
+    print(f"{key}: {value}\n\n")
+    my_report += f"{key}: {value}\n\n"" took 0.0010 seconds to run
+Command "send_email(my_report, "Function find")" took 0.9731 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0030 seconds to run
+Command "ls" took 0.0150 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "a = filter name *.bnx -d" took 0.0105 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0050 seconds to run
+Command "add a" took 0.0120 seconds to run
+Command "output bionano_files.txt" took 0.0015 seconds to run
+Command "sort added by modified" took 0.0075 seconds to run
+Command "select top 5" took 0.0020 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0035 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2069 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.0903 seconds to run
+Command "print(finds_version)" took 0.0015 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, values in finds_version.items():
+    values_str = ', '.join(map(str, values))
+    print(f"{key}: {values_str}")" took 0.0015 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0020 seconds to run
+Command "ls" took 0.0135 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0000 seconds to run
+Command "a = filter name *.bnx -d" took 0.0095 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0050 seconds to run
+Command "add a" took 0.0125 seconds to run
+Command "output bionano_files.txt" took 0.0020 seconds to run
+Command "sort added by modified" took 0.0060 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0035 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2159 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1058 seconds to run
+Command "print(finds_version)" took 0.0015 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, values in finds_version.items():
+    values_str = ','.join(map(str,values))
+    print(f"{key}:{values_str}")" took 0.0010 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+Command "ls" took 0.0130 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0005 seconds to run
+Command "a = filter name *.bnx -d" took 0.0100 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0055 seconds to run
+Command "add a" took 0.0120 seconds to run
+Command "output bionano_files.txt" took 0.0015 seconds to run
+Command "sort added by modified" took 0.0065 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0040 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2089 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1008 seconds to run
+Command "print(finds_version)" took 0.0015 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, values in finds_version.items():
+    print(key)
+    for value in values:
+        print(f"\t{value}")" took 0.0105 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+Command "ls" took 0.0110 seconds to run
+Command "set duplicity 0" took 0.0005 seconds to run
+Command "set search 2" took 0.0000 seconds to run
+Command "a = filter name *.bnx -d" took 0.0100 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.0050 seconds to run
+Command "add a" took 0.0110 seconds to run
+Command "output bionano_files.txt" took 0.0015 seconds to run
+Command "sort added by modified" took 0.0055 seconds to run
+Command "select top 5" took 0.0040 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0040 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2194 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.0988 seconds to run
+Command "print(finds_version)" took 0.0015 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"" took 0.0015 seconds to run
+Command "send_email(my_report, "Function find")" took 1.0274 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 1.2261 seconds to run
+Command "ls" took 0.8537 seconds to run
+Command "set duplicity 0" took 0.8357 seconds to run
+Command "set search 2" took 0.8372 seconds to run
+Command "a = filter name *.bnx -d" took 1.6714 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.8427 seconds to run
+Command "add a" took 0.8382 seconds to run
+Command "output bionano_files.txt" took 0.8342 seconds to run
+Command "sort added by modified" took 2.2374 seconds to run
+Command "select top 5" took 1.2200 seconds to run
+Command "remove *" took 1.2381 seconds to run
+Command "add *" took 1.0399 seconds to run
+Command "finds_version = find "Version" in added -I" took 6.0217 seconds to run
+Command "find "Number of Molecules" in added -I" took 4.2482 seconds to run
+Command "print(finds_version)" took 4.0640 seconds to run
+Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 1.8456 seconds to run
+Command "ls" took 0.2938 seconds to run
+Command "set duplicity 0" took 0.2782 seconds to run
+Command "set search 2" took 0.2787 seconds to run
+Command "a = filter name *.bnx -d" took 0.9273 seconds to run
+Command "for x in a[0:10]:
+    print(x)" took 0.4544 seconds to run
+Command "add a" took 0.6205 seconds to run
+Command "output bionano_files.txt" took 0.8332 seconds to run
+Command "sort added by modified" took 1.0294 seconds to run
+Command "select top 5" took 1.0489 seconds to run
+Command "files = input output/bionano_files.txt" took 0.0090 seconds to run
+Command "sort added by modified" took 0.0050 seconds to run
+Command "select top 5" took 0.0015 seconds to run
+Command "remove *" took 0.0000 seconds to run
+Command "add *" took 0.0010 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2189 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.0918 seconds to run
+Command "print(finds_version)" took 0.0020 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"" took 0.0020 seconds to run
+Command "send_email(my_report, "Function find")" took 1.1473 seconds to run
+Command "files = input output/bionano_files.txt" took 3.5616 seconds to run
+Command "sort added by modified" took 0.2852 seconds to run
+Command "select top 5" took 0.2107 seconds to run
+Command "files = input output/bionano_files.txt" took 2.8632 seconds to run
+Command "sort added by modified" took 0.8288 seconds to run
+Command "select top 5" took 1.2324 seconds to run
+Command "remove *" took 0.6325 seconds to run
+Command "add *" took 0.8361 seconds to run
+Command "finds_version = find "Version" in added -I" took 5.2738 seconds to run
+Command "find "Number of Molecules" in added -I" took 3.7483 seconds to run
+Command "print(finds_version)" took 1.8408 seconds to run
+Command "my_report = """ took 31.5196 seconds to run
+Command "files = input output/bionano_files.txt" took 0.0030 seconds to run
+Command "sort added by modified" took 0.0085 seconds to run
+Command "select top 5" took 0.0020 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0025 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2324 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1023 seconds to run
+Command "print(finds_version)" took 0.0035 seconds to run
+Command "my_report = """ took 0.0010 seconds to run
+Command "files = input output/bionano_files.txt" took 0.0020 seconds to run
+Command "sort added by modified" took 0.0070 seconds to run
+Command "select top 5" took 0.0015 seconds to run
+Command "remove *" took 0.0005 seconds to run
+Command "add *" took 0.0010 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2179 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1038 seconds to run
+Command "print(finds_version)" took 0.0020 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"" took 0.0000 seconds to run
+Command "send_email(my_report, "Function find")" took 1.0778 seconds to run
+Command "print(my_report)" took 0.0005 seconds to run
+Command "print(variables["my_report"])" took 0.0010 seconds to run
+Command "files = input output/bionano_files.txt" took 0.0030 seconds to run
+Command "sort added by modified" took 0.0105 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0025 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.3310 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.2029 seconds to run
+Command "print(finds_version)" took 0.0035 seconds to run
+Command "my_report = """ took 0.0005 seconds to run
+Command "files = input output/bionano_files.txt" took 0.0030 seconds to run
+Command "sort added by modified" took 0.0085 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0010 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2860 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.2654 seconds to run
+Command "print(finds_version)" took 0.0035 seconds to run
+Command "my_report = """ took 0.0010 seconds to run
+Command "files = input output/bionano_files.txt" took 0.0030 seconds to run
+Command "sort added by modified" took 0.0090 seconds to run
+Command "select top 5" took 0.0025 seconds to run
+Command "remove *" took 0.0015 seconds to run
+Command "add *" took 0.0025 seconds to run
+Command "finds_version = find "Version" in added -I" took 2.2760 seconds to run
+Command "find "Number of Molecules" in added -I" took 2.1539 seconds to run
+Command "print(finds_version)" took 0.0035 seconds to run
+Command "my_report = """ took 0.0010 seconds to run
+Command "for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"" took 57.2752 seconds to run
+Command "send_email(my_report, "Function find")" took 1.1029 seconds to run
+Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0030 seconds to run
+Command "prepared_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\files\\small_all_5.bnx"]" took 0.0005 seconds to run
+Command "results = pfor(load, prepared_files)" took 0.4739 seconds to run
+Command "print(results)" took 0.0005 seconds to run
+Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0000 seconds to run
+Command "d1 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_6.bnx)" took 0.0000 seconds to run
+Command "d2 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_7.bnx)" took 0.0005 seconds to run
+Command "d3 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_8.bnx)" took 0.0005 seconds to run
+Command "d4 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_9.bnx)" took 0.0000 seconds to run
+Command "d5 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_10.bnx)" took 0.0005 seconds to run
+Command "d6 = load(C:\Users\Filip\Documents\bakalarska_prace\files\small_all_11.bnx)" took 0.0000 seconds to run
+Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0005 seconds to run
+Command "print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0020 seconds to run
+Command "prepared_test_files = ["C:\\Users\\Filip\\Documents\\bakalarska_prace\\test_files\\small_all_0.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\test_files\\small_all_1.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\test_files\\small_all_2.bnx","C:\\Users\\Filip\\Documents\\bakalarska_prace\\test_files\\small_all_3.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\test_files\\small_all_4.bnx", "C:\\Users\\Filip\\Documents\\bakalarska_prace\\test_files\\small_all_5.bnx"]" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.963 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.127 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.133 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.143 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.146 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.144 seconds
+Command "results = pfor(load, prepared_test_files)" took 6.1047 seconds to run
+Command "print(results)" took 0.0005 seconds to run
+Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 2.604 seconds
+Command "d1 = load(C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx)" took 2.6047 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 2.314 seconds
+Command "d2 = load(C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx)" took 2.3150 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 1.630 seconds
+Command "d3 = load(C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx)" took 1.6309 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 2.541 seconds
+Command "d4 = load(C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx)" took 2.5422 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 1.772 seconds
+Command "d5 = load(C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx)" took 1.7725 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 2.720 seconds
+Command "d6 = load(C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx)" took 2.7213 seconds to run
+Command "print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))" took 0.0005 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0020 seconds to run
+Command "print(input_files)" took 0.0000 seconds to run
+Command "loaded_files = []" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx" with size 3401.1730461120605 MB
+Command "input_files = input output/bionano_files.txt" took 3.7107 seconds to run
+Command "print(input_files)" took 0.0023 seconds to run
+Command "loaded_files = []" took 0.0020 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0010 seconds to run
+Command "print(input_files)" took 0.0016 seconds to run
+Command "loaded_files = []" took 0.0010 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx" with size 3401.1730461120605 MB
+Command "input_files = input output/bionano_files.txt" took 0.0030 seconds to run
+Command "print(input_files)" took 0.0000 seconds to run
+Command "loaded_files = []" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx" with size 3401.1730461120605 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx and size 3401.1730461120605 MB took: 207.753 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.065 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.015 seconds
+Command "for x in input_files[:3]:
+    loaded_files.append(load(x))" took 207.8363 seconds to run
+Command "for x in loaded_files:
+    save(x)" took 632.1589 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0101 seconds to run
+Command "print(input_files)" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.024 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.042 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.009 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.176 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.200 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.225 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.316 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.447 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.434 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.479 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.494 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.533 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.528 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.778 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.742 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.743 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 14.311 seconds
+Command "loaded_files = pfor(load, input_files)" took 18.9100 seconds to run
+Command "pfor_order(save, results)" took 0.0013 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0020 seconds to run
+Command "add(input_files)" took 0.0005 seconds to run
+Command "filter files size < 800 MB" took 0.0010 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "print(added_files)" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.007 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.037 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.007 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 2.930 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.000 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.346 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.362 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.408 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.386 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.401 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.390 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.429 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.428 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.632 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.497 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.549 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 14.031 seconds
+Command "loaded_files = pfor(load, added_files)" took 18.4637 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0071 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0021 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0074 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0031 seconds to run
+Command "filter input_files size < 800 MB" took 0.0050 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "print(added_files)" took 0.0000 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0030 seconds to run
+Command "filter input_files *" took 0.0051 seconds to run
+Command "filter input_files size < 800 MB" took 0.0051 seconds to run
+Command "add *" took 0.0015 seconds to run
+Command "print(added_files)" took 0.0010 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0025 seconds to run
+Command "filter input_files *" took 0.0071 seconds to run
+Command "filter input_files size < 800 MB" took 0.0081 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "print(added_files)" took 0.0020 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0025 seconds to run
+Command "filter input_files *" took 0.0045 seconds to run
+Command "filter input_files size < 800 MB" took 0.0056 seconds to run
+Command "add *" took 0.0020 seconds to run
+Command "print(added_files)" took 0.0010 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx" with size 3401.1730461120605 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.007 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.009 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.990 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 3.019 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.099 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.306 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.330 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.340 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.335 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.330 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.356 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 2.647 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 2.728 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 2.553 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 14.627 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.802 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx and size 3401.1730461120605 MB took: 226.200 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.023 seconds
+Command "input_files = input output/bionano_files.txt" took 0.0020 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0010 seconds to run
+Command "filter input_files *" took 0.0100 seconds to run
+Command "filter input_files size < 800 MB" took 0.0100 seconds to run
+Command "add *" took 0.0090 seconds to run
+Command "print(added_files)" took 0.0060 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx" with size 3401.1730461120605 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.007 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.009 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.345 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.508 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 3.727 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.588 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.500 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.540 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.801 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 3.922 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.878 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.097 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.166 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.039 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 15.899 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.737 seconds
+Command "input_files = input output/bionano_files.txt" took 0.0025 seconds to run
+Command "filter input_files *" took 10.4191 seconds to run
+Command "filter input_files size < 800 MB" took 71.8937 seconds to run
+Command "input_files = input output/bionano_files.txt" took 1.8376 seconds to run
+Command "filter input_files *" took 0.0093 seconds to run
+Command "filter input_files size < 800 MB" took 0.0094 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0000 seconds to run
+Command "filter input_files *" took 0.0096 seconds to run
+Command "remove *" took 0.0000 seconds to run
+Command "filter input_files size < 800 MB" took 0.0000 seconds to run
+Command "add *" took 0.0104 seconds to run
+Command "print(added_files)" took 0.0098 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0050 seconds to run
+Command "filter input_files *" took 0.0000 seconds to run
+Command "remove *" took 0.0000 seconds to run
+Command "filter input_files size < 800 MB" took 0.0103 seconds to run
+Command "add *" took 0.0000 seconds to run
+Command "print(added_files)" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.005 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.039 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.009 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 2.940 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 2.973 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.015 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.033 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.195 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.179 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.290 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.261 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.282 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.286 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.540 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.474 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.409 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 13.952 seconds
+Command "loaded_files = pfor(load, added_files)" took 18.3677 seconds to run
+Command "input_files = input output/bionano_files.txt" took 0.0000 seconds to run
+Command "filter input_files *" took 0.0099 seconds to run
+Command "remove *" took 0.0000 seconds to run
+Command "filter input_files size < 800 MB" took 0.0000 seconds to run
+Command "add *" took 0.0149 seconds to run
+Command "print(added_files)" took 0.0000 seconds to run
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.010 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.042 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.008 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.196 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.314 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.460 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.559 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.565 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.577 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.558 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.594 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.595 seconds
+Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.569 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.912 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.879 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.923 seconds
+Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 14.854 seconds
+Command "loaded_files = pfor(load, added_files)" took 19.3723 seconds to run
+[29.04.2025-13:44] - Command "input_files = input output/bionano_files.txt" took 0.0000 seconds to run
+[29.04.2025-13:44] - Command "filter input_files *" took 0.0096 seconds to run
+[29.04.2025-13:44] - Command "remove *" took 0.0000 seconds to run
+[29.04.2025-13:44] - Command "filter input_files size < 800 MB" took 0.0099 seconds to run
+[29.04.2025-13:44] - Command "add *" took 0.0000 seconds to run
+[29.04.2025-13:44] - Command "print(added_files)" took 0.0099 seconds to run
+[29.04.2025-13:46] - Command "input_files = input output/bionano_files.txt" took 0.0029 seconds to run
+[29.04.2025-13:46] - Command "filter input_files *" took 0.0083 seconds to run
+[29.04.2025-13:46] - Command "remove *" took 0.0007 seconds to run
+[29.04.2025-13:46] - Command "filter input_files size < 800 MB" took 0.0054 seconds to run
+[29.04.2025-13:46] - Command "add *" took 0.0081 seconds to run
+[29.04.2025-13:46] - Command "print(added_files)" took 0.0035 seconds to run
+[29.04.2025-13:48] - Command "input_files = input output/bionano_files.txt" took 0.0150 seconds to run
+[29.04.2025-13:48] - Command "filter input_files *" took 0.0050 seconds to run
+[29.04.2025-13:48] - Command "remove *" took 0.0000 seconds to run
+[29.04.2025-13:48] - Command "my_files = filter input_files size < 800 MB" took 0.0000 seconds to run
+[29.04.2025-13:48] - Command "my_files = my_files[:5]" took 0.0000 seconds to run
+[29.04.2025-13:48] - Command "print(my_files)" took 0.0000 seconds to run
+[29.04.2025-13:48] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[29.04.2025-13:48] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[29.04.2025-13:48] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[29.04.2025-13:48] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+[29.04.2025-13:48] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-13:48] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.005 seconds
+[29.04.2025-13:48] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.005 seconds
+[29.04.2025-13:48] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.035 seconds
+[29.04.2025-13:48] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.952 seconds
+[29.04.2025-13:48] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 11.759 seconds
+[29.04.2025-13:48] - Command "loaded_files = pfor(load, my_files)" took 16.0202 seconds to run
+[29.04.2025-13:49] - Command "pfor_order(save, loaded_files)" took 63.7378 seconds to run
+[29.04.2025-13:49] - Command "print(loaded_files)" took 0.0010 seconds to run
+[29.04.2025-13:49] - Command "print(loaded_files[0])" took 0.0149 seconds to run
+[29.04.2025-13:51] - Command "run command.txt" took 0.0000 seconds to run
+[29.04.2025-13:52] - Command "print(type(loaded_files))" took 0.0000 seconds to run
+[29.04.2025-13:53] - Command "run command.txt" took 0.0000 seconds to run
+[29.04.2025-13:53] - Command "run command.txt" took 0.0000 seconds to run
+[29.04.2025-13:54] - Command "run(command.txt)" took 0.0050 seconds to run
+[29.04.2025-13:57:08] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0000 seconds to run
+[29.04.2025-13:57:08] - Command "filter name *.json" took 0.0199 seconds to run
+[29.04.2025-13:57:59] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0000 seconds to run
+[29.04.2025-13:57:59] - Command "jsons = filter name *.json" took 0.0000 seconds to run
+[29.04.2025-13:58:30] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0065 seconds to run
+[29.04.2025-13:58:30] - Command "jsons = filter name *.json" took 0.0000 seconds to run
+[29.04.2025-13:58:30] - Command "jsons = jsons[:3]" took 0.0000 seconds to run
+[29.04.2025-14:02:56] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0000 seconds to run
+[29.04.2025-14:02:56] - Command "filter name *.json size < 500 MB" took 0.0100 seconds to run
+[29.04.2025-14:02:56] - Command "sort by size" took 0.0000 seconds to run
+[29.04.2025-14:03:12] - Command "select top 5" took 0.0020 seconds to run
+[29.04.2025-14:03:18] - Command "add *" took 0.0000 seconds to run
+[29.04.2025-14:03:37] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0070 seconds to run
+[29.04.2025-14:03:37] - Command "filter name *.json size < 500 MB" took 0.0070 seconds to run
+[29.04.2025-14:03:37] - Command "sort by size" took 0.0035 seconds to run
+[29.04.2025-14:03:37] - Command "select top 5" took 0.0000 seconds to run
+[29.04.2025-14:03:37] - Command "add *" took 0.0000 seconds to run
+[29.04.2025-14:03:40] - Command "loaded_files = pfor(load, added)" took 2.7295 seconds to run
+[29.04.2025-14:04:00] - Command "print(type(loaded_files))" took 0.0000 seconds to run
+[29.04.2025-14:04:33] - Command "run(command.txt)" took 0.0005 seconds to run
+[29.04.2025-14:04:52] - Command "run(command.txt)" took 0.0000 seconds to run
+[29.04.2025-14:05:41] - Command "print(loaded_files[0])" took 0.0115 seconds to run
+[29.04.2025-14:06:14] - Command "print(loaded_files[0].keys())" took 0.0000 seconds to run
+[29.04.2025-14:06:31] - Command "run(command.txt)" took 0.0030 seconds to run
+[29.04.2025-14:07:02] - Command "run(command.txt)" took 0.0050 seconds to run
+[29.04.2025-14:07:19] - Command "run(command.txt)" took 0.0100 seconds to run
+[29.04.2025-14:07:27] - Command "run(command.txt)" took 0.0000 seconds to run
+[29.04.2025-14:07:35] - Command "run(command.txt)" took 0.0246 seconds to run
+[29.04.2025-14:08:28] - Command "run(command.txt)" took 0.0050 seconds to run
+[29.04.2025-14:08:49] - Command "run(command.txt)" took 0.0050 seconds to run
+[29.04.2025-14:09:49] - Command "run(command.txt)" took 0.0075 seconds to run
+[29.04.2025-14:10:19] - Command "run(command.txt)" took 0.0218 seconds to run
+[29.04.2025-14:10:26] - Command "run(command.txt)" took 0.0049 seconds to run
+[29.04.2025-14:10:52] - Command "run(command.txt)" took 0.0050 seconds to run
+[29.04.2025-14:11:16] - Command "run(command.txt)" took 0.0010 seconds to run
+[29.04.2025-14:11:56] - Command "run(command.txt)" took 0.0201 seconds to run
+[29.04.2025-14:12:05] - Command "run(command.txt)" took 0.0401 seconds to run
+[29.04.2025-14:12:35] - Command "run(command.txt)" took 9.7975 seconds to run
+[29.04.2025-14:12:56] - Command "run(command.txt)" took 5.2343 seconds to run
+[29.04.2025-14:13:02] - Command "run(command.txt)" took 0.2178 seconds to run
+[29.04.2025-14:13:10] - Command "run(command.txt)" took 0.0954 seconds to run
+[29.04.2025-14:13:47] - Command "run(command.txt)" took 0.0050 seconds to run
+[29.04.2025-14:13:53] - Command "run(command.txt)" took 0.0745 seconds to run
+[29.04.2025-14:13:55] - Command "run(command.txt)" took 0.0653 seconds to run
+[29.04.2025-14:14:28] - Command "run(command.txt)" took 0.0055 seconds to run
+[29.04.2025-14:14:46] - Command "run(command.txt)" took 0.0025 seconds to run
+[29.04.2025-14:15:55] - Command "run(command.txt)" took 0.0000 seconds to run
+[29.04.2025-14:16:02] - Command "run(command.txt)" took 0.0020 seconds to run
+[29.04.2025-14:16:29] - Command "run(command.txt)" took 0.0000 seconds to run
+[29.04.2025-14:16:37] - Command "run(command.txt)" took 0.0045 seconds to run
+[29.04.2025-14:16:38] - Command "run(command.txt)" took 0.0000 seconds to run
+[29.04.2025-14:16:39] - Command "run(command.txt)" took 0.0010 seconds to run
+[29.04.2025-14:16:41] - Command "run(command.txt)" took 0.0000 seconds to run
+[29.04.2025-14:16:53] - Command "run(command.txt)" took 0.0669 seconds to run
+[29.04.2025-14:17:16] - Command "run(command.txt)" took 0.0752 seconds to run
+[29.04.2025-14:17:23] - Command "run(command.txt)" took 0.0846 seconds to run
+[29.04.2025-14:17:37] - Command "run(command.txt)" took 0.0743 seconds to run
+[29.04.2025-14:17:49] - Command "run(command.txt)" took 0.0790 seconds to run
+[29.04.2025-14:18:10] - Command "run(command.txt)" took 0.0845 seconds to run
+[29.04.2025-14:18:27] - Command "run(command.txt)" took 0.0845 seconds to run
+[29.04.2025-14:18:40] - Command "run(command.txt)" took 0.0803 seconds to run
+[29.04.2025-14:18:54] - Command "run(command.txt)" took 0.0693 seconds to run
+[29.04.2025-14:19:11] - Command "run(command.txt)" took 0.0899 seconds to run
+[29.04.2025-14:19:23] - Command "run(command.txt)" took 0.0750 seconds to run
+[29.04.2025-14:19:28] - Command "run(command.txt)" took 0.0717 seconds to run
+[29.04.2025-14:19:33] - Command "run(command.txt)" took 0.0748 seconds to run
+[29.04.2025-14:19:44] - Command "run(command.txt)" took 0.0698 seconds to run
+[29.04.2025-14:45:10] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0021 seconds to run
+[29.04.2025-14:45:10] - Command "filter name *.json size < 500 MB" took 0.0072 seconds to run
+[29.04.2025-14:45:10] - Command "sort by size" took 0.0061 seconds to run
+[29.04.2025-14:45:10] - Command "select top 5" took 0.0024 seconds to run
+[29.04.2025-14:45:10] - Command "add *" took 0.0011 seconds to run
+[29.04.2025-14:45:13] - Command "loaded_files = pfor(load, added)" took 2.6408 seconds to run
+[29.04.2025-14:45:13] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-14:45:13] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0000 seconds to run
+[29.04.2025-14:45:48] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0030 seconds to run
+[29.04.2025-14:45:48] - Command "filter name *.json size < 500 MB" took 0.0070 seconds to run
+[29.04.2025-14:45:48] - Command "sort by size" took 0.0041 seconds to run
+[29.04.2025-14:45:48] - Command "select top 5" took 0.0021 seconds to run
+[29.04.2025-14:45:48] - Command "add *" took 0.0000 seconds to run
+[29.04.2025-14:45:51] - Command "loaded_files = pfor(load, added)" took 2.6243 seconds to run
+[29.04.2025-14:45:51] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-14:45:51] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0000 seconds to run
+[29.04.2025-14:46:12] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+[29.04.2025-14:46:12] - Command "filter name *.json size < 500 MB" took 0.0061 seconds to run
+[29.04.2025-14:46:12] - Command "sort by size" took 0.0050 seconds to run
+[29.04.2025-14:46:12] - Command "select top 5" took 0.0010 seconds to run
+[29.04.2025-14:46:12] - Command "add *" took 0.0011 seconds to run
+[29.04.2025-14:46:15] - Command "loaded_files = pfor(load, added)" took 2.5853 seconds to run
+[29.04.2025-14:46:15] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-14:46:15] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0000 seconds to run
+[29.04.2025-14:47:22] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0035 seconds to run
+[29.04.2025-14:47:22] - Command "filter name *.json size < 500 MB" took 0.0120 seconds to run
+[29.04.2025-14:47:22] - Command "sort by size" took 0.0071 seconds to run
+[29.04.2025-14:47:22] - Command "select top 5" took 0.0035 seconds to run
+[29.04.2025-14:47:22] - Command "add *" took 0.0025 seconds to run
+[29.04.2025-14:47:30] - Command "loaded_files = pfor(load, added)" took 8.6229 seconds to run
+[29.04.2025-14:47:30] - Command "output = """ took 0.0005 seconds to run
+[29.04.2025-14:47:30] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0000 seconds to run
+[29.04.2025-14:48:11] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+[29.04.2025-14:48:11] - Command "filter name *.json size < 500 MB" took 0.0065 seconds to run
+[29.04.2025-14:48:11] - Command "sort by size" took 0.0049 seconds to run
+[29.04.2025-14:48:11] - Command "select top 5" took 0.0050 seconds to run
+[29.04.2025-14:48:11] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-14:48:13] - Command "loaded_files = pfor(load, added)" took 2.5991 seconds to run
+[29.04.2025-14:48:13] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-14:48:13] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0000 seconds to run
+[29.04.2025-14:48:13] - Command "write("output/correct_molecules.txt", output)" took 0.0000 seconds to run
+[29.04.2025-14:50:25] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0030 seconds to run
+[29.04.2025-14:50:25] - Command "filter name *.json size < 500 MB" took 0.0111 seconds to run
+[29.04.2025-14:50:25] - Command "sort by size" took 0.0070 seconds to run
+[29.04.2025-14:50:25] - Command "select top 5" took 0.0035 seconds to run
+[29.04.2025-14:50:25] - Command "add *" took 0.0031 seconds to run
+[29.04.2025-14:50:29] - Command "loaded_files = pfor(load, added)" took 4.2407 seconds to run
+[29.04.2025-14:50:29] - Command "output = """ took 0.0011 seconds to run
+[29.04.2025-14:50:29] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0007 seconds to run
+[29.04.2025-14:57:32] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0031 seconds to run
+[29.04.2025-14:57:33] - Command "filter name *.json size < 500 MB" took 0.0113 seconds to run
+[29.04.2025-14:57:33] - Command "sort by size" took 0.0066 seconds to run
+[29.04.2025-14:57:33] - Command "select top 5" took 0.0032 seconds to run
+[29.04.2025-14:57:33] - Command "add *" took 0.0020 seconds to run
+[29.04.2025-14:57:37] - Command "loaded_files = pfor(load, added)" took 4.0968 seconds to run
+[29.04.2025-14:57:37] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-14:57:37] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0000 seconds to run
+[29.04.2025-14:58:17] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 2.2827 seconds to run
+[29.04.2025-14:58:18] - Command "filter name *.json size < 500 MB" took 1.0424 seconds to run
+[29.04.2025-14:58:19] - Command "sort by size" took 1.2507 seconds to run
+[29.04.2025-14:58:20] - Command "select top 5" took 0.8448 seconds to run
+[29.04.2025-14:58:21] - Command "add *" took 1.0260 seconds to run
+[29.04.2025-14:58:34] - Command "loaded_files = pfor(load, added)" took 12.9177 seconds to run
+[29.04.2025-14:59:04] - Command "output = """ took 28.5822 seconds to run
+[29.04.2025-14:59:33] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 21.8028 seconds to run
+[29.04.2025-15:00:00] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0030 seconds to run
+[29.04.2025-15:00:00] - Command "filter name *.json size < 500 MB" took 0.0106 seconds to run
+[29.04.2025-15:00:00] - Command "sort by size" took 0.0065 seconds to run
+[29.04.2025-15:00:00] - Command "select top 5" took 0.0025 seconds to run
+[29.04.2025-15:00:00] - Command "add *" took 0.0030 seconds to run
+[29.04.2025-15:00:06] - Command "loaded_files = pfor(load, added)" took 6.1543 seconds to run
+[29.04.2025-15:00:06] - Command "output = """ took 0.0005 seconds to run
+[29.04.2025-15:00:57] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+[29.04.2025-15:00:57] - Command "filter name *.json size < 500 MB" took 0.0086 seconds to run
+[29.04.2025-15:00:57] - Command "sort by size" took 0.0048 seconds to run
+[29.04.2025-15:00:57] - Command "select top 5" took 0.0023 seconds to run
+[29.04.2025-15:00:57] - Command "add *" took 0.0009 seconds to run
+[29.04.2025-15:01:00] - Command "loaded_files = pfor(load, added)" took 2.6024 seconds to run
+[29.04.2025-15:01:00] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:01:00] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1418 seconds to run
+[29.04.2025-15:01:00] - Command "write("output/correct_molecules.txt", output)" took 0.0000 seconds to run
+[29.04.2025-15:01:12] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0025 seconds to run
+[29.04.2025-15:01:12] - Command "filter name *.json size < 500 MB" took 0.0115 seconds to run
+[29.04.2025-15:01:12] - Command "sort by size" took 0.0067 seconds to run
+[29.04.2025-15:01:12] - Command "select top 5" took 0.0025 seconds to run
+[29.04.2025-15:01:12] - Command "add *" took 0.0022 seconds to run
+[29.04.2025-15:01:18] - Command "loaded_files = pfor(load, added)" took 6.3749 seconds to run
+[29.04.2025-15:01:18] - Command "output = """ took 0.0009 seconds to run
+[29.04.2025-15:02:52] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 93.6810 seconds to run
+[29.04.2025-15:04:46] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0025 seconds to run
+[29.04.2025-15:04:46] - Command "filter name *.json size < 500 MB" took 0.0120 seconds to run
+[29.04.2025-15:04:46] - Command "sort by size" took 0.0055 seconds to run
+[29.04.2025-15:04:46] - Command "select top 5" took 0.0020 seconds to run
+[29.04.2025-15:04:46] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-15:04:50] - Command "loaded_files = pfor(load, added)" took 4.1299 seconds to run
+[29.04.2025-15:04:50] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:04:50] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0897 seconds to run
+[29.04.2025-15:05:50] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0026 seconds to run
+[29.04.2025-15:05:50] - Command "filter name *.json size < 500 MB" took 0.0107 seconds to run
+[29.04.2025-15:05:50] - Command "sort by size" took 0.0065 seconds to run
+[29.04.2025-15:05:50] - Command "select top 5" took 0.0025 seconds to run
+[29.04.2025-15:05:50] - Command "add *" took 0.0020 seconds to run
+[29.04.2025-15:05:54] - Command "loaded_files = pfor(load, added)" took 4.1287 seconds to run
+[29.04.2025-15:05:54] - Command "output = """ took 0.0010 seconds to run
+[29.04.2025-15:05:54] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0867 seconds to run
+[29.04.2025-15:06:12] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+[29.04.2025-15:06:12] - Command "filter name *.json size < 500 MB" took 0.0116 seconds to run
+[29.04.2025-15:06:12] - Command "sort by size" took 0.0061 seconds to run
+[29.04.2025-15:06:12] - Command "select top 5" took 0.0025 seconds to run
+[29.04.2025-15:06:12] - Command "add *" took 0.0020 seconds to run
+[29.04.2025-15:06:17] - Command "loaded_files = pfor(load, added)" took 4.1275 seconds to run
+[29.04.2025-15:06:17] - Command "output = """ took 0.0010 seconds to run
+[29.04.2025-15:06:17] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0832 seconds to run
+[29.04.2025-15:11:40] - Command "delete_file("output/correct_molecules.txt")" took 0.0020 seconds to run
+[29.04.2025-15:11:40] - Command "d C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0010 seconds to run
+[29.04.2025-15:11:40] - Command "filter name *.json size < 500 MB" took 0.0060 seconds to run
+[29.04.2025-15:11:40] - Command "sort by size" took 0.0051 seconds to run
+[29.04.2025-15:11:40] - Command "select top 5" took 0.0025 seconds to run
+[29.04.2025-15:11:40] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-15:11:43] - Command "loaded_files = pfor(load, added)" took 2.6245 seconds to run
+[29.04.2025-15:11:43] - Command "output = """ took 0.0010 seconds to run
+[29.04.2025-15:11:43] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1459 seconds to run
+[29.04.2025-15:11:43] - Command "write("output/correct_molecules.txt", output)" took 0.0005 seconds to run
+[29.04.2025-15:14:38] - Command "delete_file("output/correct_molecules.txt")" took 0.0016 seconds to run
+[29.04.2025-15:14:38] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0010 seconds to run
+[29.04.2025-15:14:38] - Command "filter name *.json size < 500 MB" took 0.0116 seconds to run
+[29.04.2025-15:14:38] - Command "sort by size" took 0.0071 seconds to run
+[29.04.2025-15:14:38] - Command "select top 5" took 0.0010 seconds to run
+[29.04.2025-15:14:38] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-15:14:41] - Command "loaded_files = pfor(load, added)" took 2.6332 seconds to run
+[29.04.2025-15:14:41] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:14:41] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1473 seconds to run
+[29.04.2025-15:14:41] - Command "write("output/correct_molecules.txt", output)" took 0.0000 seconds to run
+[29.04.2025-15:15:04] - Command "delete_file("output/correct_molecules.txt")" took 0.0020 seconds to run
+[29.04.2025-15:15:04] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0000 seconds to run
+[29.04.2025-15:15:04] - Command "filter name *.json size < 500 MB" took 0.0065 seconds to run
+[29.04.2025-15:15:04] - Command "sort by size" took 0.0040 seconds to run
+[29.04.2025-15:15:04] - Command "select top 5" took 0.0024 seconds to run
+[29.04.2025-15:15:04] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-15:15:07] - Command "loaded_files = pfor(load, added)" took 2.6478 seconds to run
+[29.04.2025-15:15:07] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:15:07] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1964 seconds to run
+[29.04.2025-15:15:07] - Command "write("correct_molecules.txt", output)" took 0.0010 seconds to run
+[29.04.2025-15:15:35] - Command "delete_file("correct_molecules.txt")" took 0.0020 seconds to run
+[29.04.2025-15:15:35] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0000 seconds to run
+[29.04.2025-15:15:35] - Command "filter name *.json size < 500 MB" took 0.0071 seconds to run
+[29.04.2025-15:15:35] - Command "sort by size" took 0.0045 seconds to run
+[29.04.2025-15:15:35] - Command "select top 5" took 0.0020 seconds to run
+[29.04.2025-15:15:35] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-15:15:38] - Command "loaded_files = pfor(load, added)" took 2.6077 seconds to run
+[29.04.2025-15:15:38] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:15:38] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1442 seconds to run
+[29.04.2025-15:15:38] - Command "write("output/correct_molecules.txt", output)" took 0.0000 seconds to run
+[29.04.2025-15:15:55] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0026 seconds to run
+[29.04.2025-15:15:55] - Command "delete_file("correct_molecules.txt")" took 0.0000 seconds to run
+[29.04.2025-15:15:55] - Command "filter name *.json size < 500 MB" took 0.0097 seconds to run
+[29.04.2025-15:15:55] - Command "sort by size" took 0.0043 seconds to run
+[29.04.2025-15:15:55] - Command "select top 5" took 0.0010 seconds to run
+[29.04.2025-15:15:55] - Command "add *" took 0.0005 seconds to run
+[29.04.2025-15:15:58] - Command "loaded_files = pfor(load, added)" took 2.6129 seconds to run
+[29.04.2025-15:15:58] - Command "output = """ took 0.0005 seconds to run
+[29.04.2025-15:15:58] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1502 seconds to run
+[29.04.2025-15:15:58] - Command "write("output/correct_molecules.txt", output)" took 0.0000 seconds to run
+[29.04.2025-15:18:24] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0027 seconds to run
+[29.04.2025-15:18:24] - Command "delete_file("correct_molecules.txt")" took 0.0000 seconds to run
+[29.04.2025-15:18:24] - Command "filter name *.json size < 500 MB" took 0.0071 seconds to run
+[29.04.2025-15:18:24] - Command "sort by size" took 0.0046 seconds to run
+[29.04.2025-15:18:24] - Command "select top 5" took 0.0062 seconds to run
+[29.04.2025-15:18:24] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-15:18:27] - Command "loaded_files = pfor(load, added)" took 2.6111 seconds to run
+[29.04.2025-15:18:27] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:18:27] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1478 seconds to run
+[29.04.2025-15:18:27] - Command "write("output/correct_molecules.txt", output)" took 0.0000 seconds to run
+[29.04.2025-15:18:52] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+[29.04.2025-15:18:52] - Command "delete_file("output/correct_molecules.txt")" took 0.0009 seconds to run
+[29.04.2025-15:18:52] - Command "filter name *.json size < 500 MB" took 0.0079 seconds to run
+[29.04.2025-15:18:52] - Command "sort by size" took 0.0045 seconds to run
+[29.04.2025-15:18:52] - Command "select top 5" took 0.0020 seconds to run
+[29.04.2025-15:18:52] - Command "add *" took 0.0010 seconds to run
+[29.04.2025-15:18:55] - Command "loaded_files = pfor(load, added)" took 2.6139 seconds to run
+[29.04.2025-15:18:55] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:18:55] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1401 seconds to run
+[29.04.2025-15:18:55] - Command "write("output/correct_molecules.txt", output)" took 0.0010 seconds to run
+[29.04.2025-15:19:41] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\output" took 0.0020 seconds to run
+[29.04.2025-15:19:41] - Command "delete_file("output/correct_molecules.txt")" took 0.0010 seconds to run
+[29.04.2025-15:19:41] - Command "filter name *.json size < 500 MB" took 0.0122 seconds to run
+[29.04.2025-15:19:41] - Command "sort by size" took 0.0070 seconds to run
+[29.04.2025-15:19:41] - Command "select top 5" took 0.0021 seconds to run
+[29.04.2025-15:19:41] - Command "add *" took 0.0009 seconds to run
+[29.04.2025-15:19:44] - Command "loaded_files = pfor(load, added)" took 2.6481 seconds to run
+[29.04.2025-15:19:44] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-15:19:44] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.1492 seconds to run
+[29.04.2025-15:19:44] - Command "write("output/correct_molecules.txt", output)" took 0.0008 seconds to run

@@ -5,11 +5,12 @@ import sys
 import threading
 import time
 
-import python.email as email
-import python.global_variables as global_variables
 from colorama import Fore, init
 from prompt_toolkit import prompt
 from prompt_toolkit.patch_stdout import patch_stdout
+
+import python.email as email
+import python.global_variables as global_variables
 from python.decider import process_command
 from python.help_func import (comments_removal, debug_write,
                               read_commands_from_file, read_json)
@@ -88,6 +89,7 @@ def main(args):
                 typed_commands.append(cmd)
             
     threading.Thread(target=status_check, daemon=True).start()
+    
     while True:
         if len(commands_to_process) > 0:
             command = commands_to_process.pop(0)

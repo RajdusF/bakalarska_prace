@@ -1,0 +1,17 @@
+output = ""
+
+for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output = file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"
+    
+write("output/correct_molecules.txt", output)

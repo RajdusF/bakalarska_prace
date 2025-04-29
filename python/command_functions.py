@@ -601,3 +601,45 @@ def resolve_duplicity(files : list):
         seen_files.add(current_file)
     
     return unique_files, duplicates
+
+def write(command):    
+    text = ""
+    
+    parentheses_start = command.index("(")
+    parentheses_end = command.index(")")
+    
+    parentheses = command[parentheses_start + 1:parentheses_end]
+    
+    parentheses_splitted = parentheses.split(",")
+    
+    filename = parentheses_splitted[0].strip().replace("\"", "").replace("'", "")
+    try:
+        text = global_variables.variables[parentheses_splitted[1].strip()]
+    except:
+        text = parentheses_splitted[1].strip()
+    
+    text = text.replace("\"", "").replace("'", "")
+    
+    
+    
+    with open(filename, 'a') as f:
+        f.write(text)
+        
+def delete_file(command):
+    try:
+        start = command.index("(")
+        end = command.index(")")
+
+        raw_path = command[start + 1:end].strip()
+        path = raw_path.strip('"').strip("'")
+        path = os.path.normpath(path)
+
+        print(f"Checking file: {path}")
+
+        if os.path.isfile(path):
+            os.remove(path)
+            print(Fore.YELLOW + f"File {path} deleted")
+        else:
+            print(Fore.RED + f"File {path} not found")
+    except Exception as e:
+        print(Fore.RED + f"Error while trying to delete file: {e}")

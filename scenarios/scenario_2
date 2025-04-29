@@ -1,24 +1,26 @@
-Nacteni ulozenych souboru
-      Vyber dat / ke zpracování prida slozku
-Vyreseni duplicit, ignorovani / upozorneni
-Ulozi vyresene duplicity
-Vzit nazvy souboru ze složky
-Najit soubory v jine slozce
-Pokud se shoduje jmeno tak:
-Ulozit jako soubory ktere probehly v poradku a chceme s nima pracovat
-Overit nejake hodnoty... napřiklad jestli proběhlo všechno v pořádku
-Poslat k dalsimu zpracovani
-Ulozeni do souboru
-
-# set path C:\Users\Filip\Documents\bakalarska_prace\files
-cd
-ls
-set search 2
-set duplicity 1
-
 files = input output/bionano_files.txt
 
-new, duplicates = resolve_duplicity(files)
+sort added by modified
+select top 5
 
-print(f"New files: {new}")
-print(f"Duplicates: {duplicates}")
+remove *
+add *
+
+
+finds_version = find "Version" in added -I
+find "Number of Molecules" in added -I
+
+print(finds_version)
+my_report = ""
+
+for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"
+
+
+send_email(my_report, "Function find")

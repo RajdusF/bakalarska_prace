@@ -32,6 +32,21 @@ email_functions = importlib.import_module('python.email')
 
 history = []
 
+def custom_interact():
+    lines = []
+    while True:
+        line = input("Zadejte řádek (pro ukončení stiskněte Enter):\n")
+        if line == "":  # Konec, když je řádek prázdný
+            break
+        lines.append(line)
+
+    print("Zadané řádky:")
+    for line in lines:
+        print(line)
+        
+    return lines
+
+
 def execute_command(command, variables):
     if command == "added_files" or command == "added":
         return variables["added_files"]
@@ -336,6 +351,10 @@ def read_commands_from_file(file):
     
     if file is None:
         file = "configurator_commands.txt"
+        
+    if not os.path.isfile(file):
+        print(Fore.RED + f"The file '{file}' does not exist" + Fore.RESET)
+        return []
     
     try:
         commands = []
@@ -595,6 +614,8 @@ def help_history():
       
 def debug_write(message):
     with open("debug.txt", "a") as file:
-        file.write(f"{message}\n")
+        timestamp = datetime.now().strftime("[%d.%m.%Y-%H:%M:%S]")
+        file.write(f"{timestamp} - {message}\n")
     with open("log.txt", "a") as file:
-        file.write(f"{message}\n")
+        timestamp = datetime.now().strftime("[%d.%m.%Y-%H:%M:%S]")
+        file.write(f"{timestamp} - {message}\n")
