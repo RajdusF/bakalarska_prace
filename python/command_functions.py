@@ -5,14 +5,16 @@ import operator
 import os
 import re
 import textwrap
+import time
 
 from colorama import Fore
 from tabulate import tabulate
 from tqdm import tqdm
 
 import python.global_variables as global_variables
-from python.help_func import (find_name_of_browse_file, find_name_of_find_file,
-                              format_time, recalculate_size, time_from_now)
+from python.help_func import (debug_write, find_name_of_browse_file,
+                              find_name_of_find_file, format_time,
+                              recalculate_size, time_from_now)
 from python.MyFile import XData
 
 ops = {
@@ -448,7 +450,60 @@ def set_operations(expression: str, dictionary: dict):
         return result
 
 def save(name, output_file : str = None, shared_data = None, worker_id = None):    
-    if type(name) == str and global_variables is not None and name in global_variables.variables:
+    if (type(name) == list and type(name[0]) == XData) or type(name) == XData:
+        xdata = name
+    
+        if type(xdata) == list:
+            for x in xdata:
+                save(x, output_file, shared_data, worker_id)
+        else:
+            try:
+                
+                print("Saving...")
+                
+                start_time = time.time()
+                
+                output_dir = os.getcwd()
+                output_dir = os.path.join(output_dir, "output")
+                
+                output_filename = ""
+                
+                if not os.path.exists(output_dir):
+                    os.makedirs(output_dir)
+                    
+                if output_file == None:
+                    try:
+                        output_filename = xdata.name[:xdata.name.index(".")] + ".json"
+                    except:
+                        output_filename = xdata.name + ".json"
+                    
+                elif type(output_file) == list:
+                    output_filename = output_file[worker_id]
+                    
+                
+                if not output_filename.endswith(".json"):
+                    output_filename = output_filename[:output_filename.index(".")] + ".json"
+                    
+                output_data = xdata.data
+                
+                output_filename = os.path.join(xdata.path, output_filename)
+                output_filename = output_filename.replace(os.sep, '_')
+                
+                output_dir_file = os.path.join(output_dir, output_filename)
+                
+                global_variables.status = "Currently saving: {output_dir_file}"
+                
+                with open(output_dir_file, "w") as json_file:
+                    json.dump(output_data, json_file, indent=4)
+                    
+                print(f"Successfully saved to \"{output_dir_file}\"")
+                debug_write(f"Execution time of save {output_dir_file}: {time.time() - start_time:.2f} seconds")
+                return None
+            except Exception as e:
+                print(Fore.RED + f"Error writing to file: {e}")
+                return -1
+    
+    elif type(name) == str and global_variables is not None and name in global_variables.variables:
         if type(global_variables.variables[name]) == XData:
             xdata = global_variables.variables[name]
             try:
@@ -492,53 +547,6 @@ def save(name, output_file : str = None, shared_data = None, worker_id = None):
                 print(Fore.RED + f"Error writing to file: {e}")
                 return -1
             
-    elif (type(name) == list and type(name[0]) == XData) or type(name) == XData:
-        xdata = name
-    
-        if type(xdata) == list:
-            for x in xdata:
-                save(x, output_file, shared_data, worker_id)
-        else:
-            try:
-                
-                output_dir = os.getcwd()
-                output_dir = os.path.join(output_dir, "output")
-                
-                output_filename = ""
-                
-                if not os.path.exists(output_dir):
-                    os.makedirs(output_dir)
-                    
-                if output_file == None:
-                    try:
-                        output_filename = xdata.name[:xdata.name.index(".")] + ".json"
-                    except:
-                        output_filename = xdata.name + ".json"
-                    
-                elif type(output_file) == list:
-                    output_filename = output_file[worker_id]
-                    
-                
-                if not output_filename.endswith(".json"):
-                    output_filename = output_filename[:output_filename.index(".")] + ".json"
-                    
-                output_data = xdata.data
-                
-                output_filename = os.path.join(xdata.path, output_filename)
-                output_filename = output_filename.replace(os.sep, '_')
-                
-                output_dir_file = os.path.join(output_dir, output_filename)
-                
-                global_variables.status = "Currently saving: {output_dir_file}"
-                
-                with open(output_dir_file, "w") as json_file:
-                    json.dump(output_data, json_file, indent=4)
-                    
-                print(f"Successfully saved to \"{output_dir_file}\"")
-                return None
-            except Exception as e:
-                print(Fore.RED + f"Error writing to file: {e}")
-                return -1
     else:
         print(Fore.RED + f"Error during saving: Variable \"{name}\" not found" + Fore.RESET)
     

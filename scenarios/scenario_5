@@ -8,7 +8,7 @@ filter name *.bnx size > 400 MB
 
 sort by size
 
-select top 5
+select top 20
 
 add *
 

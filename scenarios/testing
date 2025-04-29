@@ -1,11 +1,23 @@
-# cd /data1/bionano-old/compute/jobs
-cd C:\Users\Filip\Documents\bakalarska_prace\test_files
+cd /data1/bionano-old/compute/jobs
+# cd C:\Users\Filip\Documents\bakalarska_prace\test_files
+
+filter * -d
+
+# filter name *.bnx
 
 
-higher = filter name *.bnx size > 20 MB
-lower = filter name *.bnx size < 50 MB
+# higher = filter name *.bnx size > 1 MB -MAX:200000
+# lower = filter name *.bnx size < 50 MB -MAX:200000
 
-my_selection = higher A lower
+# my_selection = higher A lower
+
+# show_files(my_selection)
+
+# add my_selection
+
+# output files_for_testing.txt
+
+# my_selection = input output/files_for_testing.txt
 
 # loaded = []
 
@@ -17,15 +29,16 @@ my_selection = higher A lower
 #     save(x)
 
 
-loaded = pfor(load, my_selection)
+# loaded = pfor(load, my_selection)
+
+# pfor(save, loaded)
 
 # avgs = []
 
 # for x in loaded:
     # avgs.append(average_snr(x))
 
-avg_snrs = pfor(average_snr, loaded)
+# avg_snrs = pfor(average_snr, loaded)
 
-# pfor(save, loaded)
 
-exit
+# exit

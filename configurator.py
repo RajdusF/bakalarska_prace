@@ -6,12 +6,11 @@ import sys
 import threading
 import time
 
+import python.email as email
+import python.global_variables as global_variables
 from colorama import Fore, init
 from prompt_toolkit import prompt
 from prompt_toolkit.patch_stdout import patch_stdout
-
-import python.email as email
-import python.global_variables as global_variables
 from python.decider import process_command
 from python.help_func import (comments_removal, debug_write,
                               read_commands_from_file, read_json)
@@ -168,6 +167,8 @@ if __name__ == "__main__":
     print(f"Default unit: {global_variables.default_unit}")
     print(f"Search folders: {global_variables.search_folders}")
     print(f"Show duplicity: {global_variables.show_duplicity}")
+    
+    print(f"multiprocessing.cpu_count(): {multiprocessing.cpu_count()}")
 
     
     cProfile.run("main(args)", sort="tottime")
