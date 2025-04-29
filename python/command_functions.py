@@ -540,6 +540,8 @@ def save(name, output_file : str = None, shared_data = None, worker_id = None):
                 
                 output_dir_file = os.path.join(output_dir, output_filename)
                 
+                global_variables.status = "Currently saving: {output_dir_file}"
+                
                 with open(output_dir_file, "w") as json_file:
                     json.dump(output_data, json_file, indent=4)
                     

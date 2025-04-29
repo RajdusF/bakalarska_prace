@@ -18,7 +18,7 @@ input_files = input output/bionano_files.txt
 
 
 
-print(input_files)
+print(input_files[:8])
 
 
 loaded_files = []
@@ -26,6 +26,7 @@ loaded_files = []
 for x in input_files[:3]:
     loaded_files.append(load(x))
     
-    
-for x in loaded_files:
-    save(x)
+  
+# Neni dostatek quoty  
+# for x in loaded_files:
+#     save(x)

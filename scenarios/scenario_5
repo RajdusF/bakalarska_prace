@@ -3,7 +3,8 @@ cd /data1/bionano-old/compute/jobs
 
 delete_file("output/correct_molecules.txt")
 
-filter name *.json size < 500 MB
+# filter name *.json size < 500 MB
+filter name *.bnx size > 400 MB
 
 sort by size
 
@@ -15,17 +16,21 @@ loaded_files = pfor(load, added)
 
 output = ""
 
+num = 0
 for i, file in enumerate(loaded_files):
     data = file["data"]
     print(file["filename"])
     output += file["filename"] + "\n"
     for molecule in data:
+        if num > 300:
+            break
         if "Length" in molecule and molecule["Length"] > 98000:
-            if "SNR" in molecule and molecule["SNR"] > 90:
-                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+            if "SNR" in molecule and molecule["SNR"] > 900:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 1100:
                     print(molecule)
                     print()
                     output += str(molecule) + "\n\n"
+                    num += 1
     print()
     output += "\n"
     

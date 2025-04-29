@@ -1,0 +1,19 @@
+# cd C:\Users\Filip\Documents\bakalarska_prace\output
+cd /data1/bionano-old/compute/jobs
+
+delete_file("output/correct_molecules.txt")
+
+# filter name *.json size < 500 MB
+filter name *.bnx size > 70 MB -MAX:40000
+
+sort by size
+
+select top 6
+
+add *
+
+loaded_files = pfor(load, added)
+
+avg_snrs = pfor(average_snr, loaded_files)
+
+print(avg_snrs)

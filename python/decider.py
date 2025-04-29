@@ -105,6 +105,7 @@ def process_command(command : str, variables, files : list, added_files : list):
         
         if command == "*" or command == "ls":
             show_current_folder()
+            return
             
         # Saving varibales       b = 5      VARIABLES
         if len(commands) > 2 and "=" in command and command[command.index("=") - 1] not in ["<", ">"] and not command.startswith("for") and not command.startswith("if"):
@@ -289,8 +290,9 @@ def process_command(command : str, variables, files : list, added_files : list):
                 return
             
             print(f"Added files ({len(added_files)}):")
-            for x in added_files:
-                print(x)
+            if(len(added_files) < 100):
+                for x in added_files:
+                    print(x)
                 
             variables["added_files"] = added_files
                 

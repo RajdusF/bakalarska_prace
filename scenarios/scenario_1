@@ -19,14 +19,8 @@ ls
 set duplicity 0
 set search 2
 
-a = filter name *.bnx -d
-# b = filter name *.cmap -d
-# c = filter name *.xmap -d
+a = filter name *.bnx
 
-# my_files = a+b+c
-
-for x in a[0:10]:
-    print(x)
     
 add a
 

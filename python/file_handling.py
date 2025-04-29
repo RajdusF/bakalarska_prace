@@ -154,14 +154,7 @@ def load_json(name):
                             fields = headers.get("h")
                             fields_data_types = data_types.get("f")
                             
-                            
-                        # print(f"line: {line}")
-                        # print(f"label_channel: {label_channel}")
-                        # print(f"fields: {fields}")
-                        # print(f"fields_data_types: {fields_data_types}")
-                        # print(f"headers: {headers}")
-                        # print(f"data_types: {data_types}")
-                        # print("\n")
+                        
                     except:
                         print(Fore.RED + f"Warning: No headers found for row: {line}")
                         continue

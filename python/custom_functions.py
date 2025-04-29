@@ -54,3 +54,16 @@ def return_list(l : list, shared_data=None, worker_id=None):
     
     print("Returning list...")
     return l
+
+def average_snr(file, shared_data=None, worker_id=None):
+    data = file["data"]
+    
+    total_snr = 0
+    num_of_molecules = 0
+    
+    for molecule in data:
+        if "SNR" in molecule:
+            total_snr += molecule["SNR"]
+            num_of_molecules += 1
+
+    return (file["filename"], total_snr / num_of_molecules)

@@ -1786,3 +1786,324 @@ Command "loaded_files = pfor(load, added_files)" took 19.3723 seconds to run
     print()
     output += "\n"" took 0.1492 seconds to run
 [29.04.2025-15:19:44] - Command "write("output/correct_molecules.txt", output)" took 0.0008 seconds to run
+[29.04.2025-15:25:45] - Command "cd /data1/bionano-old/compute/jobs" took 0.0081 seconds to run
+[29.04.2025-15:25:45] - Command "ls" took 0.0218 seconds to run
+[29.04.2025-15:25:45] - Command "set duplicity 0" took 0.0002 seconds to run
+[29.04.2025-15:25:45] - Command "set search 2" took 0.0002 seconds to run
+[29.04.2025-15:26:03] - Command "a = filter name *.bnx -d" took 17.7580 seconds to run
+[29.04.2025-15:26:03] - Command "for x in a[0:10]:
+    print(x)" took 0.0014 seconds to run
+[29.04.2025-15:26:33] - Command "add a" took 30.2714 seconds to run
+[29.04.2025-15:26:39] - Command "output bionano_files.txt" took 5.8131 seconds to run
+[29.04.2025-15:27:08] - Command "cd /data1/bionano-old/compute/jobs" took 0.0030 seconds to run
+[29.04.2025-15:27:08] - Command "ls" took 0.0232 seconds to run
+[29.04.2025-15:27:08] - Command "set duplicity 0" took 0.0002 seconds to run
+[29.04.2025-15:27:08] - Command "set search 2" took 0.0002 seconds to run
+[29.04.2025-15:27:27] - Command "a = filter name *.bnx" took 18.0265 seconds to run
+[29.04.2025-15:27:27] - Command "for x in a[0:10]:
+    print(x)" took 0.0027 seconds to run
+[29.04.2025-15:28:18] - Command "cd /data1/bionano-old/compute/jobs" took 0.0044 seconds to run
+[29.04.2025-15:28:18] - Command "ls" took 0.0210 seconds to run
+[29.04.2025-15:28:18] - Command "set duplicity 0" took 0.0002 seconds to run
+[29.04.2025-15:28:18] - Command "set search 2" took 0.0002 seconds to run
+[29.04.2025-15:28:36] - Command "a = filter name *.bnx" took 18.0921 seconds to run
+[29.04.2025-15:28:36] - Command "for x in a[0:10]:
+    print(x)" took 0.0016 seconds to run
+[29.04.2025-15:29:18] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-15:29:18] - Command "ls" took 0.0261 seconds to run
+[29.04.2025-15:29:18] - Command "set duplicity 0" took 0.0002 seconds to run
+[29.04.2025-15:29:18] - Command "set search 2" took 0.0002 seconds to run
+[29.04.2025-15:29:36] - Command "a = filter name *.bnx" took 18.0176 seconds to run
+[29.04.2025-15:31:08] - Command "add a" took 91.9554 seconds to run
+[29.04.2025-15:31:13] - Command "output bionano_files.txt" took 5.8157 seconds to run
+[29.04.2025-15:32:09] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-15:32:09] - Command "ls" took 0.0205 seconds to run
+[29.04.2025-15:32:09] - Command "set duplicity 0" took 0.0003 seconds to run
+[29.04.2025-15:32:09] - Command "set search 2" took 0.0002 seconds to run
+[29.04.2025-15:32:27] - Command "a = filter name *.bnx" took 18.1405 seconds to run
+[29.04.2025-15:32:27] - Command "add a" took 0.0115 seconds to run
+[29.04.2025-15:32:33] - Command "output bionano_files.txt" took 5.8212 seconds to run
+[29.04.2025-15:32:43] - Command "files = input output/bionano_files.txt" took 0.8513 seconds to run
+[29.04.2025-15:32:49] - Command "sort added by modified" took 6.1520 seconds to run
+[29.04.2025-15:32:49] - Command "select top 5" took 0.0166 seconds to run
+[29.04.2025-15:32:49] - Command "remove *" took 0.0148 seconds to run
+[29.04.2025-15:32:49] - Command "add *" took 0.0004 seconds to run
+[29.04.2025-15:32:49] - Command "finds_version = find "Version" in added -I" took 0.1342 seconds to run
+[29.04.2025-15:32:49] - Command "find "Number of Molecules" in added -I" took 0.0075 seconds to run
+[29.04.2025-15:32:49] - Command "print(finds_version)" took 0.0014 seconds to run
+[29.04.2025-15:32:49] - Command "my_report = """ took 0.0000 seconds to run
+[29.04.2025-15:32:49] - Command "for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"" took 0.0016 seconds to run
+[29.04.2025-15:32:50] - Command "send_email(my_report, "Function find")" took 0.2540 seconds to run
+[29.04.2025-15:33:53] - Command "input_files = input output/bionano_files.txt" took 0.6992 seconds to run
+[29.04.2025-15:34:17] - Command "print(input_files)" took 24.3031 seconds to run
+[29.04.2025-15:34:17] - Command "loaded_files = []" took 0.0001 seconds to run
+[29.04.2025-15:34:17] - Processing "/data1/bionano-old/compute/jobs/10/RawMolecules.bnx" with size 2381.2443704605103 MB
+[29.04.2025-15:38:48] - Execution time of load /data1/bionano-old/compute/jobs/10/RawMolecules.bnx and size 2381.2443704605103 MB took: 270.567 seconds
+[29.04.2025-15:38:48] - Processing "/data1/bionano-old/compute/jobs/10/output/all.bnx" with size 2381.2443704605103 MB
+[29.04.2025-15:43:31] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all.bnx and size 2381.2443704605103 MB took: 283.618 seconds
+[29.04.2025-15:43:31] - Processing "/data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx" with size 70.38542366027832 MB
+[29.04.2025-15:43:37] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx and size 70.38542366027832 MB took: 5.306 seconds
+[29.04.2025-15:43:37] - Command "for x in input_files[:3]:
+    loaded_files.append(load(x))" took 559.4926 seconds to run
+[29.04.2025-16:02:40] - Command "for x in loaded_files:
+    save(x)" took 1143.4705 seconds to run
+[29.04.2025-16:28:41] - Command "cd /data1/bionano-old/compute/jobs" took 0.0044 seconds to run
+[29.04.2025-16:28:41] - Command "fitler name *.bnx size < 3 GB" took 0.0005 seconds to run
+[29.04.2025-16:28:50] - Command "[A" took 0.0008 seconds to run
+[29.04.2025-16:28:52] - Command "cd /data1/bionano-old/compute/jobs" took 0.0032 seconds to run
+[29.04.2025-16:29:15] - Command "filter name *.bnx size < 3 GB" took 23.4952 seconds to run
+[29.04.2025-16:30:17] - Command "filter name *.bnx size < 1500 MB" took 23.5007 seconds to run
+[29.04.2025-16:31:17] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-16:31:40] - Command "higher = filter name *.bnx size < 1300 MB" took 23.3472 seconds to run
+[29.04.2025-16:32:04] - Command "lower = filter name *.bnx size > 500 MB" took 23.6131 seconds to run
+[29.04.2025-16:32:14] - Command "my_selection = higher A lower" took 10.6607 seconds to run
+[29.04.2025-16:33:00] - Command "print(my_selection)" took 0.0013 seconds to run
+[29.04.2025-16:34:00] - Command "cd /data1/bionano-old/compute/jobs" took 0.0033 seconds to run
+[29.04.2025-16:34:23] - Command "lower = filter name *.bnx size > 500 MB" took 23.5431 seconds to run
+[29.04.2025-16:34:24] - Command "sort by size" took 0.1201 seconds to run
+[29.04.2025-16:34:52] - Command "select top 1" took 0.0013 seconds to run
+[29.04.2025-16:34:55] - Command "add *" took 0.0003 seconds to run
+[29.04.2025-16:35:14] - Processing "/data1/bionano-old/compute/jobs/351/output/all_sorted.bnx" with size 525.8996496200562 MB
+[29.04.2025-16:36:02] - Execution time of load /data1/bionano-old/compute/jobs/351/output/all_sorted.bnx and size 525.8996496200562 MB took: 47.635 seconds
+[29.04.2025-16:36:02] - Command "l_files = load(added)" took 47.6361 seconds to run
+[29.04.2025-16:38:59] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-16:38:59] - Processing "/data1/bionano-old/compute/jobs/351/output/all_sorted.bnx" with size 525.8996496200562 MB
+[29.04.2025-16:39:45] - Execution time of load /data1/bionano-old/compute/jobs/351/output/all_sorted.bnx and size 525.8996496200562 MB took: 46.115 seconds
+[29.04.2025-16:39:45] - Command "loaded_file = load("/data1/bionano-old/compute/jobs/351/output/all_sorted.bnx")" took 46.1154 seconds to run
+[29.04.2025-16:42:11] - Command "save(loaded_file)" took 146.6019 seconds to run
+[29.04.2025-16:48:21] - Command "cd /data1/bionano-old/compute/jobs" took 0.0041 seconds to run
+[29.04.2025-16:48:21] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-16:48:32] - Command "filter name *.json size < 500 MB" took 10.7561 seconds to run
+[29.04.2025-16:48:32] - Command "sort by size" took 0.0001 seconds to run
+[29.04.2025-16:48:32] - Command "select top 5" took 0.0000 seconds to run
+[29.04.2025-16:48:32] - Command "add *" took 0.0001 seconds to run
+[29.04.2025-16:48:32] - Command "loaded_files = pfor(load, added)" took 0.0007 seconds to run
+[29.04.2025-16:48:32] - Command "output = """ took 0.0000 seconds to run
+[29.04.2025-16:48:32] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0019 seconds to run
+[29.04.2025-16:48:32] - Command "write("output/correct_molecules.txt", output)" took 0.0002 seconds to run
+[29.04.2025-16:50:00] - Command "cd /data1/bionano-old/compute/jobs" took 0.0030 seconds to run
+[29.04.2025-16:50:00] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-16:50:24] - Command "filter name *.bnx size < 500 MB" took 23.2780 seconds to run
+[29.04.2025-16:50:30] - Command "sort by size" took 5.7393 seconds to run
+[29.04.2025-16:50:30] - Command "select top 5" took 0.0153 seconds to run
+[29.04.2025-16:50:30] - Command "add *" took 0.0003 seconds to run
+[29.04.2025-16:50:30] - Processing "/data1/bionano-old/compute/jobs/211/output/contigs/exp_refineB0/exp_refineB0_group7_mapped_group172.bnx" with size 0.003972053527832031 MB
+[29.04.2025-16:50:30] - Execution time of load /data1/bionano-old/compute/jobs/211/output/contigs/exp_refineB0/exp_refineB0_group7_mapped_group172.bnx and size 0.003972053527832031 MB took: 0.029 seconds
+[29.04.2025-16:50:31] - Processing "/data1/bionano-old/compute/jobs/220/output/contigs/exp_refineB0/exp_refineB0_group1_mapped_group178.bnx" with size 0.003972053527832031 MB
+[29.04.2025-16:50:31] - Execution time of load /data1/bionano-old/compute/jobs/220/output/contigs/exp_refineB0/exp_refineB0_group1_mapped_group178.bnx and size 0.003972053527832031 MB took: 0.024 seconds
+[29.04.2025-16:50:31] - Processing "/data1/bionano-old/compute/jobs/210/output/contigs/exp_refineB0/exp_refineB0_group2_mapped_group1590.bnx" with size 0.0039730072021484375 MB
+[29.04.2025-16:50:31] - Execution time of load /data1/bionano-old/compute/jobs/210/output/contigs/exp_refineB0/exp_refineB0_group2_mapped_group1590.bnx and size 0.0039730072021484375 MB took: 0.017 seconds
+[29.04.2025-16:50:32] - Processing "/data1/bionano-old/compute/jobs/210/output/contigs/exp_refineB0/exp_refineB0_group3_mapped_group1559.bnx" with size 0.0039730072021484375 MB
+[29.04.2025-16:50:32] - Execution time of load /data1/bionano-old/compute/jobs/210/output/contigs/exp_refineB0/exp_refineB0_group3_mapped_group1559.bnx and size 0.0039730072021484375 MB took: 0.023 seconds
+[29.04.2025-16:50:32] - Processing "/data1/bionano-old/compute/jobs/211/output/contigs/exp_refineB0/exp_refineB0_group5_mapped_group884.bnx" with size 0.0039730072021484375 MB
+[29.04.2025-16:50:32] - Execution time of load /data1/bionano-old/compute/jobs/211/output/contigs/exp_refineB0/exp_refineB0_group5_mapped_group884.bnx and size 0.0039730072021484375 MB took: 0.022 seconds
+[29.04.2025-16:50:32] - Command "loaded_files = pfor(load, added)" took 2.6438 seconds to run
+[29.04.2025-16:50:32] - Command "output = """ took 0.0001 seconds to run
+[29.04.2025-16:50:32] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 90:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 900:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+    print()
+    output += "\n"" took 0.0023 seconds to run
+[29.04.2025-16:50:32] - Command "write("output/correct_molecules.txt", output)" took 0.0002 seconds to run
+[29.04.2025-16:51:02] - Command "cd /data1/bionano-old/compute/jobs" took 0.0039 seconds to run
+[29.04.2025-16:51:02] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-16:51:25] - Command "filter name *.bnx size > 400 MB" took 23.3020 seconds to run
+[29.04.2025-16:51:26] - Command "sort by size" took 0.1287 seconds to run
+[29.04.2025-16:51:26] - Command "select top 5" took 0.0014 seconds to run
+[29.04.2025-16:51:26] - Command "add *" took 0.0003 seconds to run
+[29.04.2025-16:51:26] - Processing "/data1/bionano-old/compute/jobs/109/output/all_sorted.bnx" with size 403.4632053375244 MB
+[29.04.2025-16:51:26] - Processing "/data1/bionano-old/compute/jobs/459/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 417.37328147888184 MB
+[29.04.2025-16:51:26] - Processing "/data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 425.0975332260132 MB
+[29.04.2025-16:51:26] - Processing "/data1/bionano-old/compute/jobs/461/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 425.17497730255127 MB
+[29.04.2025-16:51:26] - Processing "/data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 425.22627449035645 MB
+[29.04.2025-16:52:10] - Execution time of load /data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 425.22627449035645 MB took: 44.037 seconds
+[29.04.2025-16:52:10] - Execution time of load /data1/bionano-old/compute/jobs/461/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 425.17497730255127 MB took: 44.202 seconds
+[29.04.2025-16:52:12] - Execution time of load /data1/bionano-old/compute/jobs/109/output/all_sorted.bnx and size 403.4632053375244 MB took: 46.094 seconds
+[29.04.2025-16:52:12] - Execution time of load /data1/bionano-old/compute/jobs/459/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 417.37328147888184 MB took: 46.472 seconds
+[29.04.2025-16:52:14] - Execution time of load /data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise1_rescaled.bnx and size 425.0975332260132 MB took: 47.992 seconds
+[29.04.2025-16:53:07] - Command "loaded_files = pfor(load, added)" took 101.5132 seconds to run
+[29.04.2025-16:53:07] - Command "output = """ took 0.0001 seconds to run
+[29.04.2025-16:56:41] - Command "cd /data1/bionano-old/compute/jobs" took 0.0030 seconds to run
+[29.04.2025-16:56:41] - Command "delete_file("output/correct_molecules.txt")" took 0.0003 seconds to run
+[29.04.2025-16:57:05] - Command "filter name *.bnx size > 400 MB" took 23.4395 seconds to run
+[29.04.2025-16:57:05] - Command "sort by size" took 0.1291 seconds to run
+[29.04.2025-16:57:05] - Command "select top 5" took 0.0014 seconds to run
+[29.04.2025-16:57:05] - Command "add *" took 0.0003 seconds to run
+[29.04.2025-16:57:05] - Processing "/data1/bionano-old/compute/jobs/109/output/all_sorted.bnx" with size 403.4632053375244 MB
+[29.04.2025-16:57:05] - Processing "/data1/bionano-old/compute/jobs/459/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 417.37328147888184 MB
+[29.04.2025-16:57:05] - Processing "/data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 425.0975332260132 MB
+[29.04.2025-16:57:05] - Processing "/data1/bionano-old/compute/jobs/461/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 425.17497730255127 MB
+[29.04.2025-16:57:05] - Processing "/data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 425.22627449035645 MB
+[29.04.2025-16:57:50] - Execution time of load /data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 425.22627449035645 MB took: 45.563 seconds
+[29.04.2025-16:57:51] - Execution time of load /data1/bionano-old/compute/jobs/109/output/all_sorted.bnx and size 403.4632053375244 MB took: 46.078 seconds
+[29.04.2025-16:57:51] - Execution time of load /data1/bionano-old/compute/jobs/461/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 425.17497730255127 MB took: 46.531 seconds
+[29.04.2025-16:57:52] - Execution time of load /data1/bionano-old/compute/jobs/459/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 417.37328147888184 MB took: 46.771 seconds
+[29.04.2025-16:57:52] - Execution time of load /data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise1_rescaled.bnx and size 425.0975332260132 MB took: 47.343 seconds
+[29.04.2025-16:58:53] - Command "loaded_files = pfor(load, added)" took 107.9685 seconds to run
+[29.04.2025-16:58:53] - Command "output = """ took 0.0001 seconds to run
+[29.04.2025-16:58:53] - Command "num = 0" took 0.0001 seconds to run
+[29.04.2025-16:58:53] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 900:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 1100:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+                    num += 1
+    print()
+    output += "\n"" took 0.0319 seconds to run
+[29.04.2025-16:58:53] - Command "write("output/correct_molecules.txt", output)" took 0.0008 seconds to run
+[29.04.2025-17:09:47] - Command "cd /data1/bionano-old/compute/jobs" took 0.0030 seconds to run
+[29.04.2025-17:09:47] - Command "delete_file("output/correct_molecules.txt")" took 0.0002 seconds to run
+[29.04.2025-17:10:10] - Command "filter name *.bnx size > 400 MB" took 23.3295 seconds to run
+[29.04.2025-17:10:10] - Command "sort by size" took 0.1295 seconds to run
+[29.04.2025-17:10:10] - Command "select top 5" took 0.0014 seconds to run
+[29.04.2025-17:10:10] - Command "add *" took 0.0003 seconds to run
+[29.04.2025-17:10:10] - Processing "/data1/bionano-old/compute/jobs/109/output/all_sorted.bnx" with size 403.4632053375244 MB
+[29.04.2025-17:10:10] - Processing "/data1/bionano-old/compute/jobs/459/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 417.37328147888184 MB
+[29.04.2025-17:10:10] - Processing "/data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 425.0975332260132 MB
+[29.04.2025-17:10:10] - Processing "/data1/bionano-old/compute/jobs/461/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 425.17497730255127 MB
+[29.04.2025-17:10:10] - Processing "/data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 425.22627449035645 MB
+[29.04.2025-17:10:56] - Execution time of load /data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 425.22627449035645 MB took: 45.466 seconds
+[29.04.2025-17:10:56] - Execution time of load /data1/bionano-old/compute/jobs/109/output/all_sorted.bnx and size 403.4632053375244 MB took: 45.609 seconds
+[29.04.2025-17:10:58] - Execution time of load /data1/bionano-old/compute/jobs/459/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 417.37328147888184 MB took: 47.439 seconds
+[29.04.2025-17:10:58] - Execution time of load /data1/bionano-old/compute/jobs/461/output/contigs/auto_noise/autoNoise0_rescaled.bnx and size 425.17497730255127 MB took: 47.763 seconds
+[29.04.2025-17:10:58] - Execution time of load /data1/bionano-old/compute/jobs/442/output/contigs/auto_noise/autoNoise1_rescaled.bnx and size 425.0975332260132 MB took: 48.157 seconds
+[29.04.2025-17:11:53] - Command "loaded_files = pfor(load, added)" took 102.6383 seconds to run
+[29.04.2025-17:15:18] - Command "avg_snrs = pfor(avg_snr, loaded_files)" took 205.0451 seconds to run
+[29.04.2025-17:15:18] - Command "print(avg_snrs)" took 0.0011 seconds to run
+[29.04.2025-17:15:32] - Command "cd /data1/bionano-old/compute/jobs" took 0.0030 seconds to run
+[29.04.2025-17:15:32] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-17:15:32] - Command "filter name *.bnx size > 200 MB -MAX:10" took 0.4629 seconds to run
+[29.04.2025-17:15:32] - Command "sort by size" took 0.0014 seconds to run
+[29.04.2025-17:15:32] - Command "select top 3" took 0.0009 seconds to run
+[29.04.2025-17:15:32] - Command "add *" took 0.0002 seconds to run
+[29.04.2025-17:15:32] - Processing "/data1/bionano-old/compute/jobs/10/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 1986.1151161193848 MB
+[29.04.2025-17:15:32] - Processing "/data1/bionano-old/compute/jobs/10/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 1975.656229019165 MB
+[29.04.2025-17:15:32] - Processing "/data1/bionano-old/compute/jobs/10/output/all_sorted.bnx" with size 2114.49711894989 MB
+[29.04.2025-17:17:16] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-17:17:16] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-17:17:16] - Command "filter name *.bnx size > 200 MB -MAX:400" took 0.4633 seconds to run
+[29.04.2025-17:17:16] - Command "sort by size" took 0.0014 seconds to run
+[29.04.2025-17:17:16] - Command "select top 3" took 0.0009 seconds to run
+[29.04.2025-17:17:16] - Command "add *" took 0.0002 seconds to run
+[29.04.2025-17:17:16] - Processing "/data1/bionano-old/compute/jobs/10/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 1975.656229019165 MB
+[29.04.2025-17:17:16] - Processing "/data1/bionano-old/compute/jobs/10/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 1986.1151161193848 MB
+[29.04.2025-17:17:16] - Processing "/data1/bionano-old/compute/jobs/10/output/all_sorted.bnx" with size 2114.49711894989 MB
+[29.04.2025-17:17:31] - Command "cd /data1/bionano-old/compute/jobs" took 0.0032 seconds to run
+[29.04.2025-17:17:31] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-17:17:31] - Command "filter name *.bnx size > 200 MB -MAX:2000" took 0.4647 seconds to run
+[29.04.2025-17:17:31] - Command "sort by size" took 0.0014 seconds to run
+[29.04.2025-17:17:31] - Command "select top 3" took 0.0009 seconds to run
+[29.04.2025-17:17:31] - Command "add *" took 0.0002 seconds to run
+[29.04.2025-17:17:31] - Processing "/data1/bionano-old/compute/jobs/10/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 1975.656229019165 MB
+[29.04.2025-17:17:31] - Processing "/data1/bionano-old/compute/jobs/10/output/contigs/auto_noise/autoNoise0_rescaled.bnx" with size 1986.1151161193848 MB
+[29.04.2025-17:17:31] - Processing "/data1/bionano-old/compute/jobs/10/output/all_sorted.bnx" with size 2114.49711894989 MB
+[29.04.2025-17:18:02] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-17:18:02] - Command "delete_file("output/correct_molecules.txt")" took 0.0002 seconds to run
+[29.04.2025-17:18:03] - Command "filter name *.bnx size > 200 MB -MAX:20000" took 0.6148 seconds to run
+[29.04.2025-17:18:03] - Command "sort by size" took 0.0025 seconds to run
+[29.04.2025-17:18:03] - Command "select top 3" took 0.0009 seconds to run
+[29.04.2025-17:18:03] - Command "add *" took 0.0002 seconds to run
+[29.04.2025-17:18:03] - Processing "/data1/bionano-old/compute/jobs/109/output/all_sorted.bnx" with size 403.4632053375244 MB
+[29.04.2025-17:18:03] - Processing "/data1/bionano-old/compute/jobs/108/startMQR.190416013526911042694/RawMolecules.bnx" with size 959.4593820571899 MB
+[29.04.2025-17:18:03] - Processing "/data1/bionano-old/compute/jobs/109/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 348.48555183410645 MB
+[29.04.2025-17:18:11] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-17:18:11] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-17:18:14] - Command "filter name *.bnx size > 200 MB -MAX:40000" took 2.7065 seconds to run
+[29.04.2025-17:18:14] - Command "sort by size" took 0.0077 seconds to run
+[29.04.2025-17:18:14] - Command "select top 3" took 0.0009 seconds to run
+[29.04.2025-17:18:14] - Command "add *" took 0.0002 seconds to run
+[29.04.2025-17:18:14] - Processing "/data1/bionano-old/compute/jobs/109/output/contigs/auto_noise/autoNoise1_rescaled.bnx" with size 348.48555183410645 MB
+[29.04.2025-17:18:14] - Processing "/data1/bionano-old/compute/jobs/109/output/all_sorted.bnx" with size 403.4632053375244 MB
+[29.04.2025-17:18:14] - Processing "/data1/bionano-old/compute/jobs/110/startMQR.190424080804983914366/RawMolecules.bnx" with size 712.2028617858887 MB
+[29.04.2025-17:18:54] - Execution time of load /data1/bionano-old/compute/jobs/109/output/contigs/auto_noise/autoNoise1_rescaled.bnx and size 348.48555183410645 MB took: 40.118 seconds
+[29.04.2025-17:19:03] - Execution time of load /data1/bionano-old/compute/jobs/109/output/all_sorted.bnx and size 403.4632053375244 MB took: 49.267 seconds
+[29.04.2025-17:19:39] - Execution time of load /data1/bionano-old/compute/jobs/110/startMQR.190424080804983914366/RawMolecules.bnx and size 712.2028617858887 MB took: 84.576 seconds
+[29.04.2025-17:20:05] - Command "loaded_files = pfor(load, added)" took 111.2745 seconds to run
+[29.04.2025-17:22:25] - Command "avg_snrs = pfor(average_snr, loaded_files)" took 139.4418 seconds to run
+[29.04.2025-17:22:25] - Command "print(avg_snrs)" took 0.0012 seconds to run
+[29.04.2025-17:22:32] - Command "cd /data1/bionano-old/compute/jobs" took 0.0031 seconds to run
+[29.04.2025-17:22:32] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-17:22:35] - Command "filter name *.bnx size > 10 MB -MAX:40000" took 2.7313 seconds to run
+[29.04.2025-17:22:35] - Command "sort by size" took 0.0360 seconds to run
+[29.04.2025-17:22:35] - Command "select top 3" took 0.0010 seconds to run
+[29.04.2025-17:22:35] - Command "add *" took 0.0002 seconds to run
+[29.04.2025-17:22:35] - Processing "/data1/bionano-old/compute/jobs/135/output/contigs/exp_extension0_4/exp_extension0_4_group11_mapped_group1.bnx" with size 10.031380653381348 MB
+[29.04.2025-17:22:35] - Processing "/data1/bionano-old/compute/jobs/135/output/contigs/exp_extension0_3/exp_extension0_3_group11_mapped_group1.bnx" with size 10.031381607055664 MB
+[29.04.2025-17:22:35] - Processing "/data1/bionano-old/compute/jobs/135/output/contigs/exp_extension0_5/exp_extension0_5_group11_mapped_group1.bnx" with size 10.031392097473145 MB
+[29.04.2025-17:22:36] - Execution time of load /data1/bionano-old/compute/jobs/135/output/contigs/exp_extension0_4/exp_extension0_4_group11_mapped_group1.bnx and size 10.031380653381348 MB took: 0.778 seconds
+[29.04.2025-17:22:36] - Execution time of load /data1/bionano-old/compute/jobs/135/output/contigs/exp_extension0_3/exp_extension0_3_group11_mapped_group1.bnx and size 10.031381607055664 MB took: 0.784 seconds
+[29.04.2025-17:22:36] - Execution time of load /data1/bionano-old/compute/jobs/135/output/contigs/exp_extension0_5/exp_extension0_5_group11_mapped_group1.bnx and size 10.031392097473145 MB took: 0.797 seconds
+[29.04.2025-17:22:37] - Command "loaded_files = pfor(load, added)" took 1.5348 seconds to run
+[29.04.2025-17:22:38] - Command "avg_snrs = pfor(average_snr, loaded_files)" took 1.5758 seconds to run
+[29.04.2025-17:22:38] - Command "print(avg_snrs)" took 0.0009 seconds to run
+[29.04.2025-17:23:00] - Command "cd /data1/bionano-old/compute/jobs" took 0.0032 seconds to run
+[29.04.2025-17:23:00] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-17:23:03] - Command "filter name *.bnx size > 50 MB -MAX:40000" took 2.7122 seconds to run
+[29.04.2025-17:23:03] - Command "sort by size" took 0.0241 seconds to run
+[29.04.2025-17:23:03] - Command "select top 3" took 0.0008 seconds to run
+[29.04.2025-17:23:03] - Command "add *" took 0.0002 seconds to run
+[29.04.2025-17:23:03] - Processing "/data1/bionano-old/compute/jobs/111/output/all_13_of_16.bnx" with size 50.440927505493164 MB
+[29.04.2025-17:23:03] - Processing "/data1/bionano-old/compute/jobs/111/output/all_12_of_16.bnx" with size 50.76299858093262 MB
+[29.04.2025-17:23:03] - Processing "/data1/bionano-old/compute/jobs/111/output/all_14_of_16.bnx" with size 51.04852104187012 MB
+[29.04.2025-17:23:09] - Execution time of load /data1/bionano-old/compute/jobs/111/output/all_13_of_16.bnx and size 50.440927505493164 MB took: 5.478 seconds
+[29.04.2025-17:23:09] - Execution time of load /data1/bionano-old/compute/jobs/111/output/all_14_of_16.bnx and size 51.04852104187012 MB took: 5.527 seconds
+[29.04.2025-17:23:09] - Execution time of load /data1/bionano-old/compute/jobs/111/output/all_12_of_16.bnx and size 50.76299858093262 MB took: 5.834 seconds
+[29.04.2025-17:23:13] - Command "loaded_files = pfor(load, added)" took 9.8555 seconds to run
+[29.04.2025-17:23:23] - Command "avg_snrs = pfor(average_snr, loaded_files)" took 10.3295 seconds to run
+[29.04.2025-17:23:23] - Command "print(avg_snrs)" took 0.0010 seconds to run
+[29.04.2025-17:32:48] - Command "cd /data1/bionano-old/compute/jobs" took 0.0030 seconds to run
+[29.04.2025-17:32:48] - Command "delete_file("output/correct_molecules.txt")" took 0.0001 seconds to run
+[29.04.2025-17:32:51] - Command "filter name *.bnx size > 70 MB -MAX:40000" took 2.7123 seconds to run
+[29.04.2025-17:32:51] - Command "sort by size" took 0.0191 seconds to run
+[29.04.2025-17:32:51] - Command "select top 6" took 0.0014 seconds to run
+[29.04.2025-17:32:51] - Command "add *" took 0.0003 seconds to run
+[29.04.2025-17:32:51] - Processing "/data1/bionano-old/compute/jobs/10/output/all_28_of_28.bnx" with size 70.23611164093018 MB
+[29.04.2025-17:32:51] - Processing "/data1/bionano-old/compute/jobs/10/output/all_7_of_28.bnx" with size 70.32256603240967 MB
+[29.04.2025-17:32:51] - Processing "/data1/bionano-old/compute/jobs/10/output/all_9_of_28.bnx" with size 70.33262920379639 MB
+[29.04.2025-17:32:51] - Processing "/data1/bionano-old/compute/jobs/10/output/all_3_of_28.bnx" with size 70.35362911224365 MB
+[29.04.2025-17:32:51] - Processing "/data1/bionano-old/compute/jobs/10/output/all_5_of_28.bnx" with size 70.3638563156128 MB
+[29.04.2025-17:32:51] - Processing "/data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx" with size 70.38542366027832 MB
+[29.04.2025-17:32:57] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_5_of_28.bnx and size 70.3638563156128 MB took: 6.027 seconds
+[29.04.2025-17:32:57] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx and size 70.38542366027832 MB took: 6.047 seconds
+[29.04.2025-17:32:57] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_3_of_28.bnx and size 70.35362911224365 MB took: 6.110 seconds
+[29.04.2025-17:32:57] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_7_of_28.bnx and size 70.32256603240967 MB took: 6.143 seconds
+[29.04.2025-17:32:57] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_28_of_28.bnx and size 70.23611164093018 MB took: 6.546 seconds
+[29.04.2025-17:32:57] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_9_of_28.bnx and size 70.33262920379639 MB took: 6.602 seconds
+[29.04.2025-17:33:06] - Command "loaded_files = pfor(load, added)" took 15.5512 seconds to run
+[29.04.2025-17:33:49] - Command "avg_snrs = pfor(average_snr, loaded_files)" took 42.7558 seconds to run
+[29.04.2025-17:33:49] - Command "print(avg_snrs)" took 0.0011 seconds to run
