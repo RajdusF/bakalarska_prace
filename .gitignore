@@ -1,5 +1,6 @@
 all.bnx
 test_files/big_cropped.bnx
+test_files/all_700MB.bnx
 settings.json
 output/
 debug.txt

@@ -13,8 +13,6 @@ def load(name_input, shared_data=None, worker_id=None):
     if isinstance(name_input, str):
         name_input = [name_input]
         
-    # for x in name_input:
-    #     x = x.replace("\"", "")
         
     files = []
     
@@ -41,29 +39,6 @@ def load(name_input, shared_data=None, worker_id=None):
             return json.load(file)
 
     return load_json(name)
-        
-    
-        
-    # for name in name_input:
-    #     if path is None:
-    #         print(Fore.RED + "Path is not set" + Fore.RESET)
-    #         return None
-        
-    #     # Úprava escape characterů pro Windows
-    #     name = name.replace("\\", "\\\\")
-    #     escaped_path = re.escape(path)
-    #     name = re.sub(
-    #         r'\bpath\b(?=(?:[^"]*"[^"]*")*[^"]*$)',
-    #         f'"{escaped_path}"',
-    #         name
-    #     )
-        
-    #     if "+" in name and all(part.strip(' "\'') for part in name.split("+")):
-    #         parts = [part.strip(' "\'') for part in name.split("+")]
-    #         name = os.path.join(parts[0], parts[1].lstrip("\\"))
-            
-    #     files.append(name)
-
         
         
 def load_json(name):
@@ -93,9 +68,6 @@ def load_json(name):
 
             for i, line in enumerate(f):
                 line = line.strip()
-                
-                # if i >= 920545 and i < 7_099_993:
-                #     continue
                 
                 g.status = f"load: Currently \"{name}\" processing line: {i}"
 
@@ -162,10 +134,6 @@ def load_json(name):
                     if fields:
                         values = line.split("\t")
                         
-                        # print(f"line: {line}")
-                        # print(f"len(values): {len(values)}")
-            
-
 
                         data_row = {}
                         for i in range(len(fields)):

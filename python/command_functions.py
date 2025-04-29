@@ -61,17 +61,6 @@ def show_files(files, commands = None):
     if len(files) > 0:
         print(tabulate(files_info, headers=headers, tablefmt="pretty", colalign=("left", "right", "right", "right")))
     
-    """
-    print(Fore.YELLOW + f"{len(files)} FILES:" + Fore.RESET)      # Number of occurrences
-    for file in files:
-        file_name = file.split("\\")[-1]
-        file_size = os.path.getsize(file)
-        is_folder = os.path.isdir(file)
-        if is_folder:
-            print(Fore.LIGHTBLUE_EX + f"{file_name:{global_variables.FILE_NAME_WIDTH+global_variables.SIZE_WIDTH+1}}" + Fore.RESET + f"{time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")  
-        else:
-            print(f"{file_name:{global_variables.FILE_NAME_WIDTH}} {recalculate_size(file_size):{global_variables.SIZE_WIDTH}} {time_from_now(file, 'modified'):{global_variables.MODIFIED_WIDTH}} {time_from_now(file, 'created'):{global_variables.CREATED_WIDTH}}")
-    """
 
 def show_added_files(added_files):
     print("Added files:")
@@ -363,8 +352,8 @@ def input_files(added_files, input_file="output.txt"):
 
 
 def output(added_files, extend, output_file="output.txt"):
-    os.makedirs("output", exist_ok=True)  # Vytvoří složku, pokud neexistuje
-    output_file = os.path.join("output", output_file)  # Přidání složky k názvu souboru
+    os.makedirs("output", exist_ok=True)
+    output_file = os.path.join("output", output_file)
     
     if not extend and os.path.isfile(output_file):
         os.remove(output_file)

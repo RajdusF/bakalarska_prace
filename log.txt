@@ -2107,3 +2107,318 @@ Command "loaded_files = pfor(load, added_files)" took 19.3723 seconds to run
 [29.04.2025-17:33:06] - Command "loaded_files = pfor(load, added)" took 15.5512 seconds to run
 [29.04.2025-17:33:49] - Command "avg_snrs = pfor(average_snr, loaded_files)" took 42.7558 seconds to run
 [29.04.2025-17:33:49] - Command "print(avg_snrs)" took 0.0011 seconds to run
+[29.04.2025-19:18:01] - Command "cd /data1/bionano-old/compute/jobs" took 0.0087 seconds to run
+[29.04.2025-19:18:01] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0005 seconds to run
+[29.04.2025-19:18:01] - Command "loaded_file = load("/data1/bionano-old/compute/jobs/351/output/all_sorted.bnx")" took 0.0011 seconds to run
+[29.04.2025-19:18:01] - Command "save(loaded_file)" took 0.0000 seconds to run
+[29.04.2025-19:18:29] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0021 seconds to run
+[29.04.2025-19:18:29] - Command "all = filter name *.bnx" took 0.0130 seconds to run
+[29.04.2025-19:18:43] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0022 seconds to run
+[29.04.2025-19:18:43] - Command "all = filter name *.bnx" took 0.0102 seconds to run
+[29.04.2025-19:18:43] - Command "sort by size" took 0.0060 seconds to run
+[29.04.2025-19:19:43] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0020 seconds to run
+[29.04.2025-19:19:43] - Command "all = filter name *.bnx" took 0.0102 seconds to run
+[29.04.2025-19:19:43] - Command "sort by size" took 0.0053 seconds to run
+[29.04.2025-19:19:43] - Command "higher = filter name *.bnx size > 20 MB" took 0.0113 seconds to run
+[29.04.2025-19:19:43] - Command "lower = filter name *.bnx size < 200 MB" took 0.0124 seconds to run
+[29.04.2025-19:19:43] - Command "my_selection = higher A lower" took 0.0071 seconds to run
+[29.04.2025-19:20:33] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0030 seconds to run
+[29.04.2025-19:20:33] - Command "all = filter name *.bnx" took 0.0151 seconds to run
+[29.04.2025-19:20:33] - Command "sort by size" took 0.0079 seconds to run
+[29.04.2025-19:20:33] - Command "higher = filter name *.bnx size > 20 MB" took 0.0114 seconds to run
+[29.04.2025-19:20:33] - Command "lower = filter name *.bnx size < 200 MB" took 0.0117 seconds to run
+[29.04.2025-19:23:40] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0020 seconds to run
+[29.04.2025-19:23:40] - Command "all = filter name *.bnx" took 0.0084 seconds to run
+[29.04.2025-19:23:40] - Command "sort by size" took 0.0056 seconds to run
+[29.04.2025-19:23:40] - Command "higher = filter name *.bnx size > 20 MB" took 0.0104 seconds to run
+[29.04.2025-19:23:40] - Command "lower = filter name *.bnx size < 200 MB" took 0.0126 seconds to run
+[29.04.2025-19:23:40] - Command "my_selection = higher A lower" took 0.0072 seconds to run
+[29.04.2025-19:23:49] - Command "show(my_selection)" took 0.0010 seconds to run
+[29.04.2025-19:24:02] - Command "show_files(my_selection)" took 0.0045 seconds to run
+[29.04.2025-19:24:38] - Command "cd .." took 0.0010 seconds to run
+[29.04.2025-19:24:50] - Command "filter name *.bnx" took 0.1010 seconds to run
+[29.04.2025-19:24:58] - Command "cd .." took 0.0010 seconds to run
+[29.04.2025-19:25:01] - Command "cd Downloads" took 0.0016 seconds to run
+[29.04.2025-19:25:04] - Command "filter *" took 0.0020 seconds to run
+[29.04.2025-19:25:47] - Command "C:\Users\Filip\Downloads" took 0.0010 seconds to run
+[29.04.2025-19:25:58] - Command "cd C:\\Users\\Filip\\Downloads" took 0.0020 seconds to run
+[29.04.2025-19:26:17] - Command "filter *" took 14.9932 seconds to run
+[29.04.2025-19:26:32] - Command "filter name *.pdf" took 1.3881 seconds to run
+[29.04.2025-19:29:38] - Command "filter name *.pdf" took 1.3925 seconds to run
+[29.04.2025-19:32:13] - Command "input_files = input output/bionano_files.txt" took 0.0094 seconds to run
+[29.04.2025-19:32:13] - Command "print(input_files[:8])" took 0.0000 seconds to run
+[29.04.2025-19:32:13] - Command "loaded_files = []" took 0.0000 seconds to run
+[29.04.2025-19:32:13] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all.bnx" with size 3401.1730461120605 MB
+[29.04.2025-19:34:25] - Command "input_files = input output/bionano_files.txt" took 0.0024 seconds to run
+[29.04.2025-19:34:25] - Command "filter input_files" took 0.0047 seconds to run
+[29.04.2025-19:34:25] - Command "print(input_files[:8])" took 0.0010 seconds to run
+[29.04.2025-19:34:25] - Command "loaded_files = []" took 0.0000 seconds to run
+[29.04.2025-19:34:25] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[29.04.2025-19:34:25] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.034 seconds
+[29.04.2025-19:34:25] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[29.04.2025-19:34:25] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.013 seconds
+[29.04.2025-19:34:25] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[29.04.2025-19:34:25] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.012 seconds
+[29.04.2025-19:34:25] - Command "for x in input_files[:3]:
+    loaded_files.append(load(x))" took 0.0584 seconds to run
+[29.04.2025-19:35:18] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0033 seconds to run
+[29.04.2025-19:35:18] - Command "filter *" took 0.0217 seconds to run
+[29.04.2025-19:35:30] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0021 seconds to run
+[29.04.2025-19:35:30] - Command "filter name *.bnx" took 0.0085 seconds to run
+[29.04.2025-19:40:05] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0020 seconds to run
+[29.04.2025-19:40:05] - Command "filter name *.bnx" took 0.0095 seconds to run
+[29.04.2025-19:40:05] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_700MB.bnx" with size 743.5615644454956 MB
+[29.04.2025-19:40:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_700MB.bnx and size 743.5615644454956 MB took: 45.223 seconds
+[29.04.2025-19:40:51] - Command "loaded = load("C:\\Users\\Filip\\Documents\\bakalarska_prace\\test_files\\all_700MB.bnx")" took 45.2239 seconds to run
+[29.04.2025-19:43:06] - Command "save(loaded)" took 127.5221 seconds to run
+[29.04.2025-19:43:06] - Command "" took 0.0000 seconds to run
+[29.04.2025-19:45:07] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0025 seconds to run
+[29.04.2025-19:45:07] - Command "higher = filter name *.bnx size > 20 MB" took 0.0087 seconds to run
+[29.04.2025-19:45:07] - Command "lower = filter name *.bnx size < 50 MB" took 0.0102 seconds to run
+[29.04.2025-19:45:07] - Command "my_selection = higher A lower" took 0.0091 seconds to run
+[29.04.2025-19:45:07] - Command "loaded = load(my_selection)" took 0.0010 seconds to run
+[29.04.2025-19:45:07] - Command "save(loaded)" took 0.0000 seconds to run
+[29.04.2025-19:47:32] - Command "cd /data1/bionano-old/compute/jobs" took 0.0021 seconds to run
+[29.04.2025-19:47:32] - Command "all = filter name *.bnx" took 0.0186 seconds to run
+[29.04.2025-19:47:32] - Command "sort by size" took 0.0085 seconds to run
+[29.04.2025-19:47:32] - Command "higher = filter name *.bnx size > 20 MB" took 0.0130 seconds to run
+[29.04.2025-19:47:32] - Command "lower = filter name *.bnx size < 200 MB" took 0.0138 seconds to run
+[29.04.2025-19:47:57] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0035 seconds to run
+[29.04.2025-19:47:57] - Command "higher = filter name *.bnx size > 20 MB" took 0.0190 seconds to run
+[29.04.2025-19:47:57] - Command "lower = filter name *.bnx size < 50 MB" took 0.0135 seconds to run
+[29.04.2025-19:48:33] - Command "my_selection = higher A lower" took 34.1545 seconds to run
+[29.04.2025-19:49:59] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0021 seconds to run
+[29.04.2025-19:49:59] - Command "higher = filter name *.bnx size > 20 MB" took 0.0090 seconds to run
+[29.04.2025-19:49:59] - Command "lower = filter name *.bnx size < 50 MB" took 0.0133 seconds to run
+[29.04.2025-19:49:59] - Command "my_selection = higher A lower" took 0.0088 seconds to run
+[29.04.2025-19:49:59] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:00] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.910 seconds
+[29.04.2025-19:50:00] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:02] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.914 seconds
+[29.04.2025-19:50:02] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:04] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 2.086 seconds
+[29.04.2025-19:50:04] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:06] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 1.951 seconds
+[29.04.2025-19:50:06] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:08] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 2.038 seconds
+[29.04.2025-19:50:08] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:11] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.144 seconds
+[29.04.2025-19:50:11] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:13] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 2.308 seconds
+[29.04.2025-19:50:13] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:15] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 1.642 seconds
+[29.04.2025-19:50:15] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:17] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 2.451 seconds
+[29.04.2025-19:50:17] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:19] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 1.679 seconds
+[29.04.2025-19:50:19] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:21] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 2.715 seconds
+[29.04.2025-19:50:21] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:23] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 1.637 seconds
+[29.04.2025-19:50:23] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:50:26] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 2.883 seconds
+[29.04.2025-19:50:26] - Command "loaded = load(my_selection)" took 27.3654 seconds to run
+[29.04.2025-19:50:26] - Command "save(loaded)" took 0.0000 seconds to run
+[29.04.2025-19:50:32] - Command "print(loaded" took 0.0010 seconds to run
+[29.04.2025-19:50:36] - Command "print(loaded)" took 0.0008 seconds to run
+[29.04.2025-19:51:09] - Command "save(loaded)" took 0.0000 seconds to run
+[29.04.2025-19:52:12] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0026 seconds to run
+[29.04.2025-19:52:12] - Command "higher = filter name *.bnx size > 20 MB" took 0.0112 seconds to run
+[29.04.2025-19:52:12] - Command "lower = filter name *.bnx size < 50 MB" took 0.0105 seconds to run
+[29.04.2025-19:52:12] - Command "my_selection = higher A lower" took 0.0060 seconds to run
+[29.04.2025-19:52:12] - Command "loaded = []" took 0.0010 seconds to run
+[29.04.2025-19:52:12] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.910 seconds
+[29.04.2025-19:52:14] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:16] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.982 seconds
+[29.04.2025-19:52:16] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:18] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 2.178 seconds
+[29.04.2025-19:52:18] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:20] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.176 seconds
+[29.04.2025-19:52:20] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:23] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 2.202 seconds
+[29.04.2025-19:52:23] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:25] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.309 seconds
+[29.04.2025-19:52:25] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:27] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 2.363 seconds
+[29.04.2025-19:52:27] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:29] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 1.664 seconds
+[29.04.2025-19:52:29] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:31] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 2.515 seconds
+[29.04.2025-19:52:31] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 1.721 seconds
+[29.04.2025-19:52:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:36] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 2.746 seconds
+[29.04.2025-19:52:36] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:38] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 1.668 seconds
+[29.04.2025-19:52:38] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:52:41] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 2.927 seconds
+[29.04.2025-19:52:41] - Command "for x in my_selection:
+    loaded.append(load(x))" took 28.3704 seconds to run
+[29.04.2025-19:53:49] - Command "for x in loaded:
+    save(x)" took 68.0765 seconds to run
+[29.04.2025-19:56:53] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0030 seconds to run
+[29.04.2025-19:56:53] - Command "higher = filter name *.bnx size > 20 MB" took 0.0087 seconds to run
+[29.04.2025-19:56:53] - Command "lower = filter name *.bnx size < 50 MB" took 0.0106 seconds to run
+[29.04.2025-19:56:53] - Command "my_selection = higher A lower" took 0.0101 seconds to run
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.411 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 3.535 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.576 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.798 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.823 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.828 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.827 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.886 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.919 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.948 seconds
+[29.04.2025-19:56:57] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 4.077 seconds
+[29.04.2025-19:56:57] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[29.04.2025-19:56:58] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 4.161 seconds
+[29.04.2025-19:57:00] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.461 seconds
+[29.04.2025-19:57:03] - Command "loaded = pfor(load, my_selection)" took 10.2320 seconds to run
+[29.04.2025-19:58:21] - Command "pfor(save, loaded)" took 77.8505 seconds to run
+[29.04.2025-20:00:47] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0021 seconds to run
+[29.04.2025-20:00:47] - Command "higher = filter name *.bnx size > 20 MB" took 0.0105 seconds to run
+[29.04.2025-20:00:47] - Command "lower = filter name *.bnx size < 50 MB" took 0.0095 seconds to run
+[29.04.2025-20:00:47] - Command "my_selection = higher A lower" took 0.0069 seconds to run
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:47] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.206 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.311 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.371 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 3.458 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.501 seconds
+[29.04.2025-20:00:51] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.491 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.524 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.631 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.689 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.713 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.719 seconds
+[29.04.2025-20:00:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.734 seconds
+[29.04.2025-20:00:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.649 seconds
+[29.04.2025-20:00:57] - Command "loaded = pfor(load, my_selection)" took 9.8411 seconds to run
+[29.04.2025-20:02:06] - Command "avg_snrs = pfor(average_snr, loaded)" took 69.8248 seconds to run
+[29.04.2025-20:04:09] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0049 seconds to run
+[29.04.2025-20:04:09] - Command "higher = filter name *.bnx size > 20 MB" took 0.0087 seconds to run
+[29.04.2025-20:04:09] - Command "lower = filter name *.bnx size < 50 MB" took 0.0099 seconds to run
+[29.04.2025-20:04:09] - Command "my_selection = higher A lower" took 0.0091 seconds to run
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:10] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:13] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 3.420 seconds
+[29.04.2025-20:04:13] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.442 seconds
+[29.04.2025-20:04:13] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.538 seconds
+[29.04.2025-20:04:13] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.609 seconds
+[29.04.2025-20:04:13] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.671 seconds
+[29.04.2025-20:04:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.702 seconds
+[29.04.2025-20:04:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.744 seconds
+[29.04.2025-20:04:14] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:04:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.724 seconds
+[29.04.2025-20:04:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.840 seconds
+[29.04.2025-20:04:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.852 seconds
+[29.04.2025-20:04:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.875 seconds
+[29.04.2025-20:04:14] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.856 seconds
+[29.04.2025-20:04:16] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.421 seconds
+[29.04.2025-20:04:19] - Command "loaded = pfor(load, my_selection)" took 9.9564 seconds to run
+[29.04.2025-20:04:19] - Command "avgs = []" took 0.0005 seconds to run
+[29.04.2025-20:04:19] - Command "for x in loaded:
+    avgs.append(average_snr(x))" took 0.2497 seconds to run
+[29.04.2025-20:04:58] - Command "print(avgs)" took 0.0010 seconds to run
+[29.04.2025-20:05:40] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0019 seconds to run
+[29.04.2025-20:05:40] - Command "higher = filter name *.bnx size > 20 MB" took 0.0142 seconds to run
+[29.04.2025-20:05:40] - Command "lower = filter name *.bnx size < 50 MB" took 0.0132 seconds to run
+[29.04.2025-20:05:40] - Command "my_selection = higher A lower" took 0.0089 seconds to run
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:41] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.212 seconds
+[29.04.2025-20:05:44] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 3.239 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.297 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.277 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.452 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.465 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.580 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.606 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.682 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.677 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.668 seconds
+[29.04.2025-20:05:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.706 seconds
+[29.04.2025-20:05:46] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.637 seconds
+[29.04.2025-20:05:50] - Command "loaded = pfor(load, my_selection)" took 9.6496 seconds to run
+[29.04.2025-20:05:50] - Command "avgs = []" took 0.0010 seconds to run
+[29.04.2025-20:05:50] - Command "for x in loaded:
+    avgs.append(average_snr(x))" took 0.2695 seconds to run
+[29.04.2025-20:06:49] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0033 seconds to run
+[29.04.2025-20:06:49] - Command "higher = filter name *.bnx size > 20 MB" took 0.0146 seconds to run
+[29.04.2025-20:06:49] - Command "lower = filter name *.bnx size < 50 MB" took 0.0133 seconds to run
+[29.04.2025-20:06:49] - Command "my_selection = higher A lower" took 0.0096 seconds to run
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:52] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.231 seconds
+[29.04.2025-20:06:52] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[29.04.2025-20:06:52] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 3.265 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_11.bnx and size 27.67490577697754 MB took: 3.364 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 3.348 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 3.356 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 3.452 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 3.512 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 3.502 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 3.580 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 3.717 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 3.693 seconds
+[29.04.2025-20:06:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 3.742 seconds
+[29.04.2025-20:06:55] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.663 seconds
+[29.04.2025-20:06:58] - Command "loaded = pfor(load, my_selection)" took 9.7829 seconds to run
+[29.04.2025-20:08:08] - Command "avg_snrs = pfor(average_snr, loaded)" took 69.9852 seconds to run

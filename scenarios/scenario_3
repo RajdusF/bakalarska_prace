@@ -17,7 +17,6 @@
 input_files = input output/bionano_files.txt
 
 
-
 print(input_files[:8])
 
 

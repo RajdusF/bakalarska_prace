@@ -145,7 +145,6 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
     else:
         input_files.clear()
         
-        # TODO: if path is not set, warning and return
         if global_variables.path == None or global_variables.path == "":
             print(Fore.RED + "Path is not set for filtering" + Fore.RESET)
             return []
@@ -252,57 +251,6 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         
         show_files(files)
         
-        """
-        files_info = []
-        
-        for file in files:
-            file_size = os.path.getsize(file)
-            modified_time = format_time(os.path.getmtime(file))
-            created_time = format_time(os.path.getctime(file))
-            
-            if os.path.isdir(file):
-                display_name = f"{Fore.LIGHTBLUE_EX}{file}{Fore.RESET}"
-            else:
-                display_name = file
-
-            files_info.append([
-                display_name,
-                recalculate_size(file_size),
-                modified_time,
-                created_time
-            ])
-            
-        headers = ["File", "Size", "Modified Time", "Created Time"]
-        print(tabulate(files_info, headers=headers, tablefmt="pretty"))
-        """
-        
-        """
-        if "-d" in commands:        # detailed
-            print(f"{'file':{FILE_NAME_WIDTH+4}} {'size':{SIZE_WIDTH}} {'modified':{MODIFIED_WIDTH}} {'created':{CREATED_WIDTH}}")
-        for file in files:
-            file_name = file.split("\\")[-1]
-            is_folder = os.path.isdir(file)
-            
-            if "-d" in commands and not is_folder:
-                print(f"{file_name:{FILE_NAME_WIDTH}} {recalculate_size(file_size):{SIZE_WIDTH}} {time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
-            elif "-d" in commands and is_folder:
-                print( Fore.LIGHTBLUE_EX + f"{file_name:{FILE_NAME_WIDTH+SIZE_WIDTH+1}}", end="" )
-                print(f"{time_from_now(file, 'modified'):{MODIFIED_WIDTH}} {time_from_now(file, 'created'):{CREATED_WIDTH}}")
-            else:
-                if is_folder:
-                    print(Fore.LIGHTBLUE_EX + f"{file_name:{FILE_NAME_WIDTH}}", end="")
-                else:  
-                    print(f"{file_name:{FILE_NAME_WIDTH}}", end="")
-                if size and size_operator and not is_folder:
-                    print(f"{recalculate_size(file_size):{SIZE_WIDTH}}", end="")
-                else:
-                    print(" " * 14, end="")
-                if modified and modified_operator and modified_time_unit:
-                    print(f"{time_from_now(file, "modified"):{MODIFIED_WIDTH}}", end="")
-                if created and created_operator and created_time_unit:
-                    print(f"{time_from_now(file, "created"):{CREATED_WIDTH}}", end="")
-                print()
-        """    
             
     if global_variables.show_duplicity == True:
         print(Fore.RED + f"Found {len(duplicates)} duplicates:" + Fore.RESET)

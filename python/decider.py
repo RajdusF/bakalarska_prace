@@ -1,4 +1,3 @@
-import code
 import importlib
 import os
 from pprint import pprint
@@ -6,10 +5,9 @@ from pprint import pprint
 from colorama import Fore
 from tabulate import tabulate
 
-import python.custom_functions
 import python.global_variables as global_variables
-from python.command_functions import (add, add_folder, add_if_in_variables, delete_file,
-                                      find, input_files, output,
+from python.command_functions import (add, add_folder, add_if_in_variables,
+                                      delete_file, find, input_files, output,
                                       output_occurances, remove, save, select,
                                       set_operations, settings, show_files,
                                       sort, write)
@@ -57,6 +55,8 @@ def process_command(command : str, variables, files : list, added_files : list):
     else:
         if command == "exit":
             return -1
+        
+        # Read / Run code
         
         if command.startswith("read") and "(" in command and ")" in command:
             parenthesses = command[command.index("(") + 1:command.index(")")]
@@ -155,7 +155,7 @@ def process_command(command : str, variables, files : list, added_files : list):
             if path_index < len(commands):
                 path = commands[path_index]
 
-                # Převést na absolutní cestu
+                # Na absolutni cestu
                 full_path = os.path.abspath(os.path.join(global_variables.path, path))
 
                 if os.path.isdir(full_path):
@@ -459,6 +459,8 @@ def process_command(command : str, variables, files : list, added_files : list):
             files.extend(temp)
             add_history(command, files)
             
+            return temp.copy()
+            
         elif commands[0] == "load" and commands[1] == "from" and command[3] == "to" and len(commands) == 5:
             if commands[2] in variables:
                 if commands[4] == "files":
@@ -477,7 +479,9 @@ def process_command(command : str, variables, files : list, added_files : list):
             if parenthesses == "added" or parenthesses == "added_files":
                 return load(added_files)  
             elif parenthesses == "files":
-                return load(files)          
+                return load(files)  
+            elif parenthesses in variables:
+                return load(variables[parenthesses])        
             else:
                 return load(command[command.index("(") + 1:command.index(")")])
             
@@ -559,20 +563,10 @@ def process_command(command : str, variables, files : list, added_files : list):
             additional_args = args[2:]
 
             
-            # for arg in args:
-            #     try:
-            #         if not callable(arg) and len(arg) < 100:
-            #             print(arg)
-            #     except Exception as e:
-            #         print(Fore.RED + f"Error during pfor: {e}")
-                
-            # try:
             if command.startswith("pfor_order"):
                 return pfor_order(func, items, *additional_args, num_cores=num_cores)
             else:
                 return pfor(func, items, *additional_args, num_cores=num_cores)
-            # except Exception as e:
-            #     print(Fore.RED + "Error during pfor: ", e)
                 
         
         elif command.startswith("write") and "(" in command and ")" in command:

@@ -1,0 +1,25 @@
+cd /data1/bionano-old/compute/jobs
+# cd C:\Users\Filip\Documents\bakalarska_prace\test_files
+
+all = filter name *.bnx
+
+sort by size
+
+higher = filter name *.bnx size > 20 MB
+lower = filter name *.bnx size < 200 MB
+
+my_selection = higher A lower
+
+# lower = filter name *.bnx size > 700 MB
+
+# sort by size
+
+# select top 1
+
+# add *
+
+# loaded_file = load("/data1/bionano-old/compute/jobs/351/output/all_sorted.bnx")
+
+# save(loaded_file)
+
+

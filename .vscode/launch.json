@@ -14,7 +14,7 @@
 			"type": "python",
 			"request": "launch",
 			"program": "${workspaceFolder}/configurator.py",
-			"args": ["scenarios/scenario_5"],
+			"args": ["scenarios/testing"],
 			"console": "integratedTerminal"
 		},
 		{

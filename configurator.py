@@ -1,4 +1,5 @@
 import argparse
+import cProfile
 import multiprocessing
 import os
 import sys
@@ -169,7 +170,7 @@ if __name__ == "__main__":
     print(f"Show duplicity: {global_variables.show_duplicity}")
 
     
-    # cProfile.run("main(args)", sort="tottime")
-    main(args)
+    cProfile.run("main(args)", sort="tottime")
+    # main(args)
     
     print(f"Program took {time.time() - start_time:.4f} seconds to run")
