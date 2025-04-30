@@ -1,4 +1,6 @@
-[30.04.2025-14:53:30] - Command "cd /data1/bionano-old/compute/jobs" took 0.0505 seconds to run
-[30.04.2025-14:53:30] - Command "set search 2" took 0.0010 seconds to run
-[30.04.2025-14:53:30] - Command "filter *" took 0.3574 seconds to run
-[30.04.2025-14:53:30] - Command "print("FINISH!")" took 0.0000 seconds to run
+[30.04.2025-15:28:02] - Command "ls" took 0.0162 seconds to run
+[30.04.2025-15:28:02] - Command "set duplicity 0" took 0.0024 seconds to run
+[30.04.2025-15:28:02] - Command "set search 2" took 0.0020 seconds to run
+[30.04.2025-15:28:02] - Command "a = filter name *.bnx" took 0.1471 seconds to run
+[30.04.2025-15:28:02] - Command "add a" took 0.0208 seconds to run
+[30.04.2025-15:28:02] - Command "output bionano_files.txt" took 0.0054 seconds to run

@@ -171,7 +171,7 @@ if __name__ == "__main__":
     print(f"CPU Count: {multiprocessing.cpu_count()}")
 
     
-    cProfile.run("main(args)", sort="tottime")
-    # main(args)
+    # cProfile.run("main(args)", sort="tottime")
+    main(args)
     
     print(f"Program took {time.time() - start_time:.4f} seconds to run")
