@@ -30,7 +30,9 @@ print(my_files)
 
 
 loaded_files = pfor(load, my_files)
+
+run("command.txt")
     
 
-pfor_order(save, loaded_files)
+# pfor_order(save, loaded_files)
 

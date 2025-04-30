@@ -1,6 +1,17 @@
-[30.04.2025-15:28:02] - Command "ls" took 0.0162 seconds to run
-[30.04.2025-15:28:02] - Command "set duplicity 0" took 0.0024 seconds to run
-[30.04.2025-15:28:02] - Command "set search 2" took 0.0020 seconds to run
-[30.04.2025-15:28:02] - Command "a = filter name *.bnx" took 0.1471 seconds to run
-[30.04.2025-15:28:02] - Command "add a" took 0.0208 seconds to run
-[30.04.2025-15:28:02] - Command "output bionano_files.txt" took 0.0054 seconds to run
+[30.04.2025-16:08:41] - Command "input_files = input output/bionano_files.txt" took 0.0053 seconds to run
+[30.04.2025-16:08:41] - Command "filter input_files *" took 0.0152 seconds to run
+[30.04.2025-16:08:41] - Command "remove *" took 0.0021 seconds to run
+[30.04.2025-16:08:41] - Command "my_files = filter input_files size < 800 MB" took 0.0113 seconds to run
+[30.04.2025-16:08:41] - Command "my_files = my_files[:5]" took 0.0024 seconds to run
+[30.04.2025-16:08:41] - Command "print(my_files)" took 0.0038 seconds to run
+[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[30.04.2025-16:08:43] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.015 seconds
+[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[30.04.2025-16:08:43] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.009 seconds
+[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
+[30.04.2025-16:08:43] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.078 seconds
+[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[30.04.2025-16:08:46] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.584 seconds
+[30.04.2025-16:08:57] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 14.210 seconds
+[30.04.2025-16:09:04] - Command "loaded_files = pfor(load, my_files)" took 23.2822 seconds to run

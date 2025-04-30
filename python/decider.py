@@ -77,13 +77,16 @@ def process_command(command : str, variables, files : list, added_files : list):
                 print(Fore.RED + "Error during running file")
                 return
             
+            if "\"" in parenthesses:
+                parenthesses = parenthesses.replace("\"", "").strip()
+                
             if os.path.isfile(parenthesses):
                 with open(parenthesses, "r") as f:
                     return process_command(f.read(), variables, files, added_files)
             elif parenthesses in variables:
                 return process_command(variables[parenthesses], variables, files, added_files)
             else:
-                print(Fore.RED + "File not found")
+                print(Fore.RED + "RUN: File not found")
                 return
         
         if command == "":

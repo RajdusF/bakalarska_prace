@@ -601,7 +601,7 @@ def resolve_duplicity(files : list):
     
     return unique_files, duplicates
 
-def write(command):    
+def write(command, filename):    
     text = ""
     
     parentheses_start = command.index("(")

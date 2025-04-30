@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python Debugger: configurator",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/configurator.py",
+      "args": ["scenarios/scenario_4"],
+      "console": "integratedTerminal"
+    }
+  ]
+}
