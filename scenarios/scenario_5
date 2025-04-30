@@ -1,10 +1,7 @@
-# cd C:\Users\Filip\Documents\bakalarska_prace\output
-cd /data1/bionano-old/compute/jobs
+cd C:\Users\Filip\Documents\bakalarska_prace
+# cd /data1/bionano-old/compute/jobs
 
-delete_file("output/correct_molecules.txt")
-
-# filter name *.json size < 500 MB
-filter name *.bnx size > 400 MB
+filter name *.bnx size < 100 MB -MAX:12
 
 sort by size
 
@@ -12,26 +9,25 @@ select top 20
 
 add *
 
+# Paralelni zpracovani
+
+
 loaded_files = pfor(load, added)
+avg_snrs = pfor(average_snr, loaded_files)
+print(avg_snrs)
 
-output = ""
 
-num = 0
-for i, file in enumerate(loaded_files):
-    data = file["data"]
-    print(file["filename"])
-    output += file["filename"] + "\n"
-    for molecule in data:
-        if num > 300:
-            break
-        if "Length" in molecule and molecule["Length"] > 98000:
-            if "SNR" in molecule and molecule["SNR"] > 900:
-                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 1100:
-                    print(molecule)
-                    print()
-                    output += str(molecule) + "\n\n"
-                    num += 1
-    print()
-    output += "\n"
+
+
+# Sekvencni zpracovani
+
+second_load = []
+for x in added_files:
+    second_load.append(load(x))
     
-write("output/correct_molecules.txt", output)
+second_snrs = []
+
+for x in second_load:
+    second_snrs.append(average_snr(x))
+    
+print(second_snrs)

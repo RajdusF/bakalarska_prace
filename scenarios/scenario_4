@@ -1,38 +1,65 @@
+cd C:\Users\Filip\Documents\bakalarska_prace
 # cd /data1/bionano-old/compute/jobs
 
-# cd C:\Users\Filip\Documents\bakalarska_prace\test_files
+delete_file("output/correct_molecules_1.txt")
+delete_file("output/correct_molecules_2.txt")
 
-# filter name *.bnx size < 5 GB
+# filter name *.json size < 500 MB
+# filter name *.bnx size > 400 MB
 
-# filter files size > 600 MB
+files = input output/bionano_files.txt
+
+show_files(files)
 
 # sort by size
 
-# add *
+# select top 20
 
-# select top 2
+add *
 
-# output my_selected_files.txt
+loaded_files = pfor(load, files)
 
-# loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
-input_files = input output/bionano_files.txt
+# Jednodussi filtr
+output = ""
 
-filter input_files *
-
-remove *
-
-my_files = filter input_files size < 800 MB
-
-my_files = my_files[:5]
-
-print(my_files)
-
-
-
-loaded_files = pfor(load, my_files)
-
-run("command.txt")
+num = 0
+for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 50:
+            print(molecule)
+            print()
+            output += str(molecule) + "\n\n"
+            num += 1
+    print()
+    output += "\n"
     
+write("output/correct_molecules_1.txt", output)
 
-# pfor_order(save, loaded_files)
 
+# Slozitejsi filtr
+output = ""
+
+num = 0
+for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 900:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 1100:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+                    num += 1
+    print()
+    output += "\n"
+    
+write("output/correct_molecules_2.txt", output)

@@ -1,14 +1,18 @@
-# set path C:\Users\Filip\Documents\bakalarska_prace\files
-# cd files
 # cd /data1/bionano-old/compute/jobs
-# cd C:\Users\Filip\Documents\bakalarska_prace\test_files
+cd C:\Users\Filip\Documents\bakalarska_prace\test_files
+
 ls
 set duplicity 0
 set search 2
 
-a = filter name *.bnx
+bnxs = filter name *.bnx size < 1 GB
 
+alls = filter bnxs name all*
+
+small = filter bnxs name small*
     
-add a
+group = alls U small
+
+add group
 
 output bionano_files.txt

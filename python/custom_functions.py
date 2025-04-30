@@ -1,7 +1,9 @@
 import random
+import time
 from time import sleep
 
 from python.parallel_for import _shared_globals
+
 
 def return_list(l : list, shared_data=None, worker_id=None):
     sleep(random.uniform(0, 1))
@@ -27,5 +29,9 @@ def average_snr(file, shared_data=None, worker_id=None):
         if "SNR" in molecule:
             total_snr += molecule["SNR"]
             num_of_molecules += 1
+            
+
+    # Simulace narocne operace / velkeho souboru
+    # time.sleep(5)
 
     return (file["filename"], total_snr / num_of_molecules)

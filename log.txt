@@ -1,256 +1,87 @@
-
-[29.04.2025-22:32:58] - Command "cd /data1/bionano-old/compute/jobs" took 0.0043 seconds to run
-[29.04.2025-22:32:58] - Command "delete_file("output/correct_molecules.txt")" took 0.0002 seconds to run
-[29.04.2025-22:33:03] - Command "filter name *.bnx size > 70 MB -MAX:40000" took 4.4271 seconds to run
-[29.04.2025-22:33:03] - Command "sort by size" took 0.0293 seconds to run
-[29.04.2025-22:33:03] - Command "select top 20" took 0.0067 seconds to run
-[29.04.2025-22:33:03] - Command "add *" took 0.0012 seconds to run
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_28_of_28.bnx" with size 70.23611164093018 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_7_of_28.bnx" with size 70.32256603240967 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_9_of_28.bnx" with size 70.33262920379639 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_5_of_28.bnx" with size 70.3638563156128 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_3_of_28.bnx" with size 70.35362911224365 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_27_of_28.bnx" with size 70.44338703155518 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_4_of_28.bnx" with size 70.48085021972656 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_11_of_28.bnx" with size 70.48527526855469 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_8_of_28.bnx" with size 70.5971851348877 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_18_of_28.bnx" with size 70.61395263671875 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_26_of_28.bnx" with size 70.62457656860352 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_22_of_28.bnx" with size 70.67400360107422 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_25_of_28.bnx" with size 70.7201795578003 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_6_of_28.bnx" with size 70.78225898742676 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_20_of_28.bnx" with size 70.78392696380615 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx" with size 70.38542366027832 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_21_of_28.bnx" with size 70.7884111404419 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_13_of_28.bnx" with size 70.79918384552002 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_14_of_28.bnx" with size 70.83778095245361 MB
-[29.04.2025-22:33:03] - Processing "/data1/bionano-old/compute/jobs/10/output/all_16_of_28.bnx" with size 70.84826469421387 MB
-[29.04.2025-22:33:13] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx and size 70.38542366027832 MB took: 10.617 seconds
-[29.04.2025-22:33:13] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_14_of_28.bnx and size 70.83778095245361 MB took: 10.642 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_9_of_28.bnx and size 70.33262920379639 MB took: 10.795 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_4_of_28.bnx and size 70.48085021972656 MB took: 10.806 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_26_of_28.bnx and size 70.62457656860352 MB took: 11.183 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_27_of_28.bnx and size 70.44338703155518 MB took: 11.429 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_18_of_28.bnx and size 70.61395263671875 MB took: 11.466 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_8_of_28.bnx and size 70.5971851348877 MB took: 11.494 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_25_of_28.bnx and size 70.7201795578003 MB took: 11.503 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_3_of_28.bnx and size 70.35362911224365 MB took: 11.534 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_5_of_28.bnx and size 70.3638563156128 MB took: 11.572 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_7_of_28.bnx and size 70.32256603240967 MB took: 11.575 seconds
-[29.04.2025-22:33:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_22_of_28.bnx and size 70.67400360107422 MB took: 11.642 seconds
-[29.04.2025-22:33:15] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_21_of_28.bnx and size 70.7884111404419 MB took: 11.687 seconds
-[29.04.2025-22:33:15] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_28_of_28.bnx and size 70.23611164093018 MB took: 11.726 seconds
-[29.04.2025-22:33:15] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_11_of_28.bnx and size 70.48527526855469 MB took: 11.804 seconds
-[29.04.2025-22:33:15] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_16_of_28.bnx and size 70.84826469421387 MB took: 11.897 seconds
-[29.04.2025-22:33:15] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_6_of_28.bnx and size 70.78225898742676 MB took: 11.990 seconds
-[29.04.2025-22:33:15] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_20_of_28.bnx and size 70.78392696380615 MB took: 11.995 seconds
-[29.04.2025-22:33:15] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_13_of_28.bnx and size 70.79918384552002 MB took: 12.395 seconds
-[29.04.2025-22:33:49] - Command "loaded_files = pfor(load, added)" took 46.6219 seconds to run
-[29.04.2025-22:39:46] - Command "avg_snrs = pfor(average_snr, loaded_files)" took 357.0607 seconds to run
-[29.04.2025-22:39:46] - Command "print(avg_snrs)" took 0.0021 seconds to run
-[29.04.2025-22:39:46] - Command "second_load = []" took 0.0001 seconds to run
-[29.04.2025-22:39:46] - Command "for x in added:
-    second_load.append(load(x))" took 0.0011 seconds to run
-[29.04.2025-22:39:46] - Command "second_snrs []" took 0.0006 seconds to run
-[29.04.2025-22:39:46] - Command "for x in second_load:
-    second_snrs.append(average_snr(x))" took 0.0006 seconds to run
-
-
-[29.04.2025-22:46:58] - Command "for x in my_selection:
-    second_load.append(load(x))" took 222.3062 seconds to run
-[29.04.2025-22:46:58] - Command "second_snrs []" took 0.0008 seconds to run
-[29.04.2025-22:46:58] - Command "for x in second_load:
-    second_snrs.append(average_snr(x))" took 0.0008 seconds to run
-
-    
-[29.04.2025-22:52:14] - Command "cd /data1/bionano-old/compute/jobs" took 0.0055 seconds to run
-[29.04.2025-22:52:14] - Command "delete_file("output/correct_molecules.txt")" took 0.0002 seconds to run
-[29.04.2025-22:52:19] - Command "filter name *.bnx size > 70 MB -MAX:40000" took 4.4861 seconds to run
-[29.04.2025-22:52:19] - Command "sort by size" took 0.0295 seconds to run
-[29.04.2025-22:52:19] - Command "select top 20" took 0.0067 seconds to run
-[29.04.2025-22:52:19] - Command "add *" took 0.0012 seconds to run
-[29.04.2025-22:52:19] - Command "my_selection = added_files" took 0.0001 seconds to run
-[29.04.2025-22:52:19] - Command "second_load = []" took 0.0001 seconds to run
-[29.04.2025-22:52:19] - Processing "/data1/bionano-old/compute/jobs/10/output/all_28_of_28.bnx" with size 70.23611164093018 MB
-[29.04.2025-22:53:14] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_5_of_28.bnx and size 70.3638563156128 MB took: 11.302 seconds
-[29.04.2025-22:53:14] - Processing "/data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx" with size 70.38542366027832 MB
-[29.04.2025-22:53:26] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_10_of_28.bnx and size 70.38542366027832 MB took: 11.486 seconds
-[29.04.2025-22:53:26] - Processing "/data1/bionano-old/compute/jobs/10/output/all_27_of_28.bnx" with size 70.44338703155518 MB
-[29.04.2025-22:53:38] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_27_of_28.bnx and size 70.44338703155518 MB took: 11.905 seconds
-[29.04.2025-22:53:38] - Processing "/data1/bionano-old/compute/jobs/10/output/all_4_of_28.bnx" with size 70.48085021972656 MB
-[29.04.2025-22:53:48] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_4_of_28.bnx and size 70.48085021972656 MB took: 10.082 seconds
-[29.04.2025-22:53:48] - Processing "/data1/bionano-old/compute/jobs/10/output/all_11_of_28.bnx" with size 70.48527526855469 MB
-[29.04.2025-22:54:00] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_11_of_28.bnx and size 70.48527526855469 MB took: 12.376 seconds
-[29.04.2025-22:54:00] - Processing "/data1/bionano-old/compute/jobs/10/output/all_8_of_28.bnx" with size 70.5971851348877 MB
-[29.04.2025-22:54:10] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_8_of_28.bnx and size 70.5971851348877 MB took: 10.112 seconds
-[29.04.2025-22:54:10] - Processing "/data1/bionano-old/compute/jobs/10/output/all_18_of_28.bnx" with size 70.61395263671875 MB
-[29.04.2025-22:54:23] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_18_of_28.bnx and size 70.61395263671875 MB took: 12.979 seconds
-[29.04.2025-22:54:23] - Processing "/data1/bionano-old/compute/jobs/10/output/all_26_of_28.bnx" with size 70.62457656860352 MB
-[29.04.2025-22:54:33] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_26_of_28.bnx and size 70.62457656860352 MB took: 10.091 seconds
-[29.04.2025-22:54:33] - Processing "/data1/bionano-old/compute/jobs/10/output/all_22_of_28.bnx" with size 70.67400360107422 MB
-[29.04.2025-22:54:47] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_22_of_28.bnx and size 70.67400360107422 MB took: 13.708 seconds
-[29.04.2025-22:54:47] - Processing "/data1/bionano-old/compute/jobs/10/output/all_25_of_28.bnx" with size 70.7201795578003 MB
-[29.04.2025-22:54:57] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_25_of_28.bnx and size 70.7201795578003 MB took: 10.069 seconds
-[29.04.2025-22:54:57] - Processing "/data1/bionano-old/compute/jobs/10/output/all_6_of_28.bnx" with size 70.78225898742676 MB
-[29.04.2025-22:55:07] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_6_of_28.bnx and size 70.78225898742676 MB took: 10.096 seconds
-[29.04.2025-22:55:07] - Processing "/data1/bionano-old/compute/jobs/10/output/all_20_of_28.bnx" with size 70.78392696380615 MB
-[29.04.2025-22:55:17] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_20_of_28.bnx and size 70.78392696380615 MB took: 10.137 seconds
-[29.04.2025-22:55:17] - Processing "/data1/bionano-old/compute/jobs/10/output/all_21_of_28.bnx" with size 70.7884111404419 MB
-[29.04.2025-22:55:32] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_21_of_28.bnx and size 70.7884111404419 MB took: 14.766 seconds
-[29.04.2025-22:55:32] - Processing "/data1/bionano-old/compute/jobs/10/output/all_13_of_28.bnx" with size 70.79918384552002 MB
-[29.04.2025-22:55:42] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_13_of_28.bnx and size 70.79918384552002 MB took: 10.016 seconds
-[29.04.2025-22:55:42] - Processing "/data1/bionano-old/compute/jobs/10/output/all_14_of_28.bnx" with size 70.83778095245361 MB
-[29.04.2025-22:55:52] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_14_of_28.bnx and size 70.83778095245361 MB took: 10.103 seconds
-[29.04.2025-22:55:52] - Processing "/data1/bionano-old/compute/jobs/10/output/all_16_of_28.bnx" with size 70.84826469421387 MB
-[29.04.2025-22:56:02] - Execution time of load /data1/bionano-old/compute/jobs/10/output/all_16_of_28.bnx and size 70.84826469421387 MB took: 10.152 seconds
-[29.04.2025-22:56:02] - Command "for x in my_selection:
-    second_load.append(load(x))" took 223.6265 seconds to run
-[29.04.2025-22:56:02] - Command "second_snrs = []" took 0.0001 seconds to run
-[29.04.2025-22:56:04] - Command "for x in second_load:
-    second_snrs.append(average_snr(x))" took 1.6771 seconds to run
-[30.04.2025-14:53:30] - Command "cd /data1/bionano-old/compute/jobs" took 0.0505 seconds to run
-[30.04.2025-14:53:30] - Command "set search 2" took 0.0010 seconds to run
-[30.04.2025-14:53:30] - Command "filter *" took 0.3574 seconds to run
-[30.04.2025-14:53:30] - Command "print("FINISH!")" took 0.0000 seconds to run
-[30.04.2025-15:03:33] - Command "ls" took 0.0011 seconds to run
-[30.04.2025-15:03:33] - Command "set duplicity 0" took 0.0000 seconds to run
-[30.04.2025-15:03:33] - Command "set search 2" took 0.0000 seconds to run
-[30.04.2025-15:03:34] - Command "a = filter name *.bnx" took 0.0519 seconds to run
-[30.04.2025-15:03:34] - Command "add a" took 0.0278 seconds to run
-[30.04.2025-15:03:34] - Command "output bionano_files.txt" took 0.0000 seconds to run
-[30.04.2025-15:14:55] - Command "ls" took 0.0159 seconds to run
-[30.04.2025-15:14:55] - Command "set duplicity 0" took 0.0010 seconds to run
-[30.04.2025-15:14:55] - Command "set search 2" took 0.0000 seconds to run
-[30.04.2025-15:14:55] - Command "a = filter name *.bnx" took 0.0319 seconds to run
-[30.04.2025-15:14:55] - Command "add a" took 0.0156 seconds to run
-[30.04.2025-15:14:55] - Command "output bionano_files.txt" took 0.0000 seconds to run
-[30.04.2025-15:28:02] - Command "ls" took 0.0162 seconds to run
-[30.04.2025-15:28:02] - Command "set duplicity 0" took 0.0024 seconds to run
-[30.04.2025-15:28:02] - Command "set search 2" took 0.0020 seconds to run
-[30.04.2025-15:28:02] - Command "a = filter name *.bnx" took 0.1471 seconds to run
-[30.04.2025-15:28:02] - Command "add a" took 0.0208 seconds to run
-[30.04.2025-15:28:02] - Command "output bionano_files.txt" took 0.0054 seconds to run
-[30.04.2025-15:41:00] - Command "input_files = input output/bionano_files.txt" took 0.0257 seconds to run
-[30.04.2025-15:41:00] - Command "filter input_files *" took 0.0013 seconds to run
-[30.04.2025-15:41:00] - Command "remove *" took 0.0004 seconds to run
-[30.04.2025-15:41:00] - Command "my_files = filter input_files size < 800 MB" took 0.0000 seconds to run
-[30.04.2025-15:41:00] - Command "my_files = my_files[:5]" took 0.0000 seconds to run
-[30.04.2025-15:41:00] - Command "print(my_files)" took 0.0000 seconds to run
-[30.04.2025-15:41:00] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-15:41:00] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-B
-[30.04.2025-15:41:00] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
-[30.04.2025-15:41:00] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-15:41:00] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.035 seconds
-[30.04.2025-15:41:00] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.035 seconds
-[30.04.2025-15:41:00] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.069 seconds
-[30.04.2025-15:41:03] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.554 seconds
-[30.04.2025-15:41:34] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 33.603 seconds
-[30.04.2025-15:42:02] - Command "loaded_files = pfor(load, my_files)" took 62.0534 seconds to run
-[30.04.2025-15:43:56] - Execution time of save C:\Users\Administrator\Documents\bakalarska_prace\output\_Users_Administrator_Documents_bakalarska_prace_test_files_all_cropped.json: 0.19 seconds
-[30.04.2025-15:44:12] - Execution time of save C:\Users\Administrator\Documents\bakalarska_prace\output\_Users_Administrator_Documents_bakalarska_prace_test_files_all_cropped_2.json: 0.15 seconds
-[30.04.2025-15:44:21] - Execution time of save C:\Users\Administrator\Documents\bakalarska_prace\output\_Users_Administrator_Documents_bakalarska_prace_test_files_all_2_cropped.json: 0.26 seconds
-[30.04.2025-15:46:21] - Execution time of save C:\Users\Administrator\Documents\bakalarska_prace\output\_Users_Administrator_Documents_bakalarska_prace_test_files_small_all.json: 113.60 seconds
-[30.04.2025-15:47:33] - Execution time of save C:\Users\Administrator\Documents\bakalarska_prace\output\_Users_Administrator_Documents_bakalarska_prace_test_files_big_cropped.json: 72.02 seconds
-[30.04.2025-15:49:02] - Command "pfor_order(save, loaded_files)" took 420.1059 seconds to run
-[30.04.2025-15:49:02] - Command "status¨" took 0.0414 seconds to run
-[30.04.2025-15:50:38] - Command "run(command.txt)" took 0.1598 seconds to run
-[30.04.2025-15:50:38] - Command "" took 0.0000 seconds to run
-[30.04.2025-15:50:43] - Command "run command.txt" took 0.0023 seconds to run
-[30.04.2025-15:51:12] - Command "run("command.txt")" took 0.0000 seconds to run
-[30.04.2025-15:52:10] - Command "run "command.txt"" took 0.0016 seconds to run
-[30.04.2025-15:52:15] - Command "run("command.txt")" took 0.0000 seconds to run
-[30.04.2025-15:52:22] - Command "run("/command.txt")" took 0.0409 seconds to run
-[30.04.2025-15:52:38] - Command "cd" took 0.0000 seconds to run
-[30.04.2025-15:52:47] - Command "cd .." took 0.0008 seconds to run
-[30.04.2025-15:52:51] - Command "cd bakalarska_prace" took 0.0122 seconds to run
-[30.04.2025-15:52:56] - Command "run("command.txt")" took 0.0000 seconds to run
-[30.04.2025-15:53:26] - Command "set search 0" took 0.0078 seconds to run
-[30.04.2025-15:53:30] - Command "filter *" took 0.0626 seconds to run
-[30.04.2025-15:53:40] - Command "run(command.txt" took 0.0021 seconds to run
-[30.04.2025-15:53:42] - Command "run(command.txt)" took 0.0094 seconds to run
-[30.04.2025-15:55:39] - Command "input_files = input output/bionano_files.txt" took 0.0156 seconds to run
-[30.04.2025-15:55:39] - Command "filter input_files *" took 0.0000 seconds to run
-[30.04.2025-15:55:39] - Command "remove *" took 0.0000 seconds to run
-[30.04.2025-15:55:39] - Command "my_files = filter input_files size < 800 MB" took 0.0000 seconds to run
-[30.04.2025-15:55:39] - Command "my_files = my_files[:5]" took 0.0008 seconds to run
-[30.04.2025-15:55:39] - Command "print(my_files)" took 0.0000 seconds to run
-[30.04.2025-15:55:40] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-15:55:40] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.046 seconds
-[30.04.2025-15:55:40] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-15:55:40] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.011 seconds
-[30.04.2025-15:55:40] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-15:55:40] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
-[30.04.2025-15:55:40] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-15:55:40] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.014 seconds
-[30.04.2025-15:55:43] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.535 seconds
-[30.04.2025-15:55:54] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 13.523 seconds
-[30.04.2025-15:56:00] - Command "loaded_files = pfor(load, my_files)" took 20.1806 seconds to run
-[30.04.2025-15:56:00] - Command "run("command.txt")" took 0.0000 seconds to run
-[30.04.2025-15:58:06] - Command "input_files = input output/bionano_files.txt" took 0.0000 seconds to run
-[30.04.2025-15:58:06] - Command "filter input_files *" took 0.0215 seconds to run
-[30.04.2025-15:58:06] - Command "remove *" took 0.0000 seconds to run
-[30.04.2025-15:58:06] - Command "my_files = filter input_files size < 800 MB" took 0.0000 seconds to run
-[30.04.2025-15:58:06] - Command "my_files = my_files[:5]" took 0.0164 seconds to run
-[30.04.2025-15:58:06] - Command "print(my_files)" took 0.0005 seconds to run
-[30.04.2025-15:58:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-15:58:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-15:58:06] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.009 seconds
-[30.04.2025-15:58:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-15:58:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
-[30.04.2025-15:58:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-15:58:06] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.011 seconds
-[30.04.2025-15:58:06] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.041 seconds
-[30.04.2025-15:58:09] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.873 seconds
-[30.04.2025-16:02:52] - Command "input_files = input output/bionano_files.txt" took 0.0071 seconds to run
-[30.04.2025-16:02:52] - Command "filter input_files *" took 0.0141 seconds to run
-[30.04.2025-16:02:52] - Command "remove *" took 0.0025 seconds to run
-[30.04.2025-16:02:52] - Command "my_files = filter input_files size < 800 MB" took 0.0125 seconds to run
-[30.04.2025-16:02:52] - Command "my_files = my_files[:5]" took 0.0079 seconds to run
-[30.04.2025-16:02:52] - Command "print(my_files)" took 0.0024 seconds to run
-[30.04.2025-16:02:54] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-16:02:54] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-16:02:54] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.014 seconds
-[30.04.2025-16:02:54] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-16:02:54] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.008 seconds
-[30.04.2025-16:02:54] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
-[30.04.2025-16:02:54] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.070 seconds
-[30.04.2025-16:02:54] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-16:02:57] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.304 seconds
-[30.04.2025-16:03:10] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 16.284 seconds
-[30.04.2025-16:03:20] - Command "loaded_files = pfor(load, my_files)" took 28.3414 seconds to run
-[30.04.2025-16:06:05] - Command "input_files = input output/bionano_files.txt" took 0.0069 seconds to run
-[30.04.2025-16:06:05] - Command "filter input_files *" took 0.0154 seconds to run
-[30.04.2025-16:06:05] - Command "remove *" took 0.0095 seconds to run
-[30.04.2025-16:06:05] - Command "my_files = filter input_files size < 800 MB" took 0.0138 seconds to run
-[30.04.2025-16:06:05] - Command "my_files = my_files[:5]" took 0.0134 seconds to run
-[30.04.2025-16:06:05] - Command "print(my_files)" took 0.0029 seconds to run
-[30.04.2025-16:06:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-16:06:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-16:06:06] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.025 seconds
-[30.04.2025-16:06:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-16:06:06] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.013 seconds
-[30.04.2025-16:06:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
-[30.04.2025-16:06:06] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.078 seconds
-[30.04.2025-16:06:06] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-16:06:10] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 3.184 seconds
-[30.04.2025-16:06:21] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 14.804 seconds
-[30.04.2025-16:06:32] - Command "loaded_files = pfor(load, my_files)" took 27.3613 seconds to run
-[30.04.2025-16:08:30] - Command "run("command.txt")" took 118.3741 seconds to run
-[30.04.2025-16:08:41] - Command "input_files = input output/bionano_files.txt" took 0.0053 seconds to run
-[30.04.2025-16:08:41] - Command "filter input_files *" took 0.0152 seconds to run
-[30.04.2025-16:08:41] - Command "remove *" took 0.0021 seconds to run
-[30.04.2025-16:08:41] - Command "my_files = filter input_files size < 800 MB" took 0.0113 seconds to run
-[30.04.2025-16:08:41] - Command "my_files = my_files[:5]" took 0.0024 seconds to run
-[30.04.2025-16:08:41] - Command "print(my_files)" took 0.0038 seconds to run
-[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-16:08:43] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.015 seconds
-[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-16:08:43] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.009 seconds
-[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx" with size 183.51080226898193 MB
-[30.04.2025-16:08:43] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.078 seconds
-[30.04.2025-16:08:43] - Processing "C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-16:08:46] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.584 seconds
-[30.04.2025-16:08:57] - Execution time of load C:\Users\Administrator\Documents\bakalarska_prace\test_files\big_cropped.bnx and size 183.51080226898193 MB took: 14.210 seconds
-[30.04.2025-16:09:04] - Command "loaded_files = pfor(load, my_files)" took 23.2822 seconds to run
+[30.04.2025-21:20:33] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0018 seconds to run
+[30.04.2025-21:20:33] - Command "filter name *.bnx size < 100 MB -MAX:6" took 0.0990 seconds to run
+[30.04.2025-21:20:33] - Command "sort by size" took 0.0010 seconds to run
+[30.04.2025-21:20:33] - Command "select top 20" took 0.0010 seconds to run
+[30.04.2025-21:20:33] - Command "add *" took 0.0010 seconds to run
+[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:20:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.006 seconds
+[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:20:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.006 seconds
+[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:20:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.034 seconds
+[30.04.2025-21:20:35] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.929 seconds
+[30.04.2025-21:20:35] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.933 seconds
+[30.04.2025-21:20:35] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.957 seconds
+[30.04.2025-21:20:36] - Command "loaded_files = pfor(load, added)" took 3.7555 seconds to run
+[30.04.2025-21:20:46] - Command "avg_snrs = pfor(average_snr, loaded_files, num_cores=6)" took 9.7784 seconds to run
+[30.04.2025-21:20:46] - Command "print(avg_snrs)" took 0.0010 seconds to run
+[30.04.2025-21:20:46] - Command "second_snrs = []" took 0.0000 seconds to run
+[30.04.2025-21:20:58] - Command "for x in loaded_files:
+    second_snrs.append(average_snr(x))" took 12.0677 seconds to run
+[30.04.2025-21:20:58] - Command "print(second_snrs)" took 0.0010 seconds to run
+[30.04.2025-21:21:42] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0030 seconds to run
+[30.04.2025-21:21:42] - Command "filter name *.bnx size < 100 MB -MAX:6" took 0.0971 seconds to run
+[30.04.2025-21:21:42] - Command "sort by size" took 0.0020 seconds to run
+[30.04.2025-21:21:42] - Command "select top 20" took 0.0020 seconds to run
+[30.04.2025-21:21:42] - Command "add *" took 0.0010 seconds to run
+[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:21:42] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.006 seconds
+[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:21:42] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.007 seconds
+[30.04.2025-21:21:42] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.026 seconds
+[30.04.2025-21:21:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.982 seconds
+[30.04.2025-21:21:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.998 seconds
+[30.04.2025-21:21:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.998 seconds
+[30.04.2025-21:21:45] - Command "loaded_files = pfor(load, added)" took 3.8133 seconds to run
+[30.04.2025-21:21:58] - Command "avg_snrs = pfor(average_snr, loaded_files, num_cores=6)" took 12.7589 seconds to run
+[30.04.2025-21:21:58] - Command "print(avg_snrs)" took 0.0000 seconds to run
+[30.04.2025-21:21:58] - Command "second_snrs = []" took 0.0000 seconds to run
+[30.04.2025-21:22:28] - Command "for x in loaded_files:
+    second_snrs.append(average_snr(x))" took 30.0676 seconds to run
+[30.04.2025-21:22:28] - Command "print(second_snrs)" took 0.0010 seconds to run
+[30.04.2025-21:23:32] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0030 seconds to run
+[30.04.2025-21:23:32] - Command "filter name *.bnx size < 100 MB -MAX:6" took 0.0991 seconds to run
+[30.04.2025-21:23:32] - Command "sort by size" took 0.0020 seconds to run
+[30.04.2025-21:23:32] - Command "select top 20" took 0.0010 seconds to run
+[30.04.2025-21:23:32] - Command "add *" took 0.0010 seconds to run
+[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:23:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.006 seconds
+[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+92382812 MB took: 0.006 seconds
+[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:23:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.026 seconds
+[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.925 seconds
+[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.949 seconds
+[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.948 seconds
+[30.04.2025-21:23:36] - Command "loaded_files = pfor(load, added)" took 3.7950 seconds to run
+[30.04.2025-21:23:49] - Command "avg_snrs = pfor(average_snr, loaded_files, num_cores=6)" took 12.7447 seconds to run
+[30.04.2025-21:23:49] - Command "print(avg_snrs)" took 0.0010 seconds to run
+[30.04.2025-21:23:49] - Command "second_load = []" took 0.0000 seconds to run
+[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
+[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
+[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.022 seconds
+[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:23:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.418 seconds
+[30.04.2025-21:23:51] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:23:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.012 seconds
+[30.04.2025-21:23:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[30.04.2025-21:23:55] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.606 seconds
+[30.04.2025-21:23:55] - Command "for x in added_files:
+    second_load.append(load(x))" took 6.0707 seconds to run
+[30.04.2025-21:23:55] - Command "second_snrs = []" took 0.0000 seconds to run
+[30.04.2025-21:24:25] - Command "for x in second_load:
+    second_snrs.append(average_snr(x))" took 30.0644 seconds to run
+[30.04.2025-21:24:25] - Command "print(second_snrs)" took 0.0000 seconds to run

@@ -1,0 +1,22 @@
+# loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
+input_files = input output/bionano_files.txt
+
+filter input_files *
+
+remove *
+
+my_files = filter input_files size < 800 MB
+
+my_files = my_files[:5]
+
+print(my_files)
+
+
+
+loaded_files = pfor(load, my_files)
+
+run("command.txt")
+    
+
+# pfor_order(save, loaded_files)
+

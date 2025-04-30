@@ -1,24 +1,11 @@
-# cd /data1/bionano-old/compute/jobs
-
-# cd C:\Users\Filip\Documents\bakalarska_prace\test_files
-# filter name *.bnx size < 5 GB
-
-# filter files size > 600 MB
-
-# sort by size
-
-# add *
-
-# select top 2
-
-# output my_selected_files.txt
-
 # loaded_files = input /home/fei/raj0071/bakalarska_prace/output/my_selected_files.txt
 input_files = input output/bionano_files.txt
 
+    
+show_files(input_files[:3])
 
-print(input_files[:8])
 
+# Sekvencni zpracovani
 
 loaded_files = []
 
@@ -26,6 +13,6 @@ for x in input_files[:3]:
     loaded_files.append(load(x))
     
   
-# Neni dostatek quoty  
-# for x in loaded_files:
-#     save(x)
+# Ukládá JSON soubory - na serveru je limit quota  
+for x in loaded_files:
+    save(x)

@@ -458,9 +458,6 @@ def save(name, output_file : str = None, shared_data = None, worker_id = None):
                 save(x, output_file, shared_data, worker_id)
         else:
             try:
-                
-                print("Saving...")
-                
                 start_time = time.time()
                 
                 output_dir = os.getcwd()
@@ -601,7 +598,7 @@ def resolve_duplicity(files : list):
     
     return unique_files, duplicates
 
-def write(command, filename):    
+def write(command):    
     text = ""
     
     parentheses_start = command.index("(")
@@ -620,9 +617,17 @@ def write(command, filename):
     text = text.replace("\"", "").replace("'", "")
     
     
+    try:
+        with open(filename, 'a') as f:
+            f.write(text)
+        
+        if os.path.isfile(filename):
+            print(Fore.GREEN + f"Successfully written to '{filename}'")
+
+    except Exception as e:
+        print(Fore.RED + f"Failed to write to '{filename}': {e}")
+        
     
-    with open(filename, 'a') as f:
-        f.write(text)
         
 def delete_file(command):
     try:

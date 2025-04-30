@@ -111,7 +111,7 @@ def process_command(command : str, variables, files : list, added_files : list):
             return
             
         # Saving varibales       b = 5      VARIABLES
-        if len(commands) > 2 and "=" in command and command[command.index("=") - 1] not in ["<", ">"] and not command.startswith("for") and not command.startswith("if"):
+        if len(commands) > 2 and "=" in command and command[command.index("=") - 1] not in ["<", ">"] and not command.startswith("for") and not command.startswith("if") and not command.startswith("pfor"):
             variables_str = command[:command.index("=")]
             variables_str = variables_str.replace(" ", "")
             variables_splitted = variables_str.split(",")
