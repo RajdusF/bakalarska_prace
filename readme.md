@@ -43,6 +43,7 @@ Tato práce se zabývá **vývojem softwarového nástroje** pro efektivní zpra
    - v tomto případě čte jak vstup za běhu programu, tak načítá a spouští příkazy napsané v configurator_commands.txt
 
    Lze dodat argument pro čtení jiných příkazů z jiného souboru, například:
+
    `python3 configurator.py scenarios/scenario_1`
 
 3. Spuštění prvních příkazů:
