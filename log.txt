@@ -108,3 +108,7 @@
 [29.04.2025-22:56:02] - Command "second_snrs = []" took 0.0001 seconds to run
 [29.04.2025-22:56:04] - Command "for x in second_load:
     second_snrs.append(average_snr(x))" took 1.6771 seconds to run
+[30.04.2025-14:53:30] - Command "cd /data1/bionano-old/compute/jobs" took 0.0505 seconds to run
+[30.04.2025-14:53:30] - Command "set search 2" took 0.0010 seconds to run
+[30.04.2025-14:53:30] - Command "filter *" took 0.3574 seconds to run
+[30.04.2025-14:53:30] - Command "print("FINISH!")" took 0.0000 seconds to run

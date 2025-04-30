@@ -168,7 +168,7 @@ if __name__ == "__main__":
     print(f"Search folders: {global_variables.search_folders}")
     print(f"Show duplicity: {global_variables.show_duplicity}")
     
-    print(f"multiprocessing.cpu_count(): {multiprocessing.cpu_count()}")
+    print(f"CPU Count: {multiprocessing.cpu_count()}")
 
     
     cProfile.run("main(args)", sort="tottime")
