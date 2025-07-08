@@ -84,13 +84,25 @@ def filter(command, commands, input_files = None, input_added_files = None, dict
         
     if "created" in commands:
         created_operator = commands[commands.index("created") + 1]
-        if commands.index("created") + 1 < len(commands):
-            created = float(commands[commands.index("created") + 2])
+        if commands.index("created") + 2 < len(commands) and "/" in commands[commands.index("created") + 2]:
+            created = commands[commands.index("created") + 2]
+
+            if created == None or created_operator == None:
+                print(Fore.RED + "Wrong input")
+                return
+        
+        elif commands.index("created") + 1 < len(commands):
+            try:
+                created = float(commands[commands.index("created") + 2])
+            except:
+                print(Fore.RED + "Wrong input")
+                return
             if commands.index("created") + 2 < len(commands):
                 created_time_unit = commands[commands.index("created") + 3]
-        if created_operator == None or created == None or created_time_unit == None:
-            print(Fore.RED + "Wrong input")
-            return
+
+            if created_operator == None or created == None or created_time_unit == None:
+                print(Fore.RED + "Wrong input")
+                return
             
     
     if commands[1] == "files" or commands[1] == "added_files" or commands[1] == "added" or commands[1] in g.variables:
