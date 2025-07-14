@@ -149,6 +149,8 @@ if __name__ == "__main__":
         
     if os.path.isfile("output/output.txt"):
         os.remove("output/output.txt")
+        
+    os.makedirs("output", exist_ok=True)
     
     args = parser.parse_args()
     

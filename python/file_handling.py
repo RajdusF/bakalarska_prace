@@ -21,7 +21,8 @@ def load(name_input, shared_data=None, worker_id=None):
         name = os.path.normpath(name)
 
         if not os.path.isabs(name):
-            print(f"Warning: {name} is not an absolute path")
+            print(Fore.RED + f"Warning: {name} is not an absolute path" + Fore.RESET)
+            print(name)
             return None
 
         files.append(name)

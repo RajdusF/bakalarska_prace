@@ -1,87 +1,377 @@
-[30.04.2025-21:20:33] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0018 seconds to run
-[30.04.2025-21:20:33] - Command "filter name *.bnx size < 100 MB -MAX:6" took 0.0990 seconds to run
-[30.04.2025-21:20:33] - Command "sort by size" took 0.0010 seconds to run
-[30.04.2025-21:20:33] - Command "select top 20" took 0.0010 seconds to run
-[30.04.2025-21:20:33] - Command "add *" took 0.0010 seconds to run
-[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:20:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.006 seconds
-[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:20:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.006 seconds
-[30.04.2025-21:20:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:20:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.034 seconds
-[30.04.2025-21:20:35] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.929 seconds
-[30.04.2025-21:20:35] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.933 seconds
-[30.04.2025-21:20:35] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.957 seconds
-[30.04.2025-21:20:36] - Command "loaded_files = pfor(load, added)" took 3.7555 seconds to run
-[30.04.2025-21:20:46] - Command "avg_snrs = pfor(average_snr, loaded_files, num_cores=6)" took 9.7784 seconds to run
-[30.04.2025-21:20:46] - Command "print(avg_snrs)" took 0.0010 seconds to run
-[30.04.2025-21:20:46] - Command "second_snrs = []" took 0.0000 seconds to run
-[30.04.2025-21:20:58] - Command "for x in loaded_files:
-    second_snrs.append(average_snr(x))" took 12.0677 seconds to run
-[30.04.2025-21:20:58] - Command "print(second_snrs)" took 0.0010 seconds to run
-[30.04.2025-21:21:42] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0030 seconds to run
-[30.04.2025-21:21:42] - Command "filter name *.bnx size < 100 MB -MAX:6" took 0.0971 seconds to run
-[30.04.2025-21:21:42] - Command "sort by size" took 0.0020 seconds to run
-[30.04.2025-21:21:42] - Command "select top 20" took 0.0020 seconds to run
-[30.04.2025-21:21:42] - Command "add *" took 0.0010 seconds to run
-[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:21:42] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.006 seconds
-[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:21:42] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:21:42] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.007 seconds
-[30.04.2025-21:21:42] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.026 seconds
-[30.04.2025-21:21:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.982 seconds
-[30.04.2025-21:21:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.998 seconds
-[30.04.2025-21:21:44] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.998 seconds
-[30.04.2025-21:21:45] - Command "loaded_files = pfor(load, added)" took 3.8133 seconds to run
-[30.04.2025-21:21:58] - Command "avg_snrs = pfor(average_snr, loaded_files, num_cores=6)" took 12.7589 seconds to run
-[30.04.2025-21:21:58] - Command "print(avg_snrs)" took 0.0000 seconds to run
-[30.04.2025-21:21:58] - Command "second_snrs = []" took 0.0000 seconds to run
-[30.04.2025-21:22:28] - Command "for x in loaded_files:
-    second_snrs.append(average_snr(x))" took 30.0676 seconds to run
-[30.04.2025-21:22:28] - Command "print(second_snrs)" took 0.0010 seconds to run
-[30.04.2025-21:23:32] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0030 seconds to run
-[30.04.2025-21:23:32] - Command "filter name *.bnx size < 100 MB -MAX:6" took 0.0991 seconds to run
-[30.04.2025-21:23:32] - Command "sort by size" took 0.0020 seconds to run
-[30.04.2025-21:23:32] - Command "select top 20" took 0.0010 seconds to run
-[30.04.2025-21:23:32] - Command "add *" took 0.0010 seconds to run
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.006 seconds
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
-92382812 MB took: 0.006 seconds
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.026 seconds
-[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.925 seconds
-[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.949 seconds
-[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.948 seconds
-[30.04.2025-21:23:36] - Command "loaded_files = pfor(load, added)" took 3.7950 seconds to run
-[30.04.2025-21:23:49] - Command "avg_snrs = pfor(average_snr, loaded_files, num_cores=6)" took 12.7447 seconds to run
-[30.04.2025-21:23:49] - Command "print(avg_snrs)" took 0.0010 seconds to run
-[30.04.2025-21:23:49] - Command "second_load = []" took 0.0000 seconds to run
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.022 seconds
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.418 seconds
-[30.04.2025-21:23:51] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.012 seconds
-[30.04.2025-21:23:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:55] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.606 seconds
-[30.04.2025-21:23:55] - Command "for x in added_files:
-    second_load.append(load(x))" took 6.0707 seconds to run
-[30.04.2025-21:23:55] - Command "second_snrs = []" took 0.0000 seconds to run
-[30.04.2025-21:24:25] - Command "for x in second_load:
-    second_snrs.append(average_snr(x))" took 30.0644 seconds to run
-[30.04.2025-21:24:25] - Command "print(second_snrs)" took 0.0000 seconds to run
+[13.07.2025-23:14:16] - Command "cd C:\Users\Filip\Documents\bakalarska_prace\test_files" took 0.0014 seconds to run
+[13.07.2025-23:14:16] - Command "ls" took 0.0228 seconds to run
+[13.07.2025-23:14:16] - Command "set duplicity 0" took 0.0007 seconds to run
+[13.07.2025-23:14:16] - Command "set search 2" took 0.0005 seconds to run
+[13.07.2025-23:14:16] - Command "bnxs = filter name *.bnx size < 600 MB" took 0.0109 seconds to run
+[13.07.2025-23:14:16] - Command "alls = filter bnxs name all*" took 0.0024 seconds to run
+[13.07.2025-23:14:16] - Command "small = filter bnxs name small*" took 0.0033 seconds to run
+[13.07.2025-23:14:16] - Command "group = alls U small" took 0.0019 seconds to run
+[13.07.2025-23:14:16] - Command "add group" took 0.0027 seconds to run
+[13.07.2025-23:14:16] - Command "output bionano_files.txt" took 0.0017 seconds to run
+[13.07.2025-23:15:06] - Command "cd C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files" took 0.0013 seconds to run
+[13.07.2025-23:15:06] - Command "ls" took 0.0174 seconds to run
+[13.07.2025-23:15:06] - Command "set duplicity 0" took 0.0005 seconds to run
+[13.07.2025-23:15:06] - Command "set search 2" took 0.0005 seconds to run
+[13.07.2025-23:15:06] - Command "bnxs = filter name *.bnx size < 600 MB" took 0.0100 seconds to run
+[13.07.2025-23:15:06] - Command "alls = filter bnxs name all*" took 0.0020 seconds to run
+[13.07.2025-23:15:06] - Command "small = filter bnxs name small*" took 0.0033 seconds to run
+[13.07.2025-23:15:06] - Command "group = alls U small" took 0.0021 seconds to run
+[13.07.2025-23:15:06] - Command "add group" took 0.0019 seconds to run
+[13.07.2025-23:15:06] - Command "output bionano_files.txt" took 0.0017 seconds to run
+[13.07.2025-23:15:16] - Command "files = input output/bionano_files.txt" took 0.0074 seconds to run
+[13.07.2025-23:15:16] - Command "sort added by modified" took 0.0041 seconds to run
+[13.07.2025-23:15:16] - Command "select top 5" took 0.0013 seconds to run
+[13.07.2025-23:15:16] - Command "remove *" took 0.0002 seconds to run
+[13.07.2025-23:15:16] - Command "add *" took 0.0011 seconds to run
+[13.07.2025-23:15:19] - Command "finds_version = find "Version" in added -I" took 3.4626 seconds to run
+[13.07.2025-23:15:22] - Command "find "Number of Molecules" in added -I" took 3.2985 seconds to run
+[13.07.2025-23:15:22] - Command "print(finds_version)" took 0.0006 seconds to run
+[13.07.2025-23:15:22] - Command "my_report = """ took 0.0001 seconds to run
+[13.07.2025-23:15:22] - Command "for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"" took 0.0024 seconds to run
+[13.07.2025-23:15:24] - Command "send_email(my_report, "Function find")" took 1.3101 seconds to run
+[13.07.2025-23:15:30] - Command "input_files = input output/bionano_files.txt" took 0.0011 seconds to run
+[13.07.2025-23:15:30] - Command "show_files(input_files[:3])" took 0.0015 seconds to run
+[13.07.2025-23:15:30] - Command "loaded_files = []" took 0.0002 seconds to run
+[13.07.2025-23:15:30] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:15:30] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.028 seconds
+[13.07.2025-23:15:30] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:15:30] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.011 seconds
+[13.07.2025-23:15:30] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:15:30] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.010 seconds
+[13.07.2025-23:15:30] - Command "for x in input_files[:3]:
+    loaded_files.append(load(x))" took 0.0513 seconds to run
+[13.07.2025-23:15:30] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarka_out_of_github_test_files_all_2_cropped.json: 0.10 seconds
+[13.07.2025-23:15:30] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarka_out_of_github_test_files_all_cropped.json: 0.02 seconds
+[13.07.2025-23:15:30] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarka_out_of_github_test_files_all_cropped_2.json: 0.02 seconds
+[13.07.2025-23:15:30] - Command "for x in loaded_files:
+    save(x)" took 0.1400 seconds to run
+[13.07.2025-23:15:53] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0009 seconds to run
+[13.07.2025-23:15:53] - Command "delete_file("output/correct_molecules_1.txt")" took 0.0008 seconds to run
+[13.07.2025-23:15:53] - Command "delete_file("output/correct_molecules_2.txt")" took 0.0007 seconds to run
+[13.07.2025-23:15:53] - Command "files = input output/bionano_files.txt" took 0.0075 seconds to run
+[13.07.2025-23:15:53] - Command "show_files(files)" took 0.0043 seconds to run
+[13.07.2025-23:15:53] - Command "add *" took 0.0029 seconds to run
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.018 seconds
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_velikost_0.bnx" with size 159.04318714141846 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.047 seconds
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.018 seconds
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:53] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 2.691 seconds
+[13.07.2025-23:15:56] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.726 seconds
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 2.735 seconds
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 2.727 seconds
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 2.751 seconds
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_7.bnx and size 27.67490577697754 MB took: 2.757 seconds
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 2.776 seconds
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.826 seconds
+[13.07.2025-23:15:56] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_8.bnx and size 27.67490577697754 MB took: 2.776 seconds
+[13.07.2025-23:15:56] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_9.bnx and size 27.67490577697754 MB took: 2.795 seconds
+[13.07.2025-23:15:58] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.424 seconds
+[13.07.2025-23:15:59] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.360 seconds
+[13.07.2025-23:16:04] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_velikost_0.bnx and size 159.04318714141846 MB took: 10.985 seconds
+[13.07.2025-23:16:08] - Command "loaded_files = pfor(load, files)" took 15.6012 seconds to run
+[13.07.2025-23:16:08] - Command "output = """ took 0.0002 seconds to run
+[13.07.2025-23:16:08] - Command "num = 0" took 0.0002 seconds to run
+[13.07.2025-23:16:08] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 50:
+            print(molecule)
+            print()
+            output += str(molecule) + "\n\n"
+            num += 1
+    print()
+    output += "\n"" took 0.0720 seconds to run
+[13.07.2025-23:16:08] - Command "write("output/correct_molecules_1.txt", output)" took 0.0016 seconds to run
+[13.07.2025-23:16:08] - Command "output = """ took 0.0002 seconds to run
+[13.07.2025-23:16:08] - Command "num = 0" took 0.0001 seconds to run
+[13.07.2025-23:16:09] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 900:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 1100:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+                    num += 1
+    print()
+    output += "\n"" took 0.8411 seconds to run
+[13.07.2025-23:16:09] - Command "write("output/correct_molecules_2.txt", output)" took 0.0008 seconds to run
+[13.07.2025-23:16:18] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0008 seconds to run
+[13.07.2025-23:16:18] - Command "filter name *.bnx size < 100 MB -MAX:12" took 0.0065 seconds to run
+[13.07.2025-23:16:18] - Command "sort by size" took 0.0029 seconds to run
+[13.07.2025-23:16:18] - Command "select top 20" took 0.0027 seconds to run
+[13.07.2025-23:16:18] - Command "add *" took 0.0020 seconds to run
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:16:19] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.008 seconds
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:16:19] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.011 seconds
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_0.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_10.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.032 seconds
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:19] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_10.bnx and size 27.67490577697754 MB took: 2.136 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.240 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_3.bnx and size 27.67490577697754 MB took: 2.290 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_4.bnx and size 27.67490577697754 MB took: 2.310 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.339 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 2.350 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_2.bnx and size 27.67490577697754 MB took: 2.347 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_6.bnx and size 27.67490577697754 MB took: 2.325 seconds
+[13.07.2025-23:16:21] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_5.bnx and size 27.67490577697754 MB took: 2.341 seconds
+[13.07.2025-23:16:25] - Command "loaded_files = pfor(load, added)" took 6.5729 seconds to run
+[13.07.2025-23:17:26] - Command "input_files = input output/bionano_files.txt" took 0.0011 seconds to run
+[13.07.2025-23:17:26] - Command "show_files(input_files[:3])" took 0.0016 seconds to run
+[13.07.2025-23:17:26] - Command "loaded_files = []" took 0.0001 seconds to run
+[13.07.2025-23:17:26] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:17:26] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.020 seconds
+[13.07.2025-23:17:26] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:17:26] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
+[13.07.2025-23:17:26] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:17:26] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
+[13.07.2025-23:17:26] - Command "for x in input_files[:3]:
+    loaded_files.append(load(x))" took 0.0300 seconds to run
+[13.07.2025-23:17:26] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarka_out_of_github_test_files_all_2_cropped.json: 0.10 seconds
+[13.07.2025-23:17:26] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarka_out_of_github_test_files_all_cropped.json: 0.02 seconds
+[13.07.2025-23:17:26] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarka_out_of_github_test_files_all_cropped_2.json: 0.02 seconds
+[13.07.2025-23:17:26] - Command "for x in loaded_files:
+    save(x)" took 0.1401 seconds to run
+[13.07.2025-23:17:34] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0008 seconds to run
+[13.07.2025-23:17:34] - Command "delete_file("output/correct_molecules_1.txt")" took 0.0008 seconds to run
+[13.07.2025-23:17:34] - Command "delete_file("output/correct_molecules_2.txt")" took 0.0007 seconds to run
+[13.07.2025-23:17:34] - Command "files = input output/bionano_files.txt" took 0.0005 seconds to run
+[13.07.2025-23:17:34] - Command "show_files(files)" took 0.0040 seconds to run
+[13.07.2025-23:17:34] - Command "add *" took 0.0021 seconds to run
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_1.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.007 seconds
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_velikost_0.bnx" with size 159.04318714141846 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_2.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.035 seconds
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:17:34] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.009 seconds
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_3.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_4.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_5.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_6.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_7.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_8.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:17:34] - Processing "C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\small_all_9.bnx" with size 27.67490577697754 MB
+[13.07.2025-23:18:46] - Command "cd C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files" took 0.0013 seconds to run
+[13.07.2025-23:18:46] - Command "ls" took 0.0064 seconds to run
+[13.07.2025-23:18:46] - Command "set duplicity 0" took 0.0005 seconds to run
+[13.07.2025-23:18:46] - Command "set search 2" took 0.0005 seconds to run
+[13.07.2025-23:18:46] - Command "bnxs = filter name *.bnx size < 600 MB" took 0.0049 seconds to run
+[13.07.2025-23:18:46] - Command "alls = filter bnxs name all*" took 0.0015 seconds to run
+[13.07.2025-23:18:46] - Command "small = filter bnxs name small*" took 0.0005 seconds to run
+[13.07.2025-23:18:46] - Command "group = alls U small" took 0.0006 seconds to run
+[13.07.2025-23:18:46] - Command "add group" took 0.0004 seconds to run
+[13.07.2025-23:18:46] - Command "output bionano_files.txt" took 0.0013 seconds to run
+[13.07.2025-23:18:57] - Command "cd C:\Users\filip\OneDrive\Documents\bakalarka_prace" took 0.0008 seconds to run
+[13.07.2025-23:18:57] - Command "delete_file("output/correct_molecules_1.txt")" took 0.0004 seconds to run
+[13.07.2025-23:18:57] - Command "delete_file("output/correct_molecules_2.txt")" took 0.0003 seconds to run
+[13.07.2025-23:18:57] - Command "files = input output/bionano_files.txt" took 0.0058 seconds to run
+[13.07.2025-23:18:57] - Command "show_files(files)" took 0.0014 seconds to run
+[13.07.2025-23:18:57] - Command "add *" took 0.0008 seconds to run
+[13.07.2025-23:18:58] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:18:58] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:18:58] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:18:58] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.011 seconds
+[13.07.2025-23:18:58] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.011 seconds
+[13.07.2025-23:18:58] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.028 seconds
+[13.07.2025-23:18:58] - Command "loaded_files = pfor(load, files)" took 0.4522 seconds to run
+[13.07.2025-23:18:58] - Command "output = """ took 0.0002 seconds to run
+[13.07.2025-23:18:58] - Command "num = 0" took 0.0002 seconds to run
+[13.07.2025-23:18:58] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 50:
+            print(molecule)
+            print()
+            output += str(molecule) + "\n\n"
+            num += 1
+    print()
+    output += "\n"" took 0.0515 seconds to run
+[13.07.2025-23:18:58] - Command "write("output/correct_molecules_1.txt", output)" took 0.0015 seconds to run
+[13.07.2025-23:18:58] - Command "output = """ took 0.0001 seconds to run
+[13.07.2025-23:18:58] - Command "num = 0" took 0.0002 seconds to run
+[13.07.2025-23:18:58] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 900:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 1100:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+                    num += 1
+    print()
+    output += "\n"" took 0.0013 seconds to run
+[13.07.2025-23:18:58] - Command "write("output/correct_molecules_2.txt", output)" took 0.0007 seconds to run
+[13.07.2025-23:19:25] - Command "cd C:\Users\filip\OneDrive\Documents\bakalarska_prace" took 0.0014 seconds to run
+[13.07.2025-23:19:25] - Command "delete_file("output/correct_molecules_1.txt")" took 0.0006 seconds to run
+[13.07.2025-23:19:25] - Command "delete_file("output/correct_molecules_2.txt")" took 0.0006 seconds to run
+[13.07.2025-23:19:25] - Command "files = input output/bionano_files.txt" took 0.0004 seconds to run
+[13.07.2025-23:19:25] - Command "show_files(files)" took 0.0014 seconds to run
+[13.07.2025-23:19:25] - Command "add *" took 0.0007 seconds to run
+[13.07.2025-23:19:25] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:19:25] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:19:25] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
+[13.07.2025-23:19:25] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:19:25] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
+[13.07.2025-23:19:25] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.020 seconds
+[13.07.2025-23:19:25] - Command "loaded_files = pfor(load, files)" took 0.4463 seconds to run
+[13.07.2025-23:19:25] - Command "output = """ took 0.0002 seconds to run
+[13.07.2025-23:19:25] - Command "num = 0" took 0.0002 seconds to run
+[13.07.2025-23:19:25] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 50:
+            print(molecule)
+            print()
+            output += str(molecule) + "\n\n"
+            num += 1
+    print()
+    output += "\n"" took 0.0506 seconds to run
+[13.07.2025-23:19:25] - Command "write("output/correct_molecules_1.txt", output)" took 0.0015 seconds to run
+[13.07.2025-23:19:25] - Command "output = """ took 0.0001 seconds to run
+[13.07.2025-23:19:25] - Command "num = 0" took 0.0002 seconds to run
+[13.07.2025-23:19:25] - Command "for i, file in enumerate(loaded_files):
+    data = file["data"]
+    print(file["filename"])
+    output += file["filename"] + "\n"
+    for molecule in data:
+        if num > 300:
+            break
+        if "Length" in molecule and molecule["Length"] > 98000:
+            if "SNR" in molecule and molecule["SNR"] > 900:
+                if "AvgIntensity" in molecule and molecule["AvgIntensity"] > 1100:
+                    print(molecule)
+                    print()
+                    output += str(molecule) + "\n\n"
+                    num += 1
+    print()
+    output += "\n"" took 0.0012 seconds to run
+[13.07.2025-23:19:25] - Command "write("output/correct_molecules_2.txt", output)" took 0.0007 seconds to run
+[13.07.2025-23:19:42] - Command "cd C:\Users\filip\OneDrive\Documents\bakalarska_prace" took 0.0014 seconds to run
+[13.07.2025-23:19:42] - Command "filter name *.bnx size < 100 MB -MAX:12" took 0.0741 seconds to run
+[13.07.2025-23:19:42] - Command "sort by size" took 0.0010 seconds to run
+[13.07.2025-23:19:42] - Command "select top 20" took 0.0009 seconds to run
+[13.07.2025-23:19:42] - Command "add *" took 0.0006 seconds to run
+[13.07.2025-23:19:42] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:19:42] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
+[13.07.2025-23:19:42] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:19:42] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:19:42] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
+[13.07.2025-23:19:42] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.020 seconds
+[13.07.2025-23:19:42] - Command "loaded_files = pfor(load, added)" took 0.4537 seconds to run
+[13.07.2025-23:19:43] - Command "avg_snrs = pfor(average_snr, loaded_files)" took 0.4325 seconds to run
+[13.07.2025-23:19:43] - Command "print(avg_snrs)" took 0.0005 seconds to run
+[13.07.2025-23:19:43] - Command "second_load = []" took 0.0002 seconds to run
+[13.07.2025-23:19:43] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[13.07.2025-23:19:43] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
+[13.07.2025-23:19:43] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[13.07.2025-23:19:43] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
+[13.07.2025-23:19:43] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[13.07.2025-23:19:43] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.019 seconds
+[13.07.2025-23:19:43] - Command "for x in added_files:
+    second_load.append(load(x))" took 0.0292 seconds to run
+[13.07.2025-23:19:43] - Command "second_snrs = []" took 0.0002 seconds to run
+[13.07.2025-23:19:43] - Command "for x in second_load:
+    second_snrs.append(average_snr(x))" took 0.0004 seconds to run
+[13.07.2025-23:19:43] - Command "print(second_snrs)" took 0.0002 seconds to run
+[14.07.2025-20:15:58] - Command "cd C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files" took 0.0015 seconds to run
+[14.07.2025-20:15:58] - Command "ls" took 0.0060 seconds to run
+[14.07.2025-20:15:58] - Command "set duplicity 0" took 0.0005 seconds to run
+[14.07.2025-20:15:58] - Command "set search 2" took 0.0005 seconds to run
+[14.07.2025-20:15:58] - Command "bnxs = filter name *.bnx size < 600 MB" took 0.0048 seconds to run
+[14.07.2025-20:15:58] - Command "alls = filter bnxs name all*" took 0.0014 seconds to run
+[14.07.2025-20:15:58] - Command "small = filter bnxs name small*" took 0.0006 seconds to run
+[14.07.2025-20:15:58] - Command "group = alls U small" took 0.0006 seconds to run
+[14.07.2025-20:15:58] - Command "add group" took 0.0004 seconds to run
+[14.07.2025-20:15:58] - Command "output bionano_files.txt" took 0.0013 seconds to run
+[14.07.2025-20:16:08] - Command "files = input output/bionano_files.txt" took 0.0068 seconds to run
+[14.07.2025-20:16:08] - Command "sort added by modified" took 0.0014 seconds to run
+[14.07.2025-20:16:08] - Command "select top 5" took 0.0010 seconds to run
+[14.07.2025-20:16:08] - Command "remove *" took 0.0002 seconds to run
+[14.07.2025-20:16:08] - Command "add *" took 0.0009 seconds to run
+[14.07.2025-20:16:08] - Command "finds_version = find "Version" in added -I" took 0.0293 seconds to run
+[14.07.2025-20:16:08] - Command "find "Number of Molecules" in added -I" took 0.0092 seconds to run
+[14.07.2025-20:16:08] - Command "print(finds_version)" took 0.0005 seconds to run
+[14.07.2025-20:16:08] - Command "my_report = """ took 0.0001 seconds to run
+[14.07.2025-20:16:08] - Command "for key, values in finds_version.items():
+    print(key)
+    my_report += str(key) + "\n"
+    for value in values:
+        print(f"\t{value}")
+        my_report += "\t" + str(value) + "\n"
+    print()
+    my_report += "\n"" took 0.0019 seconds to run
+[14.07.2025-20:16:09] - Command "send_email(my_report, "Function find")" took 1.3662 seconds to run
+[14.07.2025-20:16:16] - Command "input_files = input output/bionano_files.txt" took 0.0013 seconds to run
+[14.07.2025-20:16:16] - Command "show_files(input_files[:3])" took 0.0015 seconds to run
+[14.07.2025-20:16:16] - Command "loaded_files = []" took 0.0002 seconds to run
+[14.07.2025-20:16:16] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[14.07.2025-20:16:16] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.020 seconds
+[14.07.2025-20:16:16] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[14.07.2025-20:16:16] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
+[14.07.2025-20:16:16] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[14.07.2025-20:16:16] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
+[14.07.2025-20:16:16] - Command "for x in input_files[:3]:
+    loaded_files.append(load(x))" took 0.0296 seconds to run
+[14.07.2025-20:16:16] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarska_prace_test_files_all_2_cropped.json: 0.11 seconds
+[14.07.2025-20:16:16] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarska_prace_test_files_all_cropped.json: 0.02 seconds
+[14.07.2025-20:16:16] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarska_prace_test_files_all_cropped_2.json: 0.02 seconds
+[14.07.2025-20:16:16] - Command "for x in loaded_files:
+    save(x)" took 0.1425 seconds to run

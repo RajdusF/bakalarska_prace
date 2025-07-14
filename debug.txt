@@ -1,39 +1,16 @@
-[30.04.2025-21:23:32] - Command "cd C:\Users\Filip\Documents\bakalarska_prace" took 0.0030 seconds to run
-[30.04.2025-21:23:32] - Command "filter name *.bnx size < 100 MB -MAX:6" took 0.0991 seconds to run
-[30.04.2025-21:23:32] - Command "sort by size" took 0.0020 seconds to run
-[30.04.2025-21:23:32] - Command "select top 20" took 0.0010 seconds to run
-[30.04.2025-21:23:32] - Command "add *" took 0.0010 seconds to run
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.006 seconds
-[30.04.2025-21:23:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.006 seconds
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:33] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:33] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.026 seconds
-[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 1.925 seconds
-[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 1.949 seconds
-[30.04.2025-21:23:34] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.948 seconds
-    [30.04.2025-21:23:36] - Command "loaded_files = pfor(load, added)" took 3.7950 seconds to run
-    [30.04.2025-21:23:49] - Command "avg_snrs = pfor(average_snr, loaded_files, num_cores=6)" took 12.7447 seconds to run
-[30.04.2025-21:23:49] - Command "print(avg_snrs)" took 0.0010 seconds to run
-[30.04.2025-21:23:49] - Command "second_load = []" took 0.0000 seconds to run
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
-[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
-[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
-[30.04.2025-21:23:49] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.022 seconds
-[30.04.2025-21:23:49] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:51] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all.bnx and size 27.67490577697754 MB took: 2.418 seconds
-[30.04.2025-21:23:51] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:53] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_0.bnx and size 27.67490577697754 MB took: 2.012 seconds
-[30.04.2025-21:23:53] - Processing "C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx" with size 27.67490577697754 MB
-[30.04.2025-21:23:55] - Execution time of load C:\Users\Filip\Documents\bakalarska_prace\test_files\small_all_1.bnx and size 27.67490577697754 MB took: 1.606 seconds
-[30.04.2025-21:23:55] - Command "for x in added_files:
-    second_load.append(load(x))" took 6.0707 seconds to run
-[30.04.2025-21:23:55] - Command "second_snrs = []" took 0.0000 seconds to run
-[30.04.2025-21:24:25] - Command "for x in second_load:
-    second_snrs.append(average_snr(x))" took 30.0644 seconds to run
-[30.04.2025-21:24:25] - Command "print(second_snrs)" took 0.0000 seconds to run
+[14.07.2025-20:16:16] - Command "input_files = input output/bionano_files.txt" took 0.0013 seconds to run
+[14.07.2025-20:16:16] - Command "show_files(input_files[:3])" took 0.0015 seconds to run
+[14.07.2025-20:16:16] - Command "loaded_files = []" took 0.0002 seconds to run
+[14.07.2025-20:16:16] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx" with size 0.6285734176635742 MB
+[14.07.2025-20:16:16] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_2_cropped.bnx and size 0.6285734176635742 MB took: 0.020 seconds
+[14.07.2025-20:16:16] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx" with size 0.0943155288696289 MB
+[14.07.2025-20:16:16] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped.bnx and size 0.0943155288696289 MB took: 0.004 seconds
+[14.07.2025-20:16:16] - Processing "C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx" with size 0.14198684692382812 MB
+[14.07.2025-20:16:16] - Execution time of load C:\Users\filip\OneDrive\Documents\bakalarska_prace\test_files\all_cropped_2.bnx and size 0.14198684692382812 MB took: 0.004 seconds
+[14.07.2025-20:16:16] - Command "for x in input_files[:3]:
+    loaded_files.append(load(x))" took 0.0296 seconds to run
+[14.07.2025-20:16:16] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarska_prace_test_files_all_2_cropped.json: 0.11 seconds
+[14.07.2025-20:16:16] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarska_prace_test_files_all_cropped.json: 0.02 seconds
+[14.07.2025-20:16:16] - Execution time of save C:\Users\filip\OneDrive\Documents\bakalarska_prace\output\_Users_filip_OneDrive_Documents_bakalarska_prace_test_files_all_cropped_2.json: 0.02 seconds
+[14.07.2025-20:16:16] - Command "for x in loaded_files:
+    save(x)" took 0.1425 seconds to run

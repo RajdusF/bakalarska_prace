@@ -1,18 +1,4 @@
-# cd /data1/bionano-old/compute/jobs
-cd E:\
+my_file = load(C:\Users\filip\OneDrive\Documents\bakalarka_out_of_github\test_files\all_velikost_0)
 
-ls
-set duplicity 0
-set search 2
-
-# bnxs = filter name all* size > 100 MB created > 20/05/2018
-
-filter *
-
-# small = filter bnxs name small*
-    
-# group = alls U small
-
-# add group
-
-# output bionano_files.txt
+avg = average_intensity(my_file)
+print(avg)

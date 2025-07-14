@@ -1,4 +1,4 @@
-cd C:\Users\Filip\Documents\bakalarska_prace
+cd C:\Users\filip\OneDrive\Documents\bakalarska_prace
 # cd /data1/bionano-old/compute/jobs
 
 delete_file("output/correct_molecules_1.txt")

@@ -35,3 +35,20 @@ def average_snr(file, shared_data=None, worker_id=None):
     # time.sleep(5)
 
     return (file["filename"], total_snr / num_of_molecules)
+
+def average_intensity(file, shared_data=None, worker_id=None):
+    data = file["data"]
+
+    total_intensity = 0
+    num_of_molecules = 0
+    
+    for molecule in data:
+        if "AvgIntensity" in molecule:
+            total_intensity += molecule["AvgIntensity"]
+            # print(f"{num_of_molecules}: {molecule['AvgIntensity']}")
+            num_of_molecules += 1
+
+    # Simulace narocne operace / velkeho souboru
+    # time.sleep(5)
+
+    return (total_intensity / num_of_molecules)
