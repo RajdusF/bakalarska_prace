@@ -49,9 +49,13 @@ Tato práce se zabývá **vývojem softwarového nástroje** pro efektivní zpra
    Při připravených testovacích datech lze vyzkoušet validní scénáře:
 
    `python3 configurator.py scenarios/scenario_1`
+
    `python3 configurator.py scenarios/scenario_2`
+
    `python3 configurator.py scenarios/scenario_3`
+
    `python3 configurator.py scenarios/scenario_4`
+   
    `python3 configurator.py scenarios/scenario_5`
 
 3. Spuštění prvních příkazů:
